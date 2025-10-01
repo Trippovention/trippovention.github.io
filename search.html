@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Search Tours — Trippovention</title>
+	<link rel="stylesheet" href="assets/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav class="nav">
+		<div class="container">
+			<a class="brand" href="index.html"><img src="assets/logo.webp" alt="Trippovention"></a>
+			<div class="menu">
+				<a href="index.html">Home</a>
+				<a href="tours.html">Tours</a>
+				<a class="active" href="search.html">Search</a>
+				<a href="cab-booking.html">Cabs</a>
+				<a href="services.html">Services</a>
+				<a href="contact.html">Contact</a>
+			</div>
+			<div class="actions">
+				<a class="icon" title="Cart" href="cart.html">🛒<span class="badge-dot">2</span></a>
+				<a class="icon" title="Account" href="my-account.html">👤</a>
+				<a id="themeToggle" class="icon theme-toggle" title="Toggle theme" href="javascript:void(0)">🌓</a>
+			</div>
+		</div>
+	</nav>
+
+	<header class="section compact" style="background:var(--gradient-hero);color:#fff">
+		<div class="container">
+			<div class="section-title">
+				<h1 style="color:#fff;font-size:48px">Find Your Perfect Trip</h1>
+				<p class="subtitle" style="color:rgba(255,255,255,0.9)">Search through our extensive collection of tours and experiences</p>
+			</div>
+			
+			<div class="card" style="max-width:800px;margin:0 auto;background:rgba(255,255,255,0.95)">
+				<div class="body">
+					<div class="grid cols-3">
+						<div>
+							<label>🔍 Keyword Search</label>
+							<input placeholder="Search destinations, activities...">
+						</div>
+						<div>
+							<label>📍 Destination</label>
+							<select>
+								<option>Any Destination</option>
+								<option>India</option>
+								<option>Thailand</option>
+								<option>Singapore</option>
+								<option>UAE</option>
+								<option>Maldives</option>
+								<option>Multi-Country</option>
+							</select>
+						</div>
+						<div>
+							<label>🎯 Travel Theme</label>
+							<select>
+								<option>Any Theme</option>
+								<option>Honeymoon</option>
+								<option>Family</option>
+								<option>Beach</option>
+								<option>Adventure</option>
+								<option>Cultural</option>
+								<option>Luxury</option>
+							</select>
+						</div>
+					</div>
+					<div class="two" style="margin-top:20px">
+						<div>
+							<label>💰 Budget Range (per person)</label>
+							<select>
+								<option>Any Budget</option>
+								<option>Under ₹ 25,000</option>
+								<option>₹ 25,000 - ₹ 50,000</option>
+								<option>₹ 50,000 - ₹ 1,00,000</option>
+								<option>Above ₹ 1,00,000</option>
+							</select>
+						</div>
+						<div>
+							<label>📅 Duration</label>
+							<select>
+								<option>Any Duration</option>
+								<option>1-3 Days</option>
+								<option>4-7 Days</option>
+								<option>8-14 Days</option>
+								<option>15+ Days</option>
+							</select>
+						</div>
+					</div>
+					<div style="text-align:center;margin-top:25px">
+						<a class="btn btn-lg" href="#results">🔍 Search Tours</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section class="section" id="results">
+		<div class="container">
+			<div class="section-title">
+				<h2>Search Results</h2>
+				<p class="subtitle">Found 6 tours matching your criteria</p>
+			</div>
+			
+			<div class="grid cols-3">
+				<div class="card">
+					<div class="img-wrap">
+						<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200" alt="SEA Discovery">
+						<span class="ribbon">🔥 Popular</span>
+					</div>
+					<div class="body">
+						<div class="badge">Multi-Country</div>
+						<h3><a href="tour-details.html" style="text-decoration:none;color:var(--ink)">Southeast Asia Discovery</a></h3>
+						<p class="muted">Singapore • Malaysia • Thailand • 7 Days</p>
+						<div class="price-row">
+							<span class="price-old">₹ 79,999</span>
+							<span class="price">₹ 69,999 <span class="muted">/ pax</span></span>
+							<span class="save">Save 12%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="img-wrap">
+						<img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?q=80&w=1200" alt="Thailand Beach">
+						<span class="ribbon">✨ Featured</span>
+					</div>
+					<div class="body">
+						<div class="badge">Thailand</div>
+						<h3><a href="tour-details.html" style="text-decoration:none;color:var(--ink)">Phuket Beach Paradise</a></h3>
+						<p class="muted">Beach Resort • Island Hopping • 5 Days</p>
+						<div class="price-row">
+							<span class="price-old">₹ 42,999</span>
+							<span class="price">₹ 36,499 <span class="muted">/ pax</span></span>
+							<span class="save">Save 15%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="img-wrap">
+						<img src="https://images.unsplash.com/photo-1560264280-88b68371db39?q=80&w=1200" alt="Rajasthan">
+					</div>
+					<div class="body">
+						<div class="badge">India</div>
+						<h3><a href="tour-details.html" style="text-decoration:none;color:var(--ink)">Rajasthan Royal Heritage</a></h3>
+						<p class="muted">Palaces • Culture • Desert • 6 Days</p>
+						<div class="price-row">
+							<span class="price-old">₹ 31,999</span>
+							<span class="price">₹ 27,999 <span class="muted">/ pax</span></span>
+							<span class="save">Save 13%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="img-wrap">
+						<img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73dd9?q=80&w=1200" alt="Maldives">
+						<span class="ribbon">🌊 Luxury</span>
+					</div>
+					<div class="body">
+						<div class="badge">Maldives</div>
+						<h3><a href="tour-details.html" style="text-decoration:none;color:var(--ink)">Maldives Water Villa</a></h3>
+						<p class="muted">Overwater Stay • Spa • Snorkeling • 4 Days</p>
+						<div class="price-row">
+							<span class="price-old">₹ 1,25,999</span>
+							<span class="price">₹ 1,09,999 <span class="muted">/ pax</span></span>
+							<span class="save">Save 13%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="img-wrap">
+						<img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200" alt="Dubai">
+						<span class="ribbon">🏙️ Modern</span>
+					</div>
+					<div class="body">
+						<div class="badge">UAE</div>
+						<h3><a href="tour-details.html" style="text-decoration:none;color:var(--ink)">Dubai Luxury Experience</a></h3>
+						<p class="muted">Shopping • Desert Safari • City Tour • 4 Days</p>
+						<div class="price-row">
+							<span class="price">₹ 45,999 <span class="muted">/ pax</span></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="img-wrap">
+						<img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200" alt="Kashmir">
+						<span class="ribbon">❄️ Seasonal</span>
+					</div>
+					<div class="body">
+						<div class="badge">India</div>
+						<h3><a href="tour-details.html" style="text-decoration:none;color:var(--ink)">Kashmir Valley Experience</a></h3>
+						<p class="muted">Houseboat • Mountains • Gardens • 5 Days</p>
+						<div class="price-row">
+							<span class="price-old">₹ 28,999</span>
+							<span class="price">₹ 24,999 <span class="muted">/ pax</span></span>
+							<span class="save">Save 14%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section alt">
+		<div class="container">
+			<div class="section-title">
+				<h2>Popular Search Categories</h2>
+				<p class="subtitle">Quick access to trending destinations and themes</p>
+			</div>
+			<div class="destination-grid">
+				<div class="destination-card">
+					<img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200" alt="Honeymoon">
+					<div class="overlay">
+						<h3>🌹 Honeymoon Packages</h3>
+						<p>Romantic destinations for couples</p>
+						<a class="btn ghost" href="tours.html?theme=honeymoon">Explore</a>
+					</div>
+				</div>
+				<div class="destination-card">
+					<img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73dd9?q=80&w=1200" alt="Beach">
+					<div class="overlay">
+						<h3>🏖️ Beach Destinations</h3>
+						<p>Sun, sand, and crystal clear waters</p>
+						<a class="btn ghost" href="tours.html?theme=beach">Explore</a>
+					</div>
+				</div>
+				<div class="destination-card">
+					<img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?q=80&w=1200" alt="Cultural">
+					<div class="overlay">
+						<h3>🏛️ Cultural Tours</h3>
+						<p>Heritage sites and spiritual journeys</p>
+						<a class="btn ghost" href="tours.html?theme=cultural">Explore</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div style="text-align:center">
+				<p>&copy; 2025 Trippovention. All Rights Reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
+
+	<script src="assets/app.js" defer></script>
+</body>
+</html>
