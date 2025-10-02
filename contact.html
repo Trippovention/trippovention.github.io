@@ -44,30 +44,39 @@
 				<div class="card">
 					<div class="body">
 						<h3>📧 Send us a Message</h3>
-						<label>Full Name</label>
-						<input placeholder="Enter your full name">
-						
-						<label>Email Address</label>
-						<input type="email" placeholder="your@email.com">
-						
-						<label>Phone Number</label>
-						<input placeholder="+91 XXXXX XXXXX">
-						
-						<label>Subject</label>
-						<select>
-							<option>General Inquiry</option>
-							<option>Tour Package Question</option>
-							<option>Visa Assistance</option>
-							<option>Custom Trip Planning</option>
-							<option>Booking Support</option>
-							<option>Complaint/Feedback</option>
-						</select>
-						
-						<label>Message</label>
-						<textarea rows="5" placeholder="Tell us how we can help you..."></textarea>
-						
-						<div style="height:12px"></div>
-						<a class="btn btn-lg" href="#" style="width:100%;text-align:center">📤 Send Message</a>
+						<form action="https://formsubmit.co/query@trippovention.com" method="POST">
+							<!-- FormSubmit Configuration -->
+							<input type="hidden" name="_subject" value="New Contact Form Submission - Trippovention">
+							<input type="hidden" name="_captcha" value="false">
+							<input type="hidden" name="_next" value="https://trippovention.github.io/contact.html?success=true">
+							<input type="hidden" name="_template" value="table">
+							
+							<label>Full Name</label>
+							<input type="text" name="name" placeholder="Enter your full name" required>
+							
+							<label>Email Address</label>
+							<input type="email" name="email" placeholder="your@email.com" required>
+							
+							<label>Phone Number</label>
+							<input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+							
+							<label>Subject</label>
+							<select name="subject" required>
+								<option value="">Select a subject</option>
+								<option value="General Inquiry">General Inquiry</option>
+								<option value="Tour Package Question">Tour Package Question</option>
+								<option value="Visa Assistance">Visa Assistance</option>
+								<option value="Custom Trip Planning">Custom Trip Planning</option>
+								<option value="Booking Support">Booking Support</option>
+								<option value="Complaint/Feedback">Complaint/Feedback</option>
+							</select>
+							
+							<label>Message</label>
+							<textarea name="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+							
+							<div style="height:12px"></div>
+							<button type="submit" class="btn btn-lg" style="width:100%;text-align:center;border:none;cursor:pointer">📤 Send Message</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -192,5 +201,48 @@
 	<a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
 
 	<script src="assets/app.js" defer></script>
+	<script>
+		// Check for success parameter in URL
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get('success') === 'true') {
+			// Show success message
+			const successDiv = document.createElement('div');
+			successDiv.innerHTML = `
+				<div style="
+					position: fixed;
+					top: 20px;
+					right: 20px;
+					background: #4CAF50;
+					color: white;
+					padding: 15px 20px;
+					border-radius: 8px;
+					box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+					z-index: 1000;
+					font-family: inherit;
+				">
+					✅ Message sent successfully! We'll get back to you soon.
+					<button onclick="this.parentElement.parentElement.remove()" style="
+						background: none;
+						border: none;
+						color: white;
+						margin-left: 10px;
+						cursor: pointer;
+						font-size: 16px;
+					">×</button>
+				</div>
+			`;
+			document.body.appendChild(successDiv);
+			
+			// Auto-hide after 5 seconds
+			setTimeout(() => {
+				if (successDiv.parentElement) {
+					successDiv.remove();
+				}
+			}, 5000);
+			
+			// Clean URL
+			window.history.replaceState({}, document.title, window.location.pathname);
+		}
+	</script>
 </body>
 </html>
