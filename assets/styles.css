@@ -398,17 +398,18 @@ p, span, div {
 
 /* Sections */
 .section {
-	padding: 80px 0;
+	padding: 60px 0;
 	background: var(--bg-secondary);
 	transition: background-color 0.3s ease;
 }
 
 .section.compact {
-	padding: 60px 0;
+	padding: 40px 0;
 }
 
 .section.alt {
 	background: var(--bg-tertiary);
+	padding: 50px 0;
 }
 
 .section.cta {
@@ -884,4 +885,77 @@ p, span, div, a, li, td, th,
 		--shadow-medium: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
 		--shadow-large: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
 	}
+}
+
+/* Essential Form Styling */
+.card label {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--text-primary);
+	font-weight: 500;
+}
+
+.card input,
+.card select,
+.card textarea {
+	width: 100%;
+	padding: 12px 16px;
+	border: 2px solid var(--border-light);
+	border-radius: 8px;
+	background: var(--bg-primary);
+	color: var(--text-primary);
+	font-size: 14px;
+	margin-bottom: 15px;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+}
+
+.card input:focus,
+.card select:focus,
+.card textarea:focus {
+	outline: none;
+	border-color: var(--orange);
+	box-shadow: 0 0 0 3px rgba(214, 128, 78, 0.1);
+}
+
+.card input:invalid:not(:placeholder-shown),
+.card select:invalid:not(:placeholder-shown),
+.card textarea:invalid:not(:placeholder-shown) {
+	border-color: #DC2626;
+	box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.btn:not(:disabled):hover {
+	background: var(--orange-hover);
+}
+
+/* Contact form section spacing */
+.card + .card {
+	margin-top: 20px;
+}
+
+/* Fix bottom spacing - reduce section padding */
+.section {
+	padding: 60px 0;
+	background: var(--bg-secondary);
+	transition: background-color 0.3s ease;
+}
+
+.section.compact {
+	padding: 40px 0;
+}
+
+.section.alt {
+	background: var(--bg-tertiary);
+	padding: 50px 0;
+}
+
+.footer {
+	margin-top: 0;
+	padding-top: 40px;
 }
