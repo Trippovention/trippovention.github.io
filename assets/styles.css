@@ -297,6 +297,8 @@ p, span, div {
 	overflow: hidden;
 	box-shadow: var(--shadow-medium);
 	transition: all 0.3s ease;
+	margin: 0;
+	padding: 0;
 	align-self: start;
 }
 
@@ -581,6 +583,7 @@ input::placeholder, textarea::placeholder {
 
 .grid.cols-3 {
 	grid-template-columns: repeat(3, 1fr);
+	align-items: start;
 }
 
 .two {
@@ -980,15 +983,17 @@ p, span, div, a, li, td, th,
 
 /* Ensure equal card heights in quick contact section */
 .grid.cols-3 .card {
-	height: 100%;
+	height: auto;
 	min-height: 280px;
+	align-self: start;
+	margin: 0;
 }
 
 .grid.cols-3 .card .body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: space-between;
 	text-align: center;
 	padding: 24px;
 }
