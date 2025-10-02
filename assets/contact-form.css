@@ -1,0 +1,131 @@
+/* Contact Form Specific Styles */
+
+/* Security: Hide honeypot fields from users but keep accessible to bots */
+.honeypot {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px !important;
+	height: 1px !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
+
+.form-input-light::placeholder {
+	color: rgba(255,255,255,0.7) !important;
+}
+
+.form-input-light:focus {
+	background: rgba(255,255,255,0.25) !important;
+	border-color: rgba(255,255,255,0.5) !important;
+	outline: none !important;
+}
+
+#submitBtn:disabled {
+	background: rgba(200,200,200,0.3) !important;
+	cursor: not-allowed !important;
+}
+
+#submitBtn:enabled {
+	background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+	cursor: pointer !important;
+	opacity: 1 !important;
+}
+
+#submitBtn:enabled:hover {
+	background: linear-gradient(135deg, #ff5252, #d84315) !important;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Contact page specific styles */
+.contact-header {
+	text-align: center;
+}
+
+.contact-header h1 {
+	color: #fff;
+	font-size: 48px;
+}
+
+.contact-header .subtitle {
+	color: rgba(255,255,255,0.9);
+}
+
+/* Add floating animation to contact header */
+.section.compact.contact-animation {
+	position: relative;
+	overflow: hidden;
+}
+
+.section.compact.contact-animation::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+	animation: float 20s infinite linear;
+	pointer-events: none;
+}
+
+.submit-button-container {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.address-block {
+	line-height: 2;
+	margin-bottom: 25px;
+}
+
+.address-block.compact {
+	line-height: 1.8;
+}
+
+.address-indent {
+	margin-left: 20px;
+}
+
+.contact-info {
+	line-height: 2;
+}
+
+.card.office-card {
+	margin-top: 20px;
+}
+
+/* Hidden conditional form sections */
+#visaDetails,
+#travelDetails {
+	display: none;
+}
+
+/* Honeypot fields */
+input[name="_honey"] {
+	display: none !important;
+}
+
+input[name="email_confirm"] {
+	position: absolute;
+	left: -9999px;
+	opacity: 0;
+}
+
+/* Footer center alignment */
+.footer-center {
+	text-align: center;
+}
+
+/* Character counter styling */
+.char-counter {
+	text-align: right;
+	margin-top: 5px;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
+.char-counter.warning {
+	color: #ff6b6b;
+	font-weight: 600;
+}

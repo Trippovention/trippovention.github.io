@@ -1,0 +1,403 @@
+/**
+ * Contact Form Functionality
+ * Handles form validation, conditional fields, spam protection, and submission
+ */
+
+// Enhanced form functionality with conditional fields
+function toggleConditionalFields() {
+	const inquiryType = document.getElementById('inquiryType').value;
+	const travelDetails = document.getElementById('travelDetails');
+	const visaDetails = document.getElementById('visaDetails');
+	
+	// Hide all conditional sections first
+	travelDetails.style.display = 'none';
+	visaDetails.style.display = 'none';
+	
+	// Remove all conditional required attributes
+	document.querySelectorAll('#travelDetails input, #travelDetails select, #visaDetails input, #visaDetails select').forEach(input => {
+		input.removeAttribute('required');
+	});
+	
+	// Show relevant section and set required fields
+	if (inquiryType === 'Custom Trip Planning') {
+		travelDetails.style.display = 'block';
+		// Make key travel fields required
+		const requiredTravelFields = ['destination', 'travelers', 'budget'];
+		requiredTravelFields.forEach(name => {
+			const field = document.querySelector(`[name="${name}"]`);
+			if (field) field.setAttribute('required', 'required');
+		});
+	} else if (inquiryType === 'Visa Assistance') {
+		visaDetails.style.display = 'block';
+		// Make key visa fields required
+		const requiredVisaFields = ['visa_country', 'visa_type'];
+		requiredVisaFields.forEach(name => {
+			const field = document.querySelector(`[name="${name}"]`);
+			if (field) field.setAttribute('required', 'required');
+		});
+	}
+	
+	validateForm();
+}
+
+// Enhanced form validation with visual feedback
+function validateForm() {
+	const form = document.querySelector('form[action*="formsubmit.co"]');
+	const submitBtn = document.getElementById('submitBtn');
+	
+	if (!form || !submitBtn) return;
+	
+	const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+	let allValid = true;
+
+	// Remove all existing tooltips
+	document.querySelectorAll('.form-tooltip').forEach(tooltip => tooltip.remove());
+	
+	// Check all required fields with visual feedback
+	for (let field of requiredFields) {
+		if (!field.value.trim()) {
+			allValid = false;
+			field.style.borderColor = 'rgba(255,100,100,0.8)';
+			field.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(field, 'This field is required');
+		} else {
+			// Show green border for valid required fields
+			field.style.borderColor = 'rgba(40,167,69,0.8)';
+			field.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+	}
+	
+	// Email validation with better pattern and user feedback
+	const emailField = form.querySelector('input[name="email"]');
+	const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+	if (emailField && emailField.value) {
+		if (!emailRegex.test(emailField.value)) {
+			allValid = false;
+			emailField.style.borderColor = 'rgba(255,100,100,0.8)';
+			emailField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(emailField, 'Please enter a valid email address (e.g., user@example.com)');
+		} else {
+			emailField.style.borderColor = 'rgba(40,167,69,0.8)';
+			emailField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+	} else if (emailField && emailField.value === '') {
+		emailField.style.borderColor = 'rgba(255,255,255,0.3)';
+		emailField.style.boxShadow = 'none';
+	}
+	
+	// Enhanced phone validation with international support
+	const phoneField = form.querySelector('input[name="phone"]');
+	const phoneRegex = /^[\+]?[1-9]\d{1,14}$/; // More strict international format
+	if (phoneField && phoneField.value) {
+		const cleanPhone = phoneField.value.replace(/[\s\-\(\)]/g, '');
+		if (cleanPhone.length < 10 || !phoneRegex.test(cleanPhone)) {
+			allValid = false;
+			phoneField.style.borderColor = 'rgba(255,100,100,0.8)';
+			phoneField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(phoneField, 'Please enter a valid phone number (min 10 digits, format: +91 98765 43210)');
+		} else {
+			phoneField.style.borderColor = 'rgba(40,167,69,0.8)';
+			phoneField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+	} else if (phoneField && phoneField.value === '') {
+		phoneField.style.borderColor = 'rgba(255,255,255,0.3)';
+		phoneField.style.boxShadow = 'none';
+	}
+	
+	// Visa country validation for text input
+	const visaCountryField = form.querySelector('input[name="visa_country"]');
+	if (visaCountryField && visaCountryField.value) {
+		if (visaCountryField.value.length < 2) {
+			allValid = false;
+			visaCountryField.style.borderColor = 'rgba(255,100,100,0.8)';
+			visaCountryField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(visaCountryField, 'Please enter a valid country name (min 2 characters)');
+		} else {
+			visaCountryField.style.borderColor = 'rgba(40,167,69,0.8)';
+			visaCountryField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+	}
+	
+	// Enhanced date validation for travel planning
+	const startDate = form.querySelector('input[name="travel_start_date"]');
+	const endDate = form.querySelector('input[name="travel_end_date"]');
+	
+	if (startDate && endDate && startDate.value && endDate.value) {
+		const start = new Date(startDate.value);
+		const end = new Date(endDate.value);
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		
+		// Check start date validity
+		if (start < today) {
+			allValid = false;
+			startDate.style.borderColor = 'rgba(255,100,100,0.8)';
+			startDate.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(startDate, 'Start date cannot be in the past');
+		} else {
+			startDate.style.borderColor = 'rgba(40,167,69,0.8)';
+			startDate.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+		
+		// Check end date validity
+		if (start >= end) {
+			allValid = false;
+			endDate.style.borderColor = 'rgba(255,100,100,0.8)';
+			endDate.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(endDate, 'End date must be after start date');
+		} else {
+			endDate.style.borderColor = 'rgba(40,167,69,0.8)';
+			endDate.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+		
+		// Check trip duration (minimum 1 day)
+		const diffTime = end.getTime() - start.getTime();
+		const diffDays = diffTime / (1000 * 60 * 60 * 24);
+		if (diffDays > 365) {
+			allValid = false;
+			endDate.style.borderColor = 'rgba(255,193,7,0.8)';
+			endDate.style.boxShadow = '0 0 0 2px rgba(255,193,7,0.2)';
+			showFieldTooltip(endDate, 'Trip duration seems quite long. Please verify dates or contact us for extended trips.');
+		}
+	} else if (startDate && startDate.value && !endDate.value) {
+		startDate.style.borderColor = 'rgba(255,193,7,0.8)';
+		startDate.style.boxShadow = '0 0 0 2px rgba(255,193,7,0.2)';
+		showFieldTooltip(startDate, 'Please also select an end date for your trip');
+	}
+	
+	// Message length validation
+	const messageField = form.querySelector('textarea[name="message"]');
+	if (messageField && messageField.value) {
+		if (messageField.value.length < 10) {
+			allValid = false;
+			messageField.style.borderColor = 'rgba(255,100,100,0.8)';
+			messageField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(messageField, 'Please provide more details (minimum 10 characters)');
+		} else if (messageField.value.length > 1000) {
+			allValid = false;
+			messageField.style.borderColor = 'rgba(255,193,7,0.8)';
+			messageField.style.boxShadow = '0 0 0 2px rgba(255,193,7,0.2)';
+			showFieldTooltip(messageField, 'Message is too long (maximum 1000 characters)');
+		} else {
+			messageField.style.borderColor = 'rgba(40,167,69,0.8)';
+			messageField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+	}
+	
+	// Name validation (no numbers, minimum length)
+	const nameField = form.querySelector('input[name="name"]');
+	if (nameField && nameField.value) {
+		const namePattern = /^[a-zA-Z\s\-\.]+$/;
+		if (!namePattern.test(nameField.value) || nameField.value.length < 2) {
+			allValid = false;
+			nameField.style.borderColor = 'rgba(255,100,100,0.8)';
+			nameField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
+			showFieldTooltip(nameField, 'Please enter a valid name (letters only, min 2 characters)');
+		} else {
+			nameField.style.borderColor = 'rgba(40,167,69,0.8)';
+			nameField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+		}
+	}
+	
+	// Update submit button state
+	submitBtn.disabled = !allValid;
+}
+
+function showFieldTooltip(field, message) {
+	// Remove any existing tooltip for this field first
+	const existingTooltip = field.parentNode.querySelector('.form-tooltip');
+	if (existingTooltip) {
+		existingTooltip.remove();
+	}
+	
+	const tooltip = document.createElement('div');
+	tooltip.className = 'form-tooltip';
+	tooltip.textContent = message;
+	
+	// Position the tooltip relative to the field's container
+	const container = field.parentNode;
+	container.style.position = 'relative';
+	container.appendChild(tooltip);
+	
+	// Ensure tooltip is visible above everything
+	tooltip.style.zIndex = '10000';
+	
+	// Show tooltip with slight delay for better UX
+	setTimeout(() => {
+		tooltip.classList.add('show');
+	}, 100);
+	
+	// Tooltips now stay visible until the validation error is fixed
+	// No auto-hide - they will be removed when validation passes or field is corrected
+}
+
+// Success message display
+function showSuccessMessage() {
+	const successDiv = document.createElement('div');
+	successDiv.innerHTML = `
+		<div style="
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			background: linear-gradient(135deg, #4CAF50, #45a049);
+			color: white;
+			padding: 15px 20px;
+			border-radius: 12px;
+			box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+			z-index: 1000;
+			font-family: inherit;
+			font-weight: 600;
+		">
+			✅ Message sent successfully! We'll get back to you soon.
+			<button onclick="this.parentElement.parentElement.remove()" style="
+				background: none;
+				border: none;
+				color: white;
+				margin-left: 10px;
+				cursor: pointer;
+				font-size: 16px;
+				font-weight: bold;
+			">×</button>
+		</div>
+	`;
+	document.body.appendChild(successDiv);
+	
+	// Auto-hide after 5 seconds
+	setTimeout(() => {
+		if (successDiv.parentElement) {
+			successDiv.remove();
+		}
+	}, 5000);
+	
+	// Clean URL
+	window.history.replaceState({}, document.title, window.location.pathname);
+}
+
+// Initialize form functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+	const form = document.querySelector('form[action*="formsubmit.co"]');
+	if (!form) return;
+
+	// Character counter for message field
+	const messageField = form.querySelector('textarea[name="message"]');
+	const messageCounter = document.getElementById('messageCounter');
+	if (messageField && messageCounter) {
+		messageField.addEventListener('input', function() {
+			const length = this.value.length;
+			const maxLength = 1000;
+			messageCounter.textContent = `${length}/${maxLength} characters`;
+			
+			if (length > maxLength * 0.9) {
+				messageCounter.parentElement.classList.add('warning');
+			} else {
+				messageCounter.parentElement.classList.remove('warning');
+			}
+		});
+	}
+
+	// Add timestamp for form submission timing check
+	const timestampField = document.createElement('input');
+	timestampField.type = 'hidden';
+	timestampField.name = '_form_loaded';
+	timestampField.value = Date.now();
+	form.appendChild(timestampField);
+	
+	// Additional honeypot protection with JavaScript
+	const jsHoneypot = document.createElement('input');
+	jsHoneypot.type = 'text';
+	jsHoneypot.name = 'website';
+	jsHoneypot.style.cssText = 'position: absolute; left: -9999px; opacity: 0; pointer-events: none;';
+	jsHoneypot.setAttribute('aria-hidden', 'true');
+	jsHoneypot.setAttribute('tabindex', '-1');
+	form.appendChild(jsHoneypot);
+	
+	// Add event listeners for real-time validation
+	const inputs = form.querySelectorAll('input, select, textarea');
+	inputs.forEach(input => {
+		input.addEventListener('input', validateForm);
+		input.addEventListener('change', validateForm);
+		input.addEventListener('blur', validateForm);
+		input.addEventListener('focus', function() {
+			// Hide any existing tooltip for this field when user starts typing
+			const tooltip = this.parentNode.querySelector('.form-tooltip');
+			if (tooltip) {
+				tooltip.classList.remove('show');
+				setTimeout(() => {
+					if (tooltip.parentNode) tooltip.remove();
+				}, 300);
+			}
+		});
+	});
+	
+	// Initial validation
+	validateForm();
+	
+	// Rate limiting protection
+	let submitAttempts = 0;
+	const maxAttempts = 3;
+	const cooldownTime = 300000; // 5 minutes
+	
+	// Form submission validation
+	form.addEventListener('submit', function(e) {
+		// Rate limiting check
+		if (submitAttempts >= maxAttempts) {
+			e.preventDefault();
+			alert('Too many submission attempts. Please wait 5 minutes before trying again.');
+			return false;
+		}
+		
+		// Check if honeypot fields are filled (spam detection)
+		const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"], input[name="email_confirm"]');
+		for (let field of honeyFields) {
+			if (field.value !== '') {
+				e.preventDefault();
+				console.log('Spam detected - form submission blocked');
+				return false;
+			}
+		}
+		
+		// Check form submission timing (too fast = likely bot)
+		const loadTime = parseInt(timestampField.value);
+		const submitTime = Date.now();
+		const timeDiff = submitTime - loadTime;
+		
+		if (timeDiff < 5000) { // Less than 5 seconds
+			e.preventDefault();
+			alert('Please take a moment to review your message before submitting.');
+			return false;
+		}
+		
+		// Final validation check
+		const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+		for (let field of requiredFields) {
+			if (!field.value.trim()) {
+				field.focus();
+				e.preventDefault();
+				return false;
+			}
+		}
+		
+		// Increment submit attempts
+		submitAttempts++;
+		
+		// Reset attempts after cooldown
+		setTimeout(() => {
+			submitAttempts = 0;
+		}, cooldownTime);
+		
+		// Show loading state
+		const submitBtn = form.querySelector('button[type="submit"]');
+		if (submitBtn) {
+			submitBtn.textContent = '⏳ Sending...';
+			submitBtn.disabled = true;
+			submitBtn.style.opacity = '0.8';
+		}
+	});
+	
+	// Check for success parameter in URL or hash
+	const urlParams = new URLSearchParams(window.location.search);
+	const hashSuccess = window.location.hash === '#success';
+	if (urlParams.get('success') === 'true' || hashSuccess) {
+		showSuccessMessage();
+	}
+});

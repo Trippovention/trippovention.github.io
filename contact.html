@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Contact Us — Trippovention</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact Us - Trippovention</title>
 	<link rel="stylesheet" href="assets/styles.css">
+	<link rel="stylesheet" href="assets/contact-form.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,18 +23,16 @@
 				<a class="active" href="contact.html">Contact</a>
 			</div>
 			<div class="actions">
-				<a class="icon" title="Cart" href="cart.html">🛒<span class="badge-dot">2</span></a>
-				<a class="icon" title="Account" href="my-account.html">👤</a>
 				<a id="themeToggle" class="icon theme-toggle" title="Toggle theme" href="javascript:void(0)">🌓</a>
 			</div>
 		</div>
 	</nav>
 
-	<header class="section compact" style="background:var(--gradient-hero);color:#fff">
+	<header class="section compact contact-animation" style="background:var(--gradient-hero);color:#fff">
 		<div class="container">
-			<div class="section-title">
-				<h1 style="color:#fff;font-size:48px">Get in Touch</h1>
-				<p class="subtitle" style="color:rgba(255,255,255,0.9)">We're here to help you plan your perfect journey. Reach out to our travel experts today!</p>
+			<div class="section-title fade-in-up contact-header">
+				<h1>Get in Touch</h1>
+				<p class="subtitle">We're here to help you plan your perfect journey. Reach out to our travel experts today!</p>
 			</div>
 		</div>
 	</header>
@@ -44,17 +43,18 @@
 				<div class="card">
 					<div class="body">
 						<h3>📧 Contact Us</h3>
-						<form action="https://formsubmit.co/query@trippovention.com" method="POST">
+						<form action="https://formsubmit.co/001animesh@gmail.com" method="POST" id="contactForm">
 							<!-- FormSubmit Configuration -->
 							<input type="hidden" name="_subject" value="New Contact Form Submission - Trippovention">
 							<input type="hidden" name="_captcha" value="true">
-							<input type="hidden" name="_next" value="https://trippovention.github.io/contact.html?success=true">
+							<input type="hidden" name="_next" value="https://trippovention.github.io/contact.html#success">
 							<input type="hidden" name="_template" value="table">
 							<input type="hidden" name="_cc" value="query@trippovention.com">
+							<input type="hidden" name="_autoresponse" value="Thank you for contacting Trippovention! We'll get back to you within 24 hours.">
 							
 							<!-- Security: Honeypot fields for spam protection -->
-							<input type="text" name="_honey" style="display: none !important;" tabindex="-1" autocomplete="off">
-							<input type="email" name="email_confirm" style="position: absolute; left: -9999px; opacity: 0;" tabindex="-1" autocomplete="new-password">
+							<input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honeypot">
+							<input type="email" name="email_confirm" tabindex="-1" autocomplete="new-password" class="honeypot">
 							
 							<!-- Primary Contact Information -->
 							<div class="card">
@@ -85,30 +85,26 @@
 							</div>
 							
 							<!-- Visa Assistance Details -->
-							<div class="card" id="visaDetails" style="display: none;">
+							<div class="card" id="visaDetails">
 								<div class="body">
-									<h4>🛂 Visa Assistance Details</h4>
+									<h4>🛂 Visa Details</h4>
 									
-									<label>Destination Country</label>
+									<label>Country for Visa</label>
 									<input type="text" name="visa_country" placeholder="Enter destination country">
 									
 									<label>Visa Type</label>
 									<select name="visa_type">
 										<option value="">Select visa type</option>
-										<option value="Tourist Visa">Tourist Visa</option>
-										<option value="Business Visa">Business Visa</option>
-										<option value="Transit Visa">Transit Visa</option>
-										<option value="Student Visa">Student Visa</option>
-										<option value="Family Visit">Family Visit Visa</option>
+										<option value="Tourist">Tourist Visa</option>
+										<option value="Business">Business Visa</option>
+										<option value="Transit">Transit Visa</option>
+										<option value="Student">Student Visa</option>
 									</select>
-									
-									<label>Intended Travel Date</label>
-									<input type="date" name="visa_travel_date">
 								</div>
 							</div>
 							
 							<!-- Travel Planning Details -->
-							<div class="card" id="travelDetails" style="display: none;">
+							<div class="card" id="travelDetails">
 								<div class="body">
 									<h4>✈️ Travel Planning Details</h4>
 									
@@ -118,11 +114,11 @@
 									<label>Number of Travelers</label>
 									<select name="travelers">
 										<option value="">Select number of travelers</option>
-										<option value="1">1 Person</option>
-										<option value="2">2 People</option>
-										<option value="3-4">3-4 People</option>
-										<option value="5-8">5-8 People</option>
-										<option value="9+">9+ People (Group)</option>
+										<option value="1">1 pax</option>
+										<option value="2">2 pax</option>
+										<option value="3-4">3-4 pax</option>
+										<option value="5-8">5-8 pax</option>
+										<option value="9+">9+ pax (Group)</option>
 									</select>
 									
 									<label>Budget Range</label>
@@ -166,15 +162,18 @@
 							<div class="card">
 								<div class="body">
 									<label>Message *</label>
-									<textarea name="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+									<textarea name="message" rows="5" placeholder="Tell us how we can help you..." required maxlength="1000"></textarea>
+									<div class="char-counter">
+										<span id="messageCounter">0/1000 characters</span>
+									</div>
 									
 									<label>Special Requirements</label>
-									<textarea name="special_requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc."></textarea>
+									<textarea name="special_requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
 								</div>
 							</div>
 							
-							<div style="text-align: center; margin-top: 30px;">
-								<button type="submit" id="submitBtn" class="btn btn-lg" disabled>Submit Query</button>
+							<div class="submit-button-container">
+								<button type="submit" id="submitBtn" class="btn btn-lg" disabled>Submit</button>
 							</div>
 						</form>
 					</div>
@@ -185,17 +184,16 @@
 				<div class="card card-premium">
 					<div class="body">
 						<h3>🏢 Corporate Office</h3>
-						<div style="line-height:2;margin-bottom:25px">
+						<div class="address-block">
 							<div>📍 <strong>Address:</strong></div>
-							<div style="margin-left:20px">Unit No. - 337 A, 3rd Floor</div>
-							<div style="margin-left:20px">Spaze IT Park, Tower A</div>
-							<div style="margin-left:20px">Sector 49, Sohna Road</div>
-							<div style="margin-left:20px">Gurgaon, Haryana - 122018</div>
+							<div class="address-indent">Unit No. - 337 A, 3rd Floor</div>
+							<div class="address-indent">Spaze IT Park, Tower A</div>
+							<div class="address-indent">Sector 49, Sohna Road</div>
+							<div class="address-indent">Gurgaon, Haryana - 122018</div>
 						</div>
 						
-						<div style="line-height:2">
-							<div>📧 <strong>Email:</strong> info@trippovention.com</div>
-							<div>📧 <strong>Queries:</strong> query@trippovention.com</div>
+						<div class="contact-info">
+							<div>📧 <strong>Email:</strong> query@trippovention.com</div>
 							<div>📞 <strong>Phone:</strong> +91 83683 26188</div>
 							<div>📞 <strong>Alt:</strong> +91 95992 64757</div>
 							<div>📞 <strong>Landline:</strong> +91 124 418 2575</div>
@@ -203,27 +201,27 @@
 					</div>
 				</div>
 
-				<div class="card" style="margin-top:20px">
+				<div class="card office-card">
 					<div class="body">
-						<h3>🇹🇭 Thailand Office</h3>
-						<div style="line-height:1.8">
+						<h4>🏛️ Thailand Office</h4>
+						<div class="address-block compact">
 							<div>📍 <strong>Address:</strong></div>
-							<div style="margin-left:20px">23/13 M, 12 Nong Pure Subdistrict</div>
-							<div style="margin-left:20px">Bang Lamung District</div>
-							<div style="margin-left:20px">Chonburi Province - 20150</div>
-							<div style="margin-left:20px">Thailand</div>
+							<div class="address-indent">23/13 M, 12 Nong Pure Subdistrict</div>
+							<div class="address-indent">Bang Lamung District</div>
+							<div class="address-indent">Chonburi Province - 20150</div>
+							<div class="address-indent">Thailand</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="card" style="margin-top:20px">
+				
+				<div class="card office-card">
 					<div class="body">
 						<h3>🏛️ Moradabad Office</h3>
-						<div style="line-height:1.8">
+						<div class="address-block compact">
 							<div>📍 <strong>Address:</strong></div>
-							<div style="margin-left:20px">Sagar Sarai Madan Bhawan</div>
-							<div style="margin-left:20px">GMD Road</div>
-							<div style="margin-left:20px">Moradabad, Uttar Pradesh - 244001</div>
+							<div class="address-indent">Sagar Sarai Madan Bhawan</div>
+							<div class="address-indent">GMD Road</div>
+							<div class="address-indent">Moradabad, Uttar Pradesh - 244001</div>
 						</div>
 					</div>
 				</div>
@@ -239,7 +237,7 @@
 			</div>
 			<div class="grid cols-3">
 				<div class="card">
-					<div class="body" style="text-align:center">
+					<div class="body">
 						<div class="feature-icon">📞</div>
 						<h3>Call Us Now</h3>
 						<p class="muted">Speak directly with our travel experts for immediate assistance</p>
@@ -248,43 +246,43 @@
 				</div>
 				
 				<div class="card">
-					<div class="body" style="text-align:center">
+					<div class="body">
 						<div class="feature-icon">💬</div>
 						<h3>WhatsApp</h3>
 						<p class="muted">Chat with us instantly on WhatsApp for quick responses</p>
-						<a class="btn" href="https://wa.me/918368326188">💬 WhatsApp Now</a>
+						<a class="btn" href="https://wa.me/+918368326188">💬 WhatsApp Now</a>
 					</div>
 				</div>
 				
 				<div class="card">
-					<div class="body" style="text-align:center">
+					<div class="body">
 						<div class="feature-icon">📧</div>
 						<h3>Email Support</h3>
 						<p class="muted">Send us detailed queries and we'll respond within 24 hours</p>
-						<a class="btn" href="mailto:info@trippovention.com">📧 Send Email</a>
+						<a class="btn" href="mailto:query@trippovention.com">📧 Send Email</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section">
+	<section class="section" style="background: var(--gradient-primary); color: white;">
 		<div class="container">
 			<div class="section-title">
-				<h2>Our Commitment to You</h2>
+				<h2 style="color: white;">Our Commitment to You</h2>
 			</div>
 			<div class="grid cols-3">
 				<div class="stats">
-					<span class="number">15+</span>
-					<span class="label">Years Experience</span>
+					<span class="number" style="color: white;">15+</span>
+					<span class="label" style="color: rgba(255,255,255,0.9);">Years Experience</span>
 				</div>
 				<div class="stats">
-					<span class="number">50K+</span>
-					<span class="label">Happy Travelers</span>
+					<span class="number" style="color: white;">50K+</span>
+					<span class="label" style="color: rgba(255,255,255,0.9);">Happy Travelers</span>
 				</div>
 				<div class="stats">
-					<span class="number">24/7</span>
-					<span class="label">Customer Support</span>
+					<span class="number" style="color: white;">24/7</span>
+					<span class="label" style="color: rgba(255,255,255,0.9);">Customer Support</span>
 				</div>
 			</div>
 		</div>
@@ -292,7 +290,7 @@
 
 	<footer class="footer">
 		<div class="container">
-			<div style="text-align:center">
+			<div class="footer-center">
 				<p>&copy; 2025 Trippovention. All Rights Reserved.</p>
 			</div>
 		</div>
@@ -301,280 +299,6 @@
 	<a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
 
 	<script src="assets/app.js" defer></script>
-	<style>
-		.form-input-light::placeholder {
-			color: rgba(255,255,255,0.7) !important;
-		}
-		.form-input-light:focus {
-			background: rgba(255,255,255,0.25) !important;
-			border-color: rgba(255,255,255,0.5) !important;
-			outline: none !important;
-		}
-		#submitBtn:disabled {
-			background: rgba(200,200,200,0.3) !important;
-			cursor: not-allowed !important;
-		}
-		#submitBtn:enabled {
-			background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
-			cursor: pointer !important;
-			opacity: 1 !important;
-		}
-		#submitBtn:enabled:hover {
-			background: linear-gradient(135deg, #ff5252, #d84315) !important;
-			transform: translateY(-2px);
-			box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-		}
-	</style>
-	<script>
-		// Enhanced form functionality with conditional fields
-		function toggleConditionalFields() {
-			const inquiryType = document.getElementById('inquiryType').value;
-			const travelDetails = document.getElementById('travelDetails');
-			const visaDetails = document.getElementById('visaDetails');
-			
-			// Hide all conditional sections first
-			travelDetails.style.display = 'none';
-			visaDetails.style.display = 'none';
-			
-			// Remove all conditional required attributes
-			document.querySelectorAll('#travelDetails input, #travelDetails select, #visaDetails input, #visaDetails select').forEach(input => {
-				input.removeAttribute('required');
-			});
-			
-			// Show relevant section and set required fields
-			if (inquiryType === 'Custom Trip Planning') {
-				travelDetails.style.display = 'block';
-				// Make key travel fields required
-				const requiredTravelFields = ['destination', 'travelers', 'budget'];
-				requiredTravelFields.forEach(name => {
-					const field = document.querySelector(`[name="${name}"]`);
-					if (field) field.setAttribute('required', 'required');
-				});
-			} else if (inquiryType === 'Visa Assistance') {
-				visaDetails.style.display = 'block';
-				// Make key visa fields required
-				const requiredVisaFields = ['visa_country', 'visa_type'];
-				requiredVisaFields.forEach(name => {
-					const field = document.querySelector(`[name="${name}"]`);
-					if (field) field.setAttribute('required', 'required');
-				});
-			}
-			
-			validateForm();
-		}
-		
-		// Enhanced form validation with visual feedback
-		function validateForm() {
-			const form = document.querySelector('form[action*="formsubmit.co"]');
-			const submitBtn = document.getElementById('submitBtn');
-			
-			if (!form || !submitBtn) return;
-			
-			const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
-			let allValid = true;
-			let validationErrors = [];
-			
-			// Check all required fields
-			for (let field of requiredFields) {
-				if (!field.value.trim()) {
-					allValid = false;
-					field.style.borderColor = 'rgba(255,100,100,0.8)';
-				} else {
-					field.style.borderColor = 'rgba(255,255,255,0.3)';
-				}
-			}
-			
-			// Email validation
-			const emailField = form.querySelector('input[name="email"]');
-			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			if (emailField && emailField.value && !emailRegex.test(emailField.value)) {
-				allValid = false;
-				emailField.style.borderColor = 'rgba(255,100,100,0.8)';
-				validationErrors.push('Invalid email format');
-			}
-			
-			// Phone validation (basic)
-			const phoneField = form.querySelector('input[name="phone"]');
-			const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
-			if (phoneField && phoneField.value && !phoneRegex.test(phoneField.value)) {
-				allValid = false;
-				phoneField.style.borderColor = 'rgba(255,100,100,0.8)';
-				validationErrors.push('Invalid phone number format');
-			}
-			
-			// Date validation for travel planning
-			const startDate = form.querySelector('input[name="travel_start_date"]');
-			const endDate = form.querySelector('input[name="travel_end_date"]');
-			
-			if (startDate && endDate && startDate.value && endDate.value) {
-				const start = new Date(startDate.value);
-				const end = new Date(endDate.value);
-				const today = new Date();
-				today.setHours(0, 0, 0, 0);
-				
-				if (start < today) {
-					allValid = false;
-					startDate.style.borderColor = 'rgba(255,100,100,0.8)';
-					validationErrors.push('Start date cannot be in the past');
-				}
-				
-				if (start >= end) {
-					allValid = false;
-					endDate.style.borderColor = 'rgba(255,100,100,0.8)';
-					validationErrors.push('End date must be after start date');
-				}
-			}
-			
-			// Update submit button state
-			submitBtn.disabled = !allValid;
-			
-			if (allValid) {
-				submitBtn.textContent = '📤 Send Message';
-				submitBtn.style.opacity = '1';
-			} else {
-				submitBtn.textContent = validationErrors.length > 0 ? `❌ ${validationErrors[0]}` : '📤 Complete Required Fields';
-				submitBtn.style.opacity = '0.6';
-			}
-		}
-		
-		// Anti-spam and form protection
-		document.addEventListener('DOMContentLoaded', function() {
-			const form = document.querySelector('form[action*="formsubmit.co"]');
-			if (form) {
-				// Add timestamp for form submission timing check
-				const timestampField = document.createElement('input');
-				timestampField.type = 'hidden';
-				timestampField.name = '_form_loaded';
-				timestampField.value = Date.now();
-				form.appendChild(timestampField);
-				
-				// Additional honeypot protection with JavaScript
-				const jsHoneypot = document.createElement('input');
-				jsHoneypot.type = 'text';
-				jsHoneypot.name = 'website';
-				jsHoneypot.style.cssText = 'position: absolute; left: -9999px; opacity: 0; pointer-events: none;';
-				jsHoneypot.setAttribute('aria-hidden', 'true');
-				jsHoneypot.setAttribute('tabindex', '-1');
-				form.appendChild(jsHoneypot);
-				
-				// Add event listeners for real-time validation
-				const inputs = form.querySelectorAll('input, select, textarea');
-				inputs.forEach(input => {
-					input.addEventListener('input', validateForm);
-					input.addEventListener('change', validateForm);
-					input.addEventListener('blur', validateForm);
-				});
-				
-				// Initial validation
-				validateForm();
-				
-				// Rate limiting protection
-				let submitAttempts = 0;
-				const maxAttempts = 3;
-				const cooldownTime = 300000; // 5 minutes
-				
-				// Form submission validation
-				form.addEventListener('submit', function(e) {
-					// Rate limiting check
-					if (submitAttempts >= maxAttempts) {
-						e.preventDefault();
-						alert('Too many submission attempts. Please wait 5 minutes before trying again.');
-						return false;
-					}
-					
-					// Check if honeypot fields are filled (spam detection)
-					const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"], input[name="email_confirm"]');
-					for (let field of honeyFields) {
-						if (field.value !== '') {
-							e.preventDefault();
-							console.log('Spam detected - form submission blocked');
-							return false;
-						}
-					}
-					
-					// Check form submission timing (too fast = likely bot)
-					const loadTime = parseInt(timestampField.value);
-					const submitTime = Date.now();
-					const timeDiff = submitTime - loadTime;
-					
-					if (timeDiff < 5000) { // Less than 5 seconds
-						e.preventDefault();
-						alert('Please take a moment to review your message before submitting.');
-						return false;
-					}
-					
-					// Final validation check
-					const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
-					for (let field of requiredFields) {
-						if (!field.value.trim()) {
-							field.focus();
-							e.preventDefault();
-							return false;
-						}
-					}
-					
-					// Increment submit attempts
-					submitAttempts++;
-					
-					// Reset attempts after cooldown
-					setTimeout(() => {
-						submitAttempts = 0;
-					}, cooldownTime);
-					
-					// Show loading state
-					const submitBtn = form.querySelector('button[type="submit"]');
-					if (submitBtn) {
-						submitBtn.textContent = '⏳ Sending...';
-						submitBtn.disabled = true;
-						submitBtn.style.opacity = '0.8';
-					}
-				});
-			}
-		});
-		
-		// Check for success parameter in URL
-		const urlParams = new URLSearchParams(window.location.search);
-		if (urlParams.get('success') === 'true') {
-			// Show success message
-			const successDiv = document.createElement('div');
-			successDiv.innerHTML = `
-				<div style="
-					position: fixed;
-					top: 20px;
-					right: 20px;
-					background: linear-gradient(135deg, #4CAF50, #45a049);
-					color: white;
-					padding: 15px 20px;
-					border-radius: 12px;
-					box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-					z-index: 1000;
-					font-family: inherit;
-					font-weight: 600;
-				">
-					✅ Message sent successfully! We'll get back to you soon.
-					<button onclick="this.parentElement.parentElement.remove()" style="
-						background: none;
-						border: none;
-						color: white;
-						margin-left: 10px;
-						cursor: pointer;
-						font-size: 16px;
-						font-weight: bold;
-					">×</button>
-				</div>
-			`;
-			document.body.appendChild(successDiv);
-			
-			// Auto-hide after 5 seconds
-			setTimeout(() => {
-				if (successDiv.parentElement) {
-					successDiv.remove();
-				}
-			}, 5000);
-			
-			// Clean URL
-			window.history.replaceState({}, document.title, window.location.pathname);
-		}
-	</script>
+	<script src="assets/contact-form.js" defer></script>
 </body>
 </html>
