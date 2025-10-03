@@ -139,6 +139,42 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         animationObserver.observe(el);
     });
+
+    // Mobile Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+            const isActive = hamburgerBtn.classList.contains('active');
+            
+            if (isActive) {
+                // Close menu
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            } else {
+                // Open menu
+                hamburgerBtn.classList.add('active');
+                navMenu.classList.add('active');
+            }
+        });
+        
+        // Close menu when clicking on a link
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburgerBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
 });
 
 // Global theme utilities

@@ -148,6 +148,12 @@ p, span, div {
 }
 
 /* Actions and Icons */
+.nav-right {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
 .actions {
 	display: flex;
 	align-items: center;
@@ -175,6 +181,41 @@ p, span, div {
 	background: var(--bg-tertiary);
 	color: var(--text-primary);
 	transform: translateY(-1px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+	display: none;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 24px;
+	height: 24px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 1001;
+}
+
+.hamburger span {
+	width: 24px;
+	height: 2px;
+	background: var(--text-primary);
+	border-radius: 2px;
+	transition: all 0.3s ease;
+	transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+	transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+	transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .badge-dot {
@@ -750,6 +791,17 @@ input::placeholder, textarea::placeholder {
 	to { transform: rotate(360deg); }
 }
 
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
 	.grid.cols-3,
@@ -764,17 +816,62 @@ input::placeholder, textarea::placeholder {
 	.two {
 		grid-template-columns: 1fr;
 	}
-	
-	.section-title h2 {
-		font-size: 32px;
+}
+
+/* Mobile Navigation Breakpoint */
+@media (max-width: 850px) {
+	.nav .container {
+		height: 56px;
+		position: relative;
 	}
 	
+	.menu {
+		display: none;
+	}
+	
+	.hamburger {
+		display: flex;
+	}
+	
+	.menu.active {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-color);
+		border-top: none;
+		border-radius: 0 0 12px 12px;
+		box-shadow: var(--shadow-large);
+		display: flex;
+		flex-direction: column;
+		padding: 16px 0;
+		z-index: 1000;
+		animation: slideDown 0.3s ease;
+	}
+	
+	.menu.active a {
+		padding: 12px 24px;
+		border-bottom: 1px solid var(--border-light);
+		margin: 0;
+	}
+	
+	.menu.active a:last-child {
+		border-bottom: none;
+	}
+	
+	.nav-right .actions {
+		gap: 8px;
+	}
+}
+
+@media (max-width: 768px) {
 	.section {
-		padding: 60px 0;
+		padding: 50px 0;
 	}
 	
 	.section.compact {
-		padding: 40px 0;
+		padding: 30px 0;
 	}
 }
 
@@ -787,10 +884,46 @@ input::placeholder, textarea::placeholder {
 	
 	.nav .container {
 		height: 56px;
+		position: relative;
+	}
+	
+	.hamburger {
+		display: flex;
 	}
 	
 	.menu {
-		display: none; /* Hide on mobile - implement hamburger menu if needed */
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-color);
+		border-top: none;
+		border-radius: 0 0 12px 12px;
+		box-shadow: var(--shadow-large);
+		display: none;
+		flex-direction: column;
+		padding: 16px 0;
+		z-index: 1000;
+	}
+	
+	.menu.active {
+		display: flex;
+		animation: slideDown 0.3s ease;
+	}
+	
+	.menu a {
+		padding: 12px 24px;
+		border-bottom: 1px solid var(--border-light);
+		margin: 0;
+	}
+	
+	.menu a:last-child {
+		border-bottom: none;
+	}
+	
+	.actions {
+		gap: 8px;
 	}
 	
 	.section {
