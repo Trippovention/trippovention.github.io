@@ -4,6 +4,26 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Services — Trippovention</title>
+	<meta name="description" content="Complete travel services - tour packages, visa assistance, flight bookings, hotel reservations, travel insurance, and expert travel consultation.">
+	<meta name="keywords" content="travel services, tour packages, visa services, flight booking, hotel reservation, travel insurance, travel consultation">
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://trippovention.github.io/services.html">
+	<meta property="og:title" content="Services — Trippovention">
+	<meta property="og:description" content="Complete travel services - tour packages, visa assistance, flight bookings, hotel reservations.">
+	<meta property="og:image" content="https://trippovention.github.io/assets/logo.webp">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://trippovention.github.io/services.html">
+	<meta property="twitter:title" content="Services — Trippovention">
+	<meta property="twitter:description" content="Complete travel services - tour packages, visa assistance, flight bookings, hotel reservations.">
+	<meta property="twitter:image" content="https://trippovention.github.io/assets/logo.webp">
+	
+	<!-- SEO: Canonical URL -->
+	<link rel="canonical" href="https://trippovention.github.io/services.html">
+	
 	<link rel="stylesheet" href="assets/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,24 +34,23 @@
 		<div class="container">
 			<a class="brand" href="index.html"><img src="assets/logo.webp" alt="Trippovention"></a>
 			
-			<div class="menu" id="mobileMenu">
-				<a href="index.html">Home</a>
-				<a href="tours.html">Tours</a>
-				<a href="search.html">Search</a>
-				<a href="cab-booking.html">Cabs</a>
-				<a class="active" href="services.html">Services</a>
-				<a href="contact.html">Contact</a>
-			</div>
+		<div class="menu" id="mobileMenu">
+			<a href="index.html">Home</a>
+			<a href="worldwide.html">Worldwide</a>
+			<a href="packages/india/index.html">India</a>
+			<a href="visa/index.html">Visa</a>
+			<a class="active" href="services.html">Services</a>
+			<a href="contact.html">Contact</a>
+		</div>
 			
 			<div class="nav-right">
 				<div class="actions">
-					<a class="icon" title="Cart" href="cart.html">🛒<span class="badge-dot">2</span></a>
-					<a class="icon" title="Account" href="my-account.html">👤</a>
-					<a id="themeToggle" class="icon theme-toggle" title="Toggle theme" href="javascript:void(0)">🌓</a>
+					<a class="icon" title="Quick Enquiry" href="contact.html">📝</a>
+					<a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
+					<a class="icon" title="WhatsApp" href="https://wa.me/918750888875">💬</a>
+					<button class="icon" title="Toggle Dark Mode" id="themeToggle">🌙</button>
 				</div>
-				
-				<!-- Hamburger Menu Button -->
-				<button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+				<button class="hamburger" id="hamburger" aria-label="Menu">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -40,12 +59,23 @@
 		</div>
 	</nav>
 
-	<header class="section compact" style="background:var(--gradient-hero);color:#fff">
+	<!-- Professional Breadcrumb Navigation -->
+	<nav class="breadcrumb" aria-label="Breadcrumb">
+		<div class="breadcrumb-container">
+			<ol class="breadcrumb-list">
+				<li class="breadcrumb-item">
+					<a href="index.html">🏠 Home</a>
+				</li>
+				<li class="breadcrumb-separator">›</li>
+				<li class="breadcrumb-item active">Services</li>
+			</ol>
+		</div>
+	</nav>
+
+	<header class="hero compact hero-services">
 		<div class="container">
-			<div class="section-title">
-				<h1 style="color:#fff;font-size:48px">Trippovention Services</h1>
-				<p class="subtitle" style="color:rgba(255,255,255,0.9)">Your trusted travel partner for seamless and unforgettable journeys</p>
-			</div>
+			<h1>Our Services</h1>
+			<p>Your trusted travel partner for seamless and unforgettable journeys</p>
 		</div>
 	</header>
 
@@ -171,7 +201,35 @@
 
 	<footer class="footer">
 		<div class="container">
-			<div style="text-align:center">
+			<div class="grid cols-3">
+				<div>
+					<h4>Trippovention</h4>
+					<p>Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative and memorable.</p>
+					<div class="mt-20">
+						<span class="mr-15">📧 query@trippovention.com</span>
+						<span>📞 +91 87508 88875</span>
+					</div>
+				</div>
+				<div>
+					<h4>Quick Links</h4>
+					<div class="line-height-2">
+						<a href="packages/india/index.html">India Tours</a><br>
+						<a href="worldwide.html">Worldwide</a><br>
+						<a href="visa/index.html">Visa</a><br>
+						<a href="services.html">Services</a><br>
+						<a href="contact.html">Contact</a>
+					</div>
+				</div>
+				<div>
+					<h4>Corporate Office</h4>
+					<p>Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India, 122018.</p>
+					<div class="mt-20">
+						<h4>Alternative Contact</h4>
+						<p>📞 +91 73030 10446</p>
+					</div>
+				</div>
+			</div>
+			<div class="text-center section-border-top mt-40 pt-30">
 				<p>&copy; 2025 Trippovention. All Rights Reserved.</p>
 			</div>
 		</div>

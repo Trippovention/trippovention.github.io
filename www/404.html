@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Page Not Found — Trippovention</title>
+	<meta name="description" content="The page you're looking for doesn't exist. Explore our travel packages or contact us for assistance.">
+	<link rel="stylesheet" href="assets/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+	
+	<!-- Centralized Google Analytics -->
+	<script src="assets/analytics.js" defer></script>
+	
+	<!-- Auto-redirect to contact page after 5 seconds -->
+	<script>
+		let countdown = 5;
+		function updateCountdown() {
+			document.getElementById('countdown').textContent = countdown;
+			countdown--;
+			if (countdown < 0) {
+				window.location.href = 'contact.html';
+			}
+		}
+		window.addEventListener('DOMContentLoaded', () => {
+			setInterval(updateCountdown, 1000);
+		});
+	</script>
+</head>
+<body>
+	<nav class="nav">
+		<div class="container">
+			<a class="brand" href="index.html">
+				<img src="assets/logo.webp" alt="Trippovention">
+			</a>
+			
+		<div class="menu" id="mobileMenu">
+			<a href="index.html">Home</a>
+			<a href="worldwide.html">Worldwide</a>
+			<a href="packages/india/index.html">India</a>
+			<a href="visa/index.html">Visa</a>
+			<a href="services.html">Services</a>
+			<a href="contact.html">Contact</a>
+		</div>
+			
+			<div class="nav-right">
+				<div class="actions">
+					<a class="icon" title="Quick Enquiry" href="contact.html">📝</a>
+					<a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
+					<a id="themeToggle" class="icon theme-toggle" title="Toggle theme" href="javascript:void(0)">🌓</a>
+				</div>
+				
+				<!-- Hamburger Menu Button -->
+				<button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<header class="hero compact">
+		<div class="container">
+			<h1>Page Not Found</h1>
+			<p>Oops! The page you're looking for doesn't exist or has been moved.</p>
+		</div>
+	</header>
+
+	<section class="section">
+		<div class="container">
+			<div class="grid cols-3">
+				<div class="card">
+					<div class="body text-center">
+						<div class="feature-icon">🏠</div>
+						<h3>Go Home</h3>
+						<p class="muted">Start fresh from our homepage and explore all our travel offerings.</p>
+						<div class="mt-16">
+							<a class="btn" href="index.html">Homepage</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="body text-center">
+						<div class="feature-icon">📦</div>
+						<h3>Browse Packages</h3>
+						<p class="muted">Discover our curated travel packages for India and worldwide destinations.</p>
+						<div class="mt-16">
+							<a class="btn" href="packages/india/index.html">India Tours</a>
+							<a class="btn ghost mt-8" href="worldwide.html">Worldwide</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="body text-center">
+						<div class="feature-icon">📞</div>
+						<h3>Contact Us</h3>
+						<p class="muted">Need help finding something? Our travel experts are here to assist you.</p>
+						<div class="mt-16">
+							<a class="btn" href="contact.html">Get in Touch</a>
+						</div>
+						<p class="muted mt-12">Auto-redirecting in <span id="countdown" class="font-weight-600">5</span>s...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Popular Destinations -->
+	<section class="section alt">
+		<div class="container">
+			<div class="section-title">
+				<h2>Popular Destinations</h2>
+				<p class="subtitle">Explore our most sought-after travel experiences</p>
+			</div>
+			
+			<div class="grid cols-3">
+				<div class="card">
+					<div class="body">
+						<div class="badge">Goa</div>
+						<h3>Beach Paradise</h3>
+						<p class="muted">Pristine beaches, vibrant nightlife</p>
+						<a class="btn mt-16" href="contact.html">Enquire Now</a>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="body">
+						<div class="badge">Singapore</div>
+						<h3>Garden City</h3>
+						<p class="muted">Modern attractions, cultural fusion</p>
+						<a class="btn mt-16" href="packages/singapore/index.html">View Details</a>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="body">
+						<div class="badge">Kerala</div>
+						<h3>God's Own Country</h3>
+						<p class="muted">Backwaters, hill stations, Ayurveda</p>
+						<a class="btn mt-16" href="contact.html">Enquire Now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="grid cols-3">
+				<div>
+					<h4>Trippovention</h4>
+					<p>Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative and memorable.</p>
+					<div class="mt-20">
+						<span class="mr-15">📧 query@trippovention.com</span>
+						<span>📞 +91 87508 88875</span>
+					</div>
+				</div>
+				<div>
+					<h4>Quick Links</h4>
+					<div class="line-height-2">
+						<a href="index.html">Home</a><br>
+						<a href="packages/india/index.html">India Tours</a><br>
+						<a href="worldwide.html">Worldwide</a><br>
+						<a href="visa/index.html">Visa</a><br>
+						<a href="services.html">Services</a><br>
+						<a href="contact.html">Contact</a>
+					</div>
+				</div>
+				<div>
+					<h4>Corporate Office</h4>
+					<p>Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India, 122018.</p>
+					<div class="mt-20">
+						<h4>Alternative Contact</h4>
+						<p>📞 +91 73030 10446</p>
+					</div>
+				</div>
+			</div>
+			<div class="text-center section-border-top mt-40 pt-30">
+				<p>&copy; 2025 Trippovention. All Rights Reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
+
+	<script src="assets/app.js" defer></script>
+</body>
+</html>
+

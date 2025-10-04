@@ -1,7 +1,29 @@
 /**
  * Contact Form Functionality
  * Handles form validation, conditional fields, spam protection, and submission
+ * Enhanced with scroll-to-form functionality
  */
+
+// Form visibility enhancement - ensure form is visible on page load
+function ensureFormVisibility() {
+	const form = document.querySelector('form[action*="formsubmit.co"]');
+	if (form) {
+		// Add a slight delay to ensure all styles are loaded
+		setTimeout(() => {
+			const formRect = form.getBoundingClientRect();
+			const windowHeight = window.innerHeight;
+			
+			// If form is not fully visible, scroll to it smoothly
+			if (formRect.top > windowHeight * 0.8) {
+				form.scrollIntoView({ 
+					behavior: 'smooth', 
+					block: 'start',
+					inline: 'nearest'
+				});
+			}
+		}, 500);
+	}
+}
 
 // Enhanced form functionality with conditional fields
 function toggleConditionalFields() {
@@ -277,6 +299,9 @@ function showSuccessMessage() {
 document.addEventListener('DOMContentLoaded', function() {
 	const form = document.querySelector('form[action*="formsubmit.co"]');
 	if (!form) return;
+
+	// Ensure form visibility on page load
+	ensureFormVisibility();
 
 	// Character counter for message field
 	const messageField = form.querySelector('textarea[name="message"]');

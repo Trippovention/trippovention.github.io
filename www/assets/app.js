@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mobile Hamburger Menu
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerBtn = document.getElementById('hamburger');
     const navMenu = document.getElementById('mobileMenu');
     
     if (hamburgerBtn && navMenu) {

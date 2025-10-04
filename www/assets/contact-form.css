@@ -1,4 +1,4 @@
-/* Contact Form Specific Styles */
+/* Contact Form Specific Styles - Enterprise Grade */
 
 /* Security: Hide honeypot fields from users but keep accessible to bots */
 .honeypot {
@@ -21,20 +21,21 @@
 }
 
 #submitBtn:disabled {
-	background: rgba(200,200,200,0.3) !important;
+	background: var(--text-muted) !important;
 	cursor: not-allowed !important;
+	opacity: 0.6 !important;
 }
 
 #submitBtn:enabled {
-	background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+	background: var(--gradient-primary) !important;
 	cursor: pointer !important;
 	opacity: 1 !important;
 }
 
 #submitBtn:enabled:hover {
-	background: linear-gradient(135deg, #ff5252, #d84315) !important;
+	background: linear-gradient(135deg, var(--orange-hover), var(--orange-dark)) !important;
 	transform: translateY(-2px);
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+	box-shadow: var(--shadow-large);
 }
 
 /* Contact page specific styles */
@@ -43,7 +44,7 @@
 }
 
 .contact-header h1 {
-	color: #fff;
+	color: white;
 	font-size: 48px;
 }
 
@@ -126,6 +127,6 @@ input[name="email_confirm"] {
 }
 
 .char-counter.warning {
-	color: #ff6b6b;
+	color: var(--orange);
 	font-weight: 600;
 }
