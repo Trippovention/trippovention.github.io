@@ -1,11 +1,11 @@
 # Robots.txt for Trippovention Website
-# https://trippovention.github.io/
+# https://trippovention.com/
 
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://trippovention.github.io/sitemap.xml
+Sitemap: https://trippovention.com/sitemap.xml
 
 # Disallow admin or private areas (if any in future)
 # Disallow: /admin/

@@ -4,7 +4,7 @@
   
   <!-- Home Page -->
   <url>
-    <loc>https://trippovention.github.io/</loc>
+    <loc>https://trippovention.com/</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -12,7 +12,7 @@
   
   <!-- India Tours -->
   <url>
-    <loc>https://trippovention.github.io/packages/india/</loc>
+    <loc>https://trippovention.com/packages/india/</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -20,7 +20,7 @@
   
   <!-- Worldwide Tours -->
   <url>
-    <loc>https://trippovention.github.io/worldwide.html</loc>
+    <loc>https://trippovention.com/worldwide.html</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -28,7 +28,7 @@
   
   <!-- Visa Services -->
   <url>
-    <loc>https://trippovention.github.io/visa/</loc>
+    <loc>https://trippovention.com/visa/</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -36,7 +36,7 @@
   
   <!-- Services Page -->
   <url>
-    <loc>https://trippovention.github.io/services.html</loc>
+    <loc>https://trippovention.com/services.html</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -44,7 +44,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://trippovention.github.io/contact.html</loc>
+    <loc>https://trippovention.com/contact.html</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -52,7 +52,7 @@
   
   <!-- Singapore Level 2 Page -->
   <url>
-    <loc>https://trippovention.github.io/packages/singapore/</loc>
+    <loc>https://trippovention.com/packages/singapore/</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -60,7 +60,7 @@
   
   <!-- Singapore Family Package (Level 3) -->
   <url>
-    <loc>https://trippovention.github.io/packages/singapore/family-5days.html</loc>
+    <loc>https://trippovention.com/packages/singapore/family-5days.html</loc>
     <lastmod>2025-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
