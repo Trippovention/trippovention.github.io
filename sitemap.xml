@@ -53,7 +53,7 @@
   <!-- Singapore Level 2 Page -->
   <url>
     <loc>https://trippovention.com/packages/singapore/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -61,9 +61,17 @@
   <!-- Singapore Family Package (Level 3) -->
   <url>
     <loc>https://trippovention.com/packages/singapore/family-5days.html</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  
+  <!-- 404 Page -->
+  <url>
+    <loc>https://trippovention.com/404.html</loc>
+    <lastmod>2025-10-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
   </url>
 
 </urlset>

@@ -295,6 +295,78 @@ function showSuccessMessage() {
 	window.history.replaceState({}, document.title, window.location.pathname);
 }
 
+// Pre-fill destination from URL parameter
+function prefillDestinationFromURL() {
+	const urlParams = new URLSearchParams(window.location.search);
+	const destination = urlParams.get('destination');
+	const visa = urlParams.get('visa');
+	const from = urlParams.get('from');
+	
+	// Get form fields
+	const inquiryTypeField = document.getElementById('inquiryType');
+	const destinationField = document.querySelector('input[name="Preferred\u00a0Destination"]');
+	const visaCountryField = document.querySelector('input[name="Country\u00a0For\u00a0Visa"]');
+	
+	// Pre-fill destination for tour packages
+	if (destination && destinationField) {
+		// Capitalize and format destination name
+		const formattedDestination = destination
+			.split('-')
+			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+		
+		destinationField.value = formattedDestination;
+		
+		// Set inquiry type and show travel details
+		if (inquiryTypeField) {
+			inquiryTypeField.value = 'Tour Package Question';
+			toggleConditionalFields();
+		}
+		
+		// Make destination required
+		destinationField.setAttribute('required', 'required');
+		
+		// Scroll to form
+		setTimeout(() => {
+			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			destinationField.focus();
+		}, 500);
+	}
+	
+	// Pre-fill visa country
+	if (visa && visaCountryField && inquiryTypeField) {
+		const formattedVisa = visa
+			.split('-')
+			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+		
+		visaCountryField.value = formattedVisa;
+		inquiryTypeField.value = 'Visa Assistance';
+		toggleConditionalFields();
+		
+		setTimeout(() => {
+			visaCountryField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			visaCountryField.focus();
+		}, 500);
+	}
+	
+	// Pre-fill from page indicator (general inquiry with context)
+	if (from && !destination && !visa && destinationField) {
+		const formattedFrom = from
+			.split('-')
+			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+		
+		// Set destination field with page context
+		destinationField.value = formattedFrom + ' packages';
+		
+		if (inquiryTypeField) {
+			inquiryTypeField.value = 'Tour Package Question';
+			toggleConditionalFields();
+		}
+	}
+}
+
 // Initialize form functionality when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
 	const form = document.querySelector('form[action*="formsubmit.co"]');
@@ -302,6 +374,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Ensure form visibility on page load
 	ensureFormVisibility();
+	
+	// Pre-fill destination from URL parameters
+	prefillDestinationFromURL();
 
 	// Character counter for message field
 	const messageField = form.querySelector('textarea[name="message"]');
@@ -376,7 +451,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (let field of honeyFields) {
 			if (field.value !== '') {
 				e.preventDefault();
-				console.log('Spam detected - form submission blocked');
 				return false;
 			}
 		}

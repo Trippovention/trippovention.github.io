@@ -5,7 +5,7 @@
  */
 
 // Configuration
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // 👈 UPDATE THIS WITH YOUR REAL GA4 ID
+const GA_MEASUREMENT_ID = 'G-M2NE7YXF3H'; // Trippovention Google Analytics 4 ID
 
 // Load Google Analytics script
 (function() {
@@ -107,7 +107,5 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-
-    console.log('✅ Google Analytics tracking initialized');
 });
 
