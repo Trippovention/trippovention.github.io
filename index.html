@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+
+	<!-- DNS Prefetch for faster external resource loading -->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+	<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Trippovention - Your Travel Partner | India & Worldwide Tours, Visa Services</title>
 	<meta name="description" content="Explore incredible travel destinations across India and worldwide. Expert tour packages, visa services, and 24/7 travel assistance. 15+ years experience, 50K+ happy travelers.">
@@ -25,10 +30,17 @@
 	<!-- SEO: Canonical URL -->
 	<link rel="canonical" href="https://trippovention.com/">
 	
-	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+	<!-- Favicon - Multi-browser support -->
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon.png">
 	<link rel="manifest" href="/site.webmanifest">
 	<meta name="theme-color" content="#667eea">
+	
+	<!-- Security Headers for Enhanced Protection -->
+	<meta name="referrer" content="strict-origin-when-cross-origin">
+	<meta http-equiv="X-Content-Type-Options" content="nosniff">
+	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+	<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +67,7 @@
 				<div class="actions">
 					<a class="icon" title="Quick Enquiry" href="contact.html">📝</a>
 					<a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
-					<a class="icon" title="WhatsApp" href="https://wa.me/918750888875"><img src="assets/images/logo_whatsapp.png" alt="WhatsApp" style="width: 24px; height: 24px; vertical-align: middle;" loading="lazy"></a>
+					<a class="icon" title="WhatsApp" href="https://wa.me/918750888875"><img src="assets/images/logo_whatsapp.webp" alt="WhatsApp" style="width: 24px; height: 24px; vertical-align: middle;" loading="lazy"></a>
 					<button class="icon" title="Toggle Dark Mode" id="themeToggle">🌙</button>
 				</div>
 				<button class="hamburger" id="hamburger" aria-label="Menu">
@@ -102,7 +114,7 @@
 			<div class="grid cols-3">
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/singapore/hero_singapore.png" loading="lazy" alt="Singapore Marina Bay Sands and Gardens by the Bay">
+						<img src="assets/images/packages/singapore/hero_singapore.webp" loading="lazy" alt="Singapore Marina Bay Sands and Gardens by the Bay">
 						<span class="ribbon hot">🔥 Trending</span>
 					</div>
 					<div class="body">
@@ -119,7 +131,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/thailand/hero_thailand.png" loading="lazy" alt="Thailand Phuket Beach Paradise">
+						<img src="assets/images/packages/thailand/hero_thailand.webp" loading="lazy" alt="Thailand Phuket Beach Paradise">
 						<span class="ribbon hot">🔥 Hot Deal</span>
 					</div>
 					<div class="body">
@@ -136,7 +148,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/malaysia/hero_malaysia.png" loading="lazy" alt="Malaysia Kuala Lumpur Petronas Towers">
+						<img src="assets/images/packages/malaysia/hero_malaysia.webp" loading="lazy" alt="Malaysia Kuala Lumpur Petronas Towers">
 						<span class="ribbon">✨ Featured</span>
 					</div>
 					<div class="body">
@@ -153,7 +165,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/uae/hero_uae.png" loading="lazy" alt="Dubai Burj Khalifa and Downtown">
+						<img src="assets/images/packages/uae/hero_uae.webp" loading="lazy" alt="Dubai Burj Khalifa and Downtown">
 						<span class="ribbon">💎 Luxury</span>
 					</div>
 					<div class="body">
@@ -170,7 +182,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/vietnam/hero_vietnam.png" loading="lazy" alt="Vietnam Halong Bay Cruise">
+						<img src="assets/images/packages/vietnam/hero_vietnam.webp" loading="lazy" alt="Vietnam Halong Bay Cruise">
 						<span class="ribbon">⏰ Limited</span>
 					</div>
 					<div class="body">
@@ -187,7 +199,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/europe/hero_europe.png" loading="lazy" alt="Europe Paris Eiffel Tower">
+						<img src="assets/images/packages/europe/hero_europe.webp" loading="lazy" alt="Europe Paris Eiffel Tower">
 						<span class="ribbon">🌟 Premium</span>
 					</div>
 					<div class="body">
@@ -216,7 +228,7 @@
 			<div class="grid cols-3">
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/india/hero_goa.png" loading="lazy" alt="Goa Beach Paradise with Palm Trees">
+						<img src="assets/images/packages/india/hero_goa.webp" loading="lazy" alt="Goa Beach Paradise with Palm Trees">
 						<span class="ribbon hot">🔥 Popular</span>
 					</div>
 					<div class="body">
@@ -233,7 +245,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/india/hero_kerala.jpg" loading="lazy" alt="Kerala Backwaters Houseboat">
+						<img src="assets/images/packages/india/hero_kerala.webp" loading="lazy" alt="Kerala Backwaters Houseboat">
 						<span class="ribbon">✨ Featured</span>
 					</div>
 					<div class="body">
@@ -250,7 +262,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/india/hero_rajasthan.png" loading="lazy" alt="Rajasthan Palace Heritage">
+						<img src="assets/images/packages/india/hero_rajasthan.webp" loading="lazy" alt="Rajasthan Palace Heritage">
 						<span class="ribbon">👑 Royal</span>
 					</div>
 					<div class="body">
@@ -267,7 +279,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/india/hero_northeast.png" loading="lazy" alt="North East India Mountains and Lakes">
+						<img src="assets/images/packages/india/hero_northeast.webp" loading="lazy" alt="North East India Mountains and Lakes">
 						<span class="ribbon">🏔️ Adventure</span>
 					</div>
 					<div class="body">
@@ -284,7 +296,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/india/hero_gujarat.png" loading="lazy" alt="Gujarat Rann of Kutch White Desert">
+						<img src="assets/images/packages/india/hero_gujarat.webp" loading="lazy" alt="Gujarat Rann of Kutch White Desert">
 						<span class="ribbon">⏰ Limited</span>
 					</div>
 					<div class="body">
@@ -301,7 +313,7 @@
 				</div>
 				<div class="card">
 					<div class="img-wrap">
-						<img src="assets/images/packages/india/hero_tamil_nadu.jpg" loading="lazy" alt="Tamil Nadu Meenakshi Temple">
+						<img src="assets/images/packages/india/hero_tamil_nadu.webp" loading="lazy" alt="Tamil Nadu Meenakshi Temple">
 						<span class="ribbon">🕉️ Spiritual</span>
 					</div>
 					<div class="body">
@@ -424,7 +436,8 @@
 				<p class="subtitle text-white-90">Let us create unforgettable memories that go beyond the ordinary</p>
 			</div>
 			<div class="text-center">
-				<a class="btn btn-lg" style="background: white; color: var(--orange);" href="contact.html">Get Custom Quote						</a>
+				<a class="btn btn-lg" style="background: white; color: var(--orange);" href="contact.html">Get Custom Quote</a>
+			</div>
 		</div>
 	</section>
 
@@ -471,46 +484,17 @@
 
 	<a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
 
-	<!-- SEO: Structured Data (Schema.org) -->
-	<script type="application/ld+json">
-	{
-		"@context": "https://schema.org",
-		"@type": "TravelAgency",
-		"name": "Trippovention",
-		"description": "Your trusted travel partner for unforgettable journeys across India and the world",
-		"url": "https://trippovention.com",
-		"logo": "https://trippovention.com/assets/images/logo.webp",
-		"image": "https://trippovention.com/assets/images/logo.webp",
-		"telephone": "+91-87508-88875",
-		"email": "query@trippovention.com",
-		"address": {
-			"@type": "PostalAddress",
-			"streetAddress": "Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
-			"addressLocality": "Gurgaon",
-			"addressRegion": "Haryana",
-			"postalCode": "122018",
-			"addressCountry": "IN"
-		},
-		"geo": {
-			"@type": "GeoCoordinates",
-			"latitude": "28.4089",
-			"longitude": "77.0342"
-		},
-		"openingHours": "Mo-Sa 10:00-19:00",
-		"priceRange": "₹₹",
-		"sameAs": [
-			"https://facebook.com/trippovention",
-			"https://instagram.com/trippovention",
-			"https://twitter.com/trippovention"
-		],
-		"contactPoint": {
-			"@type": "ContactPoint",
-			"telephone": "+91-87508-88875",
-			"contactType": "Customer Service",
-			"areaServed": ["IN", "TH", "SG", "AE", "US", "CA", "AU"],
-			"availableLanguage": ["English", "Hindi"]
-		}
-	}
+	<!-- Structured Data Module -->
+	<script src="assets/structured-data.js"></script>
+	<script>
+	window.structuredDataConfig = {
+		pageType: 'homepage',
+		description: 'Your trusted travel partner for unforgettable journeys across India and the world',
+		aggregateRating: { value: '4.8', count: '500' },
+		breadcrumb: [
+			{ name: 'Home', url: 'https://trippovention.com/' }
+		]
+	};
 	</script>
 
 	<script src="assets/app.js" defer></script>

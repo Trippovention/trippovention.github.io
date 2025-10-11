@@ -295,32 +295,32 @@ p, span, div {
 
 /* Page-specific hero backgrounds with animation */
 .hero {
-	background-image: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=1920');
+	background-image: url('images/banner_home.webp');
 	animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
 .hero-worldwide {
-	background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1920');
+	background-image: url('images/banner_worldwide.webp');
 }
 
 .hero-india {
-	background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1920');
+	background-image: url('images/banner_services.webp');
 }
 
 .hero-visa {
-	background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920');
+	background-image: url('images/banner_visa.webp');
 }
 
 .hero-services {
-	background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1920');
+	background-image: url('images/banner_cab.webp');
 }
 
 .hero-contact {
-	background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=1920');
+	background-image: url('images/banner_contact.webp');
 }
 
 .hero-singapore {
-	background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1920');
+	background-image: url('images/banner_partners.webp');
 }
 
 @keyframes heroZoom {
