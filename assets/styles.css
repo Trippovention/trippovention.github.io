@@ -54,6 +54,27 @@
 /* Base Styles */
 * { box-sizing: border-box; }
 
+/* Accessible Skip Link (hidden until keyboard focus) */
+.skip-link {
+	position: absolute;
+	left: 8px;
+	top: -60px; /* hide off screen */
+	background: #000;
+	color: #fff !important;
+	padding: 10px 16px;
+	border-radius: 6px;
+	font-weight: 600;
+	text-decoration: none;
+	z-index: 2000;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+	transition: top .2s ease, background .2s ease;
+}
+.skip-link:focus, .skip-link:active {
+	top: 8px; /* slide into view */
+	outline: 3px solid var(--blue);
+	background: var(--gradient-primary);
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -373,11 +394,6 @@ p, span, div {
 	flex-wrap: wrap;
 }
 
-@keyframes float {
-	0% { transform: translate(0, 0) rotate(0deg); }
-	100% { transform: translate(-20px, -20px) rotate(360deg); }
-}
-
 /* Buttons */
 .btn {
 	display: inline-block;
@@ -410,9 +426,138 @@ p, span, div {
 	backdrop-filter: blur(10px);
 }
 
+.btn-white-cta {
+	background: white !important;
+	color: var(--orange) !important;
+}
+
+.btn-white-cta:hover {
+	background: var(--orange-light) !important;
+	color: var(--orange-dark) !important;
+	transform: translateY(-2px) scale(1.02);
+	box-shadow: 0 8px 24px rgba(255, 255, 255, 0.5);
+}
+
 .btn.ghost:hover {
 	background: rgba(255, 255, 255, 0.1);
 	border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* WhatsApp Icon Variants - Remove ALL inline styles */
+.whatsapp-icon-nav {
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+}
+
+.whatsapp-icon-feature {
+	width: 48px;
+	height: 48px;
+}
+
+.whatsapp-icon-btn {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin-right: 8px;
+}
+
+/* Badge Containers */
+.badge-container {
+	margin-top: 20px;
+}
+
+/* Info Highlight Boxes */
+.info-highlight {
+	padding: 12px;
+	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+.info-highlight-green {
+	background: var(--emerald-light);
+	color: var(--emerald);
+}
+
+.info-highlight-blue {
+	background: var(--blue-light);
+	color: var(--blue);
+}
+
+.info-highlight-orange {
+	background: var(--orange-light);
+	color: var(--orange);
+}
+
+.info-highlight strong {
+	display: block;
+	font-weight: 600;
+}
+
+.info-highlight span {
+	font-size: 14px;
+}
+
+/* Ghost Button with White Border */
+.btn-ghost-white {
+	background: rgba(255, 255, 255, 0.2);
+	color: white;
+	border: 2px solid white;
+	box-shadow: none;
+}
+
+.btn-ghost-white:hover {
+	background: rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+}
+
+/* CTA Center Container */
+.cta-center {
+	text-align: center;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* Feature List Styling */
+.feature-list {
+	line-height: 2;
+	margin-bottom: 25px;
+	text-align: left;
+}
+
+/* Spaced Lists */
+.list-spaced {
+	line-height: 1.8;
+}
+
+/* Margin Utilities (replacing inline styles) */
+.mr-10 {
+	margin-right: 10px;
+}
+
+.mt-15 {
+	margin-top: 15px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.card.mt-20 {
+	margin-top: 20px;
+}
+
+/* Color Utilities for Text */
+.text-emerald {
+	color: var(--emerald);
+}
+
+.text-blue {
+	color: var(--blue);
+}
+
+.text-orange {
+	color: var(--orange);
 }
 
 .btn-lg {
@@ -434,7 +579,8 @@ p, span, div {
 
 /* Grid cards use same structure as base card */
 .grid .card {
-	/* Inherits from .card - no overrides needed */
+	/* Maintain full-height cards inside CSS grid without empty ruleset lint issue */
+	height: 100%;
 }
 
 /* Specific override for contact page office cards */
@@ -528,6 +674,19 @@ p, span, div {
 	object-fit: cover;
 	display: block;
 	transition: filter 0.3s ease;
+}
+
+/* Reserve consistent space for wrapped images to prevent CLS */
+.img-wrap {
+	position: relative;
+	overflow: hidden;
+	background: var(--bg-tertiary);
+	aspect-ratio: 16 / 10; /* Matches typical card image ratio */
+}
+.img-wrap > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 [data-theme="dark"] .card img {
@@ -938,6 +1097,15 @@ input::placeholder, textarea::placeholder {
 .footer h4 {
 	color: white;
 	margin: 0 0 20px;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.footer .footer-heading {
+	color: #94a3b8; /* Muted like other footer text */
+	margin: 0 0 15px;
+	font-size: 1rem;
+	font-weight: 500;
 }
 
 .footer a {
@@ -1038,7 +1206,7 @@ input::placeholder, textarea::placeholder {
 	}
 }
 
-/* Mobile Navigation Breakpoint */
+/* Mobile Navigation Breakpoint - Optimized for 5 menu items after removing redundant Contact */
 @media (max-width: 850px) {
 	.nav .container {
 		height: 56px;

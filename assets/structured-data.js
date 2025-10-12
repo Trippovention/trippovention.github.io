@@ -123,27 +123,17 @@ const StructuredData = (() => {
 		}),
 
 		// 3. WebSite with SearchAction (Sitelinks Search Box)
-		website: (config) => {
-			// Make searchPath optional, provide a default, and avoid throwing an error
-			const searchPath = (config && typeof config.searchPath === 'string' && config.searchPath !== '/' && config.searchPath.trim() !== '')
-				? config.searchPath
-				: 'search';
-			const schema = {
-				"@context": "https://schema.org",
-				"@type": "WebSite",
-				name: COMPANY_INFO.name,
-				url: COMPANY_INFO.url
-			};
-			// Only add potentialAction if searchPath is set and not '/'
-			if (searchPath && searchPath !== '/') {
-				schema.potentialAction = {
-					"@type": "SearchAction",
-					target: `${COMPANY_INFO.url}/${searchPath}?q={search_term_string}`,
-					"query-input": "required name=search_term_string"
-				};
+		website: (config) => ({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			name: COMPANY_INFO.name,
+			url: COMPANY_INFO.url,
+			potentialAction: {
+				"@type": "SearchAction",
+				target: `${COMPANY_INFO.url}/${config.searchPath || 'search.html'}?q={search_term_string}`,
+				"query-input": "required name=search_term_string"
 			}
-			return schema;
-		},
+		}),
 
 		// 4. Service Schema (Services, Visa)
 		service: (config) => ({
@@ -280,7 +270,7 @@ const StructuredData = (() => {
 				}), "Structured Data: TravelAgency (Primary Business Entity)");
 				
 				injectSchema(schemas.organization(), "Structured Data: Organization (Knowledge Graph)");
-				injectSchema(schemas.website({ searchPath: "/" }), "Structured Data: WebSite (Sitelinks Search Box)");
+				injectSchema(schemas.website({}), "Structured Data: WebSite (Sitelinks Search Box)");
 				break;
 
 			case 'worldwide':
@@ -330,7 +320,10 @@ const StructuredData = (() => {
 				break;
 
 			default:
-				console.warn('StructuredData: Unknown page type:', config.pageType);
+				// Only warn in development
+				if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+					console.warn('StructuredData: Unknown page type:', config.pageType);
+				}
 		}
 	};
 
@@ -342,35 +335,9 @@ const StructuredData = (() => {
 	};
 })();
 
-// Helper function to validate config object
-function isValidConfig(config) {
-	return (
-		typeof config === 'object' &&
-		config !== null &&
-		typeof config.pageType === 'string' &&
-		config.pageType.length > 0
-	);
-}
-
 // Auto-initialize if config exists in window
 if (typeof window !== 'undefined' && window.structuredDataConfig) {
-	if (isValidConfig(window.structuredDataConfig)) {
-		if (document.readyState === 'interactive' || document.readyState === 'complete') {
-			try {
-				StructuredData.init(window.structuredDataConfig);
-			} catch (e) {
-				console.error("StructuredData: Failed to initialize structured data.", e);
-			}
-		} else {
-			document.addEventListener('DOMContentLoaded', () => {
-				try {
-					StructuredData.init(window.structuredDataConfig);
-				} catch (e) {
-					console.error("StructuredData: Failed to initialize structured data.", e);
-				}
-			});
-		}
-	} else {
-		console.warn("StructuredData: Invalid configuration object. Initialization skipped.");
-	}
+	document.addEventListener('DOMContentLoaded', () => {
+		StructuredData.init(window.structuredDataConfig);
+	});
 }

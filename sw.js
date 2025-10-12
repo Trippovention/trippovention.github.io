@@ -1,22 +1,19 @@
 /**
  * Service Worker for Trippovention
  * Enables offline support and faster repeat visits
+ * Version: 2.1 - Network-first for HTML, cache-first for assets
  */
 
-const CACHE_NAME = 'trippovention-v1';
+const CACHE_VERSION = '2.1';
+const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = 'trippovention-runtime';
 
-// Files to cache immediately
+// Only cache critical assets immediately (not large images)
 const PRECACHE_URLS = [
 	'/',
 	'/index.html',
-	'/tours.html',
-	'/services.html',
-	'/contact.html',
-	'/assets/styles.min.css',
-	'/assets/app.js',
-	'/assets/images/logo.webp',
-	'./assets/images/favicon.ico'
+	'/assets/styles.css',
+	'/assets/app.js'
 ];
 
 // Install event - cache essential files
@@ -41,18 +38,34 @@ self.addEventListener('activate', (event) => {
 	);
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - Network-first for HTML, cache-first for assets
 self.addEventListener('fetch', (event) => {
 	// Skip non-GET requests
 	if (event.request.method !== 'GET') {
 		return;
 	}
 	
-	// Skip external requests
-	if (!event.request.url.startsWith(self.location.origin)) {
+	// Only handle same-origin requests
+	if (new URL(event.request.url).origin !== self.location.origin) return;
+	
+	// Network-first strategy for HTML (always get fresh content)
+	if (event.request.mode === 'navigate') {
+		event.respondWith(
+			fetch(event.request)
+				.then(response => {
+					// Cache the fresh HTML
+					caches.open(CACHE_NAME).then(cache => {
+						cache.put(event.request, response.clone());
+					});
+					return response;
+				})
+				.catch(() => caches.match(event.request))
+				.catch(() => caches.match('/index.html'))
+		);
 		return;
 	}
 	
+	// Cache-first strategy for assets (CSS, JS, images)
 	event.respondWith(
 		caches.match(event.request).then(cachedResponse => {
 			if (cachedResponse) {
@@ -68,9 +81,6 @@ self.addEventListener('fetch', (event) => {
 					return response;
 				});
 			});
-		}).catch(() => {
-			// Return offline page if available
-			return caches.match('/index.html');
-		})
+		}).catch(() => caches.match('/index.html'))
 	);
 });
