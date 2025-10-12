@@ -334,7 +334,11 @@ const StructuredData = (() => {
 
 // Auto-initialize if config exists in window
 if (typeof window !== 'undefined' && window.structuredDataConfig) {
-	document.addEventListener('DOMContentLoaded', () => {
+	if (document.readyState === 'interactive' || document.readyState === 'complete') {
 		StructuredData.init(window.structuredDataConfig);
-	});
+	} else {
+		document.addEventListener('DOMContentLoaded', () => {
+			StructuredData.init(window.structuredDataConfig);
+		});
+	}
 }
