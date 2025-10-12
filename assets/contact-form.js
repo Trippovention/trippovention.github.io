@@ -504,7 +504,9 @@ function prefillDestinationFromURL() {
 }
 
 // Initialize form functionality when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+// CRITICAL FIX: Check if DOM is already loaded (for navigation from other pages)
+// DOMContentLoaded may have already fired during page navigation
+function initializeForm() {
 	const form = document.querySelector('form[action*="formsubmit.co"]');
 	if (!form) return;
 
@@ -684,4 +686,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (urlParams.get('success') === 'true' || hashSuccess) {
 		showSuccessMessage();
 	}
-});
+}
+
+// CRITICAL FIX: Handle both scenarios
+// 1. Normal page load: DOMContentLoaded hasn't fired yet
+// 2. Navigation: DOMContentLoaded already fired, DOM is ready
+if (document.readyState === 'loading') {
+	// DOM is still loading, wait for DOMContentLoaded
+	document.addEventListener('DOMContentLoaded', initializeForm);
+} else {
+	// DOM is already loaded (navigation scenario), run immediately
+	initializeForm();
+}
