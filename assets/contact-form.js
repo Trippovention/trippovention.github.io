@@ -469,6 +469,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	jsHoneypot.setAttribute('tabindex', '-1');
 	form.appendChild(jsHoneypot);
 	
+	// Update _replyto field with customer email for better reply handling
+	const emailField = form.querySelector('input[name="email"]');
+	const replytoField = document.getElementById('_replyto');
+	if (emailField && replytoField) {
+		emailField.addEventListener('input', function() {
+			replytoField.value = this.value;
+		});
+		emailField.addEventListener('change', function() {
+			replytoField.value = this.value;
+		});
+	}
+
 	// Add event listeners for real-time validation
 	const inputs = form.querySelectorAll('input, select, textarea');
 	inputs.forEach(input => {
@@ -497,6 +509,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Form submission validation
 	form.addEventListener('submit', function(e) {
+		console.log('Form submission triggered');
+		
 		// Rate limiting check
 		if (submitAttempts >= maxAttempts) {
 			e.preventDefault();
@@ -505,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		
 		// Check if honeypot fields are filled (spam detection)
-		const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"], input[name="email_confirm"]');
+		const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"]');
 		for (let field of honeyFields) {
 			if (field.value !== '') {
 				e.preventDefault();
@@ -514,11 +528,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		
 		// Check form submission timing (too fast = likely bot)
+		// REDUCED from 5 seconds to 2 seconds to be more user-friendly
 		const loadTime = parseInt(timestampField.value);
 		const submitTime = Date.now();
 		const timeDiff = submitTime - loadTime;
 		
-		if (timeDiff < 5000) { // Less than 5 seconds
+		if (timeDiff < 2000) { // Less than 2 seconds
 			e.preventDefault();
 			alert('Please take a moment to review your message before submitting.');
 			return false;
@@ -549,6 +564,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			submitBtn.disabled = true;
 			submitBtn.style.opacity = '0.8';
 		}
+		
+		// Allow form to submit naturally to FormSubmit
+		return true;
 	});
 	
 	// Check for success parameter in URL or hash
