@@ -123,17 +123,22 @@ const StructuredData = (() => {
 		}),
 
 		// 3. WebSite with SearchAction (Sitelinks Search Box)
-		website: (config) => ({
-			"@context": "https://schema.org",
-			"@type": "WebSite",
-			name: COMPANY_INFO.name,
-			url: COMPANY_INFO.url,
-			potentialAction: {
-				"@type": "SearchAction",
-				target: `${COMPANY_INFO.url}/${config.searchPath || 'search.html'}?q={search_term_string}`,
-				"query-input": "required name=search_term_string"
+		website: (config) => {
+			if (!config.searchPath) {
+				throw new Error("StructuredData.website: config.searchPath is required and must be a valid search endpoint.");
 			}
-		}),
+			return {
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				name: COMPANY_INFO.name,
+				url: COMPANY_INFO.url,
+				potentialAction: {
+					"@type": "SearchAction",
+					target: `${COMPANY_INFO.url}/${config.searchPath}?q={search_term_string}`,
+					"query-input": "required name=search_term_string"
+				}
+			};
+		},
 
 		// 4. Service Schema (Services, Visa)
 		service: (config) => ({
