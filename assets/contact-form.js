@@ -515,6 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (submitAttempts >= maxAttempts) {
 			e.preventDefault();
 			alert('Too many submission attempts. Please wait 5 minutes before trying again.');
+			console.log('Blocked: Rate limit exceeded');
 			return false;
 		}
 		
@@ -523,6 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (let field of honeyFields) {
 			if (field.value !== '') {
 				e.preventDefault();
+				console.log('Blocked: Honeypot triggered');
 				return false;
 			}
 		}
@@ -536,17 +538,32 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (timeDiff < 2000) { // Less than 2 seconds
 			e.preventDefault();
 			alert('Please take a moment to review your message before submitting.');
+			console.log(`Blocked: Too fast (${timeDiff}ms)`);
 			return false;
 		}
 		
-		// Final validation check
+		// Final validation check - only check VISIBLE required fields
 		const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
 		for (let field of requiredFields) {
-			if (!field.value.trim()) {
+			// Skip validation for fields in hidden sections
+			const isVisible = field.offsetParent !== null; // More reliable than checking display
+			if (isVisible && !field.value.trim()) {
 				field.focus();
 				e.preventDefault();
+				console.log(`Blocked: Missing required field - ${field.name}`);
 				return false;
+			} else if (!isVisible) {
+				console.log(`Skipping hidden required field: ${field.name}`);
 			}
+		}
+		
+		console.log('Form validation passed, submitting...');
+		
+		// Ensure _replyto is populated before submission
+		const emailField = form.querySelector('input[name="email"]');
+		const replytoField = document.getElementById('_replyto');
+		if (emailField && replytoField) {
+			replytoField.value = emailField.value;
 		}
 		
 		// Increment submit attempts
@@ -557,16 +574,19 @@ document.addEventListener('DOMContentLoaded', function() {
 			submitAttempts = 0;
 		}, cooldownTime);
 		
-		// Show loading state
-		const submitBtn = form.querySelector('button[type="submit"]');
-		if (submitBtn) {
-			submitBtn.textContent = '⏳ Sending...';
-			submitBtn.disabled = true;
-			submitBtn.style.opacity = '0.8';
-		}
+		// Show loading state AFTER form starts submitting
+		// Use setTimeout to avoid blocking the submission
+		setTimeout(() => {
+			const submitBtn = form.querySelector('button[type="submit"]');
+			if (submitBtn) {
+				submitBtn.textContent = '⏳ Sending...';
+				submitBtn.disabled = true;
+				submitBtn.style.opacity = '0.8';
+			}
+		}, 0);
 		
-		// Allow form to submit naturally to FormSubmit
-		return true;
+		// DO NOT call e.preventDefault() - allow natural form submission
+		// DO NOT return anything - let the browser handle the submission
 	});
 	
 	// Check for success parameter in URL or hash
