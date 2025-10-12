@@ -78,7 +78,15 @@ function validateForm() {
 	
 	// Check all required fields with visual feedback
 	for (let field of requiredFields) {
-		const fieldLabel = field.closest('.body')?.querySelector('label[for="' + field.id + '"]')?.textContent || field.name;
+		// Get field label safely without optional chaining (for older browsers)
+		let fieldLabel = field.name;
+		const bodyElement = field.closest('.body');
+		if (bodyElement) {
+			const labelElement = bodyElement.querySelector('label[for="' + field.id + '"]');
+			if (labelElement && labelElement.textContent) {
+				fieldLabel = labelElement.textContent;
+			}
+		}
 		
 		if (!field.value.trim()) {
 			allValid = false;
