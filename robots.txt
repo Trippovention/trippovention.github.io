@@ -84,18 +84,6 @@ Disallow: /
 User-agent: PetalBot
 Crawl-delay: 10
 
-# AI/ML training bots (optional - uncomment to block)
-# User-agent: CCBot
-# Disallow: /
-# 
-# User-agent: GPTBot
-# Disallow: /
-# 
-# User-agent: ChatGPT-User
-# Disallow: /
-# 
-# User-agent: Google-Extended
-# Disallow: /
 
 # Host directive (for clarity)
 Host: https://trippovention.com
