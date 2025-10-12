@@ -285,7 +285,7 @@ function prefillDestinationFromURL() {
 	// Get form fields
 	const inquiryTypeField = document.getElementById('inquiryType');
 	const destinationField = document.querySelector('input[name="destination"]');
-	const visaCountryField = document.querySelector('input[name="visa_country"]');
+	const visaCountryField = document.querySelector('input[name="Preferred\u00a0Destination"]');
 	
 	// Pre-fill destination for tour packages
 	if (destination && destinationField) {
@@ -411,8 +411,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 	
-	// CRITICAL FIX: Validate AFTER listeners are attached with slight delay
-	setTimeout(() => validateForm(), 100);
+	// Validate AFTER listeners are attached
+	validateForm();
 	
 	// Rate limiting protection
 	let submitAttempts = 0;
