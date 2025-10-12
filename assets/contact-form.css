@@ -130,3 +130,46 @@ input[name="email_confirm"] {
 	color: var(--orange);
 	font-weight: 600;
 }
+
+/* Success Toast Notification */
+.success-toast {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	background: linear-gradient(135deg, #4CAF50, #45a049);
+	color: white;
+	padding: 15px 20px;
+	border-radius: 12px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+	z-index: 1000;
+	font-family: inherit;
+	font-weight: 600;
+	animation: slideIn 0.3s ease-out;
+}
+
+.success-toast-close {
+	background: none;
+	border: none;
+	color: white;
+	margin-left: 10px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0;
+	line-height: 1;
+}
+
+.success-toast-close:hover {
+	opacity: 0.8;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}

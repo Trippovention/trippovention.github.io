@@ -257,29 +257,9 @@ function showFieldTooltip(field, message) {
 function showSuccessMessage() {
 	const successDiv = document.createElement('div');
 	successDiv.innerHTML = `
-		<div style="
-			position: fixed;
-			top: 20px;
-			right: 20px;
-			background: linear-gradient(135deg, #4CAF50, #45a049);
-			color: white;
-			padding: 15px 20px;
-			border-radius: 12px;
-			box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-			z-index: 1000;
-			font-family: inherit;
-			font-weight: 600;
-		">
+		<div class="success-toast">
 			✅ Message sent successfully! We'll get back to you soon.
-			<button onclick="this.parentElement.parentElement.remove()" style="
-				background: none;
-				border: none;
-				color: white;
-				margin-left: 10px;
-				cursor: pointer;
-				font-size: 16px;
-				font-weight: bold;
-			">×</button>
+			<button onclick="this.parentElement.parentElement.remove()" class="success-toast-close" aria-label="Close notification">×</button>
 		</div>
 	`;
 	document.body.appendChild(successDiv);
@@ -304,8 +284,8 @@ function prefillDestinationFromURL() {
 	
 	// Get form fields
 	const inquiryTypeField = document.getElementById('inquiryType');
-	const destinationField = document.querySelector('input[name="Preferred\u00a0Destination"]');
-	const visaCountryField = document.querySelector('input[name="Country\u00a0For\u00a0Visa"]');
+	const destinationField = document.querySelector('input[name="destination"]');
+	const visaCountryField = document.querySelector('input[name="Preferred\u00a0Destination"]');
 	
 	// Pre-fill destination for tour packages
 	if (destination && destinationField) {
@@ -378,6 +358,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Pre-fill destination from URL parameters
 	prefillDestinationFromURL();
 
+	// CRITICAL FIX: Setup event listeners BEFORE initial validation
+
 	// Character counter for message field
 	const messageField = form.querySelector('textarea[name="message"]');
 	const messageCounter = document.getElementById('messageCounter');
@@ -429,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 	
-	// Initial validation
+	// Validate AFTER listeners are attached
 	validateForm();
 	
 	// Rate limiting protection

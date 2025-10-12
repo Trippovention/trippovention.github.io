@@ -1,16 +1,45 @@
 // Enhanced UX helpers: lazy loading, smooth scroll, mobile nav, and PERFECT dark theme
 document.addEventListener('DOMContentLoaded', function() {
-    // Lazy loading for images
+    // Enhanced lazy loading for images with error handling
     document.querySelectorAll('img[data-src]').forEach(img => {
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    img.src = img.dataset.src;
-                    obs.unobserve(img);
-                }
-            });
-        });
-        observer.observe(img);
+        // Fallback for browsers without IntersectionObserver
+        if (!('IntersectionObserver' in window)) {
+            img.src = img.dataset.src;
+            return;
+        }
+        
+        try {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        try {
+                            img.src = img.dataset.src;
+                            img.onerror = () => {
+                                // Only log in development
+                                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                                    console.error('Failed to load image:', img.dataset.src);
+                                }
+                                // Set a fallback placeholder if image fails
+                                img.style.backgroundColor = 'var(--bg-tertiary)';
+                                img.alt = 'Image unavailable';
+                            };
+                        } catch (error) {
+                            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                                console.error('Error setting image src:', error);
+                            }
+                        } finally {
+                            obs.unobserve(img);
+                        }
+                    }
+                });
+            }, { rootMargin: '50px' }); // Preload images 50px before viewport
+            observer.observe(img);
+        } catch (error) {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.error('IntersectionObserver error:', error);
+            }
+            img.src = img.dataset.src; // Fallback
+        }
     });
 
     // Perfect Dark Theme Toggle
@@ -122,23 +151,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Intersection observer for animations
+    // Intersection observer for animations with memory leak fix
     const animateElements = document.querySelectorAll('.card, .feature-icon, .stats');
-    const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
+    
+    if ('IntersectionObserver' in window && animateElements.length > 0) {
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    // CRITICAL FIX: Unobserve after animation completes to prevent memory leaks
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        animationObserver.observe(el);
-    });
+        animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            animationObserver.observe(el);
+        });
+    }
 
     // Mobile Hamburger Menu
     const hamburgerBtn = document.getElementById('hamburger');
@@ -197,3 +231,20 @@ window.ThemeManager = {
         return this.getCurrentTheme() === 'dark';
     }
 };
+
+// Service Worker Registration for PWA
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', () => {
+		navigator.serviceWorker.register('./sw.js')
+			.then(registration => {
+				// Only log in development
+				if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+					console.log('✓ Service Worker registered:', registration.scope);
+				}
+			})
+			.catch(error => {
+				// Always log errors
+				console.error('✗ Service Worker registration failed:', error);
+			});
+	});
+}

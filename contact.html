@@ -2,32 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+
+	<!-- DNS Prefetch for faster external resource loading -->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+	<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contact Us - Trippovention</title>
-	<meta name="description" content="Contact Trippovention for travel inquiries, tour packages, visa services. Call +91 87508 88875 or email query@trippovention.com.">
-	<meta name="keywords" content="contact Trippovention, travel inquiry, tour booking, visa consultation, travel help, customer support">
+	<title>Contact Us - Travel Inquiries & Support | Trippovention</title>
+	<meta name="description" content="Get in touch with Trippovention for travel inquiries, tour packages, visa services. Call +91 87508 88875, +91 124 418 2575 or email query@trippovention.com. Offices in India & Thailand.">
+	<meta name="author" content="Trippovention">
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://trippovention.com/contact.html">
-	<meta property="og:title" content="Contact Us - Trippovention">
-	<meta property="og:description" content="Contact Trippovention for travel inquiries, tour packages, visa services. Expert assistance available.">
+	<meta property="og:title" content="Contact Us - Travel Inquiries & Support | Trippovention">
+	<meta property="og:description" content="Reach out for travel inquiries, tour packages, visa services. Multiple contact options available. Expert travel assistance.">
 	<meta property="og:image" content="https://trippovention.com/assets/images/logo.webp">
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://trippovention.com/contact.html">
-	<meta property="twitter:title" content="Contact Us - Trippovention">
-	<meta property="twitter:description" content="Contact Trippovention for travel inquiries, tour packages, visa services. Expert assistance available.">
+	<meta property="twitter:title" content="Contact Us - Travel Inquiries & Support | Trippovention">
+	<meta property="twitter:description" content="Reach out for travel inquiries, tour packages, visa services. Multiple contact options available.">
 	<meta property="twitter:image" content="https://trippovention.com/assets/images/logo.webp">
 	
 	<!-- SEO: Canonical URL -->
 	<link rel="canonical" href="https://trippovention.com/contact.html">
 	
-	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
-	<link rel="manifest" href="/site.webmanifest">
+	<!-- Favicon - Multi-browser support -->
+	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+	<link rel="manifest" href="site.webmanifest">
 	<meta name="theme-color" content="#667eea">
+	
+	<!-- Security Headers for Enhanced Protection -->
+	<meta name="referrer" content="strict-origin-when-cross-origin">
+	<meta http-equiv="X-Content-Type-Options" content="nosniff">
+	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+	<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 	
 	<link rel="stylesheet" href="assets/styles.css">
 	<link rel="stylesheet" href="assets/contact-form.css">
@@ -36,9 +48,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+	<a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
 	<nav class="nav">
 		<div class="container">
-			<a class="brand" href="index.html"><img src="assets/images/logo.webp" alt="Trippovention" loading="lazy"></a>
+			<a class="brand" href="index.html" aria-label="Go to Trippovention Home">
+				<img src="assets/images/logo.webp" alt="Trippovention - Your Trusted Travel Partner" width="160" height="40">
+			</a>
 			
 		<div class="menu" id="mobileMenu">
 			<a href="index.html">Home</a>
@@ -46,14 +61,13 @@
 			<a href="packages/india/index.html">India</a>
 			<a href="visa/index.html">Visa</a>
 			<a href="services.html">Services</a>
-			<a class="active" href="contact.html">Contact</a>
 		</div>
 			
 			<div class="nav-right">
 				<div class="actions">
-					<a class="icon" title="Quick Enquiry" href="contact.html">📝</a>
+					<a class="icon" title="Quick Enquiry" href="contact.html" aria-label="Quick enquiry form">📝</a>
 					<a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
-					<a class="icon" title="WhatsApp" href="https://wa.me/918750888875"><img src="assets/images/logo_whatsapp.png" alt="WhatsApp" style="width: 24px; height: 24px; vertical-align: middle;" loading="lazy"></a>
+					<a class="icon" title="WhatsApp" href="https://wa.me/+918750888875" aria-label="Chat on WhatsApp" rel="noopener noreferrer" target="_blank"><img src="assets/images/logo_whatsapp.webp" alt="WhatsApp" class="whatsapp-icon-nav"></a>
 					<button class="icon" title="Toggle Dark Mode" id="themeToggle">🌙</button>
 				</div>
 				<button class="hamburger" id="hamburger" aria-label="Menu">
@@ -78,6 +92,7 @@
 		</div>
 	</nav>
 
+	<main id="main">
 	<header class="hero compact hero-contact">
 		<div class="container">
 			<h1>Get in Touch</h1>
@@ -109,17 +124,17 @@
 								<div class="body">
 									<h4>👤 Contact Details</h4>
 									
-									<label>Full Name *</label>
-									<input type="text" name="Full&nbsp;Name" placeholder="Enter your full name" required>
+									<label for="name">Full Name *</label>
+									<input type="text" id="name" name="name" placeholder="Enter your full name" required autocomplete="name">
 									
-									<label>Email Address *</label>
-									<input type="email" name="Email&nbsp;Address" placeholder="your@email.com" required>
+									<label for="email">Email Address *</label>
+									<input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
 									
-									<label>Phone Number *</label>
-									<input type="tel" name="Phone&nbsp;Number" placeholder="+91 XXXXX XXXXX" required>
+									<label for="phone">Phone Number *</label>
+									<input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel">
 									
-									<label>Inquiry Type *</label>
-									<select name="Inquiry&nbsp;Type" id="inquiryType" required onchange="toggleConditionalFields()">
+									<label for="inquiryType">Inquiry Type *</label>
+									<select name="inquiry_type" id="inquiryType" required onchange="toggleConditionalFields()">
 										<option value="">Select inquiry type</option>
 										<option value="General Inquiry">General Inquiry</option>
 										<option value="Tour Package Question">Tour Package Question</option>
@@ -137,11 +152,11 @@
 								<div class="body">
 									<h4>🛂 Visa Details</h4>
 									
-									<label>Country for Visa</label>
-									<input type="text" name="Country&nbsp;For&nbsp;Visa" placeholder="Enter destination country">
+									<label for="visa_country">Country for Visa</label>
+									<input type="text" id="visa_country" name="visa_country" placeholder="Enter destination country" autocomplete="country-name">
 									
-									<label>Visa Type</label>
-									<select name="Visa&nbsp;Type">
+									<label for="visa_type">Visa Type</label>
+									<select name="visa_type" id="visa_type">
 										<option value="">Select visa type</option>
 										<option value="Tourist">Tourist Visa</option>
 										<option value="Business">Business Visa</option>
@@ -156,11 +171,11 @@
 								<div class="body">
 									<h4>✈️ Travel Planning Details</h4>
 									
-									<label>Preferred Destination</label>
-									<input type="text" name="Preferred&nbsp;Destination" placeholder="Where would you like to go?">
+									<label for="destination">Preferred Destination</label>
+									<input type="text" id="destination" name="destination" placeholder="Where would you like to go?" autocomplete="off">
 									
-									<label>Number of Travelers</label>
-									<select name="Number&nbsp;Of&nbsp;Travelers">
+									<label for="travelers">Number of Travelers</label>
+									<select name="travelers" id="travelers">
 										<option value="">Select number of travelers</option>
 										<option value="1">1 pax</option>
 										<option value="2">2 pax</option>
@@ -169,8 +184,8 @@
 										<option value="9+">9+ pax (Group)</option>
 									</select>
 									
-									<label>Budget Range</label>
-									<select name="Budget&nbsp;Range">
+									<label for="budget">Budget Range</label>
+									<select name="budget" id="budget">
 										<option value="">Select your budget range</option>
 										<option value="₹ 25,000 - ₹ 50,000 per person">₹ 25,000 - ₹ 50,000 per person</option>
 										<option value="₹ 50,000 - ₹ 1,00,000 per person">₹ 50,000 - ₹ 1,00,000 per person</option>
@@ -178,12 +193,12 @@
 										<option value="Above ₹ 2,00,000 per person">Above ₹ 2,00,000 per person</option>
 									</select>
 									
-									<label>Preferred Travel Dates</label>
-									<input type="date" name="Travel&nbsp;Start&nbsp;Date" placeholder="Start date">
-									<input type="date" name="Travel&nbsp;End&nbsp;Date" placeholder="End date">
+									<label for="travel_start_date">Preferred Travel Dates</label>
+									<input type="date" id="travel_start_date" name="travel_start_date" placeholder="Start date">
+									<input type="date" id="travel_end_date" name="travel_end_date" placeholder="End date">
 									
-									<label>Travel Duration</label>
-									<select name="Travel&nbsp;Duration">
+									<label for="travel_duration">Travel Duration</label>
+									<select name="travel_duration" id="travel_duration">
 										<option value="">Select duration</option>
 										<option value="1-3 days">1-3 days</option>
 										<option value="4-7 days">4-7 days</option>
@@ -192,8 +207,8 @@
 										<option value="1+ month">1+ month</option>
 									</select>
 									
-									<label>Accommodation Preference</label>
-									<select name="Accommodation&nbsp;Preference">
+									<label for="accommodation_preference">Accommodation Preference</label>
+									<select name="accommodation_preference" id="accommodation_preference">
 										<option value="">Select accommodation type</option>
 										<option value="Budget Hotels">Budget Hotels</option>
 										<option value="3-Star Hotels">3-Star Hotels</option>
@@ -209,14 +224,14 @@
 							<!-- Message Section -->
 							<div class="card">
 								<div class="body">
-									<label>Message *</label>
-									<textarea name="Message" rows="5" placeholder="Tell us how we can help you..." required maxlength="1000"></textarea>
+									<label for="message">Message *</label>
+									<textarea id="message" name="message" rows="5" placeholder="Tell us how we can help you..." required maxlength="1000"></textarea>
 									<div class="char-counter">
 										<span id="messageCounter">0/1000 characters</span>
 									</div>
 									
-									<label>Special Requirements</label>
-									<textarea name="Special&nbsp;Requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
+									<label for="special_requirements">Special Requirements</label>
+									<textarea id="special_requirements" name="special_requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
 								</div>
 							</div>
 							
@@ -240,19 +255,19 @@
 							<div class="address-indent">Gurgaon, Haryana - 122018</div>
 						</div>
 						
-						<div class="contact-info">
-							<div>📧 <strong>Email:</strong> query@trippovention.com</div>
-							<div>📞 <strong>Phone:</strong> +91 83683 26188</div>
-							<div>📞 <strong>Alt:</strong> +91 95992 64757</div>
-							<div>📞 <strong>Landline:</strong> +91 124 418 2575</div>
-						</div>
+				<div class="contact-info">
+					<div>📧 <strong>Email:</strong> <a href="mailto:query@trippovention.com">query@trippovention.com</a></div>
+					<div>📞 <strong>Phone:</strong> <a href="tel:+918750888875">+91 87508 88875</a></div>
+					<div>📞 <strong>Alt:</strong> <a href="tel:+917303010446">+91 73030 10446</a></div>
+					<div>📞 <strong>Landline:</strong> <a href="tel:+911244182575">+91 124 418 2575</a></div>
+				</div>
 					</div>
 				</div>
 
-				<div class="card office-card">
-					<div class="body">
-						<h4>🏛️ Thailand Office</h4>
-						<div class="address-block compact">
+			<div class="card office-card">
+				<div class="body">
+					<h3>🏛️ Thailand Office</h3>
+					<div class="address-block compact">
 							<div>📍 <strong>Address:</strong></div>
 							<div class="address-indent">23/13 M, 12 Nong Pure Subdistrict</div>
 							<div class="address-indent">Bang Lamung District</div>
@@ -286,19 +301,19 @@
 			<div class="grid cols-3">
 				<div class="card">
 					<div class="body">
-						<div class="feature-icon">📞</div>
-						<h3>Call Us Now</h3>
-						<p class="muted">Speak directly with our travel experts for immediate assistance</p>
-						<a class="btn" href="tel:+918368326188">📞 +91 83683 26188</a>
+					<div class="feature-icon">📞</div>
+					<h3>Call Us Now</h3>
+					<p class="muted">Speak directly with our travel experts for immediate assistance</p>
+					<a class="btn" href="tel:+918750888875">📞 +91 87508 88875</a>
 					</div>
 				</div>
 				
 				<div class="card">
 					<div class="body">
-						<div class="feature-icon"><img src="assets/images/logo_whatsapp.png" alt="WhatsApp" style="width: 48px; height: 48px;" loading="lazy"></div>
-						<h3>WhatsApp</h3>
-						<p class="muted">Chat with us instantly on WhatsApp for quick responses</p>
-						<a class="btn" href="https://wa.me/+918368326188"><img src="assets/images/logo_whatsapp.png" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;" loading="lazy">WhatsApp Now</a>
+					<div class="feature-icon">💬</div>
+					<h3>WhatsApp</h3>
+					<p class="muted">Chat with us instantly on WhatsApp for quick responses</p>
+					<a class="btn" href="https://wa.me/+918750888875">💬 WhatsApp Now</a>
 					</div>
 				</div>
 				
@@ -314,29 +329,29 @@
 		</div>
 	</section>
 
-	<!-- Orange CTA Section -->
+	<!-- CTA Section -->
 	<section class="section cta">
 		<div class="container">
 			<div class="section-title">
 				<h2 class="text-white">Need Immediate Assistance?</h2>
-				<p class="subtitle text-white-90">Our travel experts are available 24/7 to help you plan your perfect journey</p>
+				<p class="subtitle text-white-90">Our dedicated travel experts are ready to help you plan your perfect journey</p>
 			</div>
 			<div class="text-center">
-			<a class="btn btn-lg ghost" href="tel:+918750888875">📞 Call Now</a>
-			<a class="btn btn-lg ghost ml-16" href="https://wa.me/918750888875"><img src="assets/images/logo_whatsapp.png" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;" loading="lazy">WhatsApp Us</a>
+				<a class="btn btn-lg ghost" href="contact.html">Get Custom Quote</a>
+				<a class="btn btn-lg ghost ml-16" href="tel:+918750888875">📞 Call Now</a>
 			</div>
 			<div class="grid cols-3 mt-40">
 				<div class="stats">
-					<span class="number text-white">15+</span>
+					<span class="number text-white">2021</span>
+					<span class="label text-white-90">Established</span>
+				</div>
+				<div class="stats">
+					<span class="number text-white">10+</span>
 					<span class="label text-white-90">Years Experience</span>
 				</div>
 				<div class="stats">
 					<span class="number text-white">50K+</span>
 					<span class="label text-white-90">Happy Travelers</span>
-				</div>
-				<div class="stats">
-					<span class="number text-white">24/7</span>
-					<span class="label text-white-90">Customer Support</span>
 				</div>
 			</div>
 		</div>
@@ -349,26 +364,31 @@
 					<h4>Trippovention</h4>
 					<p>Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative and memorable.</p>
 					<div class="mt-20">
-						<span class="mr-15">📧 query@trippovention.com</span>
-						<span>📞 +91 87508 88875</span>
+						<span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+						<br>
+						<span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
+						<br>
+						<span>📞 <a href="tel:+911244182575">+91 124 418 2575</a></span>
 					</div>
 				</div>
 				<div>
 					<h4>Quick Links</h4>
 					<div class="line-height-2">
+						<a href="index.html">Home</a><br>
 						<a href="packages/india/index.html">India Tours</a><br>
 						<a href="worldwide.html">Worldwide</a><br>
 						<a href="visa/index.html">Visa</a><br>
-						<a href="services.html">Services</a><br>
-						<a href="contact.html">Contact</a>
+						<a href="services.html">Services</a>
 					</div>
 				</div>
 				<div>
 					<h4>Corporate Office</h4>
 					<p>Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India, 122018.</p>
 					<div class="mt-20">
-						<h4>Alternative Contact</h4>
-						<p>📞 +91 73030 10446</p>
+						<p class="footer-heading">Alternate Contact Details</p>
+						<span>📞 <a href="tel:+917303010446">+91 73030 10446</a></span>
+						<br>
+						<span>📞 <a href="tel:+66949319572">+66 94 931 9572</a></span>
 					</div>
 				</div>
 			</div>
@@ -378,9 +398,24 @@
 		</div>
 	</footer>
 
-	<a href="contact.html" class="sticky-cta"><img src="assets/images/logo_whatsapp.png" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;" loading="lazy">Quick Enquiry</a>
+	<a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
+	</main>
+
+	<!-- Structured Data Module -->
+	<script src="assets/structured-data.js" defer></script>
+	<script>
+	window.structuredDataConfig = {
+		pageType: 'contact',
+		breadcrumb: [
+			{ name: 'Home', url: 'https://trippovention.com/' },
+			{ name: 'Contact Us', url: 'https://trippovention.com/contact.html' }
+		],
+		phones: ['+91-87508-88875', '+91-124-418-2575']
+	};
+	</script>
 
 	<script src="assets/app.js" defer></script>
+	<script src="assets/analytics.js" defer></script>
 	<script src="assets/contact-form.js" defer></script>
 </body>
 </html>
