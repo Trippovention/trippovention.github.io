@@ -43,16 +43,16 @@ function toggleConditionalFields() {
 	// Show relevant section and set required fields
 	if (inquiryType === 'Custom Trip Planning') {
 		travelDetails.style.display = 'block';
-		// Make key travel fields required
-		const requiredTravelFields = ['Preferred Destination', 'Number of Travelers', 'Budget Range'];
+		// Make key travel fields required (using &nbsp; for spaces)
+		const requiredTravelFields = ['Preferred\u00A0Destination', 'Number\u00A0of\u00A0Travelers', 'Budget\u00A0Range'];
 		requiredTravelFields.forEach(name => {
 			const field = document.querySelector(`[name="${name}"]`);
 			if (field) field.setAttribute('required', 'required');
 		});
 	} else if (inquiryType === 'Visa Assistance') {
 		visaDetails.style.display = 'block';
-		// Make key visa fields required
-		const requiredVisaFields = ['Visa Country', 'Visa Type'];
+		// Make key visa fields required (using &nbsp; for spaces)
+		const requiredVisaFields = ['Visa\u00A0Country', 'Visa\u00A0Type'];
 		requiredVisaFields.forEach(name => {
 			const field = document.querySelector(`[name="${name}"]`);
 			if (field) field.setAttribute('required', 'required');
@@ -94,7 +94,7 @@ function validateForm() {
 	}
 	
 	// Email validation with better pattern and user feedback
-	const emailField = form.querySelector('input[name="email"]');
+	const emailField = form.querySelector('input[name="Email"]');
 	const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 	if (emailField && emailField.value) {
 		if (!emailRegex.test(emailField.value)) {
@@ -110,7 +110,7 @@ function validateForm() {
 	}
 	
 	// Enhanced phone validation with international support
-	const phoneField = form.querySelector('input[name="phone"]');
+	const phoneField = form.querySelector('input[name="Phone"]');
 	const phoneRegex = /^[\+]?[1-9]\d{1,14}$/; // More strict international format
 	if (phoneField && phoneField.value) {
 		const cleanPhone = phoneField.value.replace(/[\s\-\(\)]/g, '');
@@ -127,7 +127,7 @@ function validateForm() {
 	}
 	
 	// Visa country validation for text input
-	const visaCountryField = form.querySelector('input[name="Visa Country"]');
+	const visaCountryField = form.querySelector('input[name="Visa\u00A0Country"]');
 	if (visaCountryField && visaCountryField.value) {
 		if (visaCountryField.value.length < 2) {
 			allValid = false;
@@ -188,7 +188,7 @@ function validateForm() {
 	}
 	
 	// Message length validation
-	const messageField = form.querySelector('textarea[name="message"]');
+	const messageField = form.querySelector('textarea[name="Message"]');
 	if (messageField && messageField.value) {
 		if (messageField.value.length < 10) {
 			allValid = false;
@@ -207,7 +207,7 @@ function validateForm() {
 	}
 	
 	// Name validation (no numbers, minimum length)
-	const nameField = form.querySelector('input[name="name"]');
+	const nameField = form.querySelector('input[name="Name"]');
 	if (nameField && nameField.value) {
 		const namePattern = /^[a-zA-Z\s\-\.]+$/;
 		if (!namePattern.test(nameField.value) || nameField.value.length < 2) {
@@ -330,8 +330,8 @@ function prefillDestinationFromURL() {
 	
 	// Get form fields
 	const inquiryTypeField = document.getElementById('inquiryType');
-	const destinationField = document.querySelector('input[name="Preferred Destination"]');
-	const visaCountryField = document.querySelector('input[name="Visa Country"]');
+	const destinationField = document.querySelector('input[name="Preferred\u00A0Destination"]');
+	const visaCountryField = document.querySelector('input[name="Visa\u00A0Country"]');
 	
 	// Helper function to format names (kebab-case to Title Case)
 	const formatName = (str) => {
@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// CRITICAL FIX: Setup event listeners BEFORE initial validation
 
 	// Character counter for message field
-	const messageField = form.querySelector('textarea[name="message"]');
+	const messageField = form.querySelector('textarea[name="Message"]');
 	const messageCounter = document.getElementById('messageCounter');
 	if (messageField && messageCounter) {
 		messageField.addEventListener('input', function() {
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// No need for additional honeypot fields that can be triggered by browser autofill
 	
 	// Update _replyto field with customer email for better reply handling
-	const emailField = form.querySelector('input[name="email"]');
+	const emailField = form.querySelector('input[name="Email"]');
 	const replytoField = document.getElementById('_replyto');
 	if (emailField && replytoField) {
 		emailField.addEventListener('input', function() {
@@ -542,10 +542,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 			
-			// Ensure _replyto is populated before submission
-			const emailField = form.querySelector('input[name="email"]');
-			const replytoField = document.getElementById('_replyto');
-			if (emailField && replytoField) {
+		// Ensure _replyto is populated before submission
+		const emailField = form.querySelector('input[name="Email"]');
+		const replytoField = document.getElementById('_replyto');
+		if (emailField && replytoField) {
 				replytoField.value = emailField.value;
 			}
 			

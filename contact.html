@@ -110,7 +110,7 @@
 							<input type="hidden" name="_captcha" value="true">
 							<input type="hidden" name="_next" value="https://trippovention.github.io/contact.html?success=true">
 							<input type="hidden" name="_template" value="table">
-							<input type="hidden" name="_cc" value="query@trippovention.com">
+							<!-- No CC needed as primary email is query@trippovention.com -->
 							<input type="hidden" name="_replyto" value="" id="_replyto">
 							<input type="hidden" name="_exclude" value="_form_loaded">
 							<input type="hidden" name="_autoresponse" value="Thank you for contacting Trippovention! We have received your inquiry and our travel experts will get back to you within 24 hours with personalized recommendations. We look forward to helping you plan your perfect journey!">
@@ -124,16 +124,16 @@
 									<h4>👤 Contact Details</h4>
 									
 									<label for="name">Full Name *</label>
-									<input type="text" id="name" name="name" placeholder="Enter your full name" required autocomplete="name">
+									<input type="text" id="name" name="Name" placeholder="Enter your full name" required autocomplete="name">
 									
 									<label for="email">Email Address *</label>
-									<input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+									<input type="email" id="email" name="Email" placeholder="your@email.com" required autocomplete="email">
 									
 									<label for="phone">Phone Number *</label>
-									<input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel">
+									<input type="tel" id="phone" name="Phone" placeholder="+91 98765 43210" required autocomplete="tel">
 									
 									<label for="inquiryType">Inquiry Type *</label>
-									<select name="Inquiry Type" id="inquiryType" required onchange="toggleConditionalFields()">
+									<select name="Inquiry&nbsp;Type" id="inquiryType" required onchange="toggleConditionalFields()">
 										<option value="">Select inquiry type</option>
 										<option value="General Inquiry">General Inquiry</option>
 										<option value="Visa Assistance">Visa Assistance</option>
@@ -151,10 +151,10 @@
 									<h4>🛂 Visa Details</h4>
 									
 									<label for="visa_country">Country for Visa</label>
-									<input type="text" id="visa_country" name="Visa Country" placeholder="Enter destination country" autocomplete="country-name">
+									<input type="text" id="visa_country" name="Visa&nbsp;Country" placeholder="Enter destination country" autocomplete="country-name">
 									
 									<label for="visa_type">Visa Type</label>
-									<select name="Visa Type" id="visa_type">
+									<select name="Visa&nbsp;Type" id="visa_type">
 										<option value="">Select visa type</option>
 										<option value="Tourist">Tourist Visa</option>
 										<option value="Business">Business Visa</option>
@@ -170,10 +170,10 @@
 									<h4>✈️ Travel Planning Details</h4>
 									
 									<label for="destination">Preferred Destination</label>
-									<input type="text" id="destination" name="Preferred Destination" placeholder="Where would you like to go?" autocomplete="off">
+									<input type="text" id="destination" name="Preferred&nbsp;Destination" placeholder="Where would you like to go?" autocomplete="off">
 									
 									<label for="travelers">Number of Travelers</label>
-									<select name="Number of Travelers" id="travelers">
+									<select name="Number&nbsp;of&nbsp;Travelers" id="travelers">
 										<option value="">Select number of travelers</option>
 										<option value="1">1 pax</option>
 										<option value="2">2 pax</option>
@@ -183,7 +183,7 @@
 									</select>
 									
 									<label for="budget">Budget Range</label>
-									<select name="Budget Range" id="budget">
+									<select name="Budget&nbsp;Range" id="budget">
 										<option value="">Select your budget range</option>
 										<option value="₹ 25,000 - ₹ 50,000 per person">₹ 25,000 - ₹ 50,000 per person</option>
 										<option value="₹ 50,000 - ₹ 1,00,000 per person">₹ 50,000 - ₹ 1,00,000 per person</option>
@@ -192,11 +192,11 @@
 									</select>
 									
 									<label for="travel_start_date">Preferred Travel Dates</label>
-									<input type="date" id="travel_start_date" name="Travel Start Date" placeholder="Start date">
-									<input type="date" id="travel_end_date" name="Travel End Date" placeholder="End date">
+									<input type="date" id="travel_start_date" name="Travel&nbsp;Start&nbsp;Date" placeholder="Start date">
+									<input type="date" id="travel_end_date" name="Travel&nbsp;End&nbsp;Date" placeholder="End date">
 									
 									<label for="travel_duration">Travel Duration</label>
-									<select name="Travel Duration" id="travel_duration">
+									<select name="Travel&nbsp;Duration" id="travel_duration">
 										<option value="">Select duration</option>
 										<option value="1-3 days">1-3 days</option>
 										<option value="4-7 days">4-7 days</option>
@@ -206,7 +206,7 @@
 									</select>
 									
 									<label for="accommodation_preference">Accommodation Preference</label>
-									<select name="Accommodation Preference" id="accommodation_preference">
+									<select name="Accommodation&nbsp;Preference" id="accommodation_preference">
 										<option value="">Select accommodation type</option>
 										<option value="Budget Hotels">Budget Hotels</option>
 										<option value="3-Star Hotels">3-Star Hotels</option>
@@ -223,16 +223,16 @@
 							<div class="card">
 								<div class="body">
 									<label for="message">Message *</label>
-									<textarea id="message" name="message" rows="5" placeholder="Tell us how we can help you..." required maxlength="1000"></textarea>
+									<textarea id="message" name="Message" rows="5" placeholder="Tell us how we can help you..." required maxlength="1000"></textarea>
 									<div class="char-counter">
 										<span id="messageCounter">0/1000 characters</span>
 									</div>
 									
 									<label for="special_requirements">Special Requirements</label>
-									<textarea id="special_requirements" name="Special Requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
+									<textarea id="special_requirements" name="Special&nbsp;Requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
 									
 									<label for="coupon_code">Coupon Code</label>
-									<input type="text" id="coupon_code" name="Coupon Code" placeholder="Enter your coupon code (if any)" autocomplete="off">
+									<input type="text" id="coupon_code" name="Coupon&nbsp;Code" placeholder="Enter your coupon code (if any)" autocomplete="off">
 								</div>
 							</div>
 							
