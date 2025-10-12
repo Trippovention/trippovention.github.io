@@ -235,7 +235,7 @@ window.ThemeManager = {
 // Service Worker Registration for PWA
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
-		navigator.serviceWorker.register('/sw.js')
+		navigator.serviceWorker.register('./sw.js')
 			.then(registration => {
 				// Only log in development
 				if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
