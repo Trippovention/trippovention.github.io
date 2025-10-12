@@ -133,7 +133,7 @@
 									<input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel">
 									
 									<label for="inquiryType">Inquiry Type *</label>
-									<select name="inquiry_type" id="inquiryType" required onchange="toggleConditionalFields()">
+									<select name="Inquiry Type" id="inquiryType" required onchange="toggleConditionalFields()">
 										<option value="">Select inquiry type</option>
 										<option value="General Inquiry">General Inquiry</option>
 										<option value="Visa Assistance">Visa Assistance</option>
@@ -151,10 +151,10 @@
 									<h4>🛂 Visa Details</h4>
 									
 									<label for="visa_country">Country for Visa</label>
-									<input type="text" id="visa_country" name="visa_country" placeholder="Enter destination country" autocomplete="country-name">
+									<input type="text" id="visa_country" name="Visa Country" placeholder="Enter destination country" autocomplete="country-name">
 									
 									<label for="visa_type">Visa Type</label>
-									<select name="visa_type" id="visa_type">
+									<select name="Visa Type" id="visa_type">
 										<option value="">Select visa type</option>
 										<option value="Tourist">Tourist Visa</option>
 										<option value="Business">Business Visa</option>
@@ -170,10 +170,10 @@
 									<h4>✈️ Travel Planning Details</h4>
 									
 									<label for="destination">Preferred Destination</label>
-									<input type="text" id="destination" name="destination" placeholder="Where would you like to go?" autocomplete="off">
+									<input type="text" id="destination" name="Preferred Destination" placeholder="Where would you like to go?" autocomplete="off">
 									
 									<label for="travelers">Number of Travelers</label>
-									<select name="travelers" id="travelers">
+									<select name="Number of Travelers" id="travelers">
 										<option value="">Select number of travelers</option>
 										<option value="1">1 pax</option>
 										<option value="2">2 pax</option>
@@ -183,7 +183,7 @@
 									</select>
 									
 									<label for="budget">Budget Range</label>
-									<select name="budget" id="budget">
+									<select name="Budget Range" id="budget">
 										<option value="">Select your budget range</option>
 										<option value="₹ 25,000 - ₹ 50,000 per person">₹ 25,000 - ₹ 50,000 per person</option>
 										<option value="₹ 50,000 - ₹ 1,00,000 per person">₹ 50,000 - ₹ 1,00,000 per person</option>
@@ -192,11 +192,11 @@
 									</select>
 									
 									<label for="travel_start_date">Preferred Travel Dates</label>
-									<input type="date" id="travel_start_date" name="travel_start_date" placeholder="Start date">
-									<input type="date" id="travel_end_date" name="travel_end_date" placeholder="End date">
+									<input type="date" id="travel_start_date" name="Travel Start Date" placeholder="Start date">
+									<input type="date" id="travel_end_date" name="Travel End Date" placeholder="End date">
 									
 									<label for="travel_duration">Travel Duration</label>
-									<select name="travel_duration" id="travel_duration">
+									<select name="Travel Duration" id="travel_duration">
 										<option value="">Select duration</option>
 										<option value="1-3 days">1-3 days</option>
 										<option value="4-7 days">4-7 days</option>
@@ -206,7 +206,7 @@
 									</select>
 									
 									<label for="accommodation_preference">Accommodation Preference</label>
-									<select name="accommodation_preference" id="accommodation_preference">
+									<select name="Accommodation Preference" id="accommodation_preference">
 										<option value="">Select accommodation type</option>
 										<option value="Budget Hotels">Budget Hotels</option>
 										<option value="3-Star Hotels">3-Star Hotels</option>
@@ -229,7 +229,10 @@
 									</div>
 									
 									<label for="special_requirements">Special Requirements</label>
-									<textarea id="special_requirements" name="special_requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
+									<textarea id="special_requirements" name="Special Requirements" rows="3" placeholder="Dietary restrictions, accessibility needs, special occasions, etc." maxlength="500"></textarea>
+									
+									<label for="coupon_code">Coupon Code</label>
+									<input type="text" id="coupon_code" name="Coupon Code" placeholder="Enter your coupon code (if any)" autocomplete="off">
 								</div>
 							</div>
 							
