@@ -327,7 +327,6 @@ function showSuccessMessage() {
 
 // Pre-fill form from URL parameters - Smart Auto-Population
 function prefillDestinationFromURL() {
-	console.log('[prefillDestinationFromURL] Called');
 	const urlParams = new URLSearchParams(window.location.search);
 	const destination = urlParams.get('destination');
 	const service = urlParams.get('service');
@@ -336,24 +335,14 @@ function prefillDestinationFromURL() {
 	const coupon = urlParams.get('coupon');
 	const success = urlParams.get('success');
 	
-	console.log('[prefillDestinationFromURL] URL params:', {destination, service, packageParam, from, coupon, success});
-	
 	// Get form fields - with retry logic if elements are not yet available
 	const inquiryTypeField = document.getElementById('inquiryType');
 	const destinationField = document.querySelector('input[name="Preferred\u00A0Destination"]');
 	const visaCountryField = document.querySelector('input[name="Visa\u00A0Country"]');
 	const couponField = document.querySelector('input[name="Coupon\u00A0Code"]');
 	
-	console.log('[prefillDestinationFromURL] Fields found:', {
-		inquiryTypeField: !!inquiryTypeField,
-		destinationField: !!destinationField,
-		visaCountryField: !!visaCountryField,
-		couponField: !!couponField
-	});
-	
 	// If critical fields are not found, retry after a short delay
 	if (!inquiryTypeField) {
-		console.warn('[prefillDestinationFromURL] inquiryTypeField not found, skipping');
 		return; // Don't retry, will be called again by multiple setTimeout
 	}
 	
@@ -361,11 +350,8 @@ function prefillDestinationFromURL() {
 	// Mark the form as processed by setting a data attribute
 	const formElement = document.getElementById('contactForm');
 	if (formElement && formElement.dataset.urlProcessed === 'true') {
-		console.log('[prefillDestinationFromURL] Already processed, skipping');
 		return; // Already processed, skip
 	}
-	
-	console.log('[prefillDestinationFromURL] Processing URL parameters...');
 	
 	// Mark as processing to prevent duplicate fills
 	if (formElement) {
@@ -521,13 +507,8 @@ function prefillDestinationFromURL() {
 // CRITICAL FIX: Check if DOM is already loaded (for navigation from other pages)
 // DOMContentLoaded may have already fired during page navigation
 function initializeForm() {
-	console.log('[initializeForm] Starting initialization...');
 	const form = document.querySelector('form[action*="formsubmit.co"]');
-	if (!form) {
-		console.error('[initializeForm] Form not found!');
-		return;
-	}
-	console.log('[initializeForm] Form found:', form.id);
+	if (!form) return;
 
 	// Set FormSubmit redirect URL dynamically based on current domain
 	// This allows the form to work on any domain (github.io, .com, localhost)
@@ -544,23 +525,19 @@ function initializeForm() {
 	// Pre-fill destination from URL parameters
 	// Use multiple delayed attempts to handle both refresh and navigation scenarios
 	// GitHub Pages needs more time when navigating from other pages
-	console.log('[initializeForm] Scheduling prefill attempts...');
 	
 	// First attempt: Quick (for page refresh)
 	setTimeout(() => {
-		console.log('[initializeForm] Prefill attempt #1 (100ms)');
 		prefillDestinationFromURL();
 	}, 100);
 	
 	// Second attempt: Medium delay (for navigation)
 	setTimeout(() => {
-		console.log('[initializeForm] Prefill attempt #2 (500ms)');
 		prefillDestinationFromURL();
 	}, 500);
 	
 	// Third attempt: Fallback (for slow connections)
 	setTimeout(() => {
-		console.log('[initializeForm] Prefill attempt #3 (1000ms)');
 		prefillDestinationFromURL();
 	}, 1000);
 
@@ -714,18 +691,10 @@ function initializeForm() {
 // CRITICAL FIX: Handle both scenarios
 // 1. Normal page load: DOMContentLoaded hasn't fired yet
 // 2. Navigation: DOMContentLoaded already fired, DOM is ready
-console.log('[contact-form.js] Script loaded! readyState:', document.readyState);
-console.log('[contact-form.js] URL params:', window.location.search);
-
 if (document.readyState === 'loading') {
 	// DOM is still loading, wait for DOMContentLoaded
-	console.log('[contact-form.js] Waiting for DOMContentLoaded...');
-	document.addEventListener('DOMContentLoaded', function() {
-		console.log('[contact-form.js] DOMContentLoaded fired, calling initializeForm()');
-		initializeForm();
-	});
+	document.addEventListener('DOMContentLoaded', initializeForm);
 } else {
 	// DOM is already loaded (navigation scenario), run immediately
-	console.log('[contact-form.js] DOM already loaded, calling initializeForm() immediately');
 	initializeForm();
 }
