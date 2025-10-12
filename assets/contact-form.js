@@ -460,14 +460,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	timestampField.value = Date.now();
 	form.appendChild(timestampField);
 	
-	// Additional honeypot protection with JavaScript
-	const jsHoneypot = document.createElement('input');
-	jsHoneypot.type = 'text';
-	jsHoneypot.name = 'website';
-	jsHoneypot.style.cssText = 'position: absolute; left: -9999px; opacity: 0; pointer-events: none;';
-	jsHoneypot.setAttribute('aria-hidden', 'true');
-	jsHoneypot.setAttribute('tabindex', '-1');
-	form.appendChild(jsHoneypot);
+	// Note: We rely on FormSubmit's built-in _honey field for spam protection
+	// No need for additional honeypot fields that can be triggered by browser autofill
 	
 	// Update _replyto field with customer email for better reply handling
 	const emailField = form.querySelector('input[name="email"]');
@@ -522,15 +516,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 			console.log('✓ Rate limit OK');
 			
-			// Check if honeypot fields are filled (spam detection)
+			// Check if honeypot field is filled (spam detection)
+			// Note: Only checking FormSubmit's official _honey field
+			// Browser autofill can trigger custom honeypots, causing false positives
 			console.log('2. Checking honeypot...');
-			const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"]');
-			for (let field of honeyFields) {
-				if (field.value !== '') {
-					e.preventDefault();
-					console.log('Blocked: Honeypot triggered');
-					return false;
-				}
+			const honeyField = form.querySelector('input[name="_honey"]');
+			if (honeyField && honeyField.value !== '') {
+				e.preventDefault();
+				console.log('Blocked: Honeypot triggered (spam bot detected)');
+				return false;
 			}
 			console.log('✓ Honeypot OK');
 			
