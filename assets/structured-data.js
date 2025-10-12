@@ -340,10 +340,18 @@ const StructuredData = (() => {
 // Auto-initialize if config exists in window
 if (typeof window !== 'undefined' && window.structuredDataConfig) {
 	if (document.readyState === 'interactive' || document.readyState === 'complete') {
-		StructuredData.init(window.structuredDataConfig);
+		try {
+			StructuredData.init(window.structuredDataConfig);
+		} catch (e) {
+			console.error("StructuredData: Failed to initialize structured data.", e);
+		}
 	} else {
 		document.addEventListener('DOMContentLoaded', () => {
-			StructuredData.init(window.structuredDataConfig);
+			try {
+				StructuredData.init(window.structuredDataConfig);
+			} catch (e) {
+				console.error("StructuredData: Failed to initialize structured data.", e);
+			}
 		});
 	}
 }
