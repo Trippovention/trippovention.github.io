@@ -378,20 +378,33 @@ function prefillDestinationFromURL() {
 	}
 	
 	// PRIORITY 3: Handle Category/Page Context (?from=xxx)
-	// → Opens "Custom Trip Planning" with category context
-	if (from && destinationField && inquiryTypeField) {
+	if (from && inquiryTypeField) {
 		const formattedFrom = formatName(from);
 		
-		// Set destination field with contextual information
-		destinationField.value = formattedFrom;
-		inquiryTypeField.value = 'Custom Trip Planning';
-		toggleConditionalFields();
+		// Special handling for visa page - open visa assistance form
+		if (from.toLowerCase() === 'visa' && visaCountryField) {
+			inquiryTypeField.value = 'Visa Assistance';
+			toggleConditionalFields();
+			
+			setTimeout(() => {
+				visaCountryField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				visaCountryField.focus();
+			}, 500);
+			return; // Exit after handling visa
+		}
 		
-		setTimeout(() => {
-			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			destinationField.focus();
-		}, 500);
-		return; // Exit after handling from
+		// For other pages → Opens "Custom Trip Planning" with category context
+		if (destinationField) {
+			destinationField.value = formattedFrom;
+			inquiryTypeField.value = 'Custom Trip Planning';
+			toggleConditionalFields();
+			
+			setTimeout(() => {
+				destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				destinationField.focus();
+			}, 500);
+			return; // Exit after handling from
+		}
 	}
 	
 	// PRIORITY 4: Handle Specific Package Queries (?package=xxx)

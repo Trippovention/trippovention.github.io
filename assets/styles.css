@@ -320,6 +320,14 @@ p, span, div {
 	animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
+/* Disable zoom animation on mobile - it breaks background-size: cover */
+@media (max-width: 768px) {
+	.hero {
+		animation: none !important;
+		background-size: cover !important;
+	}
+}
+
 .hero-worldwide {
 	background-image: url('images/banner_worldwide.webp');
 }
@@ -1284,6 +1292,20 @@ input::placeholder, textarea::placeholder {
 	.visa-grid {
 		grid-template-columns: 1fr; /* Single column on small tablets */
 	}
+	
+	/* Hero section optimization for tablets */
+	.hero {
+		min-height: 400px;
+		background-position: center center;
+	}
+	
+	.hero h1 {
+		font-size: 42px;
+	}
+	
+	.hero .lead {
+		font-size: 18px;
+	}
 }
 
 /* Strict minimum width enforcement */
@@ -1292,6 +1314,51 @@ input::placeholder, textarea::placeholder {
 	.destination-grid,
 	.visa-grid {
 		grid-template-columns: 1fr;
+	}
+	
+	/* Hero section mobile optimization - CRITICAL FIX */
+	.hero {
+		padding: 60px 0 !important;
+		background-position: center center !important;
+		background-size: cover !important;
+		background-repeat: no-repeat !important;
+		animation: none !important; /* Disable zoom animation on mobile */
+		min-height: 450px !important; /* Default for homepage with full content */
+		max-height: 65vh !important;
+	}
+	
+	/* Compact hero for category/listing pages - MUCH SHORTER */
+	.hero.compact {
+		min-height: 200px !important; /* Shorter for pages with less content */
+		max-height: 35vh !important;
+		padding: 40px 0 !important;
+	}
+	
+	.hero h1 {
+		font-size: 36px;
+		line-height: 1.2;
+		margin-bottom: 16px;
+	}
+	
+	.hero.compact h1 {
+		font-size: 28px;
+	}
+	
+	.hero .lead {
+		font-size: 16px;
+		line-height: 1.5;
+		margin-bottom: 30px;
+		padding: 0 16px;
+	}
+	
+	.hero .cta {
+		gap: 12px;
+		padding: 0 16px;
+	}
+	
+	.hero .btn {
+		font-size: 14px;
+		padding: 12px 24px;
 	}
 	
 	.nav .container {
