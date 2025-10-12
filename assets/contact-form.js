@@ -71,17 +71,21 @@ function validateForm() {
 	
 	const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
 	let allValid = true;
+	const validationErrors = []; // Track all errors for summary
 
 	// Remove all existing tooltips
 	document.querySelectorAll('.form-tooltip').forEach(tooltip => tooltip.remove());
 	
 	// Check all required fields with visual feedback
 	for (let field of requiredFields) {
+		const fieldLabel = field.closest('.body')?.querySelector('label[for="' + field.id + '"]')?.textContent || field.name;
+		
 		if (!field.value.trim()) {
 			allValid = false;
 			field.style.borderColor = 'rgba(255,100,100,0.8)';
 			field.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
 			showFieldTooltip(field, 'This field is required');
+			validationErrors.push({ field: field, message: fieldLabel + ' is required' });
 		} else {
 			// Show green border for valid required fields
 			field.style.borderColor = 'rgba(40,167,69,0.8)';
@@ -98,13 +102,11 @@ function validateForm() {
 			emailField.style.borderColor = 'rgba(255,100,100,0.8)';
 			emailField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
 			showFieldTooltip(emailField, 'Please enter a valid email address (e.g., user@example.com)');
+			validationErrors.push({ field: emailField, message: 'Email Address is invalid' });
 		} else {
 			emailField.style.borderColor = 'rgba(40,167,69,0.8)';
 			emailField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
 		}
-	} else if (emailField && emailField.value === '') {
-		emailField.style.borderColor = 'rgba(255,255,255,0.3)';
-		emailField.style.boxShadow = 'none';
 	}
 	
 	// Enhanced phone validation with international support
@@ -117,13 +119,11 @@ function validateForm() {
 			phoneField.style.borderColor = 'rgba(255,100,100,0.8)';
 			phoneField.style.boxShadow = '0 0 0 2px rgba(255,100,100,0.2)';
 			showFieldTooltip(phoneField, 'Please enter a valid phone number (min 10 digits, format: +91 98765 43210)');
+			validationErrors.push({ field: phoneField, message: 'Phone Number is invalid' });
 		} else {
 			phoneField.style.borderColor = 'rgba(40,167,69,0.8)';
 			phoneField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
 		}
-	} else if (phoneField && phoneField.value === '') {
-		phoneField.style.borderColor = 'rgba(255,255,255,0.3)';
-		phoneField.style.boxShadow = 'none';
 	}
 	
 	// Visa country validation for text input
@@ -223,6 +223,51 @@ function validateForm() {
 	
 	// Update submit button state
 	submitBtn.disabled = !allValid;
+	
+	// Show/hide validation summary
+	updateValidationSummary(validationErrors);
+}
+
+// Validation Summary Display
+function updateValidationSummary(errors) {
+	let summary = document.querySelector('.validation-summary');
+	
+	// Create summary if it doesn't exist
+	if (!summary) {
+		const submitContainer = document.querySelector('.submit-button-container');
+		if (!submitContainer) return;
+		
+		summary = document.createElement('div');
+		summary.className = 'validation-summary';
+		summary.innerHTML = `
+			<div class="validation-summary-title">⚠️ Please fix the following errors:</div>
+			<ul class="validation-summary-list"></ul>
+		`;
+		submitContainer.insertBefore(summary, submitContainer.firstChild);
+	}
+	
+	const list = summary.querySelector('.validation-summary-list');
+	
+	// Clear existing errors
+	list.innerHTML = '';
+	
+	if (errors.length > 0) {
+		// Populate error list
+		errors.forEach(error => {
+			const li = document.createElement('li');
+			li.textContent = error.message;
+			li.addEventListener('click', () => {
+				// Scroll to the field with error
+				error.field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				error.field.focus();
+			});
+			list.appendChild(li);
+		});
+		
+		summary.classList.add('show');
+	} else {
+		summary.classList.remove('show');
+	}
 }
 
 function showFieldTooltip(field, message) {
@@ -275,52 +320,34 @@ function showSuccessMessage() {
 	window.history.replaceState({}, document.title, window.location.pathname);
 }
 
-// Pre-fill destination from URL parameter
+// Pre-fill form from URL parameters - Smart Auto-Population
 function prefillDestinationFromURL() {
 	const urlParams = new URLSearchParams(window.location.search);
 	const destination = urlParams.get('destination');
-	const visa = urlParams.get('visa');
+	const service = urlParams.get('service');
+	const packageParam = urlParams.get('package');
 	const from = urlParams.get('from');
 	
 	// Get form fields
 	const inquiryTypeField = document.getElementById('inquiryType');
 	const destinationField = document.querySelector('input[name="destination"]');
-	const visaCountryField = document.querySelector('input[name="Preferred\u00a0Destination"]');
+	const visaCountryField = document.querySelector('input[name="visa_country"]');
 	
-	// Pre-fill destination for tour packages
-	if (destination && destinationField) {
-		// Capitalize and format destination name
-		const formattedDestination = destination
+	// Helper function to format names (kebab-case to Title Case)
+	const formatName = (str) => {
+		return str
 			.split('-')
 			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
 			.join(' ');
-		
-		destinationField.value = formattedDestination;
-		
-		// Set inquiry type and show travel details
-		if (inquiryTypeField) {
-			inquiryTypeField.value = 'Tour Package Question';
-			toggleConditionalFields();
-		}
-		
-		// Make destination required
-		destinationField.setAttribute('required', 'required');
-		
-		// Scroll to form
-		setTimeout(() => {
-			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			destinationField.focus();
-		}, 500);
-	}
+	};
 	
-	// Pre-fill visa country
-	if (visa && visaCountryField && inquiryTypeField) {
-		const formattedVisa = visa
-			.split('-')
-			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
-			.join(' ');
+	// PRIORITY 1: Handle Visa Service Queries (?service=xxx-visa)
+	if (service && visaCountryField && inquiryTypeField) {
+		// Extract country name from service (e.g., "singapore-visa" → "Singapore")
+		const countryName = service.replace(/-visa$/i, '');
+		const formattedCountry = formatName(countryName);
 		
-		visaCountryField.value = formattedVisa;
+		visaCountryField.value = formattedCountry;
 		inquiryTypeField.value = 'Visa Assistance';
 		toggleConditionalFields();
 		
@@ -328,22 +355,58 @@ function prefillDestinationFromURL() {
 			visaCountryField.scrollIntoView({ behavior: 'smooth', block: 'center' });
 			visaCountryField.focus();
 		}, 500);
+		return; // Exit after handling visa
 	}
 	
-	// Pre-fill from page indicator (general inquiry with context)
-	if (from && !destination && !visa && destinationField) {
-		const formattedFrom = from
-			.split('-')
-			.map(word => word.charAt(0).toUpperCase() + word.slice(1))
-			.join(' ');
+	// PRIORITY 2: Handle Destination Queries (?destination=xxx)
+	// → Opens "Custom Trip Planning" with destination pre-filled
+	if (destination && destinationField && inquiryTypeField) {
+		const formattedDestination = formatName(destination);
 		
-		// Set destination field with page context
-		destinationField.value = formattedFrom + ' packages';
+		destinationField.value = formattedDestination;
+		inquiryTypeField.value = 'Custom Trip Planning';
+		toggleConditionalFields();
 		
-		if (inquiryTypeField) {
-			inquiryTypeField.value = 'Tour Package Question';
-			toggleConditionalFields();
-		}
+		// Make destination required for custom trip planning
+		destinationField.setAttribute('required', 'required');
+		
+		setTimeout(() => {
+			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			destinationField.focus();
+		}, 500);
+		return; // Exit after handling destination
+	}
+	
+	// PRIORITY 3: Handle Category/Page Context (?from=xxx)
+	// → Opens "Custom Trip Planning" with category context
+	if (from && destinationField && inquiryTypeField) {
+		const formattedFrom = formatName(from);
+		
+		// Set destination field with contextual information
+		destinationField.value = formattedFrom;
+		inquiryTypeField.value = 'Custom Trip Planning';
+		toggleConditionalFields();
+		
+		setTimeout(() => {
+			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			destinationField.focus();
+		}, 500);
+		return; // Exit after handling from
+	}
+	
+	// PRIORITY 4: Handle Specific Package Queries (?package=xxx)
+	// → Opens "Tour Package Question" with package name
+	if (packageParam && destinationField && inquiryTypeField) {
+		const formattedPackage = formatName(packageParam);
+		
+		destinationField.value = formattedPackage;
+		inquiryTypeField.value = 'Tour Package Question';
+		toggleConditionalFields();
+		
+		setTimeout(() => {
+			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			destinationField.focus();
+		}, 500);
 	}
 }
 
@@ -411,8 +474,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 	
-	// Validate AFTER listeners are attached
-	validateForm();
+	// CRITICAL FIX: Validate AFTER listeners are attached with slight delay
+	setTimeout(() => validateForm(), 100);
 	
 	// Rate limiting protection
 	let submitAttempts = 0;

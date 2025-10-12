@@ -36,9 +36,7 @@
 
     <!-- Security Headers for Enhanced Protection -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <!-- Note: X-Frame-Options, X-Content-Type-Options, and Permissions-Policy should be set via HTTP headers, not meta tags -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,9 +120,9 @@
                             <h3>France - Paris & Beyond</h3>
                             <p class="muted">Eiffel Tower • Louvre • Versailles • French Riviera</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,50,000</span>
                                 <span class="price">₹ 1,30,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=france">Get Quote →</a>
                         </div>
@@ -139,9 +137,9 @@
                             <h3>Austria - Vienna & Salzburg</h3>
                             <p class="muted">Imperial palaces • Mozart • Alps • Classical music</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,35,000</span>
                                 <span class="price">₹ 1,18,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=austria">Get Quote →</a>
                         </div>
@@ -157,9 +155,9 @@
                             <h3>Netherlands - Amsterdam</h3>
                             <p class="muted">Canals • Tulips • Windmills • Van Gogh Museum</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,30,000</span>
                                 <span class="price">₹ 1,13,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=netherlands">Get Quote →</a>
                         </div>
@@ -174,9 +172,9 @@
                             <h3>UK - London & Castles</h3>
                             <p class="muted">Big Ben • Buckingham • Scotland • British charm</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,45,000</span>
                                 <span class="price">₹ 1,25,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=uk">Get Quote →</a>
                         </div>
@@ -191,9 +189,9 @@
                             <h3>Greece - Islands & Athens</h3>
                             <p class="muted">Santorini • Mykonos • Acropolis • Blue waters</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,40,000</span>
                                 <span class="price">₹ 1,20,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=greece">Get Quote →</a>
                         </div>
@@ -209,9 +207,9 @@
                             <h3>Spain - Barcelona & Madrid</h3>
                             <p class="muted">Gaudi • Flamenco • Tapas • Mediterranean coast</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,38,000</span>
                                 <span class="price">₹ 1,19,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=spain">Get Quote →</a>
                         </div>
@@ -239,9 +237,9 @@
                             <h3>Thailand Beach Paradise</h3>
                             <p class="muted">Phuket • Krabi • Phi Phi Islands • Water sports</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 52,000</span>
                                 <span class="price">₹ 45,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 15%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=thailand">Get Quote →</a>
                         </div>
@@ -256,9 +254,9 @@
                             <h3>Sri Lanka - Emerald Isle</h3>
                             <p class="muted">Beaches • Tea plantations • Wildlife • Culture</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 48,000</span>
                                 <span class="price">₹ 42,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=sri-lanka">Get Quote →</a>
                         </div>
@@ -274,9 +272,9 @@
                             <h3>Maldives - Water Villas</h3>
                             <p class="muted">Overwater bungalows • Crystal waters • Diving • Romance</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 85,000</span>
                                 <span class="price">₹ 75,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 12%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=maldives">Get Quote →</a>
                         </div>
@@ -291,9 +289,9 @@
                             <h3>Mauritius - Paradise Island</h3>
                             <p class="muted">Lagoons • Coral reefs • Mountains • Multicultural</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 72,000</span>
                                 <span class="price">₹ 62,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=mauritius">Get Quote →</a>
                         </div>
@@ -308,9 +306,9 @@
                             <h3>Bali - Island of Gods</h3>
                             <p class="muted">Temples • Rice terraces • Beaches • Surf culture</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 58,000</span>
                                 <span class="price">₹ 50,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=indonesia">Get Quote →</a>
                         </div>
@@ -325,9 +323,9 @@
                             <h3>Vietnam Beach & Culture</h3>
                             <p class="muted">Halong Bay • Beaches • Cuisine • Friendly locals</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 55,000</span>
                                 <span class="price">₹ 48,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=vietnam">Get Quote →</a>
                         </div>
@@ -355,9 +353,9 @@
                             <h3>Singapore Family Fun</h3>
                             <p class="muted">Universal Studios • Gardens • Night Safari • Marina Bay</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 75,000</span>
                                 <span class="price">₹ 65,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="packages/singapore/index.html">View Details →</a>
                         </div>
@@ -373,9 +371,9 @@
                             <h3>Malaysia for Families</h3>
                             <p class="muted">Genting • Legoland • Langkawi • Food paradise</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 58,000</span>
                                 <span class="price">₹ 50,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=malaysia">Get Quote →</a>
                         </div>
@@ -390,9 +388,9 @@
                             <h3>Dubai Family Extravaganza</h3>
                             <p class="muted">Theme parks • Burj Khalifa • Desert safari • Shopping</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 65,000</span>
                                 <span class="price">₹ 55,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 15%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=uae">Get Quote →</a>
                         </div>
@@ -408,9 +406,9 @@
                             <h3>Vietnam Family Discovery</h3>
                             <p class="muted">Hanoi • Ho Chi Minh • Cruise • Water puppets</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 55,000</span>
                                 <span class="price">₹ 48,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=vietnam-family">Get Quote →</a>
                         </div>
@@ -425,9 +423,9 @@
                             <h3>Turkey Family Adventure</h3>
                             <p class="muted">Istanbul • Cappadocia • Beaches • Hot air balloons</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 70,000</span>
                                 <span class="price">₹ 60,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=turkey">Get Quote →</a>
                         </div>
@@ -442,9 +440,9 @@
                             <h3>Australia Family Explorer</h3>
                             <p class="muted">Sydney • Great Barrier Reef • Wildlife • Theme parks</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,60,000</span>
                                 <span class="price">₹ 1,40,000 <span class="muted">/ pax</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=australia">Get Quote →</a>
                         </div>
@@ -472,9 +470,9 @@
                             <h3>Seychelles - Ultimate Romance</h3>
                             <p class="muted">Private beaches • Crystal waters • Luxury • Seclusion</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 95,000</span>
                                 <span class="price">₹ 82,000 <span class="muted">/ couple</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=seychelles">Get Quote →</a>
                         </div>
@@ -490,9 +488,9 @@
                             <h3>Maldives Honeymoon Bliss</h3>
                             <p class="muted">Water villas • Sunset cruises • Spa • Fine dining</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 90,000</span>
                                 <span class="price">₹ 78,000 <span class="muted">/ couple</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=maldives-honeymoon">Get Quote →</a>
                         </div>
@@ -508,9 +506,9 @@
                             <h3>Mauritius Romantic Escape</h3>
                             <p class="muted">Beachfront resorts • Adventure • Culture • Relaxation</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 78,000</span>
                                 <span class="price">₹ 68,000 <span class="muted">/ couple</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=mauritius-honeymoon">Get Quote →</a>
                         </div>
@@ -526,9 +524,9 @@
                             <h3>Norway - Northern Lights</h3>
                             <p class="muted">Aurora • Fjords • Cozy cabins • Winter romance</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,50,000</span>
                                 <span class="price">₹ 1,30,000 <span class="muted">/ couple</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=norway">Get Quote →</a>
                         </div>
@@ -544,9 +542,9 @@
                             <h3>Italy - Amore Perfetto</h3>
                             <p class="muted">Venice • Rome • Tuscany • Amalfi Coast • Cuisine</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,45,000</span>
                                 <span class="price">₹ 1,25,000 <span class="muted">/ couple</span></span>
-                                <span class="save">Save 14%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=italy">Get Quote →</a>
                         </div>
@@ -562,9 +560,9 @@
                             <h3>Switzerland Alpine Romance</h3>
                             <p class="muted">Alps • Lakes • Chocolates • Train journeys</p>
                             <div class="price-row">
+                                <span class="price-label">Starting from</span>
                                 <span class="price-old">₹ 1,55,000</span>
                                 <span class="price">₹ 1,35,000 <span class="muted">/ couple</span></span>
-                                <span class="save">Save 13%</span>
                             </div>
                             <a class="btn" href="contact.html?destination=switzerland">Get Quote →</a>
                         </div>
@@ -624,7 +622,8 @@
                             <a href="packages/india/index.html">India Tours</a><br>
                             <a href="worldwide.html">Worldwide</a><br>
                             <a href="visa/index.html">Visa</a><br>
-                            <a href="services.html">Services</a>
+                            <a href="services.html">Services</a><br>
+                            <a href="contact.html">Contact</a>
                         </div>
                     </div>
                     <div>

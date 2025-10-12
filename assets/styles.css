@@ -565,7 +565,7 @@ p, span, div {
 	font-size: 16px;
 }
 
-/* Cards */
+/* Cards - Unified Definition */
 .card {
 	background: var(--bg-primary);
 	border: 1px solid var(--border-light);
@@ -575,13 +575,12 @@ p, span, div {
 	transition: all 0.3s ease;
 	margin: 0;
 	padding: 0;
-}
-
-/* Grid cards use same structure as base card */
-.grid .card {
-	/* Maintain full-height cards inside CSS grid without empty ruleset lint issue */
+	display: flex;
+	flex-direction: column;
 	height: 100%;
 }
+
+/* Grid cards inherit height from base .card definition */
 
 /* Specific override for contact page office cards */
 .two .card {
@@ -640,8 +639,19 @@ p, span, div {
 
 .card-premium {
 	background: var(--gradient-primary);
-	color: white;
+	color: white !important;
 	border: none;
+}
+
+/* Ensure ALL text in card-premium is white */
+.card-premium *,
+.card-premium h3,
+.card-premium h4,
+.card-premium p,
+.card-premium div,
+.card-premium strong,
+.card-premium a {
+	color: white !important;
 }
 
 .card-blue {
@@ -652,41 +662,24 @@ p, span, div {
 
 /* ===== CARD REDESIGN - CLEAN & PROFESSIONAL ===== */
 
-/* Card Container - Flexbox for proper structure */
-.card {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-}
-
-/* Image Section - Fixed prominent height */
+/* Image Section - Consolidated */
 .img-wrap {
 	position: relative;
 	width: 100%;
 	height: 200px;
 	overflow: hidden;
 	flex-shrink: 0;
+	background: var(--bg-tertiary);
+	aspect-ratio: 16 / 10; /* Matches typical card image ratio, prevents CLS */
 }
 
+.img-wrap img,
 .card img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	display: block;
 	transition: filter 0.3s ease;
-}
-
-/* Reserve consistent space for wrapped images to prevent CLS */
-.img-wrap {
-	position: relative;
-	overflow: hidden;
-	background: var(--bg-tertiary);
-	aspect-ratio: 16 / 10; /* Matches typical card image ratio */
-}
-.img-wrap > img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
 }
 
 [data-theme="dark"] .card img {
@@ -762,27 +755,47 @@ p, span, div {
 }
 
 /* Pricing */
-/* UI/UX OPTIMIZED: Reduced padding for compact design */
+/* UI/UX OPTIMIZED: Visual hierarchy for easy scanning */
 .price-row {
 	display: flex;
 	gap: 8px;
 	align-items: baseline;
+	justify-content: center; /* Center align pricing like other card content */
 	margin-top: auto; /* Push pricing to bottom of card */
 	flex-wrap: wrap;
-	min-height: 36px; /* Ensure consistent height for price section */
-	padding-top: 8px;
+	min-height: 40px; /* Ensure consistent height for price section */
+	padding-top: 12px;
 }
 
+/* Price Label - Subtle, small, uppercase */
+.price-label {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: var(--text-muted);
+	opacity: 0.7;
+	font-weight: 500;
+	flex-basis: 100%; /* Force to new line */
+	margin-bottom: 4px;
+}
+
+/* New Price - EMPHASIZED, large, bold */
 .price {
 	font-weight: 700;
-	color: var(--text-primary);
-	font-size: 18px;
+	color: var(--orange);
+	font-size: 24px;
+	line-height: 1;
+	order: 2; /* Display after old price */
 }
 
+/* Old Price - Small, muted, struck through */
 .price-old {
 	color: var(--text-muted);
 	text-decoration: line-through;
-	font-size: 14px;
+	font-size: 15px;
+	font-weight: 400;
+	opacity: 0.6;
+	order: 1; /* Display first */
 }
 
 .save {
@@ -1083,7 +1096,7 @@ input::placeholder, textarea::placeholder {
 
 /* Footer */
 .footer {
-	margin-top: 80px;
+	margin-top: 0;
 	padding: 60px 0 40px;
 	background: var(--text-primary);
 	color: white;
@@ -1466,29 +1479,16 @@ p, span, div, a, li, td, th,
 	transition: color 0.3s ease;
 }
 
-/* Force theme colors on specific elements */
-.card h3,
-.card h4,
-.card p:not(.muted) {
+/* Force theme colors on specific elements - EXCEPT card-premium and card-blue */
+.card:not(.card-premium):not(.card-blue) h3,
+.card:not(.card-premium):not(.card-blue) h4,
+.card:not(.card-premium):not(.card-blue) p:not(.muted) {
 	color: var(--text-primary) !important;
 }
 
-.card-premium h3,
-.card-premium h4,
-.card-premium p,
 .card-blue h3,
 .card-blue h4,
 .card-blue p {
-	color: white !important;
-}
-
-/* Address cards always use white text on orange background */
-.card-premium .address-block,
-.card-premium .address-block div,
-.card-premium .contact-info,
-.card-premium .contact-info div,
-.card-premium h3,
-.card-premium h4 {
 	color: white !important;
 }
 
@@ -1539,7 +1539,7 @@ p, span, div, a, li, td, th,
 .card textarea {
 	width: 100%;
 	padding: 12px 16px;
-	border: 2px solid var(--border-light);
+	border: 2px solid var(--border-color);
 	border-radius: 8px;
 	background: var(--bg-primary);
 	color: var(--text-primary);
@@ -1547,6 +1547,13 @@ p, span, div, a, li, td, th,
 	margin-bottom: 15px;
 	transition: all 0.3s ease;
 	box-sizing: border-box;
+}
+
+/* Dark mode input borders - more visible */
+[data-theme="dark"] .card input,
+[data-theme="dark"] .card select,
+[data-theme="dark"] .card textarea {
+	border-color: var(--border-color);
 }
 
 .card input:focus,
@@ -1578,27 +1585,6 @@ p, span, div, a, li, td, th,
 	margin-top: 20px;
 }
 
-/* Fix bottom spacing - reduce section padding */
-.section {
-	padding: 60px 0;
-	background: var(--bg-secondary);
-	transition: background-color 0.3s ease;
-}
-
-.section.compact {
-	padding: 40px 0;
-}
-
-.section.alt {
-	background: var(--bg-tertiary);
-	padding: 50px 0;
-}
-
-.footer {
-	margin-top: 0;
-	padding-top: 40px;
-}
-
 /* Highlighted numbers for orange sections */
 .number-highlight {
 	background: rgba(255, 255, 255, 0.2);
@@ -1616,7 +1602,6 @@ p, span, div, a, li, td, th,
 
 /* Ensure equal card heights in quick contact section - ONLY for grid cols-3 */
 .grid.cols-3 .card {
-	height: 100%; /* Use full grid cell height */
 	min-height: 320px; /* Increased minimum height for better consistency */
 	align-self: stretch; /* Stretch to match tallest card */
 	margin: 0;

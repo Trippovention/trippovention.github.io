@@ -173,3 +173,72 @@ input[name="email_confirm"] {
 		opacity: 1;
 	}
 }
+
+/* Validation Summary near submit button */
+.validation-summary {
+	background: rgba(220, 38, 38, 0.1);
+	border: 2px solid rgba(220, 38, 38, 0.4);
+	border-radius: 12px;
+	padding: 16px;
+	margin-bottom: 20px;
+	display: none;
+}
+
+.validation-summary.show {
+	display: block;
+	animation: slideDown 0.3s ease;
+}
+
+.validation-summary-title {
+	font-weight: 700;
+	color: #DC2626;
+	font-size: 16px;
+	margin-bottom: 12px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.validation-summary-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.validation-summary-list li {
+	padding: 8px 0;
+	color: #DC2626;
+	font-size: 14px;
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.validation-summary-list li:hover {
+	background: rgba(220, 38, 38, 0.05);
+	padding-left: 8px;
+	border-radius: 6px;
+}
+
+.validation-summary-list li::before {
+	content: "→";
+	flex-shrink: 0;
+	font-weight: bold;
+}
+
+/* Dark mode validation summary */
+[data-theme="dark"] .validation-summary {
+	background: rgba(220, 38, 38, 0.15);
+	border-color: rgba(220, 38, 38, 0.5);
+}
+
+[data-theme="dark"] .validation-summary-title,
+[data-theme="dark"] .validation-summary-list li {
+	color: #FCA5A5;
+}
+
+[data-theme="dark"] .validation-summary-list li:hover {
+	background: rgba(220, 38, 38, 0.1);
+}

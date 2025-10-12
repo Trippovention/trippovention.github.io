@@ -36,9 +36,7 @@
 
 	<!-- Security Headers for Enhanced Protection -->
 	<meta name="referrer" content="strict-origin-when-cross-origin">
-	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-	<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+	<!-- Note: X-Frame-Options, X-Content-Type-Options, and Permissions-Policy should be set via HTTP headers, not meta tags -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,9 +123,9 @@
 							<h3>Go Goa!</h3>
 							<p class="muted">Beaches • Portuguese Heritage • Nightlife</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 21,000</span>
 								<span class="price">₹ 18,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 14%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=goa">Get Quote →</a>
 						</div>
@@ -143,9 +141,9 @@
 							<h3>Kerala: God's Own Country</h3>
 							<p class="muted">Munnar • Alleppey • Kovalam • Kochi • Ayurveda</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 26,000</span>
 								<span class="price">₹ 22,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 15%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=kerala">Get Quote →</a>
 						</div>
@@ -161,9 +159,9 @@
 							<h3>Rajasthan: Land of Kings</h3>
 							<p class="muted">Jaipur • Udaipur • Jaisalmer • Palaces • Desert Safari</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 29,000</span>
 								<span class="price">₹ 25,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 14%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=rajasthan">Get Quote →</a>
 						</div>
@@ -179,9 +177,9 @@
 							<h3>North East Paradise</h3>
 							<p class="muted">Cherrapunji • Sikkim • Assam • Manipur • Agartala</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 32,000</span>
 								<span class="price">₹ 28,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 13%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=north-east">Get Quote →</a>
 						</div>
@@ -197,9 +195,9 @@
 							<h3>Gujarat Experiences</h3>
 							<p class="muted">Rann of Kutch • Gir • Somnath • Dwarka • Statue of Unity</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 23,000</span>
 								<span class="price">₹ 20,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 13%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=gujarat">Get Quote →</a>
 						</div>
@@ -215,9 +213,9 @@
 							<h3>Tamil Nadu: Heritage Trail</h3>
 							<p class="muted">Mahabalipuram • Coimbatore • Rameshawaram</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 22,000</span>
 								<span class="price">₹ 19,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 14%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=tamil-nadu">Get Quote →</a>
 						</div>
@@ -233,9 +231,9 @@
 							<h3>Andaman Island Escape</h3>
 							<p class="muted">Pristine Beaches • Coral Reefs • Water Sports • Marine Life</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 35,000</span>
 								<span class="price">₹ 30,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 14%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=andaman">Get Quote →</a>
 						</div>
@@ -251,9 +249,9 @@
 							<h3>Karnataka Highlights</h3>
 							<p class="muted">Hampi • Coorg • Bangalore • Mysore Palace</p>
 							<div class="price-row">
+								<span class="price-label">Starting from</span>
 								<span class="price-old">₹ 24,000</span>
 								<span class="price">₹ 21,000 <span class="muted">/ pax</span></span>
-								<span class="save">Save 13%</span>
 							</div>
 							<a class="btn" href="../../contact.html?destination=karnataka">Get Quote →</a>
 						</div>
@@ -669,7 +667,7 @@
 						<div class="body">
 							<div class="badge">💎 Luxury</div>
 							<h3>Wellness India Tours</h3>
-							<p class="muted">Kerala • Ayurveda • Goa • Yoga Therapies • Spiritual</p>
+							<p class="muted">Kerala • Ayurveda • Goa • Yoga Therapies • Sipritual</p>
 							<div class="price-row">
 								<span class="price-old">₹ 15,000</span>
 								<span class="price">₹ 12,000 <span class="muted">/ pax</span></span>
@@ -733,7 +731,8 @@
 							<a href="../../packages/india/index.html">India Tours</a><br>
 							<a href="../../worldwide.html">Worldwide</a><br>
 							<a href="../../visa/index.html">Visa</a><br>
-							<a href="../../services.html">Services</a>
+							<a href="../../services.html">Services</a><br>
+							<a href="../../contact.html">Contact</a>
 						</div>
 					</div>
 					<div>
@@ -741,7 +740,7 @@
 						<p>Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
 							Haryana, India, 122018.</p>
 						<div class="mt-20">
-							<h4>Alternate Contact Details</h4>
+							<p class="footer-heading">Alternate Contact Details</p>
 							<span>📞 <a href="tel:+917303010446">+91 73030 10446</a></span>
 							<br>
 							<span>📞 <a href="tel:+66949319572">+66 94 931 9572</a></span>

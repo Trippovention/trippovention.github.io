@@ -37,9 +37,7 @@
 
 	<!-- Security Headers for Enhanced Protection -->
 	<meta name="referrer" content="strict-origin-when-cross-origin">
-	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-	<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+	<!-- Note: X-Frame-Options, X-Content-Type-Options, and Permissions-Policy should be set via HTTP headers, not meta tags -->
 
 	<link rel="stylesheet" href="../../assets/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,13 +56,13 @@
 					height="40">
 			</a>
 
-			<div class="menu" id="mobileMenu">
-				<a href="../../index.html">Home</a>
-				<a href="../../worldwide.html">Worldwide</a>
-				<a href="../../packages/india/index.html">India</a>
-				<a href="../../visa/index.html">Visa</a>
-				<a href="../../services.html">Services</a>
-			</div>
+		<div class="menu" id="mobileMenu">
+			<a href="../../index.html">Home</a>
+			<a class="active" href="../../worldwide.html">Worldwide</a>
+			<a href="../../packages/india/index.html">India</a>
+			<a href="../../visa/index.html">Visa</a>
+			<a href="../../services.html">Services</a>
+		</div>
 
 			<div class="nav-right">
 				<div class="actions">
@@ -175,7 +173,6 @@
 						<div class="price-row">
 							<span class="price-old">₹ 52,999</span>
 							<span class="price">₹ 45,999 <span class="muted">/ pax</span></span>
-							<span class="save">Save 13%</span>
 						</div>
 						<div class="mt-20">
 							<a class="btn" href="family-5days.html">View Details</a>
@@ -292,7 +289,8 @@
 						<a href="../../packages/india/index.html">India Tours</a><br>
 						<a href="../../worldwide.html">Worldwide</a><br>
 						<a href="../../visa/index.html">Visa</a><br>
-						<a href="../../services.html">Services</a>
+						<a href="../../services.html">Services</a><br>
+						<a href="../../contact.html">Contact</a>
 					</div>
 				</div>
 				<div>
@@ -300,7 +298,7 @@
 					<p>Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana,
 						India, 122018.</p>
 					<div class="mt-20">
-						<h4>Alternate Contact Details</h4>
+						<p class="footer-heading">Alternate Contact Details</p>
 						<span>📞 <a href="tel:+917303010446">+91 73030 10446</a></span>
 						<br>
 						<span>📞 <a href="tel:+66949319572">+66 94 931 9572</a></span>

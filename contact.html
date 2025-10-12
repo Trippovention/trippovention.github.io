@@ -37,9 +37,7 @@
 	
 	<!-- Security Headers for Enhanced Protection -->
 	<meta name="referrer" content="strict-origin-when-cross-origin">
-	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-	<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+	<!-- Note: X-Frame-Options, X-Content-Type-Options, and Permissions-Policy should be set via HTTP headers, not meta tags -->
 	
 	<link rel="stylesheet" href="assets/styles.css">
 	<link rel="stylesheet" href="assets/contact-form.css">
@@ -137,7 +135,6 @@
 									<select name="inquiry_type" id="inquiryType" required onchange="toggleConditionalFields()">
 										<option value="">Select inquiry type</option>
 										<option value="General Inquiry">General Inquiry</option>
-										<option value="Tour Package Question">Tour Package Question</option>
 										<option value="Visa Assistance">Visa Assistance</option>
 										<option value="Custom Trip Planning">Custom Trip Planning</option>
 										<option value="Booking Support">Booking Support</option>
@@ -378,7 +375,8 @@
 						<a href="packages/india/index.html">India Tours</a><br>
 						<a href="worldwide.html">Worldwide</a><br>
 						<a href="visa/index.html">Visa</a><br>
-						<a href="services.html">Services</a>
+						<a href="services.html">Services</a><br>
+						<a href="contact.html">Contact</a>
 					</div>
 				</div>
 				<div>

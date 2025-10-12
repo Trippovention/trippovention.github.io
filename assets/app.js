@@ -97,15 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile navigation toggle (if needed)
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    
-    if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-        });
-    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -138,18 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add loading states to buttons
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            if (!this.classList.contains('loading')) {
-                this.classList.add('loading');
-                // Remove loading state after 2 seconds (adjust as needed)
-                setTimeout(() => {
-                    this.classList.remove('loading');
-                }, 2000);
-            }
-        });
-    });
 
     // Intersection observer for animations with memory leak fix
     const animateElements = document.querySelectorAll('.card, .feature-icon, .stats');
@@ -235,7 +214,7 @@ window.ThemeManager = {
 // Service Worker Registration for PWA
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
-		navigator.serviceWorker.register('./sw.js')
+		navigator.serviceWorker.register('/sw.js')
 			.then(registration => {
 				// Only log in development
 				if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
