@@ -16,7 +16,7 @@ const PRECACHE_URLS = [
 	'/assets/styles.min.css',
 	'/assets/app.js',
 	'/assets/images/logo.webp',
-	'/assets/favicon.ico'
+	'./assets/images/favicon.ico'
 ];
 
 // Install event - cache essential files
