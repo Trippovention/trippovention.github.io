@@ -608,12 +608,12 @@
 	<script>
 	window.structuredDataConfig = {
 		pageType: 'worldwide',
-		url: 'https://trippovention.com/worldwide.html',
+		url: window.location.origin + window.location.pathname,
 		description: 'International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more',
 		aggregateRating: { value: '4.7', count: '350' },
 		breadcrumb: [
-			{ name: 'Home', url: 'https://trippovention.com/' },
-			{ name: 'Worldwide Tours', url: 'https://trippovention.com/worldwide.html' }
+			{ name: 'Home', url: window.location.origin + '/' },
+			{ name: 'Worldwide Tours', url: window.location.origin + window.location.pathname }
 		]
 	};
 	</script>
