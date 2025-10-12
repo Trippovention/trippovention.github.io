@@ -511,82 +511,116 @@ document.addEventListener('DOMContentLoaded', function() {
 	form.addEventListener('submit', function(e) {
 		console.log('Form submission triggered');
 		
-		// Rate limiting check
-		if (submitAttempts >= maxAttempts) {
-			e.preventDefault();
-			alert('Too many submission attempts. Please wait 5 minutes before trying again.');
-			console.log('Blocked: Rate limit exceeded');
-			return false;
-		}
-		
-		// Check if honeypot fields are filled (spam detection)
-		const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"]');
-		for (let field of honeyFields) {
-			if (field.value !== '') {
+		try {
+			// Rate limiting check
+			console.log('1. Checking rate limit...');
+			if (submitAttempts >= maxAttempts) {
 				e.preventDefault();
-				console.log('Blocked: Honeypot triggered');
+				alert('Too many submission attempts. Please wait 5 minutes before trying again.');
+				console.log('Blocked: Rate limit exceeded');
 				return false;
 			}
-		}
-		
-		// Check form submission timing (too fast = likely bot)
-		// REDUCED from 5 seconds to 2 seconds to be more user-friendly
-		const loadTime = parseInt(timestampField.value);
-		const submitTime = Date.now();
-		const timeDiff = submitTime - loadTime;
-		
-		if (timeDiff < 2000) { // Less than 2 seconds
-			e.preventDefault();
-			alert('Please take a moment to review your message before submitting.');
-			console.log(`Blocked: Too fast (${timeDiff}ms)`);
-			return false;
-		}
-		
-		// Final validation check - only check VISIBLE required fields
-		const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
-		for (let field of requiredFields) {
-			// Skip validation for fields in hidden sections
-			const isVisible = field.offsetParent !== null; // More reliable than checking display
-			if (isVisible && !field.value.trim()) {
-				field.focus();
-				e.preventDefault();
-				console.log(`Blocked: Missing required field - ${field.name}`);
-				return false;
-			} else if (!isVisible) {
-				console.log(`Skipping hidden required field: ${field.name}`);
+			console.log('✓ Rate limit OK');
+			
+			// Check if honeypot fields are filled (spam detection)
+			console.log('2. Checking honeypot...');
+			const honeyFields = form.querySelectorAll('input[name="_honey"], input[name="website"]');
+			for (let field of honeyFields) {
+				if (field.value !== '') {
+					e.preventDefault();
+					console.log('Blocked: Honeypot triggered');
+					return false;
+				}
 			}
-		}
-		
-		console.log('Form validation passed, submitting...');
-		
-		// Ensure _replyto is populated before submission
-		const emailField = form.querySelector('input[name="email"]');
-		const replytoField = document.getElementById('_replyto');
-		if (emailField && replytoField) {
-			replytoField.value = emailField.value;
-		}
-		
-		// Increment submit attempts
-		submitAttempts++;
-		
-		// Reset attempts after cooldown
-		setTimeout(() => {
-			submitAttempts = 0;
-		}, cooldownTime);
-		
-		// Show loading state AFTER form starts submitting
-		// Use setTimeout to avoid blocking the submission
-		setTimeout(() => {
-			const submitBtn = form.querySelector('button[type="submit"]');
-			if (submitBtn) {
-				submitBtn.textContent = '⏳ Sending...';
-				submitBtn.disabled = true;
-				submitBtn.style.opacity = '0.8';
+			console.log('✓ Honeypot OK');
+			
+			// Check form submission timing (too fast = likely bot)
+			// REDUCED from 5 seconds to 2 seconds to be more user-friendly
+			console.log('3. Checking timing...');
+			if (!timestampField) {
+				console.error('ERROR: timestampField not found!');
+				// Allow submission anyway - don't block for this
+			} else {
+				const loadTime = parseInt(timestampField.value) || Date.now();
+				const submitTime = Date.now();
+				const timeDiff = submitTime - loadTime;
+				console.log(`Time since load: ${timeDiff}ms`);
+				
+				if (timeDiff < 2000) { // Less than 2 seconds
+					e.preventDefault();
+					alert('Please take a moment to review your message before submitting.');
+					console.log(`Blocked: Too fast (${timeDiff}ms)`);
+					return false;
+				}
+				console.log('✓ Timing OK');
 			}
-		}, 0);
-		
-		// DO NOT call e.preventDefault() - allow natural form submission
-		// DO NOT return anything - let the browser handle the submission
+			
+			// Final validation check - only check VISIBLE required fields
+			console.log('4. Checking required fields...');
+			const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+			console.log(`Found ${requiredFields.length} required fields`);
+			
+			for (let field of requiredFields) {
+				// Skip validation for fields in hidden sections
+				const isVisible = field.offsetParent !== null;
+				if (isVisible && !field.value.trim()) {
+					field.focus();
+					e.preventDefault();
+					console.log(`Blocked: Missing required field - ${field.name}`);
+					return false;
+				} else if (!isVisible) {
+					console.log(`Skipping hidden required field: ${field.name}`);
+				} else {
+					console.log(`✓ Field OK: ${field.name} = "${field.value.substring(0, 20)}..."`);
+				}
+			}
+			console.log('✓ All required fields OK');
+			
+			console.log('5. Populating _replyto...');
+			// Ensure _replyto is populated before submission
+			const emailField = form.querySelector('input[name="email"]');
+			const replytoField = document.getElementById('_replyto');
+			if (emailField && replytoField) {
+				replytoField.value = emailField.value;
+				console.log(`✓ _replyto set to: ${emailField.value}`);
+			} else {
+				console.warn('Warning: Could not find email or _replyto field');
+			}
+			
+			// Increment submit attempts
+			submitAttempts++;
+			
+			// Reset attempts after cooldown
+			setTimeout(() => {
+				submitAttempts = 0;
+			}, cooldownTime);
+			
+			console.log('✅ Form validation passed, submitting...');
+			console.log('Form action:', form.action);
+			console.log('Form method:', form.method);
+			
+			// Show loading state AFTER form starts submitting
+			// Use setTimeout to avoid blocking the submission
+			setTimeout(() => {
+				const submitBtn = form.querySelector('button[type="submit"]');
+				if (submitBtn) {
+					submitBtn.textContent = '⏳ Sending...';
+					submitBtn.disabled = true;
+					submitBtn.style.opacity = '0.8';
+					console.log('Button updated to loading state');
+				}
+			}, 0);
+			
+			// DO NOT call e.preventDefault() - allow natural form submission
+			// DO NOT return anything - let the browser handle the submission
+			console.log('Allowing form to submit naturally...');
+			
+		} catch (error) {
+			console.error('ERROR in form submission handler:', error);
+			console.error('Error stack:', error.stack);
+			// Allow submission even if there's an error in our validation
+			console.log('Allowing form to submit despite error...');
+		}
 	});
 	
 	// Check for success parameter in URL or hash
