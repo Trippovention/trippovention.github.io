@@ -275,7 +275,7 @@ const StructuredData = (() => {
 				}), "Structured Data: TravelAgency (Primary Business Entity)");
 				
 				injectSchema(schemas.organization(), "Structured Data: Organization (Knowledge Graph)");
-				injectSchema(schemas.website({}), "Structured Data: WebSite (Sitelinks Search Box)");
+				injectSchema(schemas.website({ searchPath: "/" }), "Structured Data: WebSite (Sitelinks Search Box)");
 				break;
 
 			case 'worldwide':
