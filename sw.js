@@ -1,10 +1,10 @@
 /**
  * Service Worker for Trippovention
  * Enables offline support and faster repeat visits
- * Version: 2.3 - Network-first for HTML, cache-first for assets
+ * Version: 2.4 - Network-first for HTML, cache-first for assets
  */
 
-const CACHE_VERSION = '2.3';
+const CACHE_VERSION = '2.4';
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = 'trippovention-runtime';
 
@@ -53,10 +53,14 @@ self.addEventListener('fetch', (event) => {
 		event.respondWith(
 			fetch(event.request)
 				.then(response => {
-					// Cache the fresh HTML
-					caches.open(CACHE_NAME).then(cache => {
-						cache.put(event.request, response.clone());
-					});
+					// Only cache valid responses
+					if (response && response.status === 200) {
+						// Clone BEFORE caching (response body can only be used once)
+						const responseToCache = response.clone();
+						caches.open(CACHE_NAME).then(cache => {
+							cache.put(event.request, responseToCache);
+						});
+					}
 					return response;
 				})
 				.catch(() => caches.match(event.request))
