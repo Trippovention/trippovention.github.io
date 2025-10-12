@@ -343,8 +343,19 @@ function prefillDestinationFromURL() {
 	
 	// If critical fields are not found, retry after a short delay
 	if (!inquiryTypeField) {
-		setTimeout(prefillDestinationFromURL, 100);
-		return;
+		return; // Don't retry, will be called again by multiple setTimeout
+	}
+	
+	// Check if we've already processed this (prevent multiple fills)
+	// Mark the form as processed by setting a data attribute
+	const formElement = document.getElementById('contactForm');
+	if (formElement && formElement.dataset.urlProcessed === 'true') {
+		return; // Already processed, skip
+	}
+	
+	// Mark as processing to prevent duplicate fills
+	if (formElement) {
+		formElement.dataset.urlProcessing = 'true';
 	}
 	
 	// Helper function to format names (kebab-case to Title Case)
@@ -478,7 +489,17 @@ function prefillDestinationFromURL() {
 		setTimeout(() => {
 			window.history.replaceState({}, document.title, window.location.pathname);
 		}, 1000); // Give time for user to see the URL
+		
+		// Mark as processed
+		if (formElement) {
+			formElement.dataset.urlProcessed = 'true';
+		}
 		return; // Exit early to prevent auto-selection on redirect
+	}
+	
+	// Mark form as fully processed to prevent duplicate fills
+	if (formElement) {
+		formElement.dataset.urlProcessed = 'true';
 	}
 }
 
@@ -500,11 +521,23 @@ document.addEventListener('DOMContentLoaded', function() {
 	ensureFormVisibility();
 	
 	// Pre-fill destination from URL parameters
-	// Use setTimeout to ensure all form fields are fully rendered
-	// This is especially important when navigating from other pages
+	// Use multiple delayed attempts to handle both refresh and navigation scenarios
+	// GitHub Pages needs more time when navigating from other pages
+	
+	// First attempt: Quick (for page refresh)
 	setTimeout(() => {
 		prefillDestinationFromURL();
 	}, 100);
+	
+	// Second attempt: Medium delay (for navigation)
+	setTimeout(() => {
+		prefillDestinationFromURL();
+	}, 500);
+	
+	// Third attempt: Fallback (for slow connections)
+	setTimeout(() => {
+		prefillDestinationFromURL();
+	}, 1000);
 
 	// CRITICAL FIX: Setup event listeners BEFORE initial validation
 
