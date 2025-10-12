@@ -342,21 +342,35 @@ const StructuredData = (() => {
 	};
 })();
 
+// Helper function to validate config object
+function isValidConfig(config) {
+	return (
+		typeof config === 'object' &&
+		config !== null &&
+		typeof config.pageType === 'string' &&
+		config.pageType.length > 0
+	);
+}
+
 // Auto-initialize if config exists in window
 if (typeof window !== 'undefined' && window.structuredDataConfig) {
-	if (document.readyState === 'interactive' || document.readyState === 'complete') {
-		try {
-			StructuredData.init(window.structuredDataConfig);
-		} catch (e) {
-			console.error("StructuredData: Failed to initialize structured data.", e);
-		}
-	} else {
-		document.addEventListener('DOMContentLoaded', () => {
+	if (isValidConfig(window.structuredDataConfig)) {
+		if (document.readyState === 'interactive' || document.readyState === 'complete') {
 			try {
 				StructuredData.init(window.structuredDataConfig);
 			} catch (e) {
 				console.error("StructuredData: Failed to initialize structured data.", e);
 			}
-		});
+		} else {
+			document.addEventListener('DOMContentLoaded', () => {
+				try {
+					StructuredData.init(window.structuredDataConfig);
+				} catch (e) {
+					console.error("StructuredData: Failed to initialize structured data.", e);
+				}
+			});
+		}
+	} else {
+		console.warn("StructuredData: Invalid configuration object. Initialization skipped.");
 	}
 }
