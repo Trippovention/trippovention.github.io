@@ -15,7 +15,7 @@ const PRECACHE_URLS = [
 	'/contact.html',
 	'/assets/styles.min.css',
 	'/assets/app.js',
-	'/assets/logo.webp',
+	'/assets/images/logo.webp',
 	'/assets/favicon.ico'
 ];
 
