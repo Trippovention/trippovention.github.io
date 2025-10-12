@@ -347,6 +347,26 @@ function prefillDestinationFromURL() {
 			.join(' ');
 	};
 	
+	// PRIORITY 0: Handle Coupon Code FIRST (?coupon=xxx)
+	// → Always apply coupon, regardless of other parameters
+	// → Coupon field is always visible, doesn't depend on inquiry type
+	if (coupon && couponField) {
+		couponField.value = coupon.toUpperCase(); // Coupons are usually uppercase
+		
+		// Highlight the coupon field briefly to draw attention
+		setTimeout(() => {
+			couponField.style.borderColor = 'rgba(40,167,69,0.8)';
+			couponField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+			couponField.style.transition = 'all 0.3s ease';
+			
+			// Reset after 2 seconds
+			setTimeout(() => {
+				couponField.style.borderColor = '';
+				couponField.style.boxShadow = '';
+			}, 2000);
+		}, 600);
+	}
+	
 	// PRIORITY 1: Handle Visa Service Queries (?service=xxx-visa)
 	if (service && visaCountryField && inquiryTypeField) {
 		// Extract country name from service (e.g., "singapore-visa" → "Singapore")
@@ -443,27 +463,8 @@ function prefillDestinationFromURL() {
 		}, 150);
 	}
 	
-	// PRIORITY 5: Handle Coupon Code (?coupon=xxx)
-	// → Auto-fill coupon code field if present
-	if (coupon && couponField) {
-		couponField.value = coupon.toUpperCase(); // Coupons are usually uppercase
-		
-		// Highlight the coupon field briefly to draw attention
-		setTimeout(() => {
-			couponField.style.borderColor = 'rgba(40,167,69,0.8)';
-			couponField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
-			couponField.style.transition = 'all 0.3s ease';
-			
-			// Reset after 2 seconds
-			setTimeout(() => {
-				couponField.style.borderColor = '';
-				couponField.style.boxShadow = '';
-			}, 2000);
-		}, 600);
-	}
-	
 	// If this is a redirect from successful submission, don't auto-focus
-	// Just apply coupon if present, but don't change inquiry type
+	// Coupon is already applied at the beginning, just skip inquiry type selection
 	if (success === 'true') {
 		// Clean URL after reading all parameters
 		setTimeout(() => {

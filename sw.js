@@ -1,10 +1,10 @@
 /**
  * Service Worker for Trippovention
  * Enables offline support and faster repeat visits
- * Version: 2.1 - Network-first for HTML, cache-first for assets
+ * Version: 1.0 - Network-first for HTML, cache-first for assets
  */
 
-const CACHE_VERSION = '2.1';
+const CACHE_VERSION = '1.0';
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = 'trippovention-runtime';
 
