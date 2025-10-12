@@ -315,9 +315,6 @@ function showSuccessMessage() {
 			successDiv.remove();
 		}
 	}, 5000);
-	
-	// Clean URL
-	window.history.replaceState({}, document.title, window.location.pathname);
 }
 
 // Pre-fill form from URL parameters - Smart Auto-Population
@@ -327,11 +324,20 @@ function prefillDestinationFromURL() {
 	const service = urlParams.get('service');
 	const packageParam = urlParams.get('package');
 	const from = urlParams.get('from');
+	const coupon = urlParams.get('coupon');
+	const success = urlParams.get('success');
 	
-	// Get form fields
+	// Get form fields - with retry logic if elements are not yet available
 	const inquiryTypeField = document.getElementById('inquiryType');
 	const destinationField = document.querySelector('input[name="Preferred\u00A0Destination"]');
 	const visaCountryField = document.querySelector('input[name="Visa\u00A0Country"]');
+	const couponField = document.querySelector('input[name="Coupon\u00A0Code"]');
+	
+	// If critical fields are not found, retry after a short delay
+	if (!inquiryTypeField) {
+		setTimeout(prefillDestinationFromURL, 100);
+		return;
+	}
 	
 	// Helper function to format names (kebab-case to Title Case)
 	const formatName = (str) => {
@@ -347,14 +353,18 @@ function prefillDestinationFromURL() {
 		const countryName = service.replace(/-visa$/i, '');
 		const formattedCountry = formatName(countryName);
 		
-		visaCountryField.value = formattedCountry;
+		// Set inquiry type FIRST to trigger conditional fields
 		inquiryTypeField.value = 'Visa Assistance';
 		toggleConditionalFields();
 		
+		// Wait for fields to be visible, then set value
 		setTimeout(() => {
-			visaCountryField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			visaCountryField.focus();
-		}, 500);
+			visaCountryField.value = formattedCountry;
+			setTimeout(() => {
+				visaCountryField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				visaCountryField.focus();
+			}, 200);
+		}, 150);
 		return; // Exit after handling visa
 	}
 	
@@ -363,17 +373,20 @@ function prefillDestinationFromURL() {
 	if (destination && destinationField && inquiryTypeField) {
 		const formattedDestination = formatName(destination);
 		
-		destinationField.value = formattedDestination;
+		// Set inquiry type FIRST to trigger conditional fields
 		inquiryTypeField.value = 'Custom Trip Planning';
 		toggleConditionalFields();
 		
-		// Make destination required for custom trip planning
-		destinationField.setAttribute('required', 'required');
-		
+		// Wait for fields to be visible, then set value
 		setTimeout(() => {
-			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			destinationField.focus();
-		}, 500);
+			destinationField.value = formattedDestination;
+			destinationField.setAttribute('required', 'required');
+			
+			setTimeout(() => {
+				destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				destinationField.focus();
+			}, 200);
+		}, 150);
 		return; // Exit after handling destination
 	}
 	
@@ -389,20 +402,24 @@ function prefillDestinationFromURL() {
 			setTimeout(() => {
 				visaCountryField.scrollIntoView({ behavior: 'smooth', block: 'center' });
 				visaCountryField.focus();
-			}, 500);
+			}, 350);
 			return; // Exit after handling visa
 		}
 		
 		// For other pages → Opens "Custom Trip Planning" with category context
 		if (destinationField) {
-			destinationField.value = formattedFrom;
+			// Set inquiry type FIRST to trigger conditional fields
 			inquiryTypeField.value = 'Custom Trip Planning';
 			toggleConditionalFields();
 			
+			// Wait for fields to be visible, then set value
 			setTimeout(() => {
-				destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-				destinationField.focus();
-			}, 500);
+				destinationField.value = formattedFrom;
+				setTimeout(() => {
+					destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					destinationField.focus();
+				}, 200);
+			}, 150);
 			return; // Exit after handling from
 		}
 	}
@@ -412,14 +429,47 @@ function prefillDestinationFromURL() {
 	if (packageParam && destinationField && inquiryTypeField) {
 		const formattedPackage = formatName(packageParam);
 		
-		destinationField.value = formattedPackage;
+		// Set inquiry type FIRST to trigger conditional fields
 		inquiryTypeField.value = 'Tour Package Question';
 		toggleConditionalFields();
 		
+		// Wait for fields to be visible, then set value
 		setTimeout(() => {
-			destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			destinationField.focus();
-		}, 500);
+			destinationField.value = formattedPackage;
+			setTimeout(() => {
+				destinationField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				destinationField.focus();
+			}, 200);
+		}, 150);
+	}
+	
+	// PRIORITY 5: Handle Coupon Code (?coupon=xxx)
+	// → Auto-fill coupon code field if present
+	if (coupon && couponField) {
+		couponField.value = coupon.toUpperCase(); // Coupons are usually uppercase
+		
+		// Highlight the coupon field briefly to draw attention
+		setTimeout(() => {
+			couponField.style.borderColor = 'rgba(40,167,69,0.8)';
+			couponField.style.boxShadow = '0 0 0 2px rgba(40,167,69,0.2)';
+			couponField.style.transition = 'all 0.3s ease';
+			
+			// Reset after 2 seconds
+			setTimeout(() => {
+				couponField.style.borderColor = '';
+				couponField.style.boxShadow = '';
+			}, 2000);
+		}, 600);
+	}
+	
+	// If this is a redirect from successful submission, don't auto-focus
+	// Just apply coupon if present, but don't change inquiry type
+	if (success === 'true') {
+		// Clean URL after reading all parameters
+		setTimeout(() => {
+			window.history.replaceState({}, document.title, window.location.pathname);
+		}, 1000); // Give time for user to see the URL
+		return; // Exit early to prevent auto-selection on redirect
 	}
 }
 
@@ -428,11 +478,24 @@ document.addEventListener('DOMContentLoaded', function() {
 	const form = document.querySelector('form[action*="formsubmit.co"]');
 	if (!form) return;
 
+	// Set FormSubmit redirect URL dynamically based on current domain
+	// This allows the form to work on any domain (github.io, .com, localhost)
+	const nextField = document.getElementById('_next');
+	if (nextField) {
+		const currentOrigin = window.location.origin; // e.g., https://trippovention.com
+		const currentPath = window.location.pathname; // e.g., /contact.html
+		nextField.value = `${currentOrigin}${currentPath}?success=true`;
+	}
+
 	// Ensure form visibility on page load
 	ensureFormVisibility();
 	
 	// Pre-fill destination from URL parameters
-	prefillDestinationFromURL();
+	// Use setTimeout to ensure all form fields are fully rendered
+	// This is especially important when navigating from other pages
+	setTimeout(() => {
+		prefillDestinationFromURL();
+	}, 100);
 
 	// CRITICAL FIX: Setup event listeners BEFORE initial validation
 
