@@ -11,12 +11,12 @@
 }
 
 .form-input-light::placeholder {
-	color: rgba(255,255,255,0.7) !important;
+	color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .form-input-light:focus {
-	background: rgba(255,255,255,0.25) !important;
-	border-color: rgba(255,255,255,0.5) !important;
+	background: rgba(255, 255, 255, 0.25) !important;
+	border-color: rgba(255, 255, 255, 0.5) !important;
 	outline: none !important;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .contact-header .subtitle {
-	color: rgba(255,255,255,0.9);
+	color: rgba(255, 255, 255, 0.9);
 }
 
 /* Add floating animation to contact header */
@@ -168,6 +168,7 @@ input[name="email_confirm"] {
 		transform: translateX(100%);
 		opacity: 0;
 	}
+
 	to {
 		transform: translateX(0);
 		opacity: 1;
