@@ -37,7 +37,12 @@ const StructuredData = (() => {
 			"https://twitter.com/trippovention"
 		],
 		// 74+ countries - global coverage
-		areaServed: ["IN", "SG", "TH", "MY", "AE", "VN", "LK", "ID", "MV", "PH", "KH", "MM", "LA", "BN", "NP", "BT", "BD", "PK", "JP", "KR", "CN", "HK", "TW", "MO", "AU", "NZ", "FJ", "GB", "FR", "ES", "IT", "CH", "AT", "NL", "GR", "TR", "DE", "BE", "SE", "NO", "FI", "DK", "IS", "PT", "IE", "PL", "CZ", "HU", "RO", "HR", "SI", "MT", "CY", "US", "CA", "MX", "BR", "AR", "CL", "PE", "CO", "SA", "QA", "KW", "OM", "BH", "JO", "IL", "MU", "ZA", "KE", "EG", "TN", "MA"]
+		areaServed: ["IN", "SG", "TH", "MY", "AE", "VN", "LK", "ID", "MV", "PH", "KH", "MM", "LA", "BN",
+			"NP", "BT", "BD", "PK", "JP", "KR", "CN", "HK", "TW", "MO", "AU", "NZ", "FJ", "GB", "FR",
+			"ES", "IT", "CH", "AT", "NL", "GR", "TR", "DE", "BE", "SE", "NO", "FI", "DK", "IS", "PT",
+			"IE", "PL", "CZ", "HU", "RO", "HR", "SI", "MT", "CY", "US", "CA", "MX", "BR", "AR", "CL",
+			"PE", "CO", "SA", "QA", "KW", "OM", "BH", "JO", "IL", "MU", "ZA", "KE", "EG", "TN", "MA"
+		]
 	};
 
 	// Contact point template (reusable)
@@ -140,8 +145,12 @@ const StructuredData = (() => {
 			"@context": "https://schema.org",
 			"@type": "Service",
 			serviceType: config.serviceType,
-			...(config.name && { name: config.name }),
-			...(config.description && { description: config.description }),
+			...(config.name && {
+				name: config.name
+			}),
+			...(config.description && {
+				description: config.description
+			}),
 			provider: getTravelAgencyProvider(),
 			areaServed: COMPANY_INFO.areaServed,
 			...(config.aggregateRating && {
@@ -152,9 +161,15 @@ const StructuredData = (() => {
 					bestRating: "5"
 				}
 			}),
-			...(config.offers && { offers: config.offers }),
-			...(config.serviceOutput && { serviceOutput: config.serviceOutput }),
-			...(config.hasOfferCatalog && { hasOfferCatalog: config.hasOfferCatalog })
+			...(config.offers && {
+				offers: config.offers
+			}),
+			...(config.serviceOutput && {
+				serviceOutput: config.serviceOutput
+			}),
+			...(config.hasOfferCatalog && {
+				hasOfferCatalog: config.hasOfferCatalog
+			})
 		}),
 
 		// 5. TouristTrip Schema (Package pages)
@@ -173,10 +188,16 @@ const StructuredData = (() => {
 					bestRating: "5"
 				}
 			}),
-			...(config.duration && { duration: config.duration }),
+			...(config.duration && {
+				duration: config.duration
+			}),
 			touristType: config.touristType || ["Family", "Couples", "Solo Travelers", "Groups"],
-			...(config.itinerary && { itinerary: config.itinerary }),
-			...(config.offers && { offers: config.offers })
+			...(config.itinerary && {
+				itinerary: config.itinerary
+			}),
+			...(config.offers && {
+				offers: config.offers
+			})
 		}),
 
 		// 6. ContactPage Schema
@@ -198,8 +219,7 @@ const StructuredData = (() => {
 					opens: "10:00",
 					closes: "19:00"
 				},
-				contactPoint: config.contactPoints || [
-					{
+				contactPoint: config.contactPoints || [{
 						"@type": "ContactPoint",
 						telephone: COMPANY_INFO.telephone,
 						contactType: "Customer Service",
@@ -243,13 +263,13 @@ const StructuredData = (() => {
 		const script = document.createElement('script');
 		script.type = 'application/ld+json';
 		script.textContent = JSON.stringify(schema);
-		
+
 		// Add comment before script if provided
 		if (comment) {
 			const commentNode = document.createComment(` ${comment} `);
 			document.body.appendChild(commentNode);
 		}
-		
+
 		document.body.appendChild(script);
 	};
 
@@ -264,18 +284,23 @@ const StructuredData = (() => {
 		switch (config.pageType) {
 			case 'homepage':
 				injectSchema(schemas.travelAgency({
-					description: config.description || "Your trusted travel partner for unforgettable journeys across India and the world",
+					description: config.description ||
+						"Your trusted travel partner for unforgettable journeys across India and the world",
 					url: COMPANY_INFO.url,
-					aggregateRating: { value: "4.8", count: "500" }
+					aggregateRating: {
+						value: "4.8",
+						count: "500"
+					}
 				}), "Structured Data: TravelAgency (Primary Business Entity)");
-				
+
 				injectSchema(schemas.organization(), "Structured Data: Organization (Knowledge Graph)");
 				injectSchema(schemas.website({}), "Structured Data: WebSite (Sitelinks Search Box)");
 				break;
 
 			case 'worldwide':
 				injectSchema(schemas.travelAgency({
-					description: config.description || "International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
+					description: config.description ||
+						"International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
 					url: config.url
 				}), "Structured Data: TravelAgency");
 				break;
@@ -283,7 +308,10 @@ const StructuredData = (() => {
 			case 'services':
 				injectSchema(schemas.service({
 					serviceType: "Travel Services",
-					aggregateRating: { value: "4.8", count: "500" },
+					aggregateRating: {
+						value: "4.8",
+						count: "500"
+					},
 					hasOfferCatalog: config.offerCatalog
 				}), "Structured Data: Service with OfferCatalog");
 				break;

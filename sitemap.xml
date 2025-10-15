@@ -87,6 +87,30 @@
     </image:image>
   </url>
 
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://trippovention.com/terms-and-conditions.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://trippovention.com/privacy-policy.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Refund Policy -->
+  <url>
+    <loc>https://trippovention.com/refund-policy.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Note: 404.html deliberately excluded as per robots.txt noindex directive -->
 
 </urlset>
