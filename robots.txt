@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: October 12, 2025
+# Last Updated: October 18, 2025
 
 # Global rules for all bots
 User-agent: *
