@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Home Page (Reference Template - Fully Optimized) -->
+  <!-- Home Page -->
   <url>
     <loc>https://trippovention.com/</loc>
     <lastmod>2025-10-12</lastmod>
@@ -16,15 +16,15 @@
     </image:image>
   </url>
   
-  <!-- Worldwide Tours (Task 2 - Optimized) -->
+  <!-- Worldwide Page -->
   <url>
     <loc>https://trippovention.com/worldwide.html</loc>
-    <lastmod>2025-10-12</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- Services Page (Task 3 - Optimized) -->
+  <!-- Services Page -->
   <url>
     <loc>https://trippovention.com/services.html</loc>
     <lastmod>2025-10-12</lastmod>
@@ -32,7 +32,7 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- Contact Page (Task 4 - Optimized) -->
+  <!-- Contact Page -->
   <url>
     <loc>https://trippovention.com/contact.html</loc>
     <lastmod>2025-10-12</lastmod>
@@ -40,15 +40,15 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- Visa Services (Task 5 - Optimized) -->
+  <!-- Visa Page -->
   <url>
     <loc>https://trippovention.com/visa/</loc>
-    <lastmod>2025-10-12</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- India Tours Package Page (Task 6 - Optimized) -->
+  <!-- India Packages Page -->
   <url>
     <loc>https://trippovention.com/packages/india/</loc>
     <lastmod>2025-10-12</lastmod>
@@ -61,7 +61,7 @@
     </image:image>
   </url>
   
-  <!-- Singapore Tours Package Page (Task 7 - Optimized) -->
+  <!-- Singapore Packages Page (Task 7 - Optimized) -->
   <url>
     <loc>https://trippovention.com/packages/singapore/</loc>
     <lastmod>2025-10-12</lastmod>
@@ -90,7 +90,7 @@
   <!-- Terms & Conditions -->
   <url>
     <loc>https://trippovention.com/terms-and-conditions.html</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -98,7 +98,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://trippovention.com/privacy-policy.html</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -106,7 +106,7 @@
   <!-- Refund Policy -->
   <url>
     <loc>https://trippovention.com/refund-policy.html</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

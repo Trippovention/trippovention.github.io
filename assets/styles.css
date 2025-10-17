@@ -219,7 +219,6 @@ main {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
-	border: 1px solid var(--border-color);
 	color: var(--text-secondary);
 	text-decoration: none;
 	background: var(--bg-primary);
@@ -527,16 +526,38 @@ main {
 .info-highlight-green {
 	background: var(--emerald-light);
 	color: var(--emerald);
+	border: 1px solid rgba(44, 182, 125, 0.2);
 }
 
 .info-highlight-blue {
 	background: var(--blue-light);
 	color: var(--blue);
+	border: 1px solid rgba(43, 139, 216, 0.2);
 }
 
 .info-highlight-orange {
 	background: var(--orange-light);
 	color: var(--orange);
+	border: 1px solid rgba(214, 128, 78, 0.2);
+}
+
+/* Dark mode specific styles for info-highlight boxes */
+[data-theme="dark"] .info-highlight-green {
+	background: rgba(44, 182, 125, 0.15);
+	color: #4ADE80;
+	border: 1px solid rgba(44, 182, 125, 0.3);
+}
+
+[data-theme="dark"] .info-highlight-blue {
+	background: rgba(43, 139, 216, 0.15);
+	color: #60A5FA;
+	border: 1px solid rgba(43, 139, 216, 0.3);
+}
+
+[data-theme="dark"] .info-highlight-orange {
+	background: rgba(214, 128, 78, 0.15);
+	color: #FB923C;
+	border: 1px solid rgba(214, 128, 78, 0.3);
 }
 
 .info-highlight strong {
@@ -1152,6 +1173,10 @@ textarea::placeholder {
 	gap: 20px;
 }
 
+.visa-grid a {
+	text-decoration: none;
+}
+
 .visa-item {
 	background: var(--bg-primary);
 	padding: 30px 20px;
@@ -1537,6 +1562,11 @@ select:focus,
 textarea:focus {
 	outline: 2px solid var(--blue);
 	outline-offset: 2px;
+}
+
+.icon {
+	outline: none;
+	border: none;
 }
 
 /* Enterprise Utility Classes - Eliminates need for inline styles */
