@@ -106,6 +106,18 @@ body {
 	/* Ensure full width usage within max-width */
 }
 
+/* Navigation container - allow horizontal scroll on very small screens */
+.nav .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 64px;
+	min-width: 320px;
+	/* Prevent collapse below minimum */
+	overflow-x: visible;
+	/* Allow overflow for dropdowns */
+}
+
 /* Typography */
 h1,
 h2,
@@ -146,13 +158,6 @@ div {
 	box-shadow: var(--shadow-light);
 }
 
-.nav .container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 64px;
-}
-
 /* Main content spacing to account for fixed navbar */
 main {
 	padding-top: 64px;
@@ -166,6 +171,8 @@ main {
 	color: var(--text-primary);
 	text-decoration: none;
 	transition: color 0.3s ease;
+	flex-shrink: 0;
+	/* Prevent logo from shrinking on very small screens */
 }
 
 .brand img {
@@ -181,6 +188,10 @@ main {
 .menu {
 	display: flex;
 	gap: 16px;
+	flex-shrink: 1;
+	/* Allow menu to shrink if needed */
+	min-width: 0;
+	/* Enable flex shrinking */
 }
 
 .menu a {
@@ -190,6 +201,10 @@ main {
 	border-radius: 10px;
 	transition: all 0.3s ease;
 	font-weight: 500;
+	white-space: nowrap;
+	/* Prevent menu text from wrapping */
+	flex-shrink: 0;
+	/* Prevent individual menu items from shrinking */
 }
 
 .menu a:hover,
@@ -203,12 +218,15 @@ main {
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	flex-shrink: 0;
+	/* Prevent action icons from shrinking */
 }
 
 .actions {
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	flex-shrink: 0;
 }
 
 .icon {
@@ -1323,25 +1341,8 @@ textarea::placeholder {
 }
 
 /* Responsive Design - Professional Breakpoint Management */
+/* Mobile Navigation Breakpoint - Updated to 900px for proper menu visibility with 6 items (Home, Worldwide, India, Visa, Services, Contact) */
 @media (max-width: 900px) {
-
-	.grid.cols-3,
-	.destination-grid {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	.visa-grid {
-		grid-template-columns: repeat(2, 1fr);
-		/* Maintain 2 columns on tablets */
-	}
-
-	.two {
-		grid-template-columns: 1fr;
-	}
-}
-
-/* Mobile Navigation Breakpoint - Optimized for 5 menu items after removing redundant Contact */
-@media (max-width: 850px) {
 	main {
 		padding-top: 56px;
 	}
@@ -1388,6 +1389,21 @@ textarea::placeholder {
 
 	.nav-right .actions {
 		gap: 8px;
+	}
+	
+	/* Ensure grid layouts adapt to tablet view */
+	.grid.cols-3,
+	.destination-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.visa-grid {
+		grid-template-columns: repeat(2, 1fr);
+		/* Maintain 2 columns on tablets */
+	}
+
+	.two {
+		grid-template-columns: 1fr;
 	}
 }
 
@@ -1551,6 +1567,55 @@ textarea::placeholder {
 
 	.section-title h2 {
 		font-size: 28px;
+	}
+}
+
+/* Extra Small Screens - Horizontal Scroll for Navigation on Very Small Devices */
+@media (max-width: 360px) {
+	.nav .container {
+		padding: 0 12px;
+		/* Reduce padding on very small screens */
+		overflow-x: auto;
+		/* Enable horizontal scroll if needed */
+		-webkit-overflow-scrolling: touch;
+		/* Smooth scrolling on iOS */
+	}
+	
+	.brand img {
+		height: 28px;
+		/* Slightly smaller logo on very small screens */
+	}
+	
+	.actions {
+		gap: 6px;
+		/* Reduce gap between action icons */
+	}
+	
+	.icon {
+		width: 32px;
+		height: 32px;
+		font-size: 14px;
+		/* Slightly smaller icons */
+	}
+	
+	.container {
+		padding: 0 12px;
+		/* Reduce container padding */
+	}
+	
+	.hero h1 {
+		font-size: 28px;
+		/* Smaller heading on very small screens */
+	}
+	
+	.hero.compact h1 {
+		font-size: 24px;
+	}
+	
+	.btn {
+		font-size: 13px;
+		padding: 10px 16px;
+		/* Smaller buttons */
 	}
 }
 
