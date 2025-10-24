@@ -88,9 +88,9 @@
             >
               <img src="assets/images/social/whatsapp.svg" alt="WhatsApp" class="whatsapp-icon-nav whatsapp-green" />
             </a>
-            <button class="icon" title="Toggle Dark Mode" id="themeToggle">🌙</button>
+            <button class="icon" title="Toggle Dark Mode" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Menu">
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
             <span></span>
             <span></span>
             <span></span>
@@ -495,27 +495,6 @@
       <a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
     </main>
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://trippovention.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Services",
-            "item": "https://trippovention.com/services.html"
-          }
-        ]
-      }
-    </script>
-
     <script src="assets/structured-data.js" defer></script>
     <script>
       window.structuredDataConfig = {
@@ -587,6 +566,7 @@
       };
     </script>
 
+    <script src="assets/cookie-consent.js" defer></script>
     <script src="assets/app.js" defer></script>
     <script src="assets/analytics.js" defer></script>
   </body>
