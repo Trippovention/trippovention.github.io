@@ -1,147 +1,151 @@
-<!DOCTYPE html>
-	<html lang="en">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>404 - Page Not Found | Trippovention</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Redirecting to home page." />
+    <meta name="robots" content="noindex, nofollow" />
 
-		<head>
-			<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>404 - Page Not Found | Trippovention</title>
-				<meta name="description" content="The page you're looking for doesn't exist. Redirecting to home page.">
-				<meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png" />
+    <meta name="theme-color" content="#667eea" />
 
-				<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-				<link rel="shortcut icon" href="assets/images/favicon.ico">
-				<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+    <!-- Preload Critical Assets for Faster Loading -->
+    <link rel="preload" href="assets/styles.css" as="style" />
+    <link rel="preload" href="assets/app.js" as="script" />
 
-				<style>
-					* {
-					margin: 0;
-					padding: 0;
-					box-sizing: border-box;
-					}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-					body {
-					font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-					background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-					color: #ffffff;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					min-height: 100vh;
-					text-align: center;
-					padding: 20px;
-					}
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+      }
 
-					.container {
-					max-width: 600px;
-					}
+      .container {
+        max-width: 600px;
+      }
 
-					.error-code {
-					font-size: 120px;
-					font-weight: 800;
-					line-height: 1;
-					margin-bottom: 20px;
-					text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-					animation: pulse 2s ease-in-out infinite;
-					}
+      .error-code {
+        font-size: 120px;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 20px;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+      }
 
-					@keyframes pulse {
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
 
-					0%,
-					100% {
-					transform: scale(1);
-					}
+        50% {
+          transform: scale(1.05);
+        }
+      }
 
-					50% {
-					transform: scale(1.05);
-					}
-					}
+      h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
 
-					h1 {
-					font-size: 32px;
-					margin-bottom: 16px;
-					font-weight: 600;
-					}
+      p {
+        font-size: 18px;
+        margin-bottom: 32px;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
 
-					p {
-					font-size: 18px;
-					margin-bottom: 32px;
-					opacity: 0.9;
-					line-height: 1.6;
-					}
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #ffffff;
+        color: #667eea;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
 
-					.btn {
-					display: inline-block;
-					padding: 14px 32px;
-					background: #ffffff;
-					color: #667eea;
-					text-decoration: none;
-					border-radius: 8px;
-					font-weight: 600;
-					font-size: 16px;
-					transition: all 0.3s ease;
-					box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-					}
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
 
-					.btn:hover {
-					transform: translateY(-2px);
-					box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-					}
+      .countdown {
+        margin-top: 24px;
+        font-size: 14px;
+        opacity: 0.8;
+      }
 
-					.countdown {
-					margin-top: 24px;
-					font-size: 14px;
-					opacity: 0.8;
-					}
+      .emoji {
+        font-size: 80px;
+        margin-bottom: 20px;
+        display: block;
+        animation: float 3s ease-in-out infinite;
+      }
 
-					.emoji {
-					font-size: 80px;
-					margin-bottom: 20px;
-					display: block;
-					animation: float 3s ease-in-out infinite;
-					}
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
 
-					@keyframes float {
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+    <script>
+      let countdown = 5;
 
-					0%,
-					100% {
-					transform: translateY(0px);
-					}
+      function redirect() {
+        countdown--;
+        const element = document.getElementById("countdown");
+        if (element) {
+          element.textContent = countdown;
+        }
+        if (countdown <= 0) {
+          window.location.href = "index.html";
+        }
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        setInterval(redirect, 1000);
+      });
+    </script>
+  </head>
 
-					50% {
-					transform: translateY(-20px);
-					}
-					}
-				</style>
-				<script>
-					let countdown = 5;
-
-					function redirect() {
-					countdown--;
-					const element = document.getElementById('countdown');
-					if (element) {
-					element.textContent = countdown;
-					}
-					if (countdown <= 0) {
-					window.location.href = '/index.html';
-					}
-					}
-					window.addEventListener('DOMContentLoaded', function() {
-					setInterval(redirect, 1000);
-					});
-				</script>
-			</head>
-
-			<body>
-				<div class="container" role="main" aria-label="404 Page">
-					<span class="emoji" aria-hidden="true">🧳</span>
-					<div class="error-code" aria-label="Error code 404">404</div>
-					<h1>Oops! Page Not Found</h1>
-						<p>The page you're looking for seems to have wandered off on its own adventure. Don't worry, we'll get you back
-							on
-							track!</p>
-							<a href="/index.html" class="btn" aria-label="Go to Homepage">🏠 Go to Homepage</a>
-							<p class="countdown">Redirecting automatically in <span id="countdown">5</span> seconds...</p>
-						</div>
-					</body>
-
-				</html>
+  <body>
+    <div class="container" role="main" aria-label="404 Page">
+      <span class="emoji" aria-hidden="true">🧳</span>
+      <div class="error-code" aria-label="Error code 404">404</div>
+      <h1>Oops! Page Not Found</h1>
+      <p>
+        The page you're looking for seems to have wandered off on its own adventure. Don't worry, we'll get you back on
+        track!
+      </p>
+      <a href="index.html" class="btn" aria-label="Go to Homepage">🏠 Go to Homepage</a>
+      <p class="countdown">Redirecting automatically in <span id="countdown">5</span> seconds...</p>
+    </div>
+  </body>
+</html>
