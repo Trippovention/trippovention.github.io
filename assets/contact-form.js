@@ -542,17 +542,19 @@ function prefillDestinationFromURL() {
   }
 
   // PRIORITY 4: Handle Specific Package Queries (?package=xxx)
-  // → Opens "Tour Package Question" with package name
+  // → Opens "Custom Trip Planning" with package name as destination
   if (packageParam && destinationField && inquiryTypeField) {
     const formattedPackage = formatName(packageParam);
 
     // Set inquiry type FIRST to trigger conditional fields
-    inquiryTypeField.value = "Tour Package Question";
+    inquiryTypeField.value = "Custom Trip Planning";
     toggleConditionalFields();
 
     // Wait for fields to be visible, then set value
     setTimeout(() => {
       destinationField.value = formattedPackage;
+      destinationField.setAttribute("required", "required");
+
       setTimeout(() => {
         destinationField.scrollIntoView({
           behavior: "smooth",
