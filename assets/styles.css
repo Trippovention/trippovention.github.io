@@ -1683,6 +1683,11 @@ textarea::placeholder {
   .two {
     grid-template-columns: 1fr;
   }
+
+  /* Contact page mobile fix - stack form and office cards vertically */
+  .section:has(form) .two {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
