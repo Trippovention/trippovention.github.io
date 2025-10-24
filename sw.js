@@ -4,7 +4,7 @@
  * Version: 3.0 - Enhanced caching with offline fallback
  */
 
-const CACHE_VERSION = "3.0";
+const CACHE_VERSION = "3.1";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = "trippovention-runtime";
 

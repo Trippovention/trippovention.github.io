@@ -177,69 +177,71 @@
   </head>
 
   <body>
-    <div class="offline-container">
-      <div class="icon" role="img" aria-label="Airplane icon">✈️</div>
+    <main id="main" tabindex="-1">
+      <div class="offline-container">
+        <div class="icon" role="img" aria-label="Airplane icon">✈️</div>
 
-      <h1>You're Offline</h1>
+        <h1>You're Offline</h1>
 
-      <p>
-        It looks like you've lost your internet connection. Don't worry, you can try reconnecting or
-        explore our cached pages.
-      </p>
+        <p>
+          It looks like you've lost your internet connection. Don't worry, you can try reconnecting
+          or explore our cached pages.
+        </p>
 
-      <div class="btn-group">
-        <button onclick="window.location.reload()" aria-label="Retry connection">🔄 Retry</button>
-        <a href="/" class="btn secondary" aria-label="Go to homepage"> 🏠 Home </a>
+        <div class="btn-group">
+          <button onclick="window.location.reload()" aria-label="Retry connection">🔄 Retry</button>
+          <a href="/" class="btn secondary" aria-label="Go to homepage"> 🏠 Home </a>
+        </div>
+
+        <div class="tips">
+          <h3>Quick Tips</h3>
+          <ul>
+            <li>Check your Wi-Fi or mobile data connection</li>
+            <li>Try turning airplane mode off and on</li>
+            <li>Restart your router if using Wi-Fi</li>
+            <li>Some pages may be available offline from cache</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="tips">
-        <h3>Quick Tips</h3>
-        <ul>
-          <li>Check your Wi-Fi or mobile data connection</li>
-          <li>Try turning airplane mode off and on</li>
-          <li>Restart your router if using Wi-Fi</li>
-          <li>Some pages may be available offline from cache</li>
-        </ul>
-      </div>
-    </div>
-
-    <script>
-      // Check if user prefers dark mode
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.setAttribute("data-theme", "dark");
-      }
-
-      // Check localStorage for theme preference (if previously set)
-      const savedTheme = localStorage.getItem("trippovention_theme");
-      if (savedTheme) {
-        document.documentElement.setAttribute("data-theme", savedTheme);
-      }
-
-      // Auto-retry connection every 10 seconds
-      let retryCount = 0;
-      const maxRetries = 3;
-
-      function checkConnection() {
-        if (navigator.onLine && retryCount < maxRetries) {
-          retryCount++;
-          fetch("/", { method: "HEAD", cache: "no-cache" })
-            .then(() => {
-              // Connection restored
-              window.location.reload();
-            })
-            .catch(() => {
-              // Still offline, will retry
-            });
+      <script>
+        // Check if user prefers dark mode
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
         }
-      }
 
-      // Check connection every 10 seconds
-      setInterval(checkConnection, 10000);
+        // Check localStorage for theme preference (if previously set)
+        const savedTheme = localStorage.getItem("trippovention_theme");
+        if (savedTheme) {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+        }
 
-      // Also check when online event fires
-      window.addEventListener("online", () => {
-        window.location.reload();
-      });
-    </script>
+        // Auto-retry connection every 10 seconds
+        let retryCount = 0;
+        const maxRetries = 3;
+
+        function checkConnection() {
+          if (navigator.onLine && retryCount < maxRetries) {
+            retryCount++;
+            fetch("/", { method: "HEAD", cache: "no-cache" })
+              .then(() => {
+                // Connection restored
+                window.location.reload();
+              })
+              .catch(() => {
+                // Still offline, will retry
+              });
+          }
+        }
+
+        // Check connection every 10 seconds
+        setInterval(checkConnection, 10000);
+
+        // Also check when online event fires
+        window.addEventListener("online", () => {
+          window.location.reload();
+        });
+      </script>
+    </main>
   </body>
 </html>
