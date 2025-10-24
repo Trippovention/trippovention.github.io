@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -51,6 +51,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Preload Critical Assets for Faster Loading -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <link rel="preload" href="../../assets/styles.css" as="style" />
     <link rel="preload" href="../../assets/app.js" as="script" />
     <link
@@ -60,8 +62,10 @@
   </head>
 
   <body>
-    <a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-    <nav class="nav">
+    <a href="#main" class="skip-link" aria-label="Skip to main content" id="skip-link"
+      >Skip to main content</a
+    >
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container">
         <a class="brand" href="../../index.html" aria-label="Go to Trippovention Home">
           <img
@@ -109,7 +113,7 @@
       </div>
     </nav>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb-container">
           <ol class="breadcrumb-list">
@@ -132,7 +136,9 @@
       <header class="hero compact hero-singapore">
         <div class="container">
           <h1>Singapore Tour Packages</h1>
-          <p>Explore the Garden City with expertly crafted packages - Universal Studios to Marina Bay</p>
+          <p>
+            Explore the Garden City with expertly crafted packages - Universal Studios to Marina Bay
+          </p>
         </div>
       </header>
 
@@ -140,7 +146,9 @@
         <div class="container">
           <div class="section-title">
             <h2>✨ Why Choose Singapore?</h2>
-            <p class="subtitle">The perfect blend of modern marvels and cultural heritage in Southeast Asia</p>
+            <p class="subtitle">
+              The perfect blend of modern marvels and cultural heritage in Southeast Asia
+            </p>
           </div>
 
           <div class="grid cols-3">
@@ -149,7 +157,8 @@
                 <div class="feature-icon">🎢</div>
                 <h3>Family Entertainment</h3>
                 <p class="muted">
-                  Universal Studios, Sentosa Island, Singapore Zoo, and world-class theme parks perfect for family fun.
+                  Universal Studios, Sentosa Island, Singapore Zoo, and world-class theme parks
+                  perfect for family fun.
                 </p>
               </div>
             </div>
@@ -158,8 +167,8 @@
                 <div class="feature-icon">🌆</div>
                 <h3>Iconic Attractions</h3>
                 <p class="muted">
-                  Marina Bay Sands, Gardens by the Bay, Merlion Park, and architectural wonders that define modern
-                  Singapore.
+                  Marina Bay Sands, Gardens by the Bay, Merlion Park, and architectural wonders that
+                  define modern Singapore.
                 </p>
               </div>
             </div>
@@ -168,8 +177,8 @@
                 <div class="feature-icon">🍜</div>
                 <h3>Cultural Diversity</h3>
                 <p class="muted">
-                  Chinatown, Little India, Arab Street, and diverse food scene representing Asia's multicultural
-                  heritage.
+                  Chinatown, Little India, Arab Street, and diverse food scene representing Asia's
+                  multicultural heritage.
                 </p>
               </div>
             </div>
@@ -213,7 +222,9 @@
             <div class="body text-center">
               <div class="feature-icon">🌟</div>
               <h3>More Packages Coming Soon</h3>
-              <p class="muted">We're adding more Singapore packages. Contact us for customized options.</p>
+              <p class="muted">
+                We're adding more Singapore packages. Contact us for customized options.
+              </p>
               <div class="mt-20">
                 <a class="btn" href="../../contact.html?from=singapore-packages">Enquire Now</a>
               </div>
@@ -249,11 +260,16 @@
             <div class="body">
               <h3>🛂 Singapore Visa</h3>
               <div class="mt-20">
-                <div style="padding: 12px; background: var(--emerald-light); border-radius: 8px" class="mb-20">
+                <div
+                  style="padding: 12px; background: var(--emerald-light); border-radius: 8px"
+                  class="mb-20"
+                >
                   <strong style="color: var(--emerald)">E-Visa Available</strong><br />
                   <span style="font-size: 14px">Processing: 3-5 days | ₹ 3,500</span>
                 </div>
-                <p class="muted">We provide complete Singapore visa assistance with 95% success rate.</p>
+                <p class="muted">
+                  We provide complete Singapore visa assistance with 95% success rate.
+                </p>
                 <div class="mt-20">
                   <a class="btn" href="../../contact.html?service=singapore-visa">Apply Visa</a>
                 </div>
@@ -291,18 +307,20 @@
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
       <div class="container">
         <div class="grid cols-3">
           <div>
             <h4>Trippovention</h4>
             <p>
-              Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative
-              and memorable.
+              Your trusted travel partner for unforgettable journeys. We believe that travel should
+              be transformative and memorable.
             </p>
             <div class="mt-20">
               <h4 class="muted font-weight-600">Contact Details</h4>
-              <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a> </span>
+              <span class="mr-15"
+                >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a>
+              </span>
               <br />
               <span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
               <br />
@@ -330,12 +348,14 @@
           <div>
             <h4>Corporate Office</h4>
             <p>
-              Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India,
-              122018.
+              Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
+              Haryana, India, 122018.
             </p>
             <div class="mt-20">
               <h4>Thailand Office</h4>
-              <p>23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150</p>
+              <p>
+                23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
+              </p>
             </div>
             <div class="mt-20">
               <h4 class="muted font-weight-600">Follow Us</h4>
@@ -450,81 +470,90 @@
         url: "https://trippovention.com/packages/singapore/",
         aggregateRating: {
           value: "4.8",
-          count: "220"
+          count: "220",
         },
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com"
+            url: "https://trippovention.com",
           },
           {
             name: "Packages",
-            url: "https://trippovention.com/packages/"
+            url: "https://trippovention.com/packages/",
           },
           {
-            name: "Singapore Packages"
-          }
+            name: "Singapore Packages",
+          },
         ],
-        touristType: ["Families", "Couples", "Solo Travelers", "Groups", "Honeymooners", "Adventure Seekers"],
+        touristType: [
+          "Families",
+          "Couples",
+          "Solo Travelers",
+          "Groups",
+          "Honeymooners",
+          "Adventure Seekers",
+        ],
         itinerary: [
           {
             position: 1,
             name: "Universal Studios Singapore",
             description:
-              "Experience world-class entertainment at Southeast Asia's first and only Universal Studios theme park with thrilling rides and attractions."
+              "Experience world-class entertainment at Southeast Asia's first and only Universal Studios theme park with thrilling rides and attractions.",
           },
           {
             position: 2,
             name: "Marina Bay Sands",
             description:
-              "Iconic integrated resort featuring luxury hotels, SkyPark observation deck, ArtScience Museum, and spectacular infinity pool."
+              "Iconic integrated resort featuring luxury hotels, SkyPark observation deck, ArtScience Museum, and spectacular infinity pool.",
           },
           {
             position: 3,
             name: "Sentosa Island",
             description:
-              "Singapore's premier island resort destination with beaches, attractions, cable car rides, and S.E.A. Aquarium."
+              "Singapore's premier island resort destination with beaches, attractions, cable car rides, and S.E.A. Aquarium.",
           },
           {
             position: 4,
             name: "Gardens by the Bay",
             description:
-              "Award-winning futuristic garden featuring iconic Supertrees, Cloud Forest, and Flower Dome conservatories."
+              "Award-winning futuristic garden featuring iconic Supertrees, Cloud Forest, and Flower Dome conservatories.",
           },
           {
             position: 5,
             name: "Merlion Park",
             description:
-              "Singapore's iconic landmark and national symbol offering stunning views of Marina Bay and the city skyline."
+              "Singapore's iconic landmark and national symbol offering stunning views of Marina Bay and the city skyline.",
           },
           {
             position: 6,
             name: "Singapore Night Safari",
             description:
-              "World's first nocturnal wildlife park offering unique night-time animal viewing experiences across diverse habitats."
+              "World's first nocturnal wildlife park offering unique night-time animal viewing experiences across diverse habitats.",
           },
           {
             position: 7,
             name: "Chinatown & Little India",
             description:
-              "Vibrant cultural districts showcasing Singapore's rich heritage with temples, markets, authentic cuisine, and historic architecture."
+              "Vibrant cultural districts showcasing Singapore's rich heritage with temples, markets, authentic cuisine, and historic architecture.",
           },
           {
             position: 8,
             name: "Singapore Flyer",
             description:
-              "Giant observation wheel offering breathtaking 360-degree panoramic views of Singapore's skyline and beyond."
-          }
+              "Giant observation wheel offering breathtaking 360-degree panoramic views of Singapore's skyline and beyond.",
+          },
         ],
         offers: {
           "@type": "AggregateOffer",
           priceCurrency: "INR",
           lowPrice: "35000",
           highPrice: "85000",
-          offerCount: "8"
-        }
+          offerCount: "8",
+        },
       };
     </script>
+
+    <script src="../../assets/skip-link.js" defer></script>
 
     <script src="../../assets/cookie-consent.js" defer></script>
     <script src="../../assets/app.js" defer></script>

@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -23,7 +29,10 @@
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://trippovention.com/worldwide.html" />
-    <meta property="twitter:title" content="Worldwide - International Travel Packages | Trippovention" />
+    <meta
+      property="twitter:title"
+      content="Worldwide - International Travel Packages | Trippovention"
+    />
     <meta
       property="twitter:description"
       content="Explore the world with Trippovention - Europe tours, beach destinations, family vacations, honeymoon packages."
@@ -53,8 +62,10 @@
   </head>
 
   <body>
-    <a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-    <nav class="nav">
+    <a href="#main" class="skip-link" aria-label="Skip to main content" id="skip-link"
+      >Skip to main content</a
+    >
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container">
         <a class="brand" href="index.html" aria-label="Go to Trippovention Home">
           <img
@@ -85,9 +96,20 @@
               rel="noopener noreferrer"
               target="_blank"
             >
-              <img src="assets/images/social/whatsapp.svg" alt="WhatsApp" class="whatsapp-icon-nav whatsapp-green" />
+              <img
+                src="assets/images/social/whatsapp.svg"
+                alt="WhatsApp"
+                class="whatsapp-icon-nav whatsapp-green"
+              />
             </a>
-            <button class="icon" title="Toggle Dark Mode" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            <button
+              class="icon"
+              title="Toggle Dark Mode"
+              id="themeToggle"
+              aria-label="Toggle dark mode"
+            >
+              🌙
+            </button>
           </div>
           <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
             <span></span>
@@ -98,7 +120,7 @@
       </div>
     </nav>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb-container">
           <ol class="breadcrumb-list">
@@ -190,7 +212,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/europe/uk/hero_uk.webp" loading="lazy" alt="UK London Big Ben" />
+                <img
+                  src="assets/images/packages/europe/uk/hero_uk.webp"
+                  loading="lazy"
+                  alt="UK London Big Ben"
+                />
                 <span class="ribbon">👑 Royal</span>
               </div>
               <div class="body">
@@ -281,7 +307,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/srilanka/hero_srilanka.webp" loading="lazy" alt="Sri Lanka Beach" />
+                <img
+                  src="assets/images/packages/srilanka/hero_srilanka.webp"
+                  loading="lazy"
+                  alt="Sri Lanka Beach"
+                />
                 <span class="ribbon">🌴 Tropical</span>
               </div>
               <div class="body">
@@ -319,7 +349,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/mauritius/hero_mauritius.webp" loading="lazy" alt="Mauritius Beach" />
+                <img
+                  src="assets/images/packages/mauritius/hero_mauritius.webp"
+                  loading="lazy"
+                  alt="Mauritius Beach"
+                />
                 <span class="ribbon">🏝️ Island</span>
               </div>
               <div class="body">
@@ -336,7 +370,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/indonesia/hero_bali.webp" loading="lazy" alt="Indonesia Bali" />
+                <img
+                  src="assets/images/packages/indonesia/hero_bali.webp"
+                  loading="lazy"
+                  alt="Indonesia Bali"
+                />
                 <span class="ribbon">🌺 Cultural</span>
               </div>
               <div class="body">
@@ -353,7 +391,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/vietnam/hero_vietnam_beach.webp" loading="lazy" alt="Vietnam Beach" />
+                <img
+                  src="assets/images/packages/vietnam/hero_vietnam_beach.webp"
+                  loading="lazy"
+                  alt="Vietnam Beach"
+                />
                 <span class="ribbon">⏰ Limited</span>
               </div>
               <div class="body">
@@ -423,7 +465,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/uae/hero_uae_family_fun.webp" loading="lazy" alt="Dubai UAE" />
+                <img
+                  src="assets/images/packages/uae/hero_uae_family_fun.webp"
+                  loading="lazy"
+                  alt="Dubai UAE"
+                />
                 <span class="ribbon">💎 Luxury</span>
               </div>
               <div class="body">
@@ -598,7 +644,11 @@
             </div>
             <div class="card">
               <div class="img-wrap">
-                <img src="assets/images/packages/italy/hero_italy_honeymoon.webp" loading="lazy" alt="Italy Romance" />
+                <img
+                  src="assets/images/packages/italy/hero_italy_honeymoon.webp"
+                  loading="lazy"
+                  alt="Italy Romance"
+                />
                 <span class="ribbon">🍝 Romantic</span>
               </div>
               <div class="body">
@@ -642,7 +692,9 @@
         <div class="container">
           <div class="section-title">
             <h2 class="text-white">Ready to Explore the World?</h2>
-            <p class="subtitle text-white-90">Get personalized international tour packages from travel experts</p>
+            <p class="subtitle text-white-90">
+              Get personalized international tour packages from travel experts
+            </p>
           </div>
           <div class="text-center">
             <a class="btn btn-lg ghost" href="contact.html">Get Custom Quote</a>
@@ -665,18 +717,20 @@
         </div>
       </section>
 
-      <footer class="footer">
+      <footer class="footer" role="contentinfo">
         <div class="container">
           <div class="grid cols-3">
             <div>
               <h4>Trippovention</h4>
               <p>
-                Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative
-                and memorable.
+                Your trusted travel partner for unforgettable journeys. We believe that travel
+                should be transformative and memorable.
               </p>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Contact Details</h4>
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a> </span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a>
+                </span>
                 <br />
                 <span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
                 <br />
@@ -704,12 +758,14 @@
             <div>
               <h4>Corporate Office</h4>
               <p>
-                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India,
-                122018.
+                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
+                Haryana, India, 122018.
               </p>
               <div class="mt-20">
                 <h4>Thailand Office</h4>
-                <p>23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150</p>
+                <p>
+                  23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
+                </p>
               </div>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Follow Us</h4>
@@ -792,24 +848,26 @@
       window.structuredDataConfig = {
         pageType: "worldwide",
         url: "https://trippovention.com/worldwide.html",
-        description: "International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
+        description:
+          "International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
         aggregateRating: {
           value: "4.7",
-          count: "350"
+          count: "350",
         },
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com/"
+            url: "https://trippovention.com/",
           },
           {
             name: "Worldwide Tours",
-            url: "https://trippovention.com/worldwide.html"
-          }
-        ]
+            url: "https://trippovention.com/worldwide.html",
+          },
+        ],
       };
     </script>
 
+    <script src="assets/skip-link.js" defer></script>
     <script src="assets/cookie-consent.js" defer></script>
     <script src="assets/app.js" defer></script>
     <script src="assets/analytics.js" defer></script>

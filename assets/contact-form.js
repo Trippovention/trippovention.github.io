@@ -18,7 +18,7 @@ function ensureFormVisibility() {
         form.scrollIntoView({
           behavior: "smooth",
           block: "start",
-          inline: "nearest"
+          inline: "nearest",
         });
       }
     }, 500);
@@ -37,7 +37,9 @@ function toggleConditionalFields() {
 
   // Remove all conditional required attributes
   document
-    .querySelectorAll("#travelDetails input, #travelDetails select, #visaDetails input, #visaDetails select")
+    .querySelectorAll(
+      "#travelDetails input, #travelDetails select, #visaDetails input, #visaDetails select"
+    )
     .forEach((input) => {
       input.removeAttribute("required");
     });
@@ -46,7 +48,11 @@ function toggleConditionalFields() {
   if (inquiryType === "Custom Trip Planning") {
     travelDetails.style.display = "block";
     // Make key travel fields required (using &nbsp; for spaces)
-    const requiredTravelFields = ["Preferred\u00A0Destination", "Number\u00A0of\u00A0Travelers", "Budget\u00A0Range"];
+    const requiredTravelFields = [
+      "Preferred\u00A0Destination",
+      "Number\u00A0of\u00A0Travelers",
+      "Budget\u00A0Range",
+    ];
     requiredTravelFields.forEach((name) => {
       const field = document.querySelector(`[name="${name}"]`);
       if (field) field.setAttribute("required", "required");
@@ -71,7 +77,9 @@ function validateForm() {
 
   if (!form || !submitBtn) return;
 
-  const requiredFields = form.querySelectorAll("input[required], select[required], textarea[required]");
+  const requiredFields = form.querySelectorAll(
+    "input[required], select[required], textarea[required]"
+  );
   let allValid = true;
   const validationErrors = []; // Track all errors for summary
 
@@ -97,7 +105,7 @@ function validateForm() {
       showFieldTooltip(field, "This field is required");
       validationErrors.push({
         field: field,
-        message: fieldLabel + " is required"
+        message: fieldLabel + " is required",
       });
     } else {
       // Show green border for valid required fields
@@ -118,7 +126,7 @@ function validateForm() {
       showFieldTooltip(emailField, "Please enter a valid email address (e.g., user@example.com)");
       validationErrors.push({
         field: emailField,
-        message: "Email Address is invalid"
+        message: "Email Address is invalid",
       });
     } else {
       emailField.style.borderColor = "rgba(40,167,69,0.8)";
@@ -135,10 +143,13 @@ function validateForm() {
       allValid = false;
       phoneField.style.borderColor = "rgba(255,100,100,0.8)";
       phoneField.style.boxShadow = "0 0 0 2px rgba(255,100,100,0.2)";
-      showFieldTooltip(phoneField, "Please enter a valid phone number (min 10 digits, format: +91 98765 43210)");
+      showFieldTooltip(
+        phoneField,
+        "Please enter a valid phone number (min 10 digits, format: +91 98765 43210)"
+      );
       validationErrors.push({
         field: phoneField,
-        message: "Phone Number is invalid"
+        message: "Phone Number is invalid",
       });
     } else {
       phoneField.style.borderColor = "rgba(40,167,69,0.8)";
@@ -283,7 +294,7 @@ function updateValidationSummary(errors) {
         // Scroll to the field with error
         error.field.scrollIntoView({
           behavior: "smooth",
-          block: "center"
+          block: "center",
         });
         error.field.focus();
       });
@@ -296,7 +307,44 @@ function updateValidationSummary(errors) {
   }
 }
 
+/**
+ * Announce error messages to screen readers using ARIA live region
+ * @param {string} message - Error message to announce
+ */
+function announceError(message) {
+  // Create or get live region
+  let liveRegion = document.getElementById("form-error-announcer");
+  if (!liveRegion) {
+    liveRegion = document.createElement("div");
+    liveRegion.id = "form-error-announcer";
+    liveRegion.setAttribute("role", "alert");
+    liveRegion.setAttribute("aria-live", "assertive");
+    liveRegion.setAttribute("aria-atomic", "true");
+    liveRegion.style.position = "absolute";
+    liveRegion.style.width = "1px";
+    liveRegion.style.height = "1px";
+    liveRegion.style.padding = "0";
+    liveRegion.style.margin = "-1px";
+    liveRegion.style.overflow = "hidden";
+    liveRegion.style.clip = "rect(0, 0, 0, 0)";
+    liveRegion.style.whiteSpace = "nowrap";
+    liveRegion.style.border = "0";
+    document.body.appendChild(liveRegion);
+  }
+
+  // Announce the error
+  liveRegion.textContent = message;
+
+  // Clear after 5 seconds
+  setTimeout(() => {
+    liveRegion.textContent = "";
+  }, 5000);
+}
+
 function showFieldTooltip(field, message) {
+  // Announce to screen readers
+  announceError(message);
+
   // Remove any existing tooltip for this field first
   const existingTooltip = field.parentNode.querySelector(".form-tooltip");
   if (existingTooltip) {
@@ -420,7 +468,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         visaCountryField.scrollIntoView({
           behavior: "smooth",
-          block: "center"
+          block: "center",
         });
         visaCountryField.focus();
       }, 200);
@@ -445,7 +493,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         destinationField.scrollIntoView({
           behavior: "smooth",
-          block: "center"
+          block: "center",
         });
         destinationField.focus();
       }, 200);
@@ -465,7 +513,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         visaCountryField.scrollIntoView({
           behavior: "smooth",
-          block: "center"
+          block: "center",
         });
         visaCountryField.focus();
       }, 350);
@@ -484,7 +532,7 @@ function prefillDestinationFromURL() {
         setTimeout(() => {
           destinationField.scrollIntoView({
             behavior: "smooth",
-            block: "center"
+            block: "center",
           });
           destinationField.focus();
         }, 200);
@@ -508,7 +556,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         destinationField.scrollIntoView({
           behavior: "smooth",
-          block: "center"
+          block: "center",
         });
         destinationField.focus();
       }, 200);
@@ -672,7 +720,9 @@ function initializeForm() {
       }
 
       // Final validation check - only check VISIBLE required fields
-      const requiredFields = form.querySelectorAll("input[required], select[required], textarea[required]");
+      const requiredFields = form.querySelectorAll(
+        "input[required], select[required], textarea[required]"
+      );
       for (let field of requiredFields) {
         const isVisible = field.offsetParent !== null;
         if (isVisible && !field.value.trim()) {

@@ -1,15 +1,27 @@
 /**
  * Service Worker for Trippovention
  * Enables offline support and faster repeat visits
- * Version: 2.8 - Network-first for HTML, cache-first for assets
+ * Version: 3.0 - Enhanced caching with offline fallback
  */
 
-const CACHE_VERSION = "2.8";
+const CACHE_VERSION = "3.0";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = "trippovention-runtime";
 
-// Only cache critical assets immediately (not large images)
-const PRECACHE_URLS = ["/", "/index.html", "/assets/styles.css", "/assets/app.js"];
+// Cache critical assets immediately for offline support
+const PRECACHE_URLS = [
+  "/",
+  "/index.html",
+  "/offline.html",
+  "/assets/styles.css",
+  "/assets/app.js",
+  "/assets/analytics.js",
+  "/assets/cookie-consent.js",
+  "/assets/structured-data.js",
+  "/assets/contact-form.js",
+  "/assets/images/logo.webp",
+  "/assets/images/favicon.png",
+];
 
 // Install event - cache essential files
 self.addEventListener("install", (event) => {
@@ -62,8 +74,13 @@ self.addEventListener("fetch", (event) => {
           }
           return response;
         })
-        .catch(() => caches.match(event.request))
-        .catch(() => caches.match("/index.html"))
+        .catch(() =>
+          caches.match(event.request).then((cached) => {
+            if (cached) return cached;
+            // Show offline page if no cache and no network
+            return caches.match("/offline.html");
+          })
+        )
     );
     return;
   }

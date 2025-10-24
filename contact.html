@@ -6,6 +6,7 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Preload Critical Assets for Faster Loading -->
     <link rel="preload" href="assets/styles.css" as="style" />
@@ -31,7 +32,10 @@
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://trippovention.com/contact.html" />
-    <meta property="twitter:title" content="Contact Us - Travel Inquiries & Support | Trippovention" />
+    <meta
+      property="twitter:title"
+      content="Contact Us - Travel Inquiries & Support | Trippovention"
+    />
     <meta
       property="twitter:description"
       content="Reach out for travel inquiries, tour packages, visa services. Multiple contact options available."
@@ -58,8 +62,10 @@
   </head>
 
   <body>
-    <a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-    <nav class="nav">
+    <a href="#main" class="skip-link" aria-label="Skip to main content" id="skip-link"
+      >Skip to main content</a
+    >
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container">
         <a class="brand" href="index.html" aria-label="Go to Trippovention Home">
           <img
@@ -90,9 +96,20 @@
               rel="noopener noreferrer"
               target="_blank"
             >
-              <img src="assets/images/social/whatsapp.svg" alt="WhatsApp" class="whatsapp-icon-nav whatsapp-green" />
+              <img
+                src="assets/images/social/whatsapp.svg"
+                alt="WhatsApp"
+                class="whatsapp-icon-nav whatsapp-green"
+              />
             </a>
-            <button class="icon" title="Toggle Dark Mode" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            <button
+              class="icon"
+              title="Toggle Dark Mode"
+              id="themeToggle"
+              aria-label="Toggle dark mode"
+            >
+              🌙
+            </button>
           </div>
           <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
             <span></span>
@@ -119,7 +136,9 @@
       <header class="hero compact hero-contact">
         <div class="container">
           <h1>Get in Touch</h1>
-          <p>We're here to help you plan your perfect journey. Reach out to our travel experts today!</p>
+          <p>
+            We're here to help you plan your perfect journey. Reach out to our travel experts today!
+          </p>
         </div>
       </header>
 
@@ -129,8 +148,16 @@
             <div class="card">
               <div class="body">
                 <h3>📧 Contact Us</h3>
-                <form action="https://formsubmit.co/query@trippovention.com" method="POST" id="contactForm">
-                  <input type="hidden" name="_subject" value="New Contact Form Submission - Trippovention" />
+                <form
+                  action="https://formsubmit.co/query@trippovention.com"
+                  method="POST"
+                  id="contactForm"
+                >
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="New Contact Form Submission - Trippovention"
+                  />
                   <input type="hidden" name="_captcha" value="true" />
                   <input type="hidden" name="_next" value="" id="_next" />
                   <input type="hidden" name="_template" value="table" />
@@ -143,7 +170,13 @@
                     value="Thank you for contacting Trippovention! We have received your inquiry and our travel experts will get back to you within 24 hours with personalized recommendations. We look forward to helping you plan your perfect journey!"
                   />
 
-                  <input type="text" name="_honey" tabindex="-1" autocomplete="new-password" class="honeypot" />
+                  <input
+                    type="text"
+                    name="_honey"
+                    tabindex="-1"
+                    autocomplete="new-password"
+                    class="honeypot"
+                  />
 
                   <div class="card">
                     <div class="body">
@@ -180,7 +213,12 @@
                       />
 
                       <label for="inquiryType">Inquiry Type *</label>
-                      <select name="Inquiry&nbsp;Type" id="inquiryType" required onchange="toggleConditionalFields()">
+                      <select
+                        name="Inquiry&nbsp;Type"
+                        id="inquiryType"
+                        required
+                        onchange="toggleConditionalFields()"
+                      >
                         <option value="">Select inquiry type</option>
                         <option value="General Inquiry">General Inquiry</option>
                         <option value="Visa Assistance">Visa Assistance</option>
@@ -243,10 +281,18 @@
                       <label for="budget">Budget Range</label>
                       <select name="Budget&nbsp;Range" id="budget">
                         <option value="">Select your budget range</option>
-                        <option value="₹ 25,000 - ₹ 50,000 per person">₹ 25,000 - ₹ 50,000 per person</option>
-                        <option value="₹ 50,000 - ₹ 1,00,000 per person">₹ 50,000 - ₹ 1,00,000 per person</option>
-                        <option value="₹ 1,00,000 - ₹ 2,00,000 per person">₹ 1,00,000 - ₹ 2,00,000 per person</option>
-                        <option value="Above ₹ 2,00,000 per person">Above ₹ 2,00,000 per person</option>
+                        <option value="₹ 25,000 - ₹ 50,000 per person">
+                          ₹ 25,000 - ₹ 50,000 per person
+                        </option>
+                        <option value="₹ 50,000 - ₹ 1,00,000 per person">
+                          ₹ 50,000 - ₹ 1,00,000 per person
+                        </option>
+                        <option value="₹ 1,00,000 - ₹ 2,00,000 per person">
+                          ₹ 1,00,000 - ₹ 2,00,000 per person
+                        </option>
+                        <option value="Above ₹ 2,00,000 per person">
+                          Above ₹ 2,00,000 per person
+                        </option>
                       </select>
 
                       <label for="travel_start_date">Preferred Travel Dates</label>
@@ -256,7 +302,12 @@
                         name="Travel&nbsp;Start&nbsp;Date"
                         placeholder="Start date"
                       />
-                      <input type="date" id="travel_end_date" name="Travel&nbsp;End&nbsp;Date" placeholder="End date" />
+                      <input
+                        type="date"
+                        id="travel_end_date"
+                        name="Travel&nbsp;End&nbsp;Date"
+                        placeholder="End date"
+                      />
 
                       <label for="travel_duration">Travel Duration</label>
                       <select name="Travel&nbsp;Duration" id="travel_duration">
@@ -339,11 +390,18 @@
 
                 <div class="contact-info">
                   <div>
-                    📧 <strong>Email:</strong> <a href="mailto:query@trippovention.com">query@trippovention.com</a>
+                    📧 <strong>Email:</strong>
+                    <a href="mailto:query@trippovention.com">query@trippovention.com</a>
                   </div>
-                  <div>📞 <strong>Phone:</strong> <a href="tel:+918750888875">+91 87508 88875</a></div>
-                  <div>📞 <strong>Alt:</strong> <a href="tel:+917303010446">+91 73030 10446</a></div>
-                  <div>📞 <strong>Landline:</strong> <a href="tel:+911244182575">+91 124 418 2575</a></div>
+                  <div>
+                    📞 <strong>Phone:</strong> <a href="tel:+918750888875">+91 87508 88875</a>
+                  </div>
+                  <div>
+                    📞 <strong>Alt:</strong> <a href="tel:+917303010446">+91 73030 10446</a>
+                  </div>
+                  <div>
+                    📞 <strong>Landline:</strong> <a href="tel:+911244182575">+91 124 418 2575</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -358,7 +416,9 @@
                   <div class="address-indent">Chonburi Province - 20150</div>
                   <div class="address-indent">Thailand</div>
                   <div class="contact-info">
-                    <div>📞 <strong>Phone:</strong> <a href="tel:+66949319572">+66 94 931 9572</a></div>
+                    <div>
+                      📞 <strong>Phone:</strong> <a href="tel:+66949319572">+66 94 931 9572</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -445,18 +505,20 @@
         </div>
       </section>
 
-      <footer class="footer">
+      <footer class="footer" role="contentinfo">
         <div class="container">
           <div class="grid cols-3">
             <div>
               <h4>Trippovention</h4>
               <p>
-                Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative
-                and memorable.
+                Your trusted travel partner for unforgettable journeys. We believe that travel
+                should be transformative and memorable.
               </p>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Contact Details</h4>
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+                >
                 <br />
                 <span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
                 <br />
@@ -484,12 +546,14 @@
             <div>
               <h4>Corporate Office</h4>
               <p>
-                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India,
-                122018.
+                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
+                Haryana, India, 122018.
               </p>
               <div class="mt-20">
                 <h4>Thailand Office</h4>
-                <p>23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150</p>
+                <p>
+                  23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
+                </p>
               </div>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Follow Us</h4>
@@ -574,17 +638,18 @@
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com/"
+            url: "https://trippovention.com/",
           },
           {
             name: "Contact Us",
-            url: "https://trippovention.com/contact.html"
-          }
+            url: "https://trippovention.com/contact.html",
+          },
         ],
-        phones: ["+91-87508-88875", "+91-124-418-2575"]
+        phones: ["+91-87508-88875", "+91-124-418-2575"],
       };
     </script>
 
+    <script src="assets/skip-link.js" defer></script>
     <script src="assets/cookie-consent.js" defer></script>
     <script src="assets/app.js" defer></script>
     <script src="assets/analytics.js" defer></script>

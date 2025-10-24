@@ -6,10 +6,12 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Preload Critical Assets for Faster Loading -->
     <link rel="preload" href="assets/styles.css" as="style" />
     <link rel="preload" href="assets/app.js" as="script" />
+    <link rel="preload" href="assets/images/logo.webp" as="image" type="image/webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -58,8 +60,10 @@
   </head>
 
   <body>
-    <a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-    <nav class="nav">
+    <a href="#main" class="skip-link" aria-label="Skip to main content" id="skip-link"
+      >Skip to main content</a
+    >
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container">
         <a class="brand" href="index.html" aria-label="Go to Trippovention Home">
           <img
@@ -88,9 +92,20 @@
               rel="noopener noreferrer"
               target="_blank"
             >
-              <img src="assets/images/social/whatsapp.svg" alt="WhatsApp" class="whatsapp-icon-nav whatsapp-green" />
+              <img
+                src="assets/images/social/whatsapp.svg"
+                alt="WhatsApp"
+                class="whatsapp-icon-nav whatsapp-green"
+              />
             </a>
-            <button class="icon" title="Toggle Dark Mode" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            <button
+              class="icon"
+              title="Toggle Dark Mode"
+              id="themeToggle"
+              aria-label="Toggle dark mode"
+            >
+              🌙
+            </button>
           </div>
           <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
             <span></span>
@@ -101,7 +116,7 @@
       </div>
     </nav>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb-container">
           <ol class="breadcrumb-list">
@@ -130,7 +145,9 @@
         <div class="container">
           <div class="section-title">
             <h2>Handpicked Destinations Await</h2>
-            <p class="subtitle">Explore the world's most incredible destinations with unbeatable offers</p>
+            <p class="subtitle">
+              Explore the world's most incredible destinations with unbeatable offers
+            </p>
           </div>
           <div class="grid cols-3">
             <div class="card">
@@ -158,7 +175,7 @@
               <div class="img-wrap">
                 <img
                   src="assets/images/packages/thailand/hero_thailand_beach.webp"
-                  alt="Thailand Phuket Beach Paradise"
+                  alt="Thailand Phuket beach resort - luxury tropical vacation and tour package destination"
                   loading="lazy"
                 />
                 <span class="ribbon hot">🔥 Hot Deal</span>
@@ -179,7 +196,7 @@
               <div class="img-wrap">
                 <img
                   src="assets/images/packages/malaysia/hero_malaysia_family_fun.webp"
-                  alt="Malaysia Kuala Lumpur Petronas Towers"
+                  alt="Malaysia Kuala Lumpur Petronas Towers - Southeast Asia family tour package destination"
                   loading="lazy"
                 />
                 <span class="ribbon">✨ Featured</span>
@@ -200,7 +217,7 @@
               <div class="img-wrap">
                 <img
                   src="assets/images/packages/uae/hero_uae_family_fun.webp"
-                  alt="Dubai Burj Khalifa and Downtown"
+                  alt="Dubai Burj Khalifa and Downtown skyline - luxury UAE tour package destination"
                   loading="lazy"
                 />
                 <span class="ribbon">💎 Luxury</span>
@@ -221,7 +238,7 @@
               <div class="img-wrap">
                 <img
                   src="assets/images/packages/vietnam/hero_vietnam_family_fun.webp"
-                  alt="Vietnam Halong Bay Cruise"
+                  alt="Vietnam Halong Bay luxury cruise - UNESCO heritage site tour package destination"
                   loading="lazy"
                 />
                 <span class="ribbon">⏰ Limited</span>
@@ -242,7 +259,7 @@
               <div class="img-wrap">
                 <img
                   src="assets/images/packages/europe/france/hero_france.webp"
-                  alt="Europe Paris Eiffel Tower"
+                  alt="Paris Eiffel Tower at sunset - European luxury tour package destination"
                   loading="lazy"
                 />
                 <span class="ribbon">🌟 Premium</span>
@@ -405,7 +422,8 @@
           <div class="section-title">
             <h2>Seamless Visa Processing for Global Travel</h2>
             <p class="subtitle">
-              Expert support for tourist Visa applications across our most requested global destinations.
+              Expert support for tourist Visa applications across our most requested global
+              destinations.
             </p>
           </div>
           <div class="visa-grid">
@@ -476,8 +494,8 @@
                 <div class="feature-icon">✈️</div>
                 <h3>Customized Packages</h3>
                 <p class="muted">
-                  Tailor your travel experience with our customizable packages. From accommodations to activities, we
-                  craft personalized itineraries.
+                  Tailor your travel experience with our customizable packages. From accommodations
+                  to activities, we craft personalized itineraries.
                 </p>
               </div>
             </div>
@@ -486,8 +504,8 @@
                 <div class="feature-icon">🛡️</div>
                 <h3>Seamless Visa Services</h3>
                 <p class="muted">
-                  We specialize in providing seamless visa services, ensuring your travel plans are hassle-free with
-                  end-to-end processing.
+                  We specialize in providing seamless visa services, ensuring your travel plans are
+                  hassle-free with end-to-end processing.
                 </p>
               </div>
             </div>
@@ -496,8 +514,8 @@
                 <div class="feature-icon">🌟</div>
                 <h3>Seamless Ground Operations</h3>
                 <p class="muted">
-                  Our expert ground operations team ensures every journey is smooth and worry-free, providing proactive
-                  assistance and exceptional service at every step.
+                  Our expert ground operations team ensures every journey is smooth and worry-free,
+                  providing proactive assistance and exceptional service at every step.
                 </p>
               </div>
             </div>
@@ -509,7 +527,9 @@
         <div class="container">
           <div class="section-title">
             <h2 class="text-white">Ready to Start Your Journey?</h2>
-            <p class="subtitle text-white-90">Let us create unforgettable memories that go beyond the ordinary</p>
+            <p class="subtitle text-white-90">
+              Let us create unforgettable memories that go beyond the ordinary
+            </p>
           </div>
           <div class="text-center">
             <a class="btn btn-lg ghost" href="contact.html">Get Custom Quote</a>
@@ -532,18 +552,20 @@
         </div>
       </section>
 
-      <footer class="footer">
+      <footer class="footer" role="contentinfo">
         <div class="container">
           <div class="grid cols-3">
             <div>
               <h4>Trippovention</h4>
               <p>
-                Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative
-                and memorable.
+                Your trusted travel partner for unforgettable journeys. We believe that travel
+                should be transformative and memorable.
               </p>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Contact Details</h4>
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+                >
                 <br />
                 <span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
                 <br />
@@ -571,12 +593,14 @@
             <div>
               <h4>Corporate Office</h4>
               <p>
-                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India,
-                122018.
+                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
+                Haryana, India, 122018.
               </p>
               <div class="mt-20">
                 <h4>Thailand Office</h4>
-                <p>23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150</p>
+                <p>
+                  23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
+                </p>
               </div>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Follow Us</h4>
@@ -658,20 +682,64 @@
     <script>
       window.structuredDataConfig = {
         pageType: "homepage",
-        description: "Your trusted travel partner for unforgettable journeys across India and the world",
+        description:
+          "Your trusted travel partner for unforgettable journeys across India and the world",
         aggregateRating: {
           value: "4.8",
-          count: "500"
+          count: "500",
         },
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com/"
-          }
-        ]
+            url: "https://trippovention.com/",
+          },
+        ],
       };
     </script>
 
+    <!-- FAQ Schema for Rich Results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What travel services does Trippovention offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Trippovention offers comprehensive travel services including visa assistance, tour packages to worldwide destinations, customized holiday planning, hotel bookings, and flight reservations. We specialize in both India and international tour packages with expert guidance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which countries can I get visa assistance for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We provide visa assistance for multiple countries including Singapore, Dubai, Malaysia, Thailand, Australia, UK, USA, Schengen countries (Europe), and more. Our experienced team handles document preparation, application submission, and follow-up for hassle-free visa processing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer customized tour packages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we specialize in fully customized tour packages tailored to your preferences, budget, and travel dates. Whether you want adventure tours, family vacations, honeymoon packages, or group travel, we create personalized itineraries to match your dream holiday."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How experienced is the Trippovention team?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Established in 2021, Trippovention has a dedicated team with 10+ years of combined experience in the travel industry. We've successfully served over 50,000 happy travelers, offering expert guidance and seamless travel experiences across India and worldwide destinations."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script src="assets/skip-link.js" defer></script>
     <script src="assets/cookie-consent.js" defer></script>
     <script src="assets/app.js" defer></script>
     <script src="assets/analytics.js" defer></script>

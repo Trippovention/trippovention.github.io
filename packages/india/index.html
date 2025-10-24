@@ -23,7 +23,10 @@
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://trippovention.com/packages/india/" />
-    <meta property="twitter:title" content="India Tours - Incredible India Packages | Trippovention" />
+    <meta
+      property="twitter:title"
+      content="India Tours - Incredible India Packages | Trippovention"
+    />
     <meta
       property="twitter:description"
       content="Discover incredible India tours - from Goa beaches to Kerala backwaters, Rajasthan palaces to spiritual journeys."
@@ -43,6 +46,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Preload Critical Assets for Faster Loading -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <link rel="preload" href="../../assets/styles.css" as="style" />
     <link rel="preload" href="../../assets/app.js" as="script" />
     <link
@@ -53,8 +58,10 @@
   </head>
 
   <body>
-    <a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-    <nav class="nav">
+    <a href="#main" class="skip-link" aria-label="Skip to main content" id="skip-link"
+      >Skip to main content</a
+    >
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container">
         <a class="brand" href="../../index.html" aria-label="Go to Trippovention Home">
           <img src="../../assets/images/logo.webp" alt="Trippovention" width="160" height="40" />
@@ -97,7 +104,7 @@
       </div>
     </nav>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb-container">
           <ol class="breadcrumb-list">
@@ -278,7 +285,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_karnataka_indian_diversity.jpg"
+                  src="../../assets/images/packages/india/hero_karnataka_indian_diversity.webp"
                   loading="lazy"
                   alt="Karnataka Hampi Ruins"
                 />
@@ -299,7 +306,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_telangana_indian_diversity.jpg"
+                  src="../../assets/images/packages/india/hero_telangana_indian_diversity.webp"
                   loading="lazy"
                   alt="Telangana Hyderabad Charminar"
                 />
@@ -320,7 +327,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_madhya_pradesh_indian_diversity.jpg"
+                  src="../../assets/images/packages/india/hero_madhya_pradesh_indian_diversity.webp"
                   loading="lazy"
                   alt="Madhya Pradesh Khajuraho Temples"
                 />
@@ -341,7 +348,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_maharashtra_indian_diversity.jpg"
+                  src="../../assets/images/packages/india/hero_maharashtra_indian_diversity.webp"
                   loading="lazy"
                   alt="Maharashtra Gateway of India Mumbai"
                 />
@@ -362,7 +369,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_odisha_indian_diversity.jpg"
+                  src="../../assets/images/packages/india/hero_odisha_indian_diversity.webp"
                   loading="lazy"
                   alt="Odisha Konark Sun Temple"
                 />
@@ -562,7 +569,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_vaishno_devi.jpg"
+                  src="../../assets/images/packages/india/hero_vaishno_devi.webp"
                   loading="lazy"
                   alt="Vaishno Devi Temple Mountains"
                 />
@@ -625,7 +632,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_vrindavan.jpg"
+                  src="../../assets/images/packages/india/hero_vrindavan.webp"
                   loading="lazy"
                   alt="Vrindavan Dham in Uttar Pradesh"
                 />
@@ -678,7 +685,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_indian_family_fun_theme_travel.jpg"
+                  src="../../assets/images/packages/india/hero_indian_family_fun_theme_travel.webp"
                   loading="lazy"
                   alt="Family Fun Activities"
                 />
@@ -720,7 +727,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_indian_luxury_tour_theme_travel.jpg"
+                  src="../../assets/images/packages/india/hero_indian_luxury_tour_theme_travel.webp"
                   loading="lazy"
                   alt="Luxury Resort"
                 />
@@ -741,7 +748,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_indian_adventure_theme_travel.jpg"
+                  src="../../assets/images/packages/india/hero_indian_adventure_theme_travel.webp"
                   loading="lazy"
                   alt="Adventure Trekking"
                 />
@@ -762,7 +769,7 @@
             <div class="card">
               <div class="img-wrap">
                 <img
-                  src="../../assets/images/packages/india/hero_indian_wellness_tour_theme_travel.jpg"
+                  src="../../assets/images/packages/india/hero_indian_wellness_tour_theme_travel.webp"
                   loading="lazy"
                   alt="Wellness Travel"
                 />
@@ -788,7 +795,9 @@
         <div class="container">
           <div class="section-title">
             <h2 class="text-white">Ready to Explore Incredible India?</h2>
-            <p class="subtitle text-white-90">Get personalized India tour packages from travel experts</p>
+            <p class="subtitle text-white-90">
+              Get personalized India tour packages from travel experts
+            </p>
           </div>
           <div class="text-center">
             <a class="btn btn-lg ghost" href="../../contact.html">Get Custom Quote</a>
@@ -811,18 +820,20 @@
         </div>
       </section>
 
-      <footer class="footer">
+      <footer class="footer" role="contentinfo">
         <div class="container">
           <div class="grid cols-3">
             <div>
               <h4>Trippovention</h4>
               <p>
-                Your trusted travel partner for unforgettable journeys. We believe that travel should be transformative
-                and memorable.
+                Your trusted travel partner for unforgettable journeys. We believe that travel
+                should be transformative and memorable.
               </p>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Contact Details</h4>
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+                >
                 <br />
                 <span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
                 <br />
@@ -850,12 +861,14 @@
             <div>
               <h4>Corporate Office</h4>
               <p>
-                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India,
-                122018.
+                Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
+                Haryana, India, 122018.
               </p>
               <div class="mt-20">
                 <h4>Thailand Office</h4>
-                <p>23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150</p>
+                <p>
+                  23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
+                </p>
               </div>
               <div class="mt-20">
                 <h4 class="muted font-weight-600">Follow Us</h4>
@@ -944,21 +957,21 @@
         url: "https://trippovention.com/packages/india/",
         aggregateRating: {
           value: "4.8",
-          count: "420"
+          count: "420",
         },
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com/"
+            url: "https://trippovention.com/",
           },
           {
             name: "Packages",
-            url: "https://trippovention.com/packages/india/"
+            url: "https://trippovention.com/packages/india/",
           },
           {
             name: "India",
-            url: "https://trippovention.com/packages/india/"
-          }
+            url: "https://trippovention.com/packages/india/",
+          },
         ],
         touristType: ["Family", "Couples", "Solo Travelers", "Groups", "Luxury Travelers"],
         offers: {
@@ -966,10 +979,12 @@
           priceCurrency: "INR",
           lowPrice: "15000",
           highPrice: "150000",
-          offerCount: "20"
-        }
+          offerCount: "20",
+        },
       };
     </script>
+
+    <script src="../../assets/skip-link.js" defer></script>
 
     <script src="../../assets/cookie-consent.js" defer></script>
     <script src="../../assets/app.js" defer></script>

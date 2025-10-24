@@ -58,29 +58,33 @@
 
 /* Accessible Skip Link (hidden until keyboard focus) */
 .skip-link {
-  position: absolute;
-  left: 8px;
-  top: -60px;
-  /* hide off screen */
-  background: #000;
+  position: fixed;
+  left: 50%;
+  top: -100px;
+  /* hide completely off screen */
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #d6804e 0%, #e67e22 100%);
   color: #fff !important;
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
   font-weight: 600;
+  font-size: 14px;
   text-decoration: none;
-  z-index: 2000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition:
-    top 0.2s ease,
-    background 0.2s ease;
+  z-index: 10002;
+  box-shadow: 0 4px 16px rgba(214, 128, 78, 0.4);
+  transition: top 0.3s ease;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.skip-link:focus,
-.skip-link:active {
-  top: 8px;
-  /* slide into view */
-  outline: 3px solid var(--blue);
-  background: var(--gradient-primary);
+.skip-link:focus {
+  top: 0;
+  /* slide into view from center top */
+  opacity: 1;
+  pointer-events: auto;
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 html,
@@ -552,7 +556,8 @@ main {
 
 /* Icon Color Filters - Centralized for easy maintenance */
 .whatsapp-green {
-  filter: brightness(0) saturate(100%) invert(65%) sepia(72%) saturate(1991%) hue-rotate(83deg) brightness(95%);
+  filter: brightness(0) saturate(100%) invert(65%) sepia(72%) saturate(1991%) hue-rotate(83deg)
+    brightness(95%);
   /* WhatsApp Brand Color: #25D366 */
 }
 

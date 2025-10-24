@@ -17,7 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.src = img.dataset.src;
                 img.onerror = () => {
                   // Only log in development
-                  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                  if (
+                    window.location.hostname === "localhost" ||
+                    window.location.hostname === "127.0.0.1"
+                  ) {
                     console.error("Failed to load image:", img.dataset.src);
                   }
                   // Set a fallback placeholder if image fails
@@ -25,7 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
                   img.alt = "Image unavailable";
                 };
               } catch (error) {
-                if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                if (
+                  window.location.hostname === "localhost" ||
+                  window.location.hostname === "127.0.0.1"
+                ) {
                   console.error("Error setting image src:", error);
                 }
               } finally {
@@ -35,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         },
         {
-          rootMargin: "50px"
+          rootMargin: "50px",
         }
       ); // Preload images 50px before viewport
       observer.observe(img);
@@ -62,14 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Apply theme to document
     function applyTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
-      document.body.className = document.body.className.replace(/theme-\w+/g, "") + ` theme-${theme}`;
+      document.body.className =
+        document.body.className.replace(/theme-\w+/g, "") + ` theme-${theme}`;
 
       // Dispatch custom event for any components that need to react
       window.dispatchEvent(
         new CustomEvent("themeChanged", {
           detail: {
-            theme
-          }
+            theme,
+          },
         })
       );
     }
@@ -77,7 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update toggle icon
     function updateToggleIcon(theme) {
       themeToggle.innerHTML = theme === "dark" ? "☀️" : "🌓";
-      themeToggle.setAttribute("title", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      themeToggle.setAttribute(
+        "title",
+        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+      );
     }
 
     // Toggle theme
@@ -114,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         target.scrollIntoView({
           behavior: "smooth",
-          block: "start"
+          block: "start",
         });
       }
     });
@@ -153,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       },
       {
-        threshold: 0.1
+        threshold: 0.1,
       }
     );
 
@@ -220,10 +230,10 @@ window.ThemeManager = {
 
   isDarkMode: function () {
     return this.getCurrentTheme() === "dark";
-  }
+  },
 };
 
-// Service Worker Registration for PWA
+// Service Worker Registration for PWA with Update Notification
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -233,10 +243,156 @@ if ("serviceWorker" in navigator) {
         if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
           console.log("✓ Service Worker registered:", registration.scope);
         }
+
+        // Check for updates
+        registration.addEventListener("updatefound", () => {
+          const newWorker = registration.installing;
+
+          newWorker.addEventListener("statechange", () => {
+            if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+              // New version available!
+              showUpdateNotification();
+            }
+          });
+        });
+
+        // Check for updates periodically (every hour)
+        setInterval(
+          () => {
+            registration.update();
+          },
+          60 * 60 * 1000
+        );
       })
       .catch((error) => {
         // Always log errors
         console.error("✗ Service Worker registration failed:", error);
       });
   });
+}
+
+/**
+ * Show update notification banner when new version is available
+ */
+function showUpdateNotification() {
+  // Don't show if banner already exists
+  if (document.getElementById("update-banner")) return;
+
+  const banner = document.createElement("div");
+  banner.id = "update-banner";
+  banner.className = "update-banner";
+  banner.setAttribute("role", "alert");
+  banner.setAttribute("aria-live", "polite");
+  banner.innerHTML = `
+    <div class="update-content">
+      <span class="update-icon">🎉</span>
+      <span class="update-text">New version available!</span>
+      <button onclick="window.location.reload()" class="update-btn" aria-label="Update now">
+        Update Now
+      </button>
+      <button onclick="document.getElementById('update-banner').remove()" class="update-close" aria-label="Dismiss update notification">
+        ✕
+      </button>
+    </div>
+  `;
+
+  // Add styles
+  const style = document.createElement("style");
+  style.textContent = `
+    .update-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #d6804e 0%, #e67e22 100%);
+      color: white;
+      padding: 12px 16px;
+      z-index: 10001;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .update-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .update-icon {
+      font-size: 20px;
+    }
+
+    .update-text {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .update-btn {
+      background: white;
+      color: var(--orange, #d6804e);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .update-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .update-close {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px 8px;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+
+    .update-close:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      .update-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .update-btn {
+        width: 100%;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
+  document.body.appendChild(banner);
+
+  // Auto-dismiss after 30 seconds if user doesn't interact
+  setTimeout(() => {
+    const existingBanner = document.getElementById("update-banner");
+    if (existingBanner) {
+      existingBanner.remove();
+    }
+  }, 30000);
 }
