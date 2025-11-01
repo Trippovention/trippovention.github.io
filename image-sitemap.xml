@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage Images -->
+  <url>
+    <loc>https://trippovention.com/</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/logo.webp</image:loc>
+      <image:caption>Trippovention - Your Trusted Travel Partner</image:caption>
+      <image:title>Trippovention Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
+      <image:caption>Singapore Tour Packages - Universal Studios & Sentosa</image:caption>
+      <image:title>Singapore Tours</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Amazing Thailand - Bangkok, Phuket, Krabi & Chiang Mai</image:caption>
+      <image:title>Thailand Tours</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/malaysia/hero_malaysia_family_fun.webp</image:loc>
+      <image:caption>Malaysia Tour Packages - Kuala Lumpur & Penang</image:caption>
+      <image:title>Malaysia Tours</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Singapore Package Landing Page -->
+  <url>
+    <loc>https://trippovention.com/packages/singapore/</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
+      <image:caption>Singapore Packages - Universal Studios, Marina Bay, Sentosa</image:caption>
+      <image:title>Singapore Package Landing</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Singapore Family 5 Days Package -->
+  <url>
+    <loc>https://trippovention.com/packages/singapore/family-5days.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
+      <image:caption>Singapore Family Fun 5 Days Package - Universal Studios</image:caption>
+      <image:title>5-Day Singapore Family Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Package Landing Page -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Thailand Packages - Bangkok, Phuket, Pattaya, Krabi</image:caption>
+      <image:title>Thailand Package Landing</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Pattaya Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/pattaya_bangkok.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Pattaya Bangkok 6D - Beaches, Culture & City</image:caption>
+      <image:title>Pattaya Bangkok Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Krabi Phuket Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/krabi_phuket.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Krabi Phuket Escapade - Island Paradise</image:caption>
+      <image:title>Krabi Phuket Island Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Koh Samui Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/koh_samui_bangkok.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Koh Samui Bangkok Delight - Islands & City</image:caption>
+      <image:title>Koh Samui Bangkok Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Koh Samet Pattaya Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/koh_samet_pattaya_bangkok.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Thailand Island & City Delight - Koh Samet Pattaya</image:caption>
+      <image:title>Koh Samet Pattaya Bangkok Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Chiang Mai Chiang Rai Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/chiang_mai_chiang_rai_bangkok.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Northern Thailand - Chiang Mai Chiang Rai</image:caption>
+      <image:title>Northern Thailand Discovery</image:title>
+    </image:image>
+  </url>
+  
+  <!-- India Package Landing Page -->
+  <url>
+    <loc>https://trippovention.com/packages/india/</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_indian_diversity.webp</image:loc>
+      <image:caption>India Tour Packages - Incredible India</image:caption>
+      <image:title>India Tours by Trippovention</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Worldwide Page -->
+  <url>
+    <loc>https://trippovention.com/worldwide.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/dubai/hero_dubai_burj_khalifa.webp</image:loc>
+      <image:caption>Dubai & UAE Tour Packages</image:caption>
+      <image:title>Dubai Tours</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/australia/hero_australia_sydney.webp</image:loc>
+      <image:caption>Australia Tour Packages - Sydney & Melbourne</image:caption>
+      <image:title>Australia Tours</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/hero_europe_paris.webp</image:loc>
+      <image:caption>Europe Tour Packages - Paris, Rome, London</image:caption>
+      <image:title>Europe Tours</image:title>
+    </image:image>
+  </url>
+
+</urlset>
+

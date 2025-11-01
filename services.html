@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>Services & About Us - Travel Ground Operations Experts | Trippovention</title>
+    <title>Services & About Us - Travel Experts | Trippovention</title>
     <meta
       name="description"
       content="Expert travel ground operations: custom tours, visa assistance, hotel bookings, and complete travel solutions. 15+ years of trusted service excellence."
@@ -63,6 +63,18 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-11395302765");
+    </script>
   </head>
 
   <body>
@@ -550,12 +562,12 @@
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com/",
+            url: "https://trippovention.com/"
           },
           {
             name: "Services",
-            url: "https://trippovention.com/services.html",
-          },
+            url: "https://trippovention.com/services.html"
+          }
         ],
         offerCatalog: {
           "@type": "OfferCatalog",
@@ -566,52 +578,63 @@
               itemOffered: {
                 "@type": "Service",
                 name: "Customized Tour Packages",
-                description: "Tailored travel packages for India and worldwide destinations",
-              },
+                description: "Tailored travel packages for India and worldwide destinations"
+              }
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
                 name: "Visa Assistance",
-                description: "Expert visa services for all major countries",
-              },
+                description: "Expert visa services for all major countries"
+              }
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
                 name: "Flight Bookings",
-                description: "Domestic and international flight reservations",
-              },
+                description: "Domestic and international flight reservations"
+              }
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
                 name: "Hotel Reservations",
-                description: "Accommodation booking worldwide",
-              },
+                description: "Accommodation booking worldwide"
+              }
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
                 name: "Travel Insurance",
-                description: "Comprehensive travel protection plans",
-              },
+                description: "Comprehensive travel protection plans"
+              }
             },
             {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
                 name: "Ground Operations",
-                description: "Seamless transportation and local support",
-              },
-            },
-          ],
-        },
+                description: "Seamless transportation and local support"
+              }
+            }
+          ]
+        }
       };
+    </script>
+
+    <!-- Google Ads Conversion Tracking -->
+    <script>
+      window.addEventListener("load", function () {
+        // Homepage conversion tracking
+        if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+          gtag("event", "conversion", { send_to: "AW-11395302765/U_nrCIGQlrcbEO2K2rkq" });
+        }
+        // Future: Add more conversion events for other page types as campaigns expand
+      });
     </script>
 
     <script src="assets/skip-link.js" defer></script>

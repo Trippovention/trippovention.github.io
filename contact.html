@@ -60,6 +60,18 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-11395302765");
+    </script>
   </head>
 
   <body>
@@ -148,7 +160,7 @@
           <div>
             <div class="card">
               <div class="body">
-                <h3>📧 Contact Us</h3>
+                <h2>📧 Contact Us</h2>
                 <form
                   action="https://formsubmit.co/query@trippovention.com"
                   method="POST"
@@ -639,15 +651,26 @@
         breadcrumb: [
           {
             name: "Home",
-            url: "https://trippovention.com/",
+            url: "https://trippovention.com/"
           },
           {
             name: "Contact Us",
-            url: "https://trippovention.com/contact.html",
-          },
+            url: "https://trippovention.com/contact.html"
+          }
         ],
-        phones: ["+91-87508-88875", "+91-124-418-2575"],
+        phones: ["+91-87508-88875", "+91-124-418-2575"]
       };
+    </script>
+
+    <!-- Google Ads Conversion Tracking -->
+    <script>
+      window.addEventListener("load", function () {
+        // Homepage conversion tracking
+        if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+          gtag("event", "conversion", { send_to: "AW-11395302765/U_nrCIGQlrcbEO2K2rkq" });
+        }
+        // Future: Add more conversion events for other page types as campaigns expand
+      });
     </script>
 
     <script src="assets/skip-link.js" defer></script>

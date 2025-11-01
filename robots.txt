@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: October 18, 2025
+# Last Updated: November 1, 2025
 
 # Global rules for all bots
 User-agent: *
@@ -8,10 +8,11 @@ Allow: /
 
 # Sitemaps (Primary + Images)
 Sitemap: https://trippovention.com/sitemap.xml
-# Sitemap: https://trippovention.com/image-sitemap.xml (To be added)
+Sitemap: https://trippovention.com/image-sitemap.xml
 
-# Disallow error pages from indexing
+# Disallow error and utility pages from indexing
 Disallow: /404.html
+Disallow: /offline.html
 Disallow: /*?error=*
 
 # Disallow admin or private areas (if any in future)
