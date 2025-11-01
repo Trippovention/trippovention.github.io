@@ -6,7 +6,7 @@
   <!-- Home Page -->
   <url>
     <loc>https://trippovention.com/</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -19,7 +19,7 @@
   <!-- Worldwide Page -->
   <url>
     <loc>https://trippovention.com/worldwide.html</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- Services Page -->
   <url>
     <loc>https://trippovention.com/services.html</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -35,7 +35,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://trippovention.com/contact.html</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -43,7 +43,7 @@
   <!-- Visa Page -->
   <url>
     <loc>https://trippovention.com/visa/</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -51,7 +51,7 @@
   <!-- India Packages Page -->
   <url>
     <loc>https://trippovention.com/packages/india/</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -64,9 +64,9 @@
   <!-- Singapore Packages Page -->
   <url>
     <loc>https://trippovention.com/packages/singapore/</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
   <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
       <image:caption>Singapore Tour Packages - Universal Studios, Marina Bay, Sentosa</image:caption>
@@ -74,10 +74,10 @@
     </image:image>
   </url>
   
-  <!-- Singapore Family 5 Days Package (Task 8 - Optimized) -->
+  <!-- Singapore Family 5 Days Package -->
   <url>
     <loc>https://trippovention.com/packages/singapore/family-5days.html</loc>
-    <lastmod>2025-10-24</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -86,11 +86,89 @@
       <image:title>5-Day Singapore Family Tour Package</image:title>
     </image:image>
   </url>
+  
+  <!-- Thailand Packages Page -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+  <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Thailand Tour Packages - Bangkok, Phuket, Pattaya, Krabi</image:caption>
+      <image:title>Thailand Tours by Trippovention</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Pattaya Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/pattaya_bangkok.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+  <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Pattaya Bangkok 6D Package - Beaches, Culture & City</image:caption>
+      <image:title>Pattaya Bangkok Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Krabi Phuket Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/krabi_phuket.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+  <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Krabi Phuket Escapade - Island Paradise</image:caption>
+      <image:title>Krabi Phuket Island Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Koh Samui Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/koh_samui_bangkok.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+  <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Koh Samui Bangkok Delight - Islands & City</image:caption>
+      <image:title>Koh Samui Bangkok Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Koh Samet Pattaya Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/koh_samet_pattaya_bangkok.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+  <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Thailand Island & City Delight - Koh Samet Pattaya</image:caption>
+      <image:title>Koh Samet Pattaya Bangkok Tour</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Thailand Chiang Mai Chiang Rai Bangkok Package -->
+  <url>
+    <loc>https://trippovention.com/packages/thailand/chiang_mai_chiang_rai_bangkok.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+  <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
+      <image:caption>Northern Thailand - Chiang Mai Chiang Rai</image:caption>
+      <image:title>Northern Thailand Discovery Tour</image:title>
+    </image:image>
+  </url>
 
   <!-- Terms & Conditions -->
   <url>
     <loc>https://trippovention.com/terms-and-conditions.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -98,7 +176,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://trippovention.com/privacy-policy.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -106,12 +184,26 @@
   <!-- Refund Policy -->
   <url>
     <loc>https://trippovention.com/refund-policy.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- Note: 404.html deliberately excluded as per robots.txt noindex directive -->
+  <!-- 404 Error Page -->
+  <url>
+    <loc>https://trippovention.com/404.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <!-- Offline Page -->
+  <url>
+    <loc>https://trippovention.com/offline.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
 
 </urlset>
 

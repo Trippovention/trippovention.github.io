@@ -49,6 +49,18 @@
           "sizes": "192x192"
         }
       ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch for inquiries",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "/assets/images/favicon.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
