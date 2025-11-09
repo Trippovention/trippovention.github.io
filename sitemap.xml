@@ -16,10 +16,26 @@
     </image:image>
   </url>
   
-  <!-- Worldwide Page -->
+  <!-- Destinations Page -->
   <url>
-    <loc>https://trippovention.com/worldwide.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <loc>https://trippovention.com/destinations.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Destinations by Theme Page -->
+  <url>
+    <loc>https://trippovention.com/destinations-themes.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Destinations by Traveler Page -->
+  <url>
+    <loc>https://trippovention.com/destinations-travelers.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

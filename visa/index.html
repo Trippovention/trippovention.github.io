@@ -96,8 +96,17 @@
 
         <div class="menu" id="mobileMenu">
           <a href="../index.html">Home</a>
-          <a href="../worldwide.html">Worldwide</a>
-          <a href="../packages/india/index.html">India</a>
+          <div class="has-dropdown">
+            <a href="../destinations.html">
+              Destinations
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="../destinations.html">By Country</a>
+              <a href="../destinations-themes.html">By Theme</a>
+              <a href="../destinations-travelers.html">By Traveler</a>
+            </div>
+          </div>
           <a class="active" href="../visa/index.html">Visa</a>
           <a href="../services.html">Services</a>
           <a href="../contact.html">Contact</a>
@@ -1052,9 +1061,11 @@
               <div class="line-height-2">
                 <a href="../index.html">Home</a>
                 <br />
-                <a href="../packages/india/index.html">India Tours</a>
+                <a href="../destinations.html">Destinations</a>
                 <br />
-                <a href="../worldwide.html">Worldwide</a>
+                <a href="../destinations-themes.html">Travel by Theme</a>
+                <br />
+                <a href="../destinations-travelers.html">Travel by Traveler</a>
                 <br />
                 <a href="../visa/index.html">Visa</a>
                 <br />
@@ -1236,5 +1247,25 @@
     <script src="../assets/cookie-consent.js" defer></script>
     <script src="../assets/app.js" defer></script>
     <script src="../assets/analytics.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Trippovention",
+        "description": "Your trusted travel partner for unforgettable journeys",
+        "url": "https://trippovention.com",
+        "logo": "https://trippovention.com/assets/images/logo.webp",
+        "telephone": "+91-87508-88875",
+        "email": "query@trippovention.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Unit 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49",
+          "addressLocality": "Gurgaon",
+          "addressRegion": "Haryana",
+          "postalCode": "122018",
+          "addressCountry": "IN"
+        }
+      }
+    </script>
   </body>
 </html>

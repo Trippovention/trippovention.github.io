@@ -228,6 +228,108 @@ main {
   color: var(--text-primary);
 }
 
+/* Dropdown Menu Styles */
+.menu .has-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu .has-dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menu .has-dropdown .dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.menu .has-dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-large);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 8px 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  margin-top: 8px;
+}
+
+.has-dropdown:hover .dropdown-menu,
+.has-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.dropdown-menu a:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.dropdown-menu a:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
+/* Mobile Dropdown Adjustments */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 0;
+    background: transparent;
+  }
+
+  .menu .has-dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown-menu a {
+    padding: 8px 20px 8px 32px;
+    font-size: 14px;
+  }
+
+  .menu .has-dropdown .dropdown-arrow {
+    display: none;
+  }
+}
+
 /* Actions and Icons */
 .nav-right {
   display: flex;

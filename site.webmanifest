@@ -42,7 +42,7 @@
       "name": "Tour Packages",
       "short_name": "Tours",
       "description": "Browse tour packages",
-      "url": "/worldwide.html",
+      "url": "/destinations.html",
       "icons": [
         {
           "src": "/assets/images/favicon.png",
