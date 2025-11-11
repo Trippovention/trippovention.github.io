@@ -96,11 +96,16 @@
         <div class="menu" id="mobileMenu">
           <a href="../../index.html">Home</a>
           <div class="has-dropdown">
-            <a class="active" href="../../destinations.html">
+            <a
+              class="active"
+              href="../../destinations.html"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Destinations
               <span class="dropdown-arrow">▼</span>
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-label="Browse destinations">
               <a href="../../destinations.html">By Country</a>
               <a href="../../destinations-themes.html">By Theme</a>
               <a href="../../destinations-travelers.html">By Traveler</a>
@@ -110,7 +115,6 @@
           <a href="../../services.html">Services</a>
           <a href="../../contact.html">Contact</a>
         </div>
-
         <div class="nav-right">
           <div class="actions">
             <a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
@@ -131,7 +135,12 @@
             </a>
             <button class="icon" title="Toggle Dark Mode" id="themeToggle">🌙</button>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Menu">
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -163,6 +172,51 @@
           <p>From beaches to mountains, palaces to temples - Explore India's diversity</p>
         </div>
       </header>
+
+      <!-- Why Choose India Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-title">
+            <h2>✨ Why Choose India?</h2>
+            <p class="subtitle">Experience the diversity and wonder of Incredible India</p>
+          </div>
+
+          <div class="grid cols-3">
+            <div class="card">
+              <div class="body text-center">
+                <div class="feature-icon">🏰</div>
+                <h3>Rich Heritage</h3>
+                <p class="muted">
+                  Explore ancient temples, majestic forts, and UNESCO World Heritage Sites that tell
+                  stories spanning millennia.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="body text-center">
+                <div class="feature-icon">🌄</div>
+                <h3>Diverse Landscapes</h3>
+                <p class="muted">
+                  From Himalayan peaks to tropical beaches, lush backwaters to arid deserts -
+                  experience nature's full spectrum.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="body text-center">
+                <div class="feature-icon">🍛</div>
+                <h3>Cultural Tapestry</h3>
+                <p class="muted">
+                  Immerse yourself in vibrant festivals, authentic cuisine, and warm hospitality
+                  across diverse regions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Popular India Packages Section -->
       <section class="section">
@@ -251,7 +305,7 @@
       <section class="section">
         <div class="container">
           <div class="section-title">
-            <h2>Travel by Theme</h2>
+            <h2>Destinations by Theme</h2>
             <p class="subtitle">Find the perfect India tour that matches your travel style</p>
           </div>
           <div class="grid cols-3">
@@ -1109,13 +1163,11 @@
               <div class="line-height-2">
                 <a href="../../index.html">Home</a>
                 <br />
-                <a href="../../packages/india/index.html">India Tours</a>
+                <a href="../../destinations.html">Destinations by Country</a>
                 <br />
-                <a href="../../destinations.html">Destinations</a>
+                <a href="../../destinations-themes.html">Destinations by Theme</a>
                 <br />
-                <a href="../../destinations-themes.html">Travel by Theme</a>
-                <br />
-                <a href="../../destinations-travelers.html">Travel by Traveler</a>
+                <a href="../../destinations-travelers.html">Destinations by Traveler</a>
                 <br />
                 <a href="../../visa/index.html">Visa</a>
                 <br />

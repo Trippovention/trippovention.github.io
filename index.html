@@ -88,11 +88,11 @@
         <div class="menu" id="mobileMenu">
           <a class="active" href="index.html">Home</a>
           <div class="has-dropdown">
-            <a href="destinations.html">
+            <a href="destinations.html" aria-haspopup="true" aria-expanded="false">
               Destinations
               <span class="dropdown-arrow">▼</span>
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-label="Browse destinations">
               <a href="destinations.html">By Country</a>
               <a href="destinations-themes.html">By Theme</a>
               <a href="destinations-travelers.html">By Traveler</a>
@@ -129,7 +129,12 @@
               🌙
             </button>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -451,7 +456,7 @@
           <div class="visa-grid">
             <a href="contact.html?service=singapore-visa" class="visa-item">
               <div class="flag">🇸🇬</div>
-              <h4>Singapore</h4>
+              <h3>Singapore</h3>
             </a>
             <a href="contact.html?service=uae-visa" class="visa-item">
               <div class="flag">🇦🇪</div>
@@ -602,9 +607,9 @@
               <h3>Quick Links</h3>
               <div class="line-height-2">
                 <a href="index.html">Home</a><br />
-                <a href="destinations.html">Destinations</a><br />
-                <a href="destinations-themes.html">Travel by Theme</a><br />
-                <a href="destinations-travelers.html">Travel by Traveler</a><br />
+                <a href="destinations.html">Destinations by Country</a><br />
+                <a href="destinations-themes.html">Destinations by Theme</a><br />
+                <a href="destinations-travelers.html">Destinations by Traveler</a><br />
                 <a href="visa/index.html">Visa</a><br />
                 <a href="services.html">Services</a><br />
                 <a href="contact.html">Contact</a><br />

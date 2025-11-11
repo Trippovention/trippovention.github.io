@@ -313,16 +313,27 @@ main {
     padding: 0;
     margin-top: 0;
     background: transparent;
+    /* Hide by default on mobile - controlled by .open class */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  /* Show dropdown when open class is added by JavaScript */
+  .dropdown-menu.open {
+    max-height: 500px;
   }
 
   .menu .has-dropdown {
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
   }
 
   .dropdown-menu a {
     padding: 8px 20px 8px 32px;
     font-size: 14px;
+    border-radius: 0 !important;
   }
 
   .menu .has-dropdown .dropdown-arrow {
@@ -1765,6 +1776,28 @@ textarea::placeholder {
 
   .menu.active a:last-child {
     border-bottom: none;
+  }
+
+  /* Fix dropdown styling in mobile menu to match other items */
+  .menu.active .has-dropdown {
+    width: 100%;
+    display: block;
+  }
+
+  .menu.active .has-dropdown > a {
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border-light);
+    margin: 0;
+    width: 100%;
+    display: block;
+    border-radius: 0;
+  }
+
+  /* No border on last dropdown if it's the last item before submenu */
+  .menu.active .has-dropdown > a:hover,
+  .menu.active .has-dropdown > a:focus {
+    background: var(--bg-tertiary);
+    border-radius: 0;
   }
 
   .nav-right .actions {

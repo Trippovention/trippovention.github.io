@@ -1,5 +1,90 @@
 // Enhanced UX helpers: lazy loading, smooth scroll, mobile nav, and PERFECT dark theme
 document.addEventListener("DOMContentLoaded", function () {
+  // Accessible dropdown: toggle aria-expanded on nav destination trigger
+  document.querySelectorAll('.has-dropdown > a[aria-haspopup="true"]').forEach(trigger => {
+    const menu = trigger.nextElementSibling;
+    if (!menu) return;
+
+    const focusableItems = () => Array.from(menu.querySelectorAll('a')); // cache on demand
+
+    function openMenu() {
+      trigger.setAttribute('aria-expanded', 'true');
+      menu.classList.add('open');
+      const first = focusableItems()[0];
+      if (first) first.focus();
+    }
+
+    function closeMenu(focusTrigger = false) {
+      trigger.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      if (focusTrigger) trigger.focus();
+    }
+
+    trigger.addEventListener('click', (e) => {
+      // Prevent navigation when toggling
+      e.preventDefault();
+      // Stop propagation to prevent hamburger menu from closing on mobile
+      e.stopPropagation();
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      expanded ? closeMenu(true) : openMenu();
+    });
+
+    // Keyboard handling when trigger has focus
+    trigger.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowDown' && trigger.getAttribute('aria-expanded') === 'false') {
+        ev.preventDefault();
+        openMenu();
+      } else if (ev.key === 'Escape') {
+        closeMenu(true);
+      }
+    });
+
+    // Menu keyboard navigation
+    menu.addEventListener('keydown', (ev) => {
+      const items = focusableItems();
+      const currentIndex = items.indexOf(document.activeElement);
+      if (ev.key === 'Escape') {
+        ev.preventDefault();
+        closeMenu(true);
+      } else if (ev.key === 'ArrowDown') {
+        ev.preventDefault();
+        const next = items[(currentIndex + 1) % items.length];
+        if (next) next.focus();
+      } else if (ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        const prev = items[(currentIndex - 1 + items.length) % items.length];
+        if (prev) prev.focus();
+      } else if (ev.key === 'Home') {
+        ev.preventDefault();
+        if (items[0]) items[0].focus();
+      } else if (ev.key === 'End') {
+        ev.preventDefault();
+        if (items[items.length - 1]) items[items.length - 1].focus();
+      } else if (ev.key === 'Tab') {
+        // Close if tabbing out of menu (forward or backward)
+        if (ev.shiftKey && currentIndex === 0) {
+          closeMenu(true);
+        } else if (!ev.shiftKey && currentIndex === items.length - 1) {
+          closeMenu(false);
+        }
+      }
+    });
+
+    // Close on outside click (but not when clicking dropdown items)
+    document.addEventListener('click', (ev) => {
+      if (!trigger.parentElement.contains(ev.target)) {
+        closeMenu();
+      }
+    });
+
+    // Prevent dropdown menu links from closing hamburger menu on mobile
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Stop propagation so hamburger menu doesn't close
+        e.stopPropagation();
+      });
+    });
+  });
   // Enhanced lazy loading for images with error handling
   document.querySelectorAll("img[data-src]").forEach((img) => {
     // Fallback for browsers without IntersectionObserver

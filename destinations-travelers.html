@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>Travel by Traveler Type - Families, Couples, Seniors & More | Trippovention</title>
+    <title>Travel for Families, Couples, Seniors & More | Trippovention</title>
     <meta
       name="description"
-      content="Find perfect travel packages for kids, friends, couples, families, and senior citizens. Curated experiences designed for your travel style. 15+ years experience."
+      content="Perfect travel packages for kids, friends, couples, families, and seniors. Curated experiences for your travel style. 15+ years experience."
     />
     <meta name="author" content="Trippovention" />
 
@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://trippovention.com/destinations-travelers.html" />
     <meta
       property="og:title"
-      content="Travel by Traveler Type - Families, Couples, Seniors & More | Trippovention"
+      content="Destinations by Traveler - Families, Couples, Seniors & More | Trippovention"
     />
     <meta
       property="og:description"
@@ -34,7 +34,7 @@
     <meta property="twitter:url" content="https://trippovention.com/destinations-travelers.html" />
     <meta
       property="twitter:title"
-      content="Travel by Traveler Type - Families, Couples, Seniors & More"
+      content="Destinations by Traveler - Families, Couples, Seniors & More"
     />
     <meta
       property="twitter:description"
@@ -97,11 +97,11 @@
         <div class="menu" id="mobileMenu">
           <a href="index.html">Home</a>
           <div class="has-dropdown">
-            <a class="active" href="destinations.html">
-              Worldwide
+            <a class="active" href="destinations.html" aria-haspopup="true" aria-expanded="false">
+              Destinations
               <span class="dropdown-arrow">▼</span>
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-label="Browse destinations">
               <a href="destinations.html">By Country</a>
               <a href="destinations-themes.html">By Theme</a>
               <a href="destinations-travelers.html">By Traveler</a>
@@ -111,7 +111,6 @@
           <a href="services.html">Services</a>
           <a href="contact.html">Contact</a>
         </div>
-
         <div class="nav-right">
           <div class="actions">
             <a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
@@ -139,7 +138,12 @@
               🌙
             </button>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -1242,11 +1246,11 @@
               <div class="line-height-2">
                 <a href="index.html">Home</a>
                 <br />
-                <a href="destinations.html">Destinations</a>
+                <a href="destinations.html">Destinations by Country</a>
                 <br />
-                <a href="destinations-themes.html">Travel by Theme</a>
+                <a href="destinations-themes.html">Destinations by Theme</a>
                 <br />
-                <a href="destinations-travelers.html">Travel by Traveler</a>
+                <a href="destinations-travelers.html">Destinations by Traveler</a>
                 <br />
                 <a href="visa/index.html">Visa</a>
                 <br />
@@ -1370,11 +1374,11 @@
             url: "https://trippovention.com/"
           },
           {
-            name: "Worldwide",
+            name: "Destinations",
             url: "https://trippovention.com/destinations.html"
           },
           {
-            name: "By Traveler",
+            name: "Destinations by Traveler",
             url: "https://trippovention.com/destinations-travelers.html"
           }
         ]

@@ -100,11 +100,16 @@
         <div class="menu" id="mobileMenu">
           <a href="../../index.html">Home</a>
           <div class="has-dropdown">
-            <a class="active" href="../../destinations.html">
-              Worldwide
+            <a
+              class="active"
+              href="../../destinations.html"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Destinations
               <span class="dropdown-arrow">▼</span>
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-label="Browse destinations">
               <a href="../../destinations.html">By Country</a>
               <a href="../../destinations-themes.html">By Theme</a>
               <a href="../../destinations-travelers.html">By Traveler</a>
@@ -114,7 +119,6 @@
           <a href="../../services.html">Services</a>
           <a href="../../contact.html">Contact</a>
         </div>
-
         <div class="nav-right">
           <div class="actions">
             <a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
@@ -135,7 +139,12 @@
             </a>
             <button class="icon" title="Toggle Dark Mode" id="themeToggle">🌙</button>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Menu">
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -153,7 +162,7 @@
             </li>
             <li class="breadcrumb-separator">›</li>
             <li class="breadcrumb-item">
-              <span>Packages</span>
+              <a href="../../destinations.html">Destinations</a>
             </li>
             <li class="breadcrumb-separator">›</li>
             <li class="breadcrumb-item">
@@ -180,14 +189,14 @@
             <div class="card info-card">
               <div class="body">
                 <div class="info-icon">🗓️</div>
-                <h4>Duration</h4>
+                <h2>Duration</h2>
                 <p>6 Days / 5 Nights</p>
               </div>
             </div>
             <div class="card info-card card-premium">
               <div class="body">
                 <div class="info-icon">💰</div>
-                <h4>Price Per Person</h4>
+                <h3>Price Per Person</h3>
                 <div class="price-row">
                   <span class="price-old"></span>
                   <span class="price">On demand</span>
@@ -197,7 +206,7 @@
             <div class="card info-card">
               <div class="body">
                 <div class="info-icon">👨‍👩‍👧‍👦</div>
-                <h4>Ideal For</h4>
+                <h2>Ideal For</h2>
                 <p>Families | Couples | Culture & Beach Lovers</p>
               </div>
             </div>
@@ -368,7 +377,11 @@
           <a class="btn btn-lg ghost" href="../../contact.html?package=thailand-pattaya-bangkok"
             >📞 Get Custom Quote</a
           >
-          <a class="btn btn-lg ghost ml-16" href="https://wa.me/+918750888875" target="_blank"
+          <a
+            class="btn btn-lg ghost ml-16"
+            href="https://wa.me/+918750888875"
+            target="_blank"
+            rel="noopener noreferrer"
             >💬 WhatsApp Us</a
           >
         </div>
@@ -393,13 +406,13 @@
       <div class="container">
         <div class="grid cols-3">
           <div>
-            <h4>Trippovention</h4>
+            <h3>Trippovention</h3>
             <p>
               Your trusted travel partner for unforgettable journeys. We believe that travel should
               be transformative and memorable.
             </p>
             <div class="mt-20">
-              <h4 class="muted font-weight-600">Contact Details</h4>
+              <h3 class="muted font-weight-600">Contact Details</h3>
               <span class="mr-15"
                 >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
               >
@@ -414,13 +427,13 @@
             </div>
           </div>
           <div>
-            <h4>Quick Links</h4>
+            <h3>Quick Links</h3>
             <div class="line-height-2">
               <a href="../../index.html">Home</a><br />
 
-              <a href="../../destinations.html">Destinations</a><br />
-              <a href="../../destinations-themes.html">Travel by Theme</a><br />
-              <a href="../../destinations-travelers.html">Travel by Traveler</a><br />
+              <a href="../../destinations.html">Destinations by Country</a><br />
+              <a href="../../destinations-themes.html">Destinations by Theme</a><br />
+              <a href="../../destinations-travelers.html">Destinations by Traveler</a><br />
               <a href="../../visa/index.html">Visa</a><br />
               <a href="../../services.html">Services</a><br />
               <a href="../../contact.html">Contact</a><br />
@@ -430,19 +443,19 @@
             </div>
           </div>
           <div>
-            <h4>Corporate Office</h4>
+            <h3>Corporate Office</h3>
             <p>
               Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
               Haryana, India, 122018.
             </p>
             <div class="mt-20">
-              <h4>Thailand Office</h4>
+              <h3>Thailand Office</h3>
               <p>
                 23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
               </p>
             </div>
             <div class="mt-20">
-              <h4 class="muted font-weight-600">Follow Us</h4>
+              <h3 class="muted font-weight-600">Follow Us</h3>
               <div class="social-icons">
                 <a
                   href="https://facebook.com/trippovention"
@@ -538,7 +551,7 @@
             url: "https://trippovention.com/"
           },
           {
-            name: "Worldwide",
+            name: "Destinations",
             url: "https://trippovention.com/destinations.html"
           },
           {

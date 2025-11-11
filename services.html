@@ -95,11 +95,11 @@
         <div class="menu" id="mobileMenu">
           <a href="index.html">Home</a>
           <div class="has-dropdown">
-            <a href="destinations.html">
+            <a href="destinations.html" aria-haspopup="true" aria-expanded="false">
               Destinations
               <span class="dropdown-arrow">▼</span>
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-label="Browse destinations">
               <a href="destinations.html">By Country</a>
               <a href="destinations-themes.html">By Theme</a>
               <a href="destinations-travelers.html">By Traveler</a>
@@ -109,7 +109,6 @@
           <a class="active" href="services.html">Services</a>
           <a href="contact.html">Contact</a>
         </div>
-
         <div class="nav-right">
           <div class="actions">
             <a class="icon" title="Call Us" href="tel:+918750888875">📞</a>
@@ -137,7 +136,12 @@
               🌙
             </button>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -172,7 +176,7 @@
             <div class="card">
               <div class="body">
                 <div class="feature-icon">✈️</div>
-                <h3>Custom Tour Planning</h3>
+                <h2>Custom Tour Planning</h2>
                 <p class="muted">
                   Tailor-made itineraries based on your dates, budget and interests. We craft
                   personalized experiences that align perfectly with your travel dreams.
@@ -187,7 +191,7 @@
             <div class="card">
               <div class="body">
                 <div class="feature-icon">🛂</div>
-                <h3>Visa Assistance</h3>
+                <h2>Visa Assistance</h2>
                 <p class="muted">
                   End-to-end visa documentation and processing for all major destinations. Our
                   experts handle the paperwork so you can focus on planning your trip.
@@ -443,13 +447,13 @@
         <div class="container">
           <div class="grid cols-3">
             <div>
-              <h4>Trippovention</h4>
+              <h3>Trippovention</h3>
               <p>
                 Your trusted travel partner for unforgettable journeys. We believe that travel
                 should be transformative and memorable.
               </p>
               <div class="mt-20">
-                <h4 class="muted font-weight-600">Contact Details</h4>
+                <h3 class="muted font-weight-600">Contact Details</h3>
                 <span class="mr-15"
                   >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a>
                 </span>
@@ -464,12 +468,12 @@
               </div>
             </div>
             <div>
-              <h4>Quick Links</h4>
+              <h3>Quick Links</h3>
               <div class="line-height-2">
                 <a href="index.html">Home</a><br />
-                <a href="destinations.html">Destinations</a><br />
-                <a href="destinations-themes.html">Travel by Theme</a><br />
-                <a href="destinations-travelers.html">Travel by Traveler</a><br />
+                <a href="destinations.html">Destinations by Country</a><br />
+                <a href="destinations-themes.html">Destinations by Theme</a><br />
+                <a href="destinations-travelers.html">Destinations by Traveler</a><br />
                 <a href="visa/index.html">Visa</a><br />
                 <a href="services.html">Services</a><br />
                 <a href="contact.html">Contact</a><br />
@@ -479,19 +483,19 @@
               </div>
             </div>
             <div>
-              <h4>Corporate Office</h4>
+              <h3>Corporate Office</h3>
               <p>
                 Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
                 Haryana, India, 122018.
               </p>
               <div class="mt-20">
-                <h4>Thailand Office</h4>
+                <h3>Thailand Office</h3>
                 <p>
                   23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
                 </p>
               </div>
               <div class="mt-20">
-                <h4 class="muted font-weight-600">Follow Us</h4>
+                <h3 class="muted font-weight-600">Follow Us</h3>
                 <div class="social-icons">
                   <a
                     href="https://facebook.com/trippovention"
