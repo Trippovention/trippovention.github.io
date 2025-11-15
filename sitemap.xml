@@ -6,7 +6,7 @@
   <!-- Home Page -->
   <url>
     <loc>https://trippovention.com/</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -43,7 +43,7 @@
   <!-- Services Page -->
   <url>
     <loc>https://trippovention.com/services.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -51,7 +51,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://trippovention.com/contact.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -59,7 +59,7 @@
   <!-- Visa Page -->
   <url>
     <loc>https://trippovention.com/visa/</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -67,7 +67,7 @@
   <!-- India Packages Page -->
   <url>
     <loc>https://trippovention.com/packages/india/</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -80,7 +80,7 @@
   <!-- Singapore Packages Page -->
   <url>
     <loc>https://trippovention.com/packages/singapore/</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -93,7 +93,7 @@
   <!-- Singapore Family 5 Days Package -->
   <url>
     <loc>https://trippovention.com/packages/singapore/family-5days.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -106,7 +106,7 @@
   <!-- Thailand Packages Page -->
   <url>
     <loc>https://trippovention.com/packages/thailand/</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -119,7 +119,7 @@
   <!-- Thailand Pattaya Bangkok Package -->
   <url>
     <loc>https://trippovention.com/packages/thailand/pattaya_bangkok.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -132,7 +132,7 @@
   <!-- Thailand Krabi Phuket Package -->
   <url>
     <loc>https://trippovention.com/packages/thailand/krabi_phuket.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -145,7 +145,7 @@
   <!-- Thailand Koh Samui Bangkok Package -->
   <url>
     <loc>https://trippovention.com/packages/thailand/koh_samui_bangkok.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -158,7 +158,7 @@
   <!-- Thailand Koh Samet Pattaya Bangkok Package -->
   <url>
     <loc>https://trippovention.com/packages/thailand/koh_samet_pattaya_bangkok.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -171,7 +171,7 @@
   <!-- Thailand Chiang Mai Chiang Rai Bangkok Package -->
   <url>
     <loc>https://trippovention.com/packages/thailand/chiang_mai_chiang_rai_bangkok.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -184,7 +184,7 @@
   <!-- Terms & Conditions -->
   <url>
     <loc>https://trippovention.com/terms-and-conditions.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -192,7 +192,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://trippovention.com/privacy-policy.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -200,7 +200,7 @@
   <!-- Refund Policy -->
   <url>
     <loc>https://trippovention.com/refund-policy.html</loc>
-    <lastmod>2025-11-01</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

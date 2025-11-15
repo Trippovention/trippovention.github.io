@@ -57,6 +57,76 @@
     </image:image>
   </url>
   
+  <!-- Destinations by Theme Page -->
+  <url>
+    <loc>https://trippovention.com/destinations-themes.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_pattaya_bangkok_beach.webp</image:loc>
+      <image:caption>Beach Theme - Thailand Pattaya Bangkok</image:caption>
+      <image:title>Beach Destinations</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/newzealand/hero_newzealand_adventure.webp</image:loc>
+      <image:caption>Adventure Theme - New Zealand Exploration</image:caption>
+      <image:title>Adventure Travel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives_honeymoon.webp</image:loc>
+      <image:caption>Honeymoon Theme - Maldives Romance</image:caption>
+      <image:title>Honeymoon Packages</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/japan/hero_japan_culture.webp</image:loc>
+      <image:caption>Cultural Theme - Japan Heritage Tours</image:caption>
+      <image:title>Cultural Tours</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/indonesia/hero_bali_wellness.webp</image:loc>
+      <image:caption>Wellness Theme - Bali Spa & Yoga</image:caption>
+      <image:title>Wellness Retreats</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/cruise/hero_mediterranean_cruise.webp</image:loc>
+      <image:caption>Cruise Theme - Mediterranean Cruises</image:caption>
+      <image:title>Cruise Vacations</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/wildlife/hero_kenya_wildlife.webp</image:loc>
+      <image:caption>Wildlife Theme - Kenya Safari Adventures</image:caption>
+      <image:title>Wildlife Safaris</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Destinations by Traveler Page -->
+  <url>
+    <loc>https://trippovention.com/destinations-travelers.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_kids_traveler.webp</image:loc>
+      <image:caption>Kids Traveler - Singapore Family Fun</image:caption>
+      <image:title>Family Travel with Kids</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_friends_traveler.webp</image:loc>
+      <image:caption>Friends Traveler - Thailand Group Adventures</image:caption>
+      <image:title>Travel with Friends</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives_couples_traveler.webp</image:loc>
+      <image:caption>Couples Traveler - Maldives Romance</image:caption>
+      <image:title>Couples Travel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_families_traveler.webp</image:loc>
+      <image:caption>Family Traveler - Singapore Multi-Gen Tours</image:caption>
+      <image:title>Multi-Generational Travel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/switzerland/hero_switzerland_senior_citizens_traveler.webp</image:loc>
+      <image:caption>Senior Traveler - Switzerland Comfort Tours</image:caption>
+      <image:title>Senior Citizen Travel</image:title>
+    </image:image>
+  </url>
+  
   <!-- Destinations Page - Worldwide -->
   <url>
     <loc>https://trippovention.com/destinations.html</loc>
