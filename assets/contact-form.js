@@ -372,25 +372,6 @@ function showFieldTooltip(field, message) {
   // No auto-hide - they will be removed when validation passes or field is corrected
 }
 
-// Success message display
-function showSuccessMessage() {
-  const successDiv = document.createElement("div");
-  successDiv.innerHTML = `
-		<div class="success-toast">
-			✅ Message sent successfully! We'll get back to you soon.
-			<button onclick="this.parentElement.parentElement.remove()" class="success-toast-close" aria-label="Close notification">×</button>
-		</div>
-	`;
-  document.body.appendChild(successDiv);
-
-  // Auto-hide after 5 seconds
-  setTimeout(() => {
-    if (successDiv.parentElement) {
-      successDiv.remove();
-    }
-  }, 5000);
-}
-
 // Pre-fill form from URL parameters - Smart Auto-Population
 function prefillDestinationFromURL() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -399,7 +380,6 @@ function prefillDestinationFromURL() {
   const packageParam = urlParams.get("package");
   const from = urlParams.get("from");
   const coupon = urlParams.get("coupon");
-  const success = urlParams.get("success");
 
   // Get form fields - with retry logic if elements are not yet available
   const inquiryTypeField = document.getElementById("inquiryType");
@@ -565,21 +545,6 @@ function prefillDestinationFromURL() {
     }, 150);
   }
 
-  // If this is a redirect from successful submission, don't auto-focus
-  // Coupon is already applied at the beginning, just skip inquiry type selection
-  if (success === "true") {
-    // Clean URL after reading all parameters
-    setTimeout(() => {
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }, 1000); // Give time for user to see the URL
-
-    // Mark as processed
-    if (formElement) {
-      formElement.dataset.urlProcessed = "true";
-    }
-    return; // Exit early to prevent auto-selection on redirect
-  }
-
   // Mark form as fully processed to prevent duplicate fills
   if (formElement) {
     formElement.dataset.urlProcessed = "true";
@@ -598,8 +563,7 @@ function initializeForm() {
   const nextField = document.getElementById("_next");
   if (nextField) {
     const currentOrigin = window.location.origin; // e.g., https://trippovention.com
-    const currentPath = window.location.pathname; // e.g., /contact.html
-    nextField.value = `${currentOrigin}${currentPath}?success=true`;
+    nextField.value = `${currentOrigin}/thank-you.html`;
   }
 
   // Ensure form visibility on page load
@@ -763,13 +727,6 @@ function initializeForm() {
       // Allow submission even if there's an error
     }
   });
-
-  // Check for success parameter in URL or hash
-  const urlParams = new URLSearchParams(window.location.search);
-  const hashSuccess = window.location.hash === "#success";
-  if (urlParams.get("success") === "true" || hashSuccess) {
-    showSuccessMessage();
-  }
 }
 
 // CRITICAL FIX: Handle both scenarios
