@@ -18,7 +18,7 @@ function ensureFormVisibility() {
         form.scrollIntoView({
           behavior: "smooth",
           block: "start",
-          inline: "nearest",
+          inline: "nearest"
         });
       }
     }, 500);
@@ -40,7 +40,7 @@ function toggleConditionalFields() {
     .querySelectorAll(
       "#travelDetails input, #travelDetails select, #visaDetails input, #visaDetails select"
     )
-    .forEach((input) => {
+    .forEach(input => {
       input.removeAttribute("required");
     });
 
@@ -51,9 +51,9 @@ function toggleConditionalFields() {
     const requiredTravelFields = [
       "Preferred\u00A0Destination",
       "Number\u00A0of\u00A0Travelers",
-      "Budget\u00A0Range",
+      "Budget\u00A0Range"
     ];
-    requiredTravelFields.forEach((name) => {
+    requiredTravelFields.forEach(name => {
       const field = document.querySelector(`[name="${name}"]`);
       if (field) field.setAttribute("required", "required");
     });
@@ -61,7 +61,7 @@ function toggleConditionalFields() {
     visaDetails.style.display = "block";
     // Make key visa fields required (using &nbsp; for spaces)
     const requiredVisaFields = ["Visa\u00A0Country", "Visa\u00A0Type"];
-    requiredVisaFields.forEach((name) => {
+    requiredVisaFields.forEach(name => {
       const field = document.querySelector(`[name="${name}"]`);
       if (field) field.setAttribute("required", "required");
     });
@@ -84,7 +84,7 @@ function validateForm() {
   const validationErrors = []; // Track all errors for summary
 
   // Remove all existing tooltips
-  document.querySelectorAll(".form-tooltip").forEach((tooltip) => tooltip.remove());
+  document.querySelectorAll(".form-tooltip").forEach(tooltip => tooltip.remove());
 
   // Check all required fields with visual feedback
   for (let field of requiredFields) {
@@ -105,7 +105,7 @@ function validateForm() {
       showFieldTooltip(field, "This field is required");
       validationErrors.push({
         field: field,
-        message: fieldLabel + " is required",
+        message: fieldLabel + " is required"
       });
     } else {
       // Show green border for valid required fields
@@ -126,7 +126,7 @@ function validateForm() {
       showFieldTooltip(emailField, "Please enter a valid email address (e.g., user@example.com)");
       validationErrors.push({
         field: emailField,
-        message: "Email Address is invalid",
+        message: "Email Address is invalid"
       });
     } else {
       emailField.style.borderColor = "rgba(40,167,69,0.8)";
@@ -149,7 +149,7 @@ function validateForm() {
       );
       validationErrors.push({
         field: phoneField,
-        message: "Phone Number is invalid",
+        message: "Phone Number is invalid"
       });
     } else {
       phoneField.style.borderColor = "rgba(40,167,69,0.8)";
@@ -287,14 +287,14 @@ function updateValidationSummary(errors) {
 
   if (errors.length > 0) {
     // Populate error list
-    errors.forEach((error) => {
+    errors.forEach(error => {
       const li = document.createElement("li");
       li.textContent = error.message;
       li.addEventListener("click", () => {
         // Scroll to the field with error
         error.field.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: "center"
         });
         error.field.focus();
       });
@@ -405,10 +405,10 @@ function prefillDestinationFromURL() {
   }
 
   // Helper function to format names (kebab-case to Title Case)
-  const formatName = (str) => {
+  const formatName = str => {
     return str
       .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   };
 
@@ -448,7 +448,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         visaCountryField.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: "center"
         });
         visaCountryField.focus();
       }, 200);
@@ -473,7 +473,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         destinationField.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: "center"
         });
         destinationField.focus();
       }, 200);
@@ -493,7 +493,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         visaCountryField.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: "center"
         });
         visaCountryField.focus();
       }, 350);
@@ -512,7 +512,7 @@ function prefillDestinationFromURL() {
         setTimeout(() => {
           destinationField.scrollIntoView({
             behavior: "smooth",
-            block: "center",
+            block: "center"
           });
           destinationField.focus();
         }, 200);
@@ -538,7 +538,7 @@ function prefillDestinationFromURL() {
       setTimeout(() => {
         destinationField.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: "center"
         });
         destinationField.focus();
       }, 200);
@@ -631,7 +631,7 @@ function initializeForm() {
 
   // Add event listeners for real-time validation
   const inputs = form.querySelectorAll("input, select, textarea");
-  inputs.forEach((input) => {
+  inputs.forEach(input => {
     input.addEventListener("input", validateForm);
     input.addEventListener("change", validateForm);
     input.addEventListener("blur", validateForm);

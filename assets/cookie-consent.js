@@ -41,7 +41,7 @@
     // Dispatch event for analytics.js to listen
     window.dispatchEvent(
       new CustomEvent("cookieConsentUpdated", {
-        detail: { accepted },
+        detail: { accepted }
       })
     );
   }
@@ -242,7 +242,7 @@
       // Consent already given, notify analytics
       window.dispatchEvent(
         new CustomEvent("cookieConsentUpdated", {
-          detail: { accepted: consent },
+          detail: { accepted: consent }
         })
       );
     }
@@ -268,8 +268,6 @@
       localStorage.removeItem(CONSENT_KEY);
       localStorage.removeItem(CONSENT_TIMESTAMP_KEY);
       showConsentBanner();
-    },
+    }
   };
 })();
-
-

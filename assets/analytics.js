@@ -34,7 +34,7 @@ function loadGoogleAnalytics() {
       page_title: document.title,
       page_path: window.location.pathname,
       page_location: window.location.href,
-      anonymize_ip: true, // GDPR requirement
+      anonymize_ip: true // GDPR requirement
     });
     window.gaLoaded = true;
   };
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gtag("event", "phone_call_click", {
         event_category: "contact",
         event_label: phoneNumber,
-        page_path: window.location.pathname,
+        page_path: window.location.pathname
       });
     });
   });
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gtag("event", "whatsapp_click", {
         event_category: "contact",
         event_label: "WhatsApp Inquiry",
-        page_path: window.location.pathname,
+        page_path: window.location.pathname
       });
     });
   });
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gtag("event", "email_click", {
         event_category: "contact",
         event_label: email,
-        page_path: window.location.pathname,
+        page_path: window.location.pathname
       });
     });
   });
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gtag("event", "enquiry_click", {
         event_category: "lead_generation",
         event_label: packageName,
-        page_path: window.location.pathname,
+        page_path: window.location.pathname
       });
     });
   });
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gtag("event", "form_submission", {
         event_category: "lead_generation",
         event_label: formType,
-        page_path: window.location.pathname,
+        page_path: window.location.pathname
       });
     });
   });
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gtag("event", "outbound_link_click", {
           event_category: "engagement",
           event_label: this.href,
-          page_path: window.location.pathname,
+          page_path: window.location.pathname
         });
       });
     }
