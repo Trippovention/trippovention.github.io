@@ -307,7 +307,7 @@ const StructuredData = (() => {
           },
           {
             "@type": "ContactPoint",
-            telephone: "+66-94-931-9572",
+            telephone: "+66-90-917-7601",
             contactType: "International Support",
             areaServed: "TH",
             availableLanguage: "English"
