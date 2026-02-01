@@ -22,19 +22,19 @@ const StructuredData = (() => {
       addressLocality: "Gurgaon",
       addressRegion: "Haryana",
       postalCode: "122018",
-      addressCountry: "IN",
+      addressCountry: "IN"
     },
     geo: {
       "@type": "GeoCoordinates",
       latitude: "28.4089",
-      longitude: "77.0342",
+      longitude: "77.0342"
     },
     openingHours: "Mo-Sa 10:00-19:00",
     priceRange: "₹₹-₹₹₹",
     socialMedia: [
       "https://facebook.com/trippovention",
       "https://instagram.com/trippovention",
-      "https://twitter.com/trippovention",
+      "https://twitter.com/trippovention"
     ],
     // 74+ countries - global coverage
     areaServed: [
@@ -111,8 +111,8 @@ const StructuredData = (() => {
       "KE",
       "EG",
       "TN",
-      "MA",
-    ],
+      "MA"
+    ]
   };
 
   // Contact point template (reusable)
@@ -126,8 +126,8 @@ const StructuredData = (() => {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       opens: "10:00",
-      closes: "19:00",
-    },
+      closes: "19:00"
+    }
   });
 
   // Full TravelAgency provider template
@@ -143,13 +143,13 @@ const StructuredData = (() => {
     geo: COMPANY_INFO.geo,
     openingHours: COMPANY_INFO.openingHours,
     sameAs: COMPANY_INFO.socialMedia,
-    contactPoint: getContactPoint(),
+    contactPoint: getContactPoint()
   });
 
   // Schema generators
   const schemas = {
     // 1. TravelAgency Schema (Homepage, Worldwide)
-    travelAgency: (config) => ({
+    travelAgency: config => ({
       "@context": "https://schema.org",
       "@type": "TravelAgency",
       name: COMPANY_INFO.name,
@@ -170,10 +170,10 @@ const StructuredData = (() => {
           ratingValue: config.aggregateRating.value,
           reviewCount: config.aggregateRating.count,
           bestRating: "5",
-          worstRating: "1",
-        },
+          worstRating: "1"
+        }
       }),
-      contactPoint: getContactPoint(),
+      contactPoint: getContactPoint()
     }),
 
     // 2. Organization Schema (Knowledge Graph)
@@ -193,13 +193,13 @@ const StructuredData = (() => {
         "@type": "ContactPoint",
         telephone: COMPANY_INFO.telephone,
         contactType: "Customer Service",
-        email: COMPANY_INFO.email,
+        email: COMPANY_INFO.email
       },
-      sameAs: COMPANY_INFO.socialMedia,
+      sameAs: COMPANY_INFO.socialMedia
     }),
 
     // 3. WebSite with SearchAction (Sitelinks Search Box)
-    website: (config) => ({
+    website: config => ({
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: COMPANY_INFO.name,
@@ -207,20 +207,20 @@ const StructuredData = (() => {
       potentialAction: {
         "@type": "SearchAction",
         target: `${COMPANY_INFO.url}/${config.searchPath || "search.html"}?q={search_term_string}`,
-        "query-input": "required name=search_term_string",
-      },
+        "query-input": "required name=search_term_string"
+      }
     }),
 
     // 4. Service Schema (Services, Visa)
-    service: (config) => ({
+    service: config => ({
       "@context": "https://schema.org",
       "@type": "Service",
       serviceType: config.serviceType,
       ...(config.name && {
-        name: config.name,
+        name: config.name
       }),
       ...(config.description && {
-        description: config.description,
+        description: config.description
       }),
       provider: getTravelAgencyProvider(),
       areaServed: COMPANY_INFO.areaServed,
@@ -229,22 +229,22 @@ const StructuredData = (() => {
           "@type": "AggregateRating",
           ratingValue: config.aggregateRating.value,
           reviewCount: config.aggregateRating.count,
-          bestRating: "5",
-        },
+          bestRating: "5"
+        }
       }),
       ...(config.offers && {
-        offers: config.offers,
+        offers: config.offers
       }),
       ...(config.serviceOutput && {
-        serviceOutput: config.serviceOutput,
+        serviceOutput: config.serviceOutput
       }),
       ...(config.hasOfferCatalog && {
-        hasOfferCatalog: config.hasOfferCatalog,
-      }),
+        hasOfferCatalog: config.hasOfferCatalog
+      })
     }),
 
     // 5. TouristTrip Schema (Package pages)
-    touristTrip: (config) => ({
+    touristTrip: config => ({
       "@context": "https://schema.org",
       "@type": config.schemaType || "TouristTrip",
       name: config.name,
@@ -256,23 +256,23 @@ const StructuredData = (() => {
           "@type": "AggregateRating",
           ratingValue: config.aggregateRating.value,
           reviewCount: config.aggregateRating.count,
-          bestRating: "5",
-        },
+          bestRating: "5"
+        }
       }),
       ...(config.duration && {
-        duration: config.duration,
+        duration: config.duration
       }),
       touristType: config.touristType || ["Family", "Couples", "Solo Travelers", "Groups"],
       ...(config.itinerary && {
-        itinerary: config.itinerary,
+        itinerary: config.itinerary
       }),
       ...(config.offers && {
-        offers: config.offers,
-      }),
+        offers: config.offers
+      })
     }),
 
     // 6. ContactPage Schema
-    contactPage: (config) => ({
+    contactPage: config => ({
       "@context": "https://schema.org",
       "@type": "ContactPage",
       mainEntity: {
@@ -288,7 +288,7 @@ const StructuredData = (() => {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
           opens: "10:00",
-          closes: "19:00",
+          closes: "19:00"
         },
         contactPoint: config.contactPoints || [
           {
@@ -296,38 +296,38 @@ const StructuredData = (() => {
             telephone: COMPANY_INFO.telephone,
             contactType: "Customer Service",
             areaServed: COMPANY_INFO.areaServed,
-            availableLanguage: ["English", "Hindi"],
+            availableLanguage: ["English", "Hindi"]
           },
           {
             "@type": "ContactPoint",
             telephone: "+91-73030-10446",
             contactType: "Sales",
             areaServed: ["IN", "SG", "TH", "MY", "AE"],
-            availableLanguage: ["English", "Hindi"],
+            availableLanguage: ["English", "Hindi"]
           },
           {
             "@type": "ContactPoint",
-            telephone: "+66-94-931-9572",
+            telephone: "+66-90-917-7601",
             contactType: "International Support",
             areaServed: "TH",
-            availableLanguage: "English",
-          },
+            availableLanguage: "English"
+          }
         ],
-        sameAs: COMPANY_INFO.socialMedia,
-      },
+        sameAs: COMPANY_INFO.socialMedia
+      }
     }),
 
     // 7. BreadcrumbList Schema
-    breadcrumb: (items) => ({
+    breadcrumb: items => ({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: items.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: item.name,
-        item: item.url,
-      })),
-    }),
+        item: item.url
+      }))
+    })
   };
 
   // Inject schema into page
@@ -346,7 +346,7 @@ const StructuredData = (() => {
   };
 
   // Main initialization function
-  const init = (config) => {
+  const init = config => {
     // Always add breadcrumb if provided
     if (config.breadcrumb) {
       injectSchema(schemas.breadcrumb(config.breadcrumb), "Structured Data: BreadcrumbList");
@@ -363,8 +363,8 @@ const StructuredData = (() => {
             url: COMPANY_INFO.url,
             aggregateRating: {
               value: "4.8",
-              count: "500",
-            },
+              count: "500"
+            }
           }),
           "Structured Data: TravelAgency (Primary Business Entity)"
         );
@@ -379,7 +379,7 @@ const StructuredData = (() => {
             description:
               config.description ||
               "International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
-            url: config.url,
+            url: config.url
           }),
           "Structured Data: TravelAgency"
         );
@@ -391,9 +391,9 @@ const StructuredData = (() => {
             serviceType: "Travel Services",
             aggregateRating: {
               value: "4.8",
-              count: "500",
+              count: "500"
             },
-            hasOfferCatalog: config.offerCatalog,
+            hasOfferCatalog: config.offerCatalog
           }),
           "Structured Data: Service with OfferCatalog"
         );
@@ -406,7 +406,7 @@ const StructuredData = (() => {
             name: "Visa Services by Trippovention",
             description: config.description,
             offers: config.offers,
-            serviceOutput: config.serviceOutput,
+            serviceOutput: config.serviceOutput
           }),
           "Structured Data: Service (Visa Assistance)"
         );
@@ -416,7 +416,7 @@ const StructuredData = (() => {
         injectSchema(
           schemas.contactPage({
             multiplePhones: config.phones,
-            contactPoints: config.contactPoints,
+            contactPoints: config.contactPoints
           }),
           "Structured Data: ContactPage"
         );
@@ -433,7 +433,7 @@ const StructuredData = (() => {
             duration: config.duration,
             touristType: config.touristType,
             itinerary: config.itinerary,
-            offers: config.offers,
+            offers: config.offers
           }),
           `Structured Data: ${config.schemaType || "TouristTrip"}`
         );
@@ -451,7 +451,7 @@ const StructuredData = (() => {
   return {
     init,
     COMPANY_INFO, // Export for reference
-    schemas, // Export for advanced usage
+    schemas // Export for advanced usage
   };
 })();
 

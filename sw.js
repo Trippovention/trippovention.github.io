@@ -4,7 +4,7 @@
  * Version: 3.4 - GTM integration + enhanced tracking
  */
 
-const CACHE_VERSION = "3.4";
+const CACHE_VERSION = "3.5";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = "trippovention-runtime";
 

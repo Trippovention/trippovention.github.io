@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: November 1, 2025
+# Last Updated: January 31, 2026
 
 # Global rules for all bots
 User-agent: *
@@ -15,9 +15,9 @@ Disallow: /404.html
 Disallow: /offline.html
 Disallow: /*?error=*
 
-# Disallow admin or private areas (if any in future)
-# Disallow: /admin/
-# Disallow: /private/
+# Disallow validation and development folders
+Disallow: /_validation/
+Disallow: /node_modules/
 
 # Explicitly allow crawling of assets for better rendering (Mobile-First Indexing)
 Allow: /assets/*.css
@@ -88,5 +88,4 @@ Crawl-delay: 10
 
 # Host directive (for clarity)
 Host: https://trippovention.com
-
 

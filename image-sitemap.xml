@@ -1,601 +1,305 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage Images -->
   <url>
-    <loc>https://trippovention.com/</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/logo.webp</image:loc>
-      <image:caption>Trippovention - Your Trusted Travel Partner</image:caption>
-      <image:title>Trippovention Logo</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
-      <image:caption>Singapore Tour Packages - Universal Studios & Sentosa</image:caption>
-      <image:title>Singapore Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Amazing Thailand - Bangkok, Phuket, Krabi & Chiang Mai</image:caption>
-      <image:title>Thailand Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/malaysia/hero_malaysia_family_fun.webp</image:loc>
-      <image:caption>Malaysia Tour Packages - Kuala Lumpur & Penang</image:caption>
-      <image:title>Malaysia Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/uae/hero_uae_family_fun.webp</image:loc>
-      <image:caption>UAE Dubai Tour Packages - Burj Khalifa & Desert Safari</image:caption>
-      <image:title>UAE Dubai Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/vietnam/hero_vietnam_family_fun.webp</image:loc>
-      <image:caption>Vietnam Tour Packages - Halong Bay & Ho Chi Minh City</image:caption>
-      <image:title>Vietnam Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/france/hero_france.webp</image:loc>
-      <image:caption>Europe Tour Packages - Paris, France & Beyond</image:caption>
-      <image:title>European Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_goa.webp</image:loc>
-      <image:caption>Goa Beach Tour Packages - India</image:caption>
-      <image:title>Goa Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_kerala.webp</image:loc>
-      <image:caption>Kerala Backwaters - God's Own Country Tours</image:caption>
-      <image:title>Kerala Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_rajasthan.webp</image:loc>
-      <image:caption>Rajasthan Royal Heritage Tours - India</image:caption>
-      <image:title>Rajasthan Tours</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Destinations by Theme Page -->
-  <url>
-    <loc>https://trippovention.com/destinations-themes.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_pattaya_bangkok_beach.webp</image:loc>
-      <image:caption>Beach Theme - Thailand Pattaya Bangkok</image:caption>
-      <image:title>Beach Destinations</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/newzealand/hero_newzealand_adventure.webp</image:loc>
-      <image:caption>Adventure Theme - New Zealand Exploration</image:caption>
-      <image:title>Adventure Travel</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives_honeymoon.webp</image:loc>
-      <image:caption>Honeymoon Theme - Maldives Romance</image:caption>
-      <image:title>Honeymoon Packages</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/japan/hero_japan_culture.webp</image:loc>
-      <image:caption>Cultural Theme - Japan Heritage Tours</image:caption>
-      <image:title>Cultural Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/indonesia/hero_bali_wellness.webp</image:loc>
-      <image:caption>Wellness Theme - Bali Spa & Yoga</image:caption>
-      <image:title>Wellness Retreats</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/cruise/hero_mediterranean_cruise.webp</image:loc>
-      <image:caption>Cruise Theme - Mediterranean Cruises</image:caption>
-      <image:title>Cruise Vacations</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/wildlife/hero_kenya_wildlife.webp</image:loc>
-      <image:caption>Wildlife Theme - Kenya Safari Adventures</image:caption>
-      <image:title>Wildlife Safaris</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Destinations by Traveler Page -->
-  <url>
-    <loc>https://trippovention.com/destinations-travelers.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_kids_traveler.webp</image:loc>
-      <image:caption>Kids Traveler - Singapore Family Fun</image:caption>
-      <image:title>Family Travel with Kids</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_friends_traveler.webp</image:loc>
-      <image:caption>Friends Traveler - Thailand Group Adventures</image:caption>
-      <image:title>Travel with Friends</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives_couples_traveler.webp</image:loc>
-      <image:caption>Couples Traveler - Maldives Romance</image:caption>
-      <image:title>Couples Travel</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_families_traveler.webp</image:loc>
-      <image:caption>Family Traveler - Singapore Multi-Gen Tours</image:caption>
-      <image:title>Multi-Generational Travel</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/switzerland/hero_switzerland_senior_citizens_traveler.webp</image:loc>
-      <image:caption>Senior Traveler - Switzerland Comfort Tours</image:caption>
-      <image:title>Senior Citizen Travel</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Destinations Page - Worldwide -->
-  <url>
-    <loc>https://trippovention.com/destinations.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
-      <image:caption>Singapore Destination - Southeast Asia</image:caption>
-      <image:title>Singapore</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Thailand Beach Destinations</image:caption>
-      <image:title>Thailand</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/malaysia/hero_malaysia_family_fun.webp</image:loc>
-      <image:caption>Malaysia Travel Destinations</image:caption>
-      <image:title>Malaysia</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/indonesia/hero_bali.webp</image:loc>
-      <image:caption>Bali Indonesia - Tropical Paradise</image:caption>
-      <image:title>Bali</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/vietnam/hero_vietnam_beach.webp</image:loc>
-      <image:caption>Vietnam Beaches & Culture</image:caption>
-      <image:title>Vietnam</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/japan/hero_japan.webp</image:loc>
-      <image:caption>Japan Tour Packages - Tokyo & Kyoto</image:caption>
-      <image:title>Japan</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/uae/hero_uae_family_fun.webp</image:loc>
-      <image:caption>UAE Dubai & Abu Dhabi Tours</image:caption>
-      <image:title>UAE</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/france/hero_france.webp</image:loc>
-      <image:caption>France Paris - European Elegance</image:caption>
-      <image:title>France</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/austria/hero_austria.webp</image:loc>
-      <image:caption>Austria Tours - Alps & Vienna</image:caption>
-      <image:title>Austria</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/netherlands/hero_netherlands.webp</image:loc>
-      <image:caption>Netherlands Amsterdam Tours</image:caption>
-      <image:title>Netherlands</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/uk/hero_uk.webp</image:loc>
-      <image:caption>United Kingdom - London & Scotland</image:caption>
-      <image:title>UK</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/greece/hero_greece.webp</image:loc>
-      <image:caption>Greece Tours - Athens & Islands</image:caption>
-      <image:title>Greece</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/spain/hero_spain.webp</image:loc>
-      <image:caption>Spain Tours - Barcelona & Madrid</image:caption>
-      <image:title>Spain</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/italy/hero_italy_honeymoon.webp</image:loc>
-      <image:caption>Italy Tours - Rome, Venice & Florence</image:caption>
-      <image:title>Italy</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/switzerland/hero_switzerland_honeymoon.webp</image:loc>
-      <image:caption>Switzerland Alps Tours</image:caption>
-      <image:title>Switzerland</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/germany/hero_germany.webp</image:loc>
-      <image:caption>Germany Tours - Berlin & Munich</image:caption>
-      <image:title>Germany</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/finland/hero_finland.webp</image:loc>
-      <image:caption>Finland Tours - Northern Lights & Helsinki</image:caption>
-      <image:title>Finland</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/iceland/hero_iceland.webp</image:loc>
-      <image:caption>Iceland Adventure - Northern Lights & Glaciers</image:caption>
-      <image:title>Iceland</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/australia/hero_australia_family_fun.webp</image:loc>
-      <image:caption>Australia Tours - Sydney & Great Barrier Reef</image:caption>
-      <image:title>Australia</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/newzealand/hero_newzealand.webp</image:loc>
-      <image:caption>New Zealand Tours - Auckland & Queenstown</image:caption>
-      <image:title>New Zealand</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/northamerica/canada/hero_canada.webp</image:loc>
-      <image:caption>Canada Tours - Toronto & Vancouver</image:caption>
-      <image:title>Canada</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/northamerica/usa/hero_usa.webp</image:loc>
-      <image:caption>USA Tours - New York & California</image:caption>
-      <image:title>USA</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/northamerica/mexico/hero_mexico.webp</image:loc>
-      <image:caption>Mexico Tours - Cancun & Mexico City</image:caption>
-      <image:title>Mexico</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/southamerica/brazil/hero_brazil.webp</image:loc>
-      <image:caption>Brazil Tours - Rio & Amazon</image:caption>
-      <image:title>Brazil</image:title>
-    </image:image>
+    <loc>https://trippovention.com/packages/argentina/argentina_adventure_with_friends_and_mates.html</loc>
     <image:image>
       <image:loc>https://trippovention.com/assets/images/packages/southamerica/argentina/hero_argentina.webp</image:loc>
-      <image:caption>Argentina Tours - Buenos Aires & Patagonia</image:caption>
       <image:title>Argentina</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/austria/austrian_grandeur_journey_tour_package.html</loc>
     <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/southamerica/peru/hero_peru.webp</image:loc>
-      <image:caption>Peru Tours - Machu Picchu & Cusco</image:caption>
-      <image:title>Peru</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/egypt/hero_egypt.webp</image:loc>
-      <image:caption>Egypt Tours - Pyramids & Nile Cruise</image:caption>
-      <image:title>Egypt</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/kenya/hero_kenya.webp</image:loc>
-      <image:caption>Kenya Safari Tours - Masai Mara</image:caption>
-      <image:title>Kenya</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/morocco/hero_morocco.webp</image:loc>
-      <image:caption>Morocco Tours - Marrakech & Sahara</image:caption>
-      <image:title>Morocco</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/southafrica/hero_southafrica.webp</image:loc>
-      <image:caption>South Africa Tours - Cape Town & Safari</image:caption>
-      <image:title>South Africa</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/tanzania/hero_tanzania.webp</image:loc>
-      <image:caption>Tanzania Safari - Serengeti & Zanzibar</image:caption>
-      <image:title>Tanzania</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives.webp</image:loc>
-      <image:caption>Maldives Luxury Beach Resorts</image:caption>
-      <image:title>Maldives</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/mauritius/hero_mauritius.webp</image:loc>
-      <image:caption>Mauritius Island Paradise Tours</image:caption>
-      <image:title>Mauritius</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/seychelles/hero_seychelles_beach.webp</image:loc>
-      <image:caption>Seychelles Luxury Beach Holidays</image:caption>
-      <image:title>Seychelles</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/srilanka/hero_srilanka.webp</image:loc>
-      <image:caption>Sri Lanka Tours - Cultural & Beach</image:caption>
-      <image:title>Sri Lanka</image:title>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/austria/hero_austria.webp</image:loc>
+      <image:title>Austria</image:title>
     </image:image>
   </url>
-  
-  <!-- Singapore Package Landing Page -->
   <url>
-    <loc>https://trippovention.com/packages/singapore/</loc>
+    <loc>https://trippovention.com/packages/brazil/brazil_adventure_tour.html</loc>
     <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
-      <image:caption>Singapore Packages - Universal Studios, Marina Bay, Sentosa</image:caption>
-      <image:title>Singapore Package Landing</image:title>
+      <image:loc>https://trippovention.com/assets/images/packages/southamerica/brazil/hero_brazil.webp</image:loc>
+      <image:title>Brazil</image:title>
     </image:image>
   </url>
-  
-  <!-- Singapore Family 5 Days Package -->
   <url>
-    <loc>https://trippovention.com/packages/singapore/family-5days.html</loc>
+    <loc>https://trippovention.com/packages/canada/canada_adventure_tour.html</loc>
     <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/singapore/hero_singapore_family_fun.webp</image:loc>
-      <image:caption>Singapore Family Fun 5 Days Package - Universal Studios</image:caption>
-      <image:title>5-Day Singapore Family Tour</image:title>
+      <image:loc>https://trippovention.com/assets/images/packages/northamerica/canada/hero_canada.webp</image:loc>
+      <image:title>Canada</image:title>
     </image:image>
   </url>
-  
-  <!-- Thailand Package Landing Page -->
   <url>
-    <loc>https://trippovention.com/packages/thailand/</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Thailand Packages - Bangkok, Phuket, Pattaya, Krabi</image:caption>
-      <image:title>Thailand Package Landing</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_phuket_beach.webp</image:loc>
-      <image:caption>Phuket Beach Tours - Thailand Islands</image:caption>
-      <image:title>Phuket Beach</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_pattaya_bangkok_beach.webp</image:loc>
-      <image:caption>Pattaya Bangkok Beach Tours</image:caption>
-      <image:title>Pattaya Bangkok</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_culture.webp</image:loc>
-      <image:caption>Thailand Cultural Tours - Temples & Heritage</image:caption>
-      <image:title>Thailand Culture</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Thailand Pattaya Bangkok Package -->
-  <url>
-    <loc>https://trippovention.com/packages/thailand/pattaya_bangkok.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Pattaya Bangkok 6D - Beaches, Culture & City</image:caption>
-      <image:title>Pattaya Bangkok Tour</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Thailand Krabi Phuket Package -->
-  <url>
-    <loc>https://trippovention.com/packages/thailand/krabi_phuket.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Krabi Phuket Escapade - Island Paradise</image:caption>
-      <image:title>Krabi Phuket Island Tour</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Thailand Koh Samui Bangkok Package -->
-  <url>
-    <loc>https://trippovention.com/packages/thailand/koh_samui_bangkok.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Koh Samui Bangkok Delight - Islands & City</image:caption>
-      <image:title>Koh Samui Bangkok Tour</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Thailand Koh Samet Pattaya Bangkok Package -->
-  <url>
-    <loc>https://trippovention.com/packages/thailand/koh_samet_pattaya_bangkok.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Thailand Island & City Delight - Koh Samet Pattaya</image:caption>
-      <image:title>Koh Samet Pattaya Bangkok Tour</image:title>
-    </image:image>
-  </url>
-  
-  <!-- Thailand Chiang Mai Chiang Rai Bangkok Package -->
-  <url>
-    <loc>https://trippovention.com/packages/thailand/chiang_mai_chiang_rai_bangkok.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/thailand/hero_thailand_beach.webp</image:loc>
-      <image:caption>Northern Thailand - Chiang Mai Chiang Rai</image:caption>
-      <image:title>Northern Thailand Discovery</image:title>
-    </image:image>
-  </url>
-  
-  <!-- India Package Landing Page -->
-  <url>
-    <loc>https://trippovention.com/packages/india/</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_india_culture.webp</image:loc>
-      <image:caption>India Tour Packages - Incredible India</image:caption>
-      <image:title>India Tours by Trippovention</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_indian_luxury_tour_theme_travel.webp</image:loc>
-      <image:caption>Luxury India Tours - Taj Mahal & Heritage</image:caption>
-      <image:title>Luxury India Tours</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_goa.webp</image:loc>
-      <image:caption>Goa Beach Tours - India Paradise</image:caption>
-      <image:title>Goa</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_goa_beach.webp</image:loc>
-      <image:caption>Goa Beaches - Pristine Coastline</image:caption>
-      <image:title>Goa Beaches</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_kerala.webp</image:loc>
-      <image:caption>Kerala Backwaters - God's Own Country</image:caption>
-      <image:title>Kerala</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_rajasthan.webp</image:loc>
-      <image:caption>Rajasthan Royal Tours - Palaces & Desert</image:caption>
-      <image:title>Rajasthan</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_northeast.webp</image:loc>
-      <image:caption>North East India - Paradise Unexplored</image:caption>
-      <image:title>North East India</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_gujarat.webp</image:loc>
-      <image:caption>Gujarat Tours - Rann of Kutch & Gir</image:caption>
-      <image:title>Gujarat</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/india/hero_tamil_nadu.webp</image:loc>
-      <image:caption>Tamil Nadu Tours - Temples & Heritage</image:caption>
-      <image:title>Tamil Nadu</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/himalaya/hero_himalaya_adventure.webp</image:loc>
-      <image:caption>Himalaya Adventure Tours - Trekking & Mountains</image:caption>
-      <image:title>Himalaya</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/nepal/hero_nepal_adventure.webp</image:loc>
-      <image:caption>Nepal Adventure Tours - Everest & Kathmandu</image:caption>
-      <image:title>Nepal</image:title>
-    </image:image>
-  </url>
-
-  <!-- Europe Destinations -->
-  <url>
-    <loc>https://trippovention.com/destinations.html#europe</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/france/hero_paris_honeymoon.webp</image:loc>
-      <image:caption>Paris Honeymoon Packages - Eiffel Tower Romance</image:caption>
-      <image:title>Paris Honeymoon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/greece/hero_greece_honeymoon.webp</image:loc>
-      <image:caption>Greece Honeymoon - Santorini & Athens</image:caption>
-      <image:title>Greece Honeymoon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/iceland/hero_iceland_adventure.webp</image:loc>
-      <image:caption>Iceland Adventure - Waterfalls & Glaciers</image:caption>
-      <image:title>Iceland Adventure</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/europe/rome/hero_rome_culture.webp</image:loc>
-      <image:caption>Rome Culture Tours - Colosseum & Vatican</image:caption>
-      <image:title>Rome Culture</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/switzerland/hero_switzerland_adventure.webp</image:loc>
-      <image:caption>Switzerland Adventure - Alps & Scenic Railways</image:caption>
-      <image:title>Switzerland Adventure</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/norway/hero_norway_adventure.webp</image:loc>
-      <image:caption>Norway Adventure - Fjords & Northern Lights</image:caption>
-      <image:title>Norway Adventure</image:title>
-    </image:image>
-  </url>
-
-  <!-- Asia Pacific Destinations -->
-  <url>
-    <loc>https://trippovention.com/destinations.html#asia</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/japan/hero_japan_culture.webp</image:loc>
-      <image:caption>Japan Culture Tours - Temples & Traditions</image:caption>
-      <image:title>Japan Culture</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/indonesia/hero_bali_honeymoon.webp</image:loc>
-      <image:caption>Bali Honeymoon Packages - Romantic Getaway</image:caption>
-      <image:title>Bali Honeymoon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives_honeymoon.webp</image:loc>
-      <image:caption>Maldives Honeymoon - Overwater Villas</image:caption>
-      <image:title>Maldives Honeymoon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/mauritius/hero_mauritius_honeymoon.webp</image:loc>
-      <image:caption>Mauritius Honeymoon - Island Romance</image:caption>
-      <image:title>Mauritius Honeymoon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/seychelles/hero_seychelles_honeymoon.webp</image:loc>
-      <image:caption>Seychelles Honeymoon - Pristine Beaches</image:caption>
-      <image:title>Seychelles Honeymoon</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/vietnam/hero_vietnam_culture.webp</image:loc>
-      <image:caption>Vietnam Culture Tours - Heritage & History</image:caption>
-      <image:title>Vietnam Culture</image:title>
-    </image:image>
-  </url>
-
-  <!-- Africa & Middle East Destinations -->
-  <url>
-    <loc>https://trippovention.com/destinations.html#africa</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/egypt/hero_egypt_culture.webp</image:loc>
-      <image:caption>Egypt Culture Tours - Pharaohs & Pyramids</image:caption>
-      <image:title>Egypt Culture</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/africa/morocco/hero_morocco_culture.webp</image:loc>
-      <image:caption>Morocco Culture Tours - Medinas & Souks</image:caption>
-      <image:title>Morocco Culture</image:title>
-    </image:image>
-  </url>
-
-  <!-- Americas Destinations -->
-  <url>
-    <loc>https://trippovention.com/destinations.html#americas</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/northamerica/cuba/hero_cuba.webp</image:loc>
-      <image:caption>Cuba Tours - Havana & Caribbean Culture</image:caption>
-      <image:title>Cuba</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/northamerica/costarica/hero_costarica.webp</image:loc>
-      <image:caption>Costa Rica Tours - Rainforests & Beaches</image:caption>
-      <image:title>Costa Rica</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/costarica/hero_costarica_adventure.webp</image:loc>
-      <image:caption>Costa Rica Adventure - Zip Lines & Wildlife</image:caption>
-      <image:title>Costa Rica Adventure</image:title>
-    </image:image>
+    <loc>https://trippovention.com/packages/chile/chile_essence_of_elegance.html</loc>
     <image:image>
       <image:loc>https://trippovention.com/assets/images/packages/southamerica/chile/hero_chile.webp</image:loc>
-      <image:caption>Chile Tours - Atacama & Patagonia</image:caption>
       <image:title>Chile</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/colombia/colombia_charm_and_caribbean_love_escape.html</loc>
     <image:image>
       <image:loc>https://trippovention.com/assets/images/packages/southamerica/colombia/hero_colombia.webp</image:loc>
-      <image:caption>Colombia Tours - Cartagena & Coffee Region</image:caption>
       <image:title>Colombia</image:title>
     </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/southamerica/peru/hero_peru_culture.webp</image:loc>
-      <image:caption>Peru Culture Tours - Inca Heritage</image:caption>
-      <image:title>Peru Culture</image:title>
-    </image:image>
   </url>
-
-  <!-- Oceania Destinations -->
   <url>
-    <loc>https://trippovention.com/destinations.html#oceania</loc>
+    <loc>https://trippovention.com/packages/egypt/egypt_family_explorer.html</loc>
     <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/australia/hero_australia_adventure.webp</image:loc>
-      <image:caption>Australia Adventure - Outback & Great Barrier Reef</image:caption>
-      <image:title>Australia Adventure</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/packages/newzealand/hero_newzealand_adventure.webp</image:loc>
-      <image:caption>New Zealand Adventure - Queenstown & Fjords</image:caption>
-      <image:title>New Zealand Adventure</image:title>
+      <image:loc>https://trippovention.com/assets/images/packages/africa/egypt/hero_egypt.webp</image:loc>
+      <image:title>Egypt</image:title>
     </image:image>
   </url>
-
+  <url>
+    <loc>https://trippovention.com/packages/europe/france_and_spain_discovery.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/france/hero_france.webp</image:loc>
+      <image:title>France</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/europe/france_and_spain_discovery.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/spain/hero_spain.webp</image:loc>
+      <image:title>Spain</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/finland/finland_adventure_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/finland/hero_finland.webp</image:loc>
+      <image:title>Finland</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/germany/germany_grand_discovery.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/germany/hero_germany.webp</image:loc>
+      <image:title>Germany</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/greece/greece_highlights_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/greece/hero_greece.webp</image:loc>
+      <image:title>Greece</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/iceland/iceland_adventure_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/iceland/hero_iceland.webp</image:loc>
+      <image:title>Iceland</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/iceland/iceland_adventure_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/iceland/hero_iceland_adventure.webp</image:loc>
+      <image:title>Iceland Adventure</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/ayodhya/ayodhya_family_spiritual_tour_package.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_ayodhya.webp</image:loc>
+      <image:title>Ayodhya</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/dwarka/path_of_devotion_dwarka_krishna_yatra.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_dwarka.webp</image:loc>
+      <image:title>Dwarka</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/gaya/bodh_gaya_holy_enlightenment_tour.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_bodh_gaya.webp</image:loc>
+      <image:title>Bodh Gaya</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/goa/goa_friends_and_mates_escape.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_goa.webp</image:loc>
+      <image:title>Goa</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/gujarat/divine_jyotirlinga_journey_somnath_darshan.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_somnath.webp</image:loc>
+      <image:title>Somnath</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/gujarat/gujarat_family_escape.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_gujarat.webp</image:loc>
+      <image:title>Gujarat</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/kerala/kerala_relaxed_nature_journey.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_kerala.webp</image:loc>
+      <image:title>Kerala</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/maharashtra/shirdi_tranquil_pilgrimage.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_shirdi.webp</image:loc>
+      <image:title>Shirdi</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/north-east/northeast_adventure_circuit.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_northeast.webp</image:loc>
+      <image:title>Northeast</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/odisha/divine_pathways_journey_jagannath_puri.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_jagannath_puri.webp</image:loc>
+      <image:title>Jagannath Puri</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/rajasthan/rajasthan_fun_and_adventure_trail_for_kids.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_rajasthan.webp</image:loc>
+      <image:title>Rajasthan</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/tamil-nadu/rameshwaram_blissful_pilgrimage.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_rameshwaram.webp</image:loc>
+      <image:title>Rameshwaram</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/tamil-nadu/tamil_nadu_senior_citizen_escape.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_tamil_nadu.webp</image:loc>
+      <image:title>Tamil Nadu</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/tamil-nadu/temple_coast_escape_mahabalipuram_coimbatore_rameshwaram.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/indonesia/hero_bali.webp</image:loc>
+      <image:title>Bali</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/tirupati/blessed_paths_tirupati_senior_retreat.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_tirupati.webp</image:loc>
+      <image:title>Tirupati</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/vaishno-devi/path_of_faith_vaishno_devi_family_journey.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_vaishno_devi.webp</image:loc>
+      <image:title>Vaishno Devi</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/india/varanasi/sacred_serenity_retreat_varanasi_spiritual_journey.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/india/hero_varanasi.webp</image:loc>
+      <image:title>Varanasi</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/indonesia/romantic_bali_honeymoon_escape.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/indonesia/hero_bali_honeymoon.webp</image:loc>
+      <image:title>Bali Honeymoon</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/japan/japan_cultural_highlights_tokyo_hiroshima_kyoto_and_osaka.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/japan/hero_japan.webp</image:loc>
+      <image:title>Japan</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/kenya/kenya_adventure_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/africa/kenya/hero_kenya.webp</image:loc>
+      <image:title>Kenya</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/maldives/maldives_adventure_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/maldives/hero_maldives.webp</image:loc>
+      <image:title>Maldives</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/mauritius/mauritius_adventure_and_nature_escape.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/mauritius/hero_mauritius.webp</image:loc>
+      <image:title>Mauritius</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/mexico/lovers_journey_through_mexico.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/northamerica/mexico/hero_mexico.webp</image:loc>
+      <image:title>Mexico</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/morocco/magical_morocco_escape_for_couples.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/africa/morocco/hero_morocco.webp</image:loc>
+      <image:title>Morocco</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/netherlands/netherlands_discovery_tour.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/netherlands/hero_netherlands.webp</image:loc>
+      <image:title>Netherlands</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/peru/peru_adventure_escape.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/southamerica/peru/hero_peru.webp</image:loc>
+      <image:title>Peru</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/tanzania/tanzania_adventure_getaway.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/africa/tanzania/hero_tanzania.webp</image:loc>
+      <image:title>Tanzania</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/thailand/tropical_twin_escape_krabi_and_phuket_edition.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/europe/uk/hero_uk.webp</image:loc>
+      <image:title>Uk</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/packages/usa/usa_family_adventure.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/packages/northamerica/usa/hero_usa.webp</image:loc>
+      <image:title>Usa</image:title>
+    </image:image>
+  </url>
 </urlset>
-
