@@ -581,6 +581,12 @@ main {
     url("images/packages/chile/hero_chile.webp") center/cover no-repeat;
 }
 
+.hero-cuba {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("images/packages/cuba/hero_cuba.webp") center/cover no-repeat;
+}
+
 .hero-colombia {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
