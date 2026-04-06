@@ -536,7 +536,7 @@ main {
 .hero-argentina {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/argentina/hero_argentina.webp") center/cover no-repeat;
+    url("images/packages/southamerica/argentina/hero_argentina.webp") center/cover no-repeat;
 }
 
 .hero-australia {
@@ -548,13 +548,13 @@ main {
 .hero-austria {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/austria/hero_austria.webp") center/cover no-repeat;
+    url("images/packages/europe/austria/hero_austria.webp") center/cover no-repeat;
 }
 
 .hero-bali {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/bali/hero_bali.webp") center/cover no-repeat;
+    url("images/packages/indonesia/hero_bali.webp") center/cover no-repeat;
 }
 
 .hero-bora-bora {
@@ -566,31 +566,37 @@ main {
 .hero-brazil {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/brazil/hero_brazil.webp") center/cover no-repeat;
+    url("images/packages/southamerica/brazil/hero_brazil.webp") center/cover no-repeat;
 }
 
 .hero-canada {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/canada/hero_canada.webp") center/cover no-repeat;
+    url("images/packages/northamerica/canada/hero_canada.webp") center/cover no-repeat;
 }
 
 .hero-chile {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/chile/hero_chile.webp") center/cover no-repeat;
+    url("images/packages/southamerica/chile/hero_chile.webp") center/cover no-repeat;
+}
+
+.hero-cuba {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("images/packages/northamerica/cuba/hero_cuba.webp") center/cover no-repeat;
 }
 
 .hero-colombia {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/colombia/hero_colombia.webp") center/cover no-repeat;
+    url("images/packages/southamerica/colombia/hero_colombia.webp") center/cover no-repeat;
 }
 
 .hero-costa-rica {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/costarica/hero_costarica.webp") center/cover no-repeat;
+    url("images/packages/northamerica/costarica/hero_costarica.webp") center/cover no-repeat;
 }
 
 .hero-egypt {
@@ -608,37 +614,37 @@ main {
 .hero-finland {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/finland/hero_finland.webp") center/cover no-repeat;
+    url("images/packages/europe/finland/hero_finland.webp") center/cover no-repeat;
 }
 
 .hero-france {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/france/hero_france.webp") center/cover no-repeat;
+    url("images/packages/europe/france/hero_france.webp") center/cover no-repeat;
 }
 
 .hero-germany {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/germany/hero_germany.webp") center/cover no-repeat;
+    url("images/packages/europe/germany/hero_germany.webp") center/cover no-repeat;
 }
 
 .hero-greece {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/greece/hero_greece.webp") center/cover no-repeat;
+    url("images/packages/europe/greece/hero_greece.webp") center/cover no-repeat;
 }
 
 .hero-iceland {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/iceland/hero_iceland.webp") center/cover no-repeat;
+    url("images/packages/europe/iceland/hero_iceland.webp") center/cover no-repeat;
 }
 
 .hero-indonesia {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/indonesia/hero_indonesia.webp") center/cover no-repeat;
+    url("images/packages/indonesia/hero_bali.webp") center/cover no-repeat;
 }
 
 .hero-italy {
@@ -656,7 +662,7 @@ main {
 .hero-kenya {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/kenya/hero_kenya.webp") center/cover no-repeat;
+    url("images/packages/africa/kenya/hero_kenya.webp") center/cover no-repeat;
 }
 
 .hero-malaysia {
@@ -680,19 +686,19 @@ main {
 .hero-mexico {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/mexico/hero_mexico.webp") center/cover no-repeat;
+    url("images/packages/northamerica/mexico/hero_mexico.webp") center/cover no-repeat;
 }
 
 .hero-morocco {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/morocco/hero_morocco.webp") center/cover no-repeat;
+    url("images/packages/africa/morocco/hero_morocco.webp") center/cover no-repeat;
 }
 
 .hero-netherlands {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/netherlands/hero_netherlands.webp") center/cover no-repeat;
+    url("images/packages/europe/netherlands/hero_netherlands.webp") center/cover no-repeat;
 }
 
 .hero-new-zealand {
@@ -710,19 +716,19 @@ main {
 .hero-peru {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/peru/hero_peru.webp") center/cover no-repeat;
+    url("images/packages/southamerica/peru/hero_peru.webp") center/cover no-repeat;
 }
 
 .hero-south-africa {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/southafrica/hero_southafrica.webp") center/cover no-repeat;
+    url("images/packages/africa/southafrica/hero_southafrica.webp") center/cover no-repeat;
 }
 
 .hero-spain {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/spain/hero_spain.webp") center/cover no-repeat;
+    url("images/packages/europe/spain/hero_spain.webp") center/cover no-repeat;
 }
 
 .hero-srilanka {
@@ -734,7 +740,7 @@ main {
 .hero-tanzania {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/tanzania/hero_tanzania.webp") center/cover no-repeat;
+    url("images/packages/africa/tanzania/hero_tanzania.webp") center/cover no-repeat;
 }
 
 .hero-thailand {
@@ -752,13 +758,13 @@ main {
 .hero-uk {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/uk/hero_uk.webp") center/cover no-repeat;
+    url("images/packages/europe/uk/hero_uk.webp") center/cover no-repeat;
 }
 
 .hero-usa {
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("images/packages/usa/hero_usa.webp") center/cover no-repeat;
+    url("images/packages/northamerica/usa/hero_usa.webp") center/cover no-repeat;
 }
 
 .hero-vietnam {
