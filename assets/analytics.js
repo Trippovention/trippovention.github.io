@@ -40,16 +40,37 @@ function loadGoogleAnalytics() {
   };
 }
 
+// Load Bing Universal Event Tracking (UET) (GDPR compliant)
+function loadBingUET() {
+  if (window.bingUetLoaded) return;
+
+  (function(w, d, t, u, o) {
+    w[u] = w[u] || [], o.ts = (new Date).getTime();
+    var n = d.createElement(t);
+    n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""),
+    n.async = 1, n.onload = n.onreadystatechange = function() {
+      var s = this.readyState;
+      s && "loaded" !== s && "complete" !== s || (o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"), n.onload = n.onreadystatechange = null)
+    };
+    var i = d.getElementsByTagName(t)[0];
+    i.parentNode.insertBefore(n, i);
+    window.bingUetLoaded = true;
+  })(window, document, "script", "uetq", { ti: "343249345", enableAutoSpaTracking: true });
+}
+
 // Listen for cookie consent decision
 window.addEventListener("cookieConsentUpdated", function (event) {
   if (event.detail.accepted) {
     loadGoogleAnalytics();
+    loadBingUET();
   } else {
-    // User rejected analytics - don't load GA
-    // Optional: Clear any existing GA cookies
-    document.cookie = "_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "_gid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "_gat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // User rejected analytics - don't load GA or Bing UET
+    // Clear any existing GA & Bing cookies
+    document.cookie = "_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+    document.cookie = "_gid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+    document.cookie = "_gat=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+    document.cookie = "_uetmsclkid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+    document.cookie = "_uetvid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
   }
 });
 
