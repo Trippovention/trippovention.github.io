@@ -74,6 +74,12 @@ window.addEventListener("cookieConsentUpdated", function (event) {
   }
 });
 
+// Check if consent was already accepted in a previous session (solves race conditions on refresh)
+if (localStorage.getItem("trippovention_cookie_consent") === "true") {
+  loadGoogleAnalytics();
+  loadBingUET();
+}
+
 // Event Tracking - Auto-track user interactions
 document.addEventListener("DOMContentLoaded", function () {
   // Track phone call clicks
