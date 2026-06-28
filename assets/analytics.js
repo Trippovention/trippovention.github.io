@@ -58,11 +58,52 @@ function loadBingUET() {
   })(window, document, "script", "uetq", { ti: "343249345", enableAutoSpaTracking: true });
 }
 
+/**
+ * Set Bing UET enhanced matching identifiers.
+ * Call this when user provides email/phone (e.g. on form submission).
+ * @param {string} [email] - User's email address
+ * @param {string} [phone] - User's phone number
+ */
+function setUetEnhancedMatch(email, phone) {
+  if (!window.uetq) return;
+  const pid = {};
+  if (email && typeof email === "string") {
+    pid.em = email.trim().toLowerCase();
+  }
+  if (phone && typeof phone === "string") {
+    // Keep only digits and leading plus sign
+    pid.ph = phone.trim().replace(/[^\d+]/g, "");
+  }
+  if (Object.keys(pid).length) {
+    window.uetq.push('set', { pid });
+  }
+}
+window.setUetEnhancedMatch = setUetEnhancedMatch;
+
+// Check for and push pending visitor contact info from sessionStorage (cross-redirect)
+function checkPendingUetMatching() {
+  if (!window.uetq) return;
+  try {
+    const email = sessionStorage.getItem("uet_pending_email");
+    const phone = sessionStorage.getItem("uet_pending_phone");
+    if (email || phone) {
+      setUetEnhancedMatch(email, phone);
+      // Clear after pushing to avoid double submissions on subsequent page loads
+      sessionStorage.removeItem("uet_pending_email");
+      sessionStorage.removeItem("uet_pending_phone");
+    }
+  } catch (e) {
+    console.warn("Unable to access sessionStorage for UET matching:", e);
+  }
+}
+
 // Listen for cookie consent decision
 window.addEventListener("cookieConsentUpdated", function (event) {
   if (event.detail.accepted) {
     loadGoogleAnalytics();
     loadBingUET();
+    // Check for pending contact matching after a short delay to ensure UET is initialized
+    setTimeout(checkPendingUetMatching, 500);
   } else {
     // User rejected analytics - don't load GA or Bing UET
     // Clear any existing GA & Bing cookies
@@ -78,6 +119,8 @@ window.addEventListener("cookieConsentUpdated", function (event) {
 if (localStorage.getItem("trippovention_cookie_consent") === "true") {
   loadGoogleAnalytics();
   loadBingUET();
+  // Check for pending contact matching after a short delay to ensure UET is initialized
+  setTimeout(checkPendingUetMatching, 500);
 }
 
 // Event Tracking - Auto-track user interactions
@@ -139,6 +182,37 @@ document.addEventListener("DOMContentLoaded", function () {
         event_label: formType,
         page_path: window.location.pathname
       });
+
+      // Track lead submission conversion in Bing UET
+      if (window.uetq) {
+        window.uetq.push("event", "form_submission", {
+          event_category: "lead_generation",
+          event_label: formType
+        });
+      }
+
+      // Capture email & phone for Bing UET Enhanced Matching
+      let email = "";
+      let phone = "";
+      form.querySelectorAll("input").forEach(function (input) {
+        const name = (input.name || "").toLowerCase();
+        const type = (input.type || "").toLowerCase();
+        if (type === "email" || name.indexOf("email") !== -1) {
+          email = input.value;
+        } else if (type === "tel" || name.indexOf("phone") !== -1 || name.indexOf("tel") !== -1) {
+          phone = input.value;
+        }
+      });
+
+      if (email || phone) {
+        try {
+          if (email) sessionStorage.setItem("uet_pending_email", email);
+          if (phone) sessionStorage.setItem("uet_pending_phone", phone);
+        } catch (err) {
+          // If sessionStorage is disabled/blocked, push matching parameters immediately as fallback
+          setUetEnhancedMatch(email, phone);
+        }
+      }
     });
   });
 
