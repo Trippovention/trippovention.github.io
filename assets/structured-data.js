@@ -130,9 +130,9 @@ const StructuredData = (() => {
     }
   });
 
-  // Full TravelAgency provider template
-  const getTravelAgencyProvider = () => ({
-    "@type": "TravelAgency",
+  // Full TravelServiceProvider provider template
+  const getTravelServiceProviderProvider = () => ({
+    "@type": "TravelServiceProvider",
     name: COMPANY_INFO.name,
     url: COMPANY_INFO.url,
     logo: COMPANY_INFO.logo,
@@ -148,10 +148,10 @@ const StructuredData = (() => {
 
   // Schema generators
   const schemas = {
-    // 1. TravelAgency Schema (Homepage, Worldwide)
-    travelAgency: config => ({
+    // 1. TravelServiceProvider Schema (Homepage, Worldwide)
+    travelServiceProvider: config => ({
       "@context": "https://schema.org",
-      "@type": "TravelAgency",
+      "@type": "TravelServiceProvider",
       name: COMPANY_INFO.name,
       description: config.description,
       url: config.url,
@@ -181,11 +181,11 @@ const StructuredData = (() => {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: COMPANY_INFO.name,
-      alternateName: "Trippovention Travel Agency",
+      alternateName: "Trippovention Travel Service Provider",
       url: COMPANY_INFO.url,
       logo: COMPANY_INFO.logo,
       description:
-        "Leading travel agency specializing in India and worldwide tours with 15+ years of experience",
+        "Leading Travel Service Provider specializing in India and worldwide tours with 15+ years of experience",
       foundingDate: "2010",
       slogan: "Your Trusted Travel Partner",
       address: COMPANY_INFO.address,
@@ -222,7 +222,7 @@ const StructuredData = (() => {
       ...(config.description && {
         description: config.description
       }),
-      provider: getTravelAgencyProvider(),
+      provider: getTravelServiceProviderProvider(),
       areaServed: COMPANY_INFO.areaServed,
       ...(config.aggregateRating && {
         aggregateRating: {
@@ -250,7 +250,7 @@ const StructuredData = (() => {
       name: config.name,
       description: config.description,
       url: config.url,
-      provider: getTravelAgencyProvider(),
+      provider: getTravelServiceProviderProvider(),
       ...(config.aggregateRating && {
         aggregateRating: {
           "@type": "AggregateRating",
@@ -276,7 +276,7 @@ const StructuredData = (() => {
       "@context": "https://schema.org",
       "@type": "ContactPage",
       mainEntity: {
-        "@type": "TravelAgency",
+        "@type": "TravelServiceProvider",
         name: COMPANY_INFO.name,
         url: COMPANY_INFO.url,
         logo: COMPANY_INFO.logo,
@@ -356,7 +356,7 @@ const StructuredData = (() => {
     switch (config.pageType) {
       case "homepage":
         injectSchema(
-          schemas.travelAgency({
+          schemas.travelServiceProvider({
             description:
               config.description ||
               "Your trusted travel partner for unforgettable journeys across India and the world",
@@ -366,7 +366,7 @@ const StructuredData = (() => {
               count: "500"
             }
           }),
-          "Structured Data: TravelAgency (Primary Business Entity)"
+          "Structured Data: TravelServiceProvider (Primary Business Entity)"
         );
 
         injectSchema(schemas.organization(), "Structured Data: Organization (Knowledge Graph)");
@@ -375,13 +375,13 @@ const StructuredData = (() => {
 
       case "worldwide":
         injectSchema(
-          schemas.travelAgency({
+          schemas.travelServiceProvider({
             description:
               config.description ||
               "International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
             url: config.url
           }),
-          "Structured Data: TravelAgency"
+          "Structured Data: TravelServiceProvider"
         );
         break;
 
@@ -403,7 +403,7 @@ const StructuredData = (() => {
         injectSchema(
           schemas.service({
             serviceType: "Visa Assistance Services",
-            name: "Visa Services by Trippovention",
+            name: "Visa Assistance Services by Trippovention",
             description: config.description,
             offers: config.offers,
             serviceOutput: config.serviceOutput
