@@ -1,12 +1,12 @@
 # Trippovention
 
-> Trippovention is a travel agency headquartered in India and Thailand, specializing in ground operations, customized tour packages, visa assistance, and travel management for both individual and corporate travellers. Established in 2021 with 10+ years of combined team experience, the company serves 50,000+ happy travelers across 40+ worldwide destinations.
+> Trippovention is a travel service provider headquartered in India and Thailand, specializing in ground operations, customized tour packages, visa assistance, and travel management for both individual and corporate travellers. Established in 2021 with 10+ years of combined team experience, the company serves 50,000+ happy travelers across 40+ worldwide destinations.
 
 ## Company Information
 
 - **Website**: [https://trippovention.com](https://trippovention.com)
 - **Email**: query@trippovention.com
-- **Phone (India)**: +91 87508 88875
+- **Phone (India)**: +91 87508 88875 / +91 99911 10433
 - **Phone (Thailand)**: +66 90 917 7601
 - **Corporate Office**: Unit 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana, India — 122018
 - **Thailand Office**: 23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province — 20150
@@ -26,7 +26,7 @@
 - [Destinations by Country](https://trippovention.com/destinations.html): Browse all tour packages organized by country
 - [Destinations by Theme](https://trippovention.com/destinations-themes.html): Adventure, honeymoon, spiritual, luxury, beach, and more
 - [Destinations by Traveler](https://trippovention.com/destinations-travelers.html): Families, couples, kids, seniors, friends & groups
-- [Visa Services](https://trippovention.com/visa/index.html): Visa assistance for Singapore, UAE, USA, UK, Canada, Australia, France, Switzerland, and more
+- [Visa Assistance Services](https://trippovention.com/visa/index.html): Visa assistance for Singapore, UAE, USA, UK, Canada, Australia, France, Switzerland, and more
 - [Services & About Us](https://trippovention.com/services.html): Full service listing and company information
 - [Contact Us](https://trippovention.com/contact.html): Inquiry form, office addresses, phone numbers
 

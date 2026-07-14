@@ -1,5 +1,5 @@
 {
-  "name": "Trippovention - Travel Agency",
+  "name": "Trippovention - Travel Service Provider",
   "short_name": "Trippovention",
   "description": "Your trusted travel partner for worldwide tours, visa assistance & customized holiday packages",
   "start_url": "/",
@@ -27,9 +27,9 @@
   "scope": "/",
   "shortcuts": [
     {
-      "name": "Visa Services",
+      "name": "Visa Assistance Services",
       "short_name": "Visa",
-      "description": "Apply for visa assistance",
+      "description": "Request Visa Assistance",
       "url": "/visa/",
       "icons": [
         {
