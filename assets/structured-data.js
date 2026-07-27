@@ -18,7 +18,7 @@ const StructuredData = (() => {
     email: "query@trippovention.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Unit No. - 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
+      streetAddress: "337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
       addressLocality: "Gurgaon",
       addressRegion: "Haryana",
       postalCode: "122018",
@@ -34,7 +34,8 @@ const StructuredData = (() => {
     socialMedia: [
       "https://facebook.com/trippovention",
       "https://instagram.com/trippovention",
-      "https://twitter.com/trippovention"
+      "https://youtube.com/@trippovention?si=cvr_Sf36pb1Oh6lY",
+      "https://www.linkedin.com/company/trippovention/"
     ],
     // 74+ countries - global coverage
     areaServed: [
