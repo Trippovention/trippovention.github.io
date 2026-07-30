@@ -102,6 +102,9 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: AdsBot-Google
+Allow: /
+
 User-agent: Bytespider
 Allow: /
 
