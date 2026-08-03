@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: February 28, 2026
+# Last Updated: August 3, 2026
 
 # LLMs.txt for AI crawlers
 # https://trippovention.com/llms.txt
@@ -40,7 +40,6 @@ Allow: /assets/images/
 # Specific bot instructions
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0.5
 
 User-agent: Googlebot-Image
 Allow: /assets/images/
@@ -86,6 +85,16 @@ Disallow: /
 User-agent: PetalBot
 Crawl-delay: 10
 
+# Google Ads crawlers — Explicitly ALLOWED for ad verification
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: AdsBot-Google-Mobile-Apps
+Allow: /
+
 # AI/LLM Crawlers — Explicitly ALLOWED for discoverability
 User-agent: GPTBot
 Allow: /
@@ -100,9 +109,6 @@ User-agent: PerplexityBot
 Allow: /
 
 User-agent: Google-Extended
-Allow: /
-
-User-agent: AdsBot-Google
 Allow: /
 
 User-agent: Bytespider

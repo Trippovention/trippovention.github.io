@@ -61,14 +61,14 @@
 
     <link rel="stylesheet" href="assets/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap"
       rel="stylesheet"
     />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -79,16 +79,9 @@
       gtag("config", "AW-11395302765");
     </script>
 
-    <!-- Conversion Tracking Script -->
+    <!-- Lead success analytics (Google Ads conversion fires on homepage only) -->
     <script>
       window.addEventListener("load", function () {
-        // Fire Google Ads conversion event
-        gtag("event", "conversion", {
-          send_to: "AW-11395302765/CONVERSION_ID", // Update with actual conversion ID from Google Ads team
-          transaction_id: ""
-        });
-
-        // Fire GA4 event for form submission success
         gtag("event", "form_submission_success", {
           event_category: "lead_generation",
           event_label: "contact_form",
@@ -235,6 +228,34 @@
         }
       }
     </style>
+
+    <!-- TravelAgency Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Trippovention",
+        "description": "Your trusted travel partner for India & worldwide tours, visa assistance services, and custom packages.",
+        "url": "https://trippovention.com",
+        "logo": "https://trippovention.com/assets/images/logo.webp",
+        "telephone": "+91-87508-88875",
+        "email": "query@trippovention.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
+          "addressLocality": "Gurgaon",
+          "addressRegion": "Haryana",
+          "postalCode": "122018",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://facebook.com/trippovention",
+          "https://instagram.com/trippovention",
+          "https://youtube.com/@trippovention?si=cvr_Sf36pb1Oh6lY",
+          "https://www.linkedin.com/company/trippovention/"
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -591,9 +612,13 @@
               </p>
               <div class="mt-20">
                 <h3 class="muted font-weight-600">Contact Details</h3>
-                <span class="mr-15">📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span
+                >
                 <br />
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+                >
                 <br />
                 <span>📞 <a href="tel:+911244182575">+91 124 418 2575</a></span>
                 <br />
@@ -616,7 +641,7 @@
                 <a href="visa/index.html">Visa</a><br />
                 <a href="services.html">Services</a><br />
                 <a href="contact.html">Contact</a><br />
-                <a href="terms-and-conditions.html">Terms & Conditions</a><br />
+                <a href="terms-and-conditions.html">Terms &amp; Conditions</a><br />
                 <a href="privacy-policy.html">Privacy Policy</a><br />
                 <a href="refund-policy.html">Refund Policy</a>
               </div>
@@ -624,8 +649,8 @@
             <div>
               <h3>Corporate Office</h3>
               <p>
-                337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
-                Haryana, India, 122018.
+                337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana,
+                India, 122018.
               </p>
               <div class="mt-20">
                 <h3>Thailand Office</h3>
@@ -721,7 +746,7 @@
             </div>
           </div>
           <div class="text-center section-border-top mt-40 pt-30">
-            <p>&copy; 2026 Trippovention. All Rights Reserved.</p>
+            <p>© 2026 Trippovention. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
@@ -729,7 +754,7 @@
       <a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
     </main>
 
-    <script src="assets/structured-data.js" defer></script>
+    <script src="assets/structured-data.js" defer=""></script>
     <script>
       window.structuredDataConfig = {
         pageType: "thankyou",
@@ -750,10 +775,10 @@
       };
     </script>
 
-    <script src="assets/skip-link.js" defer></script>
-    <script src="assets/cookie-consent.js" defer></script>
-    <script src="assets/app.js" defer></script>
-    <script src="assets/analytics.js" defer></script>
+    <script src="assets/skip-link.js" defer=""></script>
+    <script src="assets/cookie-consent.js" defer=""></script>
+    <script src="assets/app.js" defer=""></script>
+    <script src="assets/analytics.js" defer=""></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -782,5 +807,6 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Ads conversion: homepage only (root index.html); add page-specific events deliberately -->
   </body>
 </html>

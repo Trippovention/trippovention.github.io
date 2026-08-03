@@ -58,14 +58,14 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 
     <!-- Preload Critical Assets for Faster Loading -->
     <link rel="preload" href="assets/styles.css" as="style" />
     <link rel="preload" href="assets/app.js" as="script" />
     <link rel="preload" href="assets/images/logo.webp" as="image" type="image/webp" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/styles.css" />
@@ -81,7 +81,35 @@
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
+
+    <!-- TravelAgency Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Trippovention",
+        "description": "Your trusted travel partner for India & worldwide tours, visa assistance services, and custom packages.",
+        "url": "https://trippovention.com",
+        "logo": "https://trippovention.com/assets/images/logo.webp",
+        "telephone": "+91-87508-88875",
+        "email": "query@trippovention.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
+          "addressLocality": "Gurgaon",
+          "addressRegion": "Haryana",
+          "postalCode": "122018",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://facebook.com/trippovention",
+          "https://instagram.com/trippovention",
+          "https://youtube.com/@trippovention?si=cvr_Sf36pb1Oh6lY",
+          "https://www.linkedin.com/company/trippovention/"
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -202,7 +230,10 @@
               <div class="body">
                 <div class="badge">🇸🇬 Singapore</div>
                 <h3>Singapore - Passion Made Possible</h3>
-                <p class="muted">Sentosa island • Universal Studios • Night Safari • Marina Bay Sands SkyPark • Gardens by the Bay</p>
+                <p class="muted">
+                  Sentosa island • Universal Studios • Night Safari • Marina Bay Sands SkyPark •
+                  Gardens by the Bay
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 59,999</span> -->
@@ -386,7 +417,9 @@
               <div class="body">
                 <div class="badge">🇭🇰 Hong Kong</div>
                 <h3>Hong Kong - Asia's World City</h3>
-                <p class="muted">Hong Kong • Mong Kok • Victoria Harbour • Hong Kong Disneyland • Lantau Island</p>
+                <p class="muted">
+                  Hong Kong • Mong Kok • Victoria Harbour • Hong Kong Disneyland • Lantau Island
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 49,999</span> -->
@@ -432,7 +465,9 @@
               <div class="body">
                 <div class="badge">🇧🇹 Bhutan</div>
                 <h3>Bhutan - Happiness is a Place</h3>
-                <p class="muted">Thimphu • Punakha • Clock Tower Square • Dochula Pass • Paro Valley</p>
+                <p class="muted">
+                  Thimphu • Punakha • Clock Tower Square • Dochula Pass • Paro Valley
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 49,999</span> -->
@@ -455,7 +490,9 @@
               <div class="body">
                 <div class="badge">🇷🇺 Russia</div>
                 <h3>Russia - Reveal Your Own Russia</h3>
-                <p class="muted">Moscow • St. Petersburg • Red Square • Arbat Street • Nevsky Prospekt</p>
+                <p class="muted">
+                  Moscow • St. Petersburg • Red Square • Arbat Street • Nevsky Prospekt
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 49,999</span> -->
@@ -524,7 +561,9 @@
               <div class="body">
                 <div class="badge">🇲🇻 Maldives</div>
                 <h3>Maldives - The Sunny Side of Life</h3>
-                <p class="muted">Crystal Lagoon • Malé • Maldives Water Villa Stay • Island Resort • Private Beach</p>
+                <p class="muted">
+                  Crystal Lagoon • Malé • Maldives Water Villa Stay • Island Resort • Private Beach
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,49,999</span> -->
@@ -533,7 +572,7 @@
                 <a class="btn" href="packages/maldives/index.html">View Details →</a>
               </div>
             </div>
-            
+
             <!-- Sri Lanka -->
             <div class="card">
               <div class="img-wrap">
@@ -556,7 +595,7 @@
                 <a class="btn" href="packages/srilanka/index.html">View Details →</a>
               </div>
             </div>
-            
+
             <!-- Georgia -->
             <div class="card">
               <div class="img-wrap">
@@ -690,7 +729,7 @@
               <div class="body">
                 <div class="badge">🇬🇧 UK</div>
                 <h3>UK - Home of Amazing Moments</h3>
-                <p class="muted">London • Manchester • Liverpool  • Edinburgh • Oxford</p>
+                <p class="muted">London • Manchester • Liverpool • Edinburgh • Oxford</p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,39,999</span> -->
@@ -837,7 +876,7 @@
                 <a class="btn" href="packages/finland/index.html">View Details →</a>
               </div>
             </div>
-            
+
             <!-- Norway -->
             <!-- <div class="card">
               <div class="img-wrap">
@@ -854,8 +893,8 @@
                 <p class="muted">Oslo • Flåm • Bergen • Oslo Harbour • Bryggen Wharf</p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span> -->
-                  <!-- <span class="price-old">₹ 99,999</span> -->
-                  <!-- <span class="price">On Request</span>
+            <!-- <span class="price-old">₹ 99,999</span> -->
+            <!-- <span class="price">On Request</span>
                 </div>
                 <a class="btn" href="packages/norway/index.html">View Details →</a>
               </div>
@@ -986,7 +1025,6 @@
             </p>
           </div>
           <div class="grid cols-3">
-
             <!-- South Africa -->
             <div class="card">
               <div class="img-wrap">
@@ -1023,7 +1061,9 @@
               <div class="body">
                 <div class="badge">🇰🇪 Kenya</div>
                 <h3>Kenya - Magical Kenya</h3>
-                <p class="muted">Nairobi • Amboseli National Park • Lake Naivasha • Masai Mara • Diani Beach</p>
+                <p class="muted">
+                  Nairobi • Amboseli National Park • Lake Naivasha • Masai Mara • Diani Beach
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,19,999</span> -->
@@ -1092,7 +1132,10 @@
               <div class="body">
                 <div class="badge">🇹🇿 Tanzania</div>
                 <h3>Tanzania - Feel the Magic</h3>
-                <p class="muted">Serengeti National Park • Ngorongoro Crater • Zanzibar • Tarangire National Park • Mt. Kilimanjaro</p>
+                <p class="muted">
+                  Serengeti National Park • Ngorongoro Crater • Zanzibar • Tarangire National Park •
+                  Mt. Kilimanjaro
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,19,999</span> -->
@@ -1115,7 +1158,9 @@
               <div class="body">
                 <div class="badge">🇲🇺 Mauritius</div>
                 <h3>Mauritius - It's a pleasure</h3>
-                <p class="muted">Casela Nature Parks • Port Louis • Caudan Waterfront • Grand Bassin • Chamarel</p>
+                <p class="muted">
+                  Casela Nature Parks • Port Louis • Caudan Waterfront • Grand Bassin • Chamarel
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,49,999</span> -->
@@ -1161,7 +1206,10 @@
               <div class="body">
                 <div class="badge">🇿🇼 Zimbabwe</div>
                 <h3>Zimbabwe - A World of Wonders</h3>
-                <p class="muted">Victoria Falls • Hwange National Park • Zambezi River • Victoria Falls Town • Victoria Falls Bridge</p>
+                <p class="muted">
+                  Victoria Falls • Hwange National Park • Zambezi River • Victoria Falls Town •
+                  Victoria Falls Bridge
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,49,999</span> -->
@@ -1210,7 +1258,9 @@
               <div class="body">
                 <div class="badge">🇺🇸 USA</div>
                 <h3>USA - All Within Your Reach</h3>
-                <p class="muted">New York City • Las Vegas • Los Angeles • Grand Canyon • Orlando</p>
+                <p class="muted">
+                  New York City • Las Vegas • Los Angeles • Grand Canyon • Orlando
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,79,999</span> -->
@@ -1256,7 +1306,9 @@
               <div class="body">
                 <div class="badge">🇲🇽 Mexico</div>
                 <h3>Mexico - Live It to Believe It</h3>
-                <p class="muted">Cancún • Isla Mujeres • Playa del Carmen • Chichén Itzá • Mayan Ruins</p>
+                <p class="muted">
+                  Cancún • Isla Mujeres • Playa del Carmen • Chichén Itzá • Mayan Ruins
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,39,999</span> -->
@@ -1279,7 +1331,9 @@
               <div class="body">
                 <div class="badge">🇨🇷 Costa Rica</div>
                 <h3>Costa Rica - Pura Vida</h3>
-                <p class="muted">La Fortuna • Monteverde • Manuel Antonio National Park • San José • Poás Volcano</p>
+                <p class="muted">
+                  La Fortuna • Monteverde • Manuel Antonio National Park • San José • Poás Volcano
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,49,999</span> -->
@@ -1353,7 +1407,9 @@
               <div class="body">
                 <div class="badge">🇧🇷 Brazil</div>
                 <h3>Brazil - Visit Brazil</h3>
-                <p class="muted">Rio de Janeiro • São Paulo • Ilha Grande • Iguazu Falls • Paraty</p>
+                <p class="muted">
+                  Rio de Janeiro • São Paulo • Ilha Grande • Iguazu Falls • Paraty
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,79,999</span> -->
@@ -1376,7 +1432,9 @@
               <div class="body">
                 <div class="badge">🇦🇷 Argentina</div>
                 <h3>Argentina - Argentina Late Espera</h3>
-                <p class="muted">Buenos Aires • Patagonia • Iguazu • Foz do Iguaçu • Puerto Iguazú</p>
+                <p class="muted">
+                  Buenos Aires • Patagonia • Iguazu • Foz do Iguaçu • Puerto Iguazú
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,69,999</span> -->
@@ -1422,7 +1480,9 @@
               <div class="body">
                 <div class="badge">🇨🇱 Chile</div>
                 <h3>Chile - Chile Inspires</h3>
-                <p class="muted">Santiago • Patagonia • Valparaíso • Viña del Mar • San Pedro de Atacama</p>
+                <p class="muted">
+                  Santiago • Patagonia • Valparaíso • Viña del Mar • San Pedro de Atacama
+                </p>
                 <div class="price-row">
                   <span class="price-label">Starting from</span>
                   <!-- <span class="price-old">₹ 1,79,999</span> -->
@@ -1483,8 +1543,12 @@
             </p>
           </div>
           <div class="text-center">
-            <a class="btn btn-lg ghost" style="margin-bottom: 10px;" href="contact.html">Get Custom Quote</a>
-            <a class="btn btn-lg ghost ml-16" style="margin-top: 10px;" href="tel:+918750888875">📞 Call Now</a>
+            <a class="btn btn-lg ghost" style="margin-bottom: 10px" href="contact.html"
+              >Get Custom Quote</a
+            >
+            <a class="btn btn-lg ghost ml-16" style="margin-top: 10px" href="tel:+918750888875"
+              >📞 Call Now</a
+            >
           </div>
           <div class="grid cols-3 mt-40">
             <div class="stats">
@@ -1514,9 +1578,13 @@
               </p>
               <div class="mt-20">
                 <h3 class="muted font-weight-600">Contact Details</h3>
-                <span class="mr-15">📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span
+                >
                 <br />
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+                >
                 <br />
                 <span>📞 <a href="tel:+911244182575">+91 124 418 2575</a></span>
                 <br />
@@ -1556,8 +1624,8 @@
             <div>
               <h3>Corporate Office</h3>
               <p>
-                337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
-                Haryana, India, 122018.
+                337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana,
+                India, 122018.
               </p>
               <div class="mt-20">
                 <h3>Thailand Office</h3>
@@ -1653,7 +1721,7 @@
             </div>
           </div>
           <div class="text-center section-border-top mt-40 pt-30">
-            <p>&copy; 2026 Trippovention. All Rights Reserved.</p>
+            <p>© 2026 Trippovention. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
@@ -1661,7 +1729,7 @@
       <a href="contact.html" class="sticky-cta">💬 Quick Enquiry</a>
     </main>
 
-    <script src="assets/structured-data.js" defer></script>
+    <script src="assets/structured-data.js" defer=""></script>
     <script>
       window.structuredDataConfig = {
         pageType: "destinations",
@@ -1685,23 +1753,10 @@
       };
     </script>
 
-    <!-- Google Ads Conversion Tracking -->
-    <script>
-      window.addEventListener("load", function () {
-        // Homepage conversion tracking
-        if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
-          gtag("event", "conversion", {
-            send_to: "AW-11395302765/U_nrCIGQlrcbEO2K2rkq"
-          });
-        }
-        // Future: Add more conversion events for other page types as campaigns expand
-      });
-    </script>
-
-    <script src="assets/skip-link.js" defer></script>
-    <script src="assets/cookie-consent.js" defer></script>
-    <script src="assets/app.js" defer></script>
-    <script src="assets/analytics.js" defer></script>
+    <script src="assets/skip-link.js" defer=""></script>
+    <script src="assets/cookie-consent.js" defer=""></script>
+    <script src="assets/app.js" defer=""></script>
+    <script src="assets/analytics.js" defer=""></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -1733,5 +1788,6 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Ads conversion: homepage only (root index.html); add page-specific events deliberately -->
   </body>
 </html>
