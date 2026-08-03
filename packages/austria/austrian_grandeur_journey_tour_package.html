@@ -175,9 +175,7 @@
               <a href="../../packages/austria/index.html">Austria</a>
             </li>
             <li class="breadcrumb-separator">›</li>
-            <li class="breadcrumb-item active" aria-current="page">
-              Noble Austria Grandeur Route
-            </li>
+            <li class="breadcrumb-item active" aria-current="page">Noble Austria Grandeur Route</li>
           </ol>
         </div>
       </nav>
@@ -479,8 +477,8 @@
           <div>
             <h3>Corporate Office</h3>
             <p>
-              337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
-              Haryana, India, 122018.
+              337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana,
+              India, 122018.
             </p>
             <div class="mt-20">
               <h3>Thailand Office</h3>
@@ -653,17 +651,6 @@
       };
     </script>
 
-    <!-- Google Ads Conversion Tracking -->
-    <script>
-      window.addEventListener("load", function () {
-        if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
-          gtag("event", "conversion", {
-            send_to: "AW-11395302765/U_nrCIGQlrcbEO2K2rkq"
-          });
-        }
-      });
-    </script>
-
     <script src="../../assets/skip-link.js" defer=""></script>
     <script src="../../assets/cookie-consent.js" defer=""></script>
     <script src="../../assets/app.js" defer=""></script>
@@ -682,34 +669,21 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://trippovention.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Packages",
-            "item": "https://trippovention.com/destinations.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Austria",
-            "item": "https://trippovention.com/packages/austria/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Noble Austria Grandeur Route",
-            "item": "https://trippovention.com/packages/austria/austrian_grandeur_journey_tour_package.html"
+        "@type": "TravelAction",
+        "agent": {
+          "@type": "Organization",
+          "name": "Trippovention"
+        },
+        "object": {
+          "@type": "TouristTrip",
+          "name": "Noble Austria Grandeur Route - 7 Days / 6 Nights",
+          "destination": {
+            "@type": "Place",
+            "name": "Austria"
           }
-        ]
+        }
       }
     </script>
+    <!-- Google Ads conversion: homepage only (root index.html); add page-specific events deliberately -->
   </body>
 </html>

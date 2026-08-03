@@ -79,16 +79,9 @@
       gtag("config", "AW-11395302765");
     </script>
 
-    <!-- Conversion Tracking Script -->
+    <!-- Lead success analytics (Google Ads conversion fires on homepage only) -->
     <script>
       window.addEventListener("load", function () {
-        // Fire Google Ads conversion event
-        gtag("event", "conversion", {
-          send_to: "AW-11395302765/CONVERSION_ID", // Update with actual conversion ID from Google Ads team
-          transaction_id: ""
-        });
-
-        // Fire GA4 event for form submission success
         gtag("event", "form_submission_success", {
           event_category: "lead_generation",
           event_label: "contact_form",
@@ -235,7 +228,7 @@
         }
       }
     </style>
-  
+
     <!-- TravelAgency Schema -->
     <script type="application/ld+json">
       {
@@ -619,9 +612,13 @@
               </p>
               <div class="mt-20">
                 <h3 class="muted font-weight-600">Contact Details</h3>
-                <span class="mr-15">📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span
+                >
                 <br />
-                <span class="mr-15">📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span>
+                <span class="mr-15"
+                  >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+                >
                 <br />
                 <span>📞 <a href="tel:+911244182575">+91 124 418 2575</a></span>
                 <br />
@@ -652,8 +649,8 @@
             <div>
               <h3>Corporate Office</h3>
               <p>
-                337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon,
-                Haryana, India, 122018.
+                337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana,
+                India, 122018.
               </p>
               <div class="mt-20">
                 <h3>Thailand Office</h3>
@@ -810,5 +807,6 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Ads conversion: homepage only (root index.html); add page-specific events deliberately -->
   </body>
 </html>
