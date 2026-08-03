@@ -1,12 +1,15 @@
 /**
  * Service Worker for Trippovention
  * Enables offline support and faster repeat visits
- * Version: 3.4 - GTM integration + enhanced tracking
+ * Bump CACHE_VERSION on content-heavy releases (single source of truth).
+ * Version: 3.7 - post-merge cleanup; versioned runtime cache + full cache purge
  */
 
-const CACHE_VERSION = "3.6";
+const CACHE_VERSION = "3.7";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
-const RUNTIME_CACHE = "trippovention-runtime";
+const RUNTIME_CACHE = `trippovention-runtime-v${CACHE_VERSION}`;
+
+const LEGACY_RUNTIME_CACHE = "trippovention-runtime";
 
 // Cache critical assets immediately for offline support
 const PRECACHE_URLS = [
@@ -23,17 +26,27 @@ const PRECACHE_URLS = [
   "/assets/images/favicon.png"
 ];
 
+function precacheEssentials(cache) {
+  return Promise.all(
+    PRECACHE_URLS.map(url =>
+      cache.add(url).catch(() => {
+        /* skip missing precache entries */
+      })
+    )
+  );
+}
+
 // Install event - cache essential files
 self.addEventListener("install", event => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(cache => precacheEssentials(cache))
       .then(() => self.skipWaiting())
   );
 });
 
-// Activate event - clean up old caches
+// Activate event - clean up old caches (precache + legacy/unversioned runtime)
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches
@@ -41,7 +54,12 @@ self.addEventListener("activate", event => {
       .then(cacheNames => {
         return Promise.all(
           cacheNames
-            .filter(cacheName => cacheName !== CACHE_NAME && cacheName !== RUNTIME_CACHE)
+            .filter(
+              cacheName =>
+                cacheName !== CACHE_NAME &&
+                cacheName !== RUNTIME_CACHE &&
+                (cacheName.startsWith("trippovention-") || cacheName === LEGACY_RUNTIME_CACHE)
+            )
             .map(cacheName => caches.delete(cacheName))
         );
       })

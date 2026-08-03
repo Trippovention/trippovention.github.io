@@ -319,11 +319,22 @@ window.ThemeManager = {
 };
 
 // Service Worker Registration for PWA with Update Notification
+const SW_RELOAD_FLAG = "trippovention-sw-reload-pending";
+
 if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (sessionStorage.getItem(SW_RELOAD_FLAG) === "1") {
+      sessionStorage.removeItem(SW_RELOAD_FLAG);
+      window.location.reload();
+    }
+  });
+
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/sw.js")
       .then(registration => {
+        registration.update();
+
         // Only log in development
         if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
           console.log("✓ Service Worker registered:", registration.scope);
@@ -357,6 +368,14 @@ if ("serviceWorker" in navigator) {
 }
 
 /**
+ * User-initiated refresh after SW update (sets flag for controllerchange reload).
+ */
+function applyServiceWorkerUpdate() {
+  sessionStorage.setItem(SW_RELOAD_FLAG, "1");
+  window.location.reload();
+}
+
+/**
  * Show update notification banner when new version is available
  */
 function showUpdateNotification() {
@@ -371,8 +390,8 @@ function showUpdateNotification() {
   banner.innerHTML = `
     <div class="update-content">
       <span class="update-icon">🎉</span>
-      <span class="update-text">New version available!</span>
-      <button onclick="window.location.reload()" class="update-btn" aria-label="Update now">
+      <span class="update-text">Latest packages and fixes are ready.</span>
+      <button type="button" onclick="applyServiceWorkerUpdate()" class="update-btn" aria-label="Update now">
         Update Now
       </button>
       <button onclick="document.getElementById('update-banner').remove()" class="update-close" aria-label="Dismiss update notification">
