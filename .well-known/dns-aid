@@ -1,0 +1,14 @@
+{
+  "version": "dnsaid1",
+  "domain": "trippovention.com",
+  "entrypoints": {
+    "index": "https://trippovention.com/.well-known/api-catalog",
+    "skills": "https://trippovention.com/.well-known/agent-skills/index.json",
+    "mcp": "https://trippovention.com/.well-known/mcp/server-card.json",
+    "auth": "https://trippovention.com/auth.md"
+  },
+  "dns_records": [
+    "_index._agents.trippovention.com. 300 IN HTTPS 0 trippovention.com. alpn=\"h2,h3\" port=443",
+    "_a2a._agents.trippovention.com. 300 IN HTTPS 0 trippovention.com. alpn=\"h2,h3\" port=443"
+  ]
+}

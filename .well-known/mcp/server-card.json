@@ -1,0 +1,42 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
+  "serverInfo": {
+    "name": "trippovention-mcp",
+    "title": "Trippovention Travel Agent MCP Server",
+    "description": "MCP server card enabling AI agents to query international travel packages, customized tour itineraries, visa assistance services, and holiday booking inquiries.",
+    "version": "1.0.0"
+  },
+  "transports": [
+    {
+      "type": "webmcp",
+      "endpoint": "https://trippovention.com/"
+    },
+    {
+      "type": "sse",
+      "endpoint": "https://trippovention.com/api/mcp/sse"
+    }
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true
+  },
+  "tools": [
+    {
+      "name": "search_travel_packages",
+      "description": "Search Trippovention international and domestic holiday packages by destination or theme"
+    },
+    {
+      "name": "get_package_details",
+      "description": "Retrieve comprehensive day-wise itinerary, inclusions, exclusions, and pricing for a travel package"
+    },
+    {
+      "name": "get_visa_requirements",
+      "description": "Fetch visa application requirements, processing timeline, and required documents for travel destinations"
+    },
+    {
+      "name": "submit_travel_inquiry",
+      "description": "Send a custom trip inquiry or request expert callback for tailored travel planning"
+    }
+  ]
+}

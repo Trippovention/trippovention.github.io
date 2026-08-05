@@ -2,9 +2,11 @@
 # https://trippovention.com/
 # Last Updated: August 3, 2026
 
-# LLMs.txt for AI crawlers
+# LLMs.txt & Content Signals for AI Crawlers and Agents
 # https://trippovention.com/llms.txt
 # https://trippovention.com/llms-full.txt
+# Content Signals (https://contentsignals.org/):
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 # Global rules for all bots
 User-agent: *

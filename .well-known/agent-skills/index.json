@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "search-packages",
+      "type": "webmcp",
+      "description": "Search Trippovention international and domestic travel packages, itineraries, and pricing",
+      "url": "https://trippovention.com/llms.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "get-visa-info",
+      "type": "webmcp",
+      "description": "Retrieve visa requirement details, processing time, and documents needed for global destinations",
+      "url": "https://trippovention.com/visa/",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "request-custom-quote",
+      "type": "webmcp",
+      "description": "Submit a custom trip inquiry or request callback for personalized holiday itineraries",
+      "url": "https://trippovention.com/contact.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
