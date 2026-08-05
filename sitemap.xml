@@ -427,6 +427,30 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://trippovention.com/visa/singapore/index.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/singapore/tourist-visa.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/singapore/business-visa.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/singapore/terms-and-conditions.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://trippovention.com/packages/argentina/argentina_adventure_with_friends_and_mates.html</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
