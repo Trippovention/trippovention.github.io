@@ -1,33 +1,33 @@
 {
-  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "skills": [
     {
       "name": "site-overview",
-      "type": "text",
+      "type": "skill-md",
       "description": "Curated overview of Trippovention services, destinations, and key URLs for LLM crawlers",
-      "url": "https://trippovention.com/llms.txt",
-      "sha256": "dcb96fe24c525558298db0309fd3c0bd5951701cae250a00f2bf75e1c0c3517b"
+      "url": "https://trippovention.com/.well-known/agent-skills/site-overview/SKILL.md",
+      "digest": "sha256:f55cbbf28585df084ee7154ec0882fa3fe5e7bcc243f5a7b777aef3ea2d01602"
     },
     {
       "name": "full-site-map",
-      "type": "text",
+      "type": "skill-md",
       "description": "Expanded package and page listings for Trippovention",
-      "url": "https://trippovention.com/llms-full.txt",
-      "sha256": "7ab720f5f8f00f1af7155a1270bbdab93d7ecc2e63bda7d187a622d9ff9af5d3"
+      "url": "https://trippovention.com/.well-known/agent-skills/full-site-map/SKILL.md",
+      "digest": "sha256:cfeffe8849f4c930315f14a54105dfc32b6b6668a5f27ebb771bf0e953026799"
     },
     {
       "name": "visa-assistance",
-      "type": "html",
+      "type": "skill-md",
       "description": "Visa assistance landing page and destination visa information",
-      "url": "https://trippovention.com/visa/index.html",
-      "sha256": "a12cc00eb57d3df7b8d4e5b62af8dc6fa5b8b948ce19e5afbae6c85acf4eb521"
+      "url": "https://trippovention.com/.well-known/agent-skills/visa-assistance/SKILL.md",
+      "digest": "sha256:94eb3395053cca0f08382446286cc1d0825cf65579034486c8bba4e3f06102d5"
     },
     {
       "name": "contact-and-inquiries",
-      "type": "html",
+      "type": "skill-md",
       "description": "Contact form and inquiry channel for custom travel quotes",
-      "url": "https://trippovention.com/contact.html",
-      "sha256": "9c810b7fe1ae076ad60eafa9752f35b9fb42ef23adb46152e1d10977dcbea501"
+      "url": "https://trippovention.com/.well-known/agent-skills/contact-and-inquiries/SKILL.md",
+      "digest": "sha256:8d74f65fab39f7bc1755ba16ac9e28dba165b41774d7714e3ae1548a79122d51"
     }
   ]
 }

@@ -59,3 +59,15 @@ Packages available for: Andaman, Ayodhya, Goa, Golden Triangle, Gujarat, Himacha
 - [YouTube](https://youtube.com/@trippovention?si=cvr_Sf36pb1Oh6lY)
 - [LinkedIn](https://www.linkedin.com/company/trippovention/)
 - [WhatsApp](https://wa.me/+918750888875)
+
+## Agent and crawler discovery
+
+For automated clients and LLM crawlers (start with this section before deep HTML crawls):
+
+- [auth.md](https://trippovention.com/auth.md) — crawler policy, registration contact, and discovery pointers
+- [llms-full.txt](https://trippovention.com/llms-full.txt) — expanded site map and package listings
+- [sitemap.xml](https://trippovention.com/sitemap.xml) — all indexable pages
+- [robots.txt](https://trippovention.com/robots.txt) — crawl rules; Content-Signal: `ai-train=no`, `search=yes`, `ai-input=yes`
+- [API catalog](https://trippovention.com/.well-known/api-catalog.json) — RFC 9727 linkset (documentation only, not REST APIs)
+- [Agent skills index](https://trippovention.com/.well-known/agent-skills/index.json) — skill-md artifacts for this site
+- [MCP server card](https://trippovention.com/.well-known/mcp/server-card.json) — optional WebMCP on the homepage only

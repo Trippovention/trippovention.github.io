@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: August 3, 2026
+# Last Updated: August 9, 2026
 
 # LLMs.txt & Content Signals for AI Crawlers and Agents
 # https://trippovention.com/llms.txt
@@ -8,7 +8,7 @@
 # Content Signals (https://contentsignals.org/):
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
-# Global rules for all bots
+# Global rules for all bots (includes every AI/LLM crawler unless a specific block below overrides)
 User-agent: *
 Allow: /
 
@@ -24,6 +24,8 @@ Disallow: /*?error=*
 # Disallow validation and development folders
 Disallow: /_validation/
 Disallow: /node_modules/
+Disallow: /docs/
+Disallow: /scripts/
 
 # Explicitly allow crawling of assets for better rendering (Mobile-First Indexing)
 Allow: /assets/*.css
@@ -97,7 +99,7 @@ Allow: /
 User-agent: AdsBot-Google-Mobile-Apps
 Allow: /
 
-# AI/LLM Crawlers — Explicitly ALLOWED for discoverability
+# AI/LLM Crawlers — Explicit policy (same access as User-agent: *); listed for scanner clarity
 User-agent: GPTBot
 Allow: /
 

@@ -1,5 +1,6 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
+  "protocolVersion": "2024-11-05",
   "serverInfo": {
     "name": "trippovention-webmcp",
     "title": "Trippovention WebMCP (static site)",
@@ -21,6 +22,11 @@
     {
       "name": "search_travel_packages",
       "description": "Search Trippovention international and domestic travel packages by destination or keyword",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -40,6 +46,11 @@
     {
       "name": "get_package_details",
       "description": "Retrieve full itinerary details, inclusions, and overview for a specific Trippovention travel package",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -54,6 +65,11 @@
     {
       "name": "get_visa_requirements",
       "description": "Retrieve visa application requirements, processing timeline, and required documents for travel destinations",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -68,6 +84,11 @@
     {
       "name": "submit_travel_inquiry",
       "description": "Submit a custom travel inquiry or request expert callback for tailored holiday package planning",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {

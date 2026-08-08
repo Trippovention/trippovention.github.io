@@ -2,6 +2,16 @@
 
 > Trippovention is a travel service provider headquartered in India and Thailand, specializing in ground operations, customized tour packages, visa assistance, and travel management for both individual and corporate travellers. Established in 2021 with a team boasting 10+ years of combined experience, the company has served 50,000+ happy travelers across 40+ worldwide destinations.
 
+## Agent and crawler discovery
+
+- [llms.txt](https://trippovention.com/llms.txt) — curated overview (read first)
+- [auth.md](https://trippovention.com/auth.md) — agent/crawler policy and registration
+- [sitemap.xml](https://trippovention.com/sitemap.xml) — all indexable pages
+- [robots.txt](https://trippovention.com/robots.txt) — crawl rules and Content-Signal preferences
+- [API catalog](https://trippovention.com/.well-known/api-catalog.json) — documentation linkset
+- [Agent skills](https://trippovention.com/.well-known/agent-skills/index.json) — skill-md index
+- [MCP server card](https://trippovention.com/.well-known/mcp/server-card.json) — WebMCP on homepage only
+
 ## Company Overview
 
 Trippovention is a forward-thinking travel service provider built on expertise, reliability, and a passion for creating unforgettable travel experiences. Headquartered in India and Thailand, the company specializes in ground operations, travel management, and tailor-made travel services for both individual and corporate travellers. Since inception in 2021, Trippovention has grown from a dedicated local operator into a globally connected travel brand known for its seamless service and personal touch.

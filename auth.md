@@ -1,6 +1,25 @@
+---
+register_uri: mailto:query@trippovention.com
+identity_types_supported: []
+access: public-read
+---
+
 # auth.md — Trippovention AI agents and crawlers
 
 Trippovention ([trippovention.com](https://trippovention.com)) is a **public static website**. There is **no user login**, **no OAuth**, and **no programmatic API** for packages or bookings.
+
+## Agent registration
+
+This site does **not** issue API tokens, OAuth credentials, or machine identity assertions. Automated clients may use public content only.
+
+```yaml
+agent_auth:
+  skill: https://trippovention.com/auth.md
+  register_uri: mailto:query@trippovention.com
+  identity_types_supported: []
+  access: public-read
+  note: Email your agent name, organization, intended use, and expected crawl rate before high-volume access.
+```
 
 ## How to use this site
 
@@ -13,15 +32,9 @@ Trippovention ([trippovention.com](https://trippovention.com)) is a **public sta
 
 See [robots.txt](https://trippovention.com/robots.txt) for allow/disallow rules and Content Signals (`ai-train`, `search`, `ai-input`).
 
+`User-agent: *` with `Allow: /` permits all crawlers including AI agents unless a more specific rule disallows them.
+
 Please identify automated clients with a descriptive `User-Agent` and avoid aggressive request rates.
-
-## Agent registration
-
-This site does not issue API tokens or OAuth credentials.
-
-- **register_uri:** mailto:query@trippovention.com (describe your agent name, organization, intended use, and expected crawl rate)
-- **Supported access:** public read of HTML, llms.txt, and sitemap; optional WebMCP on the homepage only
-- **Not supported:** programmatic booking APIs, OAuth, or machine payments
 
 ## WebMCP (optional, homepage only)
 
