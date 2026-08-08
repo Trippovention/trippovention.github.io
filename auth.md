@@ -1,4 +1,4 @@
-# Trippovention — AI agents and crawlers
+# auth.md — Trippovention AI agents and crawlers
 
 Trippovention ([trippovention.com](https://trippovention.com)) is a **public static website**. There is **no user login**, **no OAuth**, and **no programmatic API** for packages or bookings.
 
