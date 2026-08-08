@@ -95,41 +95,6 @@
         }
       }
     </script>
-
-    <style>
-      .step-card {
-        background: var(--bg-card, #ffffff);
-        border: 1px solid var(--border-color, #e2e8f0);
-        border-radius: 12px;
-        padding: 20px;
-        position: relative;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      }
-      .step-number {
-        display: inline-block;
-        width: 32px;
-        height: 32px;
-        background: var(--primary, #667eea);
-        color: #fff;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 32px;
-        font-weight: 700;
-        margin-right: 10px;
-      }
-      .doc-group {
-        border-left: 4px solid var(--primary, #667eea);
-        padding-left: 16px;
-        margin-bottom: 25px;
-      }
-      .fee-box {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        border: 1px solid rgba(102, 126, 234, 0.3);
-        border-radius: 12px;
-        padding: 24px;
-      }
-    </style>
   </head>
 
   <body>
@@ -202,33 +167,36 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb-container">
           <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+            <li class="breadcrumb-item">
+              <a href="../../index.html">
+                <span>🏠</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="breadcrumb-separator">›</li>
             <li class="breadcrumb-item"><a href="../../visa/index.html">Visa Assistance</a></li>
+            <li class="breadcrumb-separator">›</li>
             <li class="breadcrumb-item"><a href="index.html">Singapore Visa</a></li>
+            <li class="breadcrumb-separator">›</li>
             <li class="breadcrumb-item active" aria-current="page">Tourist Visa</li>
           </ol>
         </div>
       </nav>
 
-      <section class="hero-section">
+      <header class="hero compact hero-singapore-visa">
         <div class="container">
-          <div class="hero-content">
-            <div class="badge">🇸🇬 30 Days Multiple Entry</div>
-            <h1 class="hero-title">Singapore Tourist Visa for Indian Citizens</h1>
-            <p class="hero-subtitle">
-              Planning a vacation to Singapore? Get complete assistance for your Singapore Tourist e-Visa. Quick processing in 4–10 working days, doorstep pickup, and expert verification.
-            </p>
-            <div class="hero-highlights" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
-              <span class="tag">⏱️ 4–10 Days Processing</span>
-              <span class="tag">💰 ₹5,664 All-Inclusive</span>
-              <span class="tag">📑 Form 14A Verification</span>
-              <span class="tag">🏦 Min ₹75k Bank Balance</span>
-            </div>
-            <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-              <a href="../../contact.html?service=singapore-visa" class="btn btn-lg">Apply for Tourist Visa</a>
-              <a href="https://wa.me/+918750888875?text=Hi%20Trippovention,%20I%20need%20assistance%20with%20Singapore%20Tourist%20Visa" class="btn btn-lg ghost" target="_blank" rel="noopener noreferrer">💬 WhatsApp Consultation</a>
-            </div>
-          </div>
+          <h1>Singapore Tourist Visa for Indian Citizens</h1>
+          <p>
+            30 days multiple entry • 4–10 working day processing support • Form 14A verification and
+            doorstep document pickup available.
+          </p>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="container text-center">
+          <a href="../../contact.html?service=singapore-visa" class="btn btn-lg">Apply Now</a>
+          <a href="https://wa.me/+918750888875?text=Hi%20Trippovention,%20I%20need%20assistance%20with%20Singapore%20Tourist%20Visa" class="btn btn-lg" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
         </div>
       </section>
 
@@ -236,19 +204,19 @@
       <section class="section">
         <div class="container">
           <div class="grid cols-3">
-            <div class="step-card">
+            <div class="card">
               <h3>✈️ Entry &amp; Stay</h3>
               <p class="muted" style="margin-top: 10px; line-height: 1.6;">
                 Multiple entry visa allowing stays up to 30 days per visit. Perfect for sightseeing, shopping, family vacations, and cruising.
               </p>
             </div>
-            <div class="step-card">
+            <div class="card">
               <h3>⏳ Lead &amp; Embassy Time</h3>
               <p class="muted" style="margin-top: 10px; line-height: 1.6;">
                 1 working day minimum lead time to prepare &amp; submit after document receipt. Embassy processing takes 4 to 10 working days.
               </p>
             </div>
-            <div class="step-card">
+            <div class="card">
               <h3>📍 Doorstep Service</h3>
               <p class="muted" style="margin-top: 10px; line-height: 1.6;">
                 Physical passport &amp; document pick-up and drop-off available across locations (minimum INR 200 based on area).
@@ -266,11 +234,11 @@
             <p class="subtitle">Ensure all documents are complete before submitting to our visa specialists</p>
           </div>
 
-          <div style="max-width: 900px; margin: 0 auto;">
+          <div class="visa-doc-narrow">
             <!-- Primary Documents -->
             <div class="doc-group">
               <h3>1. Primary Travel Documents</h3>
-              <ul class="checklist" style="margin-top: 10px; line-height: 1.8;">
+              <ul class="muted list-spaced" style="margin-top: 10px; line-height: 1.8;">
                 <li><strong>Application Form 14A:</strong> Duly filled in block letters and signed by the applicant.</li>
                 <li><strong>Original Passport:</strong> Passport with at least 6 months validity beyond departure date from Singapore.</li>
                 <li><strong>Passport Photocopies:</strong> Clear color copy of passport's first (photo page) and last (address page) pages.</li>
@@ -283,7 +251,7 @@
             <!-- Photos & Specs -->
             <div class="doc-group">
               <h3>2. Passport Photograph Specifications</h3>
-              <ul class="checklist" style="margin-top: 10px; line-height: 1.8;">
+              <ul class="muted list-spaced" style="margin-top: 10px; line-height: 1.8;">
                 <li><strong>2 Recent Photographs:</strong> Taken within the last 3 months.</li>
                 <li><strong>Dimensions:</strong> 35 mm wide by 45 mm high without border.</li>
                 <li><strong>Background &amp; Finish:</strong> Matt finish against a plain white background.</li>
@@ -295,7 +263,7 @@
             <!-- Financial Proof -->
             <div class="doc-group">
               <h3>3. Financial Proof &amp; Bank Statement</h3>
-              <ul class="checklist" style="margin-top: 10px; line-height: 1.8;">
+              <ul class="muted list-spaced" style="margin-top: 10px; line-height: 1.8;">
                 <li><strong>Personal Bank Statement:</strong> Statement of personal bank account for the last 6 months.</li>
                 <li><strong>Minimum Balance:</strong> Minimum closing balance of <strong>INR 75,000 per person</strong>.</li>
                 <li><strong>Bank Validation:</strong> Must carry official stamp and signature from bank authority on every page.</li>
@@ -307,14 +275,14 @@
               <h3>4. Category-Specific Additional Requirements</h3>
               
               <h4 style="margin-top: 15px;">A. For Salaried Employees:</h4>
-              <ul class="checklist" style="line-height: 1.7;">
+              <ul class="muted list-spaced" style="line-height: 1.7;">
                 <li>Original NOC (No Objection Certificate) on company letterhead.</li>
                 <li>Salary Slips for the last 6 months.</li>
                 <li>Personal Income Tax Return (ITR) for the last 2 years.</li>
               </ul>
 
               <h4 style="margin-top: 15px;">B. For Self-Employed / Business Owners:</h4>
-              <ul class="checklist" style="line-height: 1.7;">
+              <ul class="muted list-spaced" style="line-height: 1.7;">
                 <li>Covering letter printed on official company letterhead.</li>
                 <li>Visiting / Business Card.</li>
                 <li>Company &amp; Personal bank statements for last 6 months (stamped &amp; signed).</li>
@@ -322,15 +290,8 @@
                 <li>GST Certificate or Business Registration Proof.</li>
               </ul>
 
-              <h4 style="margin-top: 15px;">C. If Visiting Friends or Relatives in Singapore:</h4>
-              <ul class="checklist" style="line-height: 1.7;">
-                <li>Invitation Letter from the host in Singapore.</li>
-                <li>Invitee Passport Copy (first and last pages).</li>
-                <li>Invitee FIN ID Card &amp; PR/Visa document copy.</li>
-              </ul>
-
-              <h4 style="margin-top: 15px;">D. If Travel is Sponsored:</h4>
-              <ul class="checklist" style="line-height: 1.7;">
+              <h4 style="margin-top: 15px;">C. If Travel is Sponsored:</h4>
+              <ul class="muted list-spaced" style="line-height: 1.7;">
                 <li>Sponsor's ID Proof (Passport / PAN Card / Resident Permit).</li>
                 <li>Sponsor's last 6 months stamped bank statement &amp; salary slips.</li>
                 <li>Sponsor's personal ITR for last 2 years.</li>
@@ -349,29 +310,29 @@
           </div>
 
           <div style="max-width: 800px; margin: 0 auto;">
-            <div class="step-card">
-              <h3><span class="step-number">1</span> Submit Documents &amp; Booking</h3>
+            <div class="card">
+              <h3>1. Submit Documents &amp; Booking</h3>
               <p class="muted" style="margin-top: 5px;">
                 Send your documents online or schedule doorstep pickup. Our visa manager checks Form 14A and photograph dimensions against official embassy rules.
               </p>
             </div>
 
-            <div class="step-card">
-              <h3><span class="step-number">2</span> File Preparation (1 Working Day)</h3>
+            <div class="card">
+              <h3>2. File Preparation (1 Working Day)</h3>
               <p class="muted" style="margin-top: 5px;">
                 We verify bank statements, confirm ticket/hotel vouchers, compile cover letters, and prepare your application file.
               </p>
             </div>
 
-            <div class="step-card">
-              <h3><span class="step-number">3</span> Embassy Submission</h3>
+            <div class="card">
+              <h3>3. Embassy Submission</h3>
               <p class="muted" style="margin-top: 5px;">
                 Your application is submitted to the authorized visa application center for Embassy processing (4 to 10 working days).
               </p>
             </div>
 
-            <div class="step-card">
-              <h3><span class="step-number">4</span> e-Visa Grant &amp; Dispatch</h3>
+            <div class="card">
+              <h3>4. e-Visa Grant &amp; Dispatch</h3>
               <p class="muted" style="margin-top: 5px;">
                 Once approved, your e-Visa PDF is dispatched directly via email and original documents are safely returned via courier or doorstep delivery.
               </p>
@@ -380,69 +341,134 @@
         </div>
       </section>
 
-      <!-- Pricing Summary & CTA -->
-      <section class="section" style="background: var(--bg-alt, #f8fafc);">
+      <section class="section alt">
         <div class="container">
-          <div style="max-width: 600px; margin: 0 auto;" class="fee-box text-center">
-            <h2>Singapore Tourist Visa Charges</h2>
-            <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary, #667eea); margin: 15px 0;">
-              ₹ 5,664 <span style="font-size: 1rem; color: #64748b; font-weight: normal;">/ person</span>
+          <div class="section-title">
+            <h2>Transparent Fee Structure</h2>
+            <p class="subtitle">Complete breakdown per applicant (all taxes included)</p>
+          </div>
+          <div class="visa-fee-card">
+            <div class="visa-fee-row">
+              <span>Singapore Government Visa Fee (SGD 30)</span>
+              <strong>₹ 2,100</strong>
             </div>
-            <p class="muted" style="margin-bottom: 20px;">
-              Includes Govt Fee (SGD 30 / ₹2,100) + Courier &amp; Processing (₹2,384) + Trippovention Service Charge (₹1,180).
+            <div class="visa-fee-row">
+              <span>Processing Fee &amp; Courier Charges</span>
+              <strong>₹ 2,384</strong>
+            </div>
+            <div class="visa-fee-row">
+              <span>Trippovention Consultation &amp; Service Charges</span>
+              <strong>₹ 1,180</strong>
+            </div>
+            <div class="visa-fee-row">
+              <span>Total Payable Amount</span>
+              <span>₹ 5,664</span>
+            </div>
+            <p class="muted mt-15" style="font-size: 0.85rem;">
+              Pick-up &amp; drop-off for physical documents available on request (minimum INR 200 based
+              on location).
             </p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <div class="text-center mt-20">
               <a href="../../contact.html?service=singapore-visa" class="btn btn-lg">Apply Now</a>
-              <a href="terms-and-conditions.html" class="btn btn-lg ghost">View Terms &amp; Bank Details</a>
+              <a href="terms-and-conditions.html" class="btn btn-lg">Terms &amp; Conditions</a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <img src="../../assets/images/logo.webp" alt="Trippovention Logo" class="footer-logo" width="160" height="40" />
-            <p class="footer-desc">Your trusted travel partner for tour packages, visa assistance, and custom holiday experiences across the globe.</p>
+        <div class="grid cols-3">
+          <div>
+            <h3>Trippovention</h3>
+            <p>
+              Your trusted travel partner for unforgettable journeys. We believe that travel should
+              be transformative and memorable.
+            </p>
+            <div class="mt-20">
+              <h3 class="muted font-weight-600">Contact Details</h3>
+              <span class="mr-15"
+                >📧 <a href="mailto:info@trippovention.com">info@trippovention.com</a></span
+              >
+              <br />
+              <span class="mr-15"
+                >📧 <a href="mailto:query@trippovention.com">query@trippovention.com</a></span
+              >
+              <br />
+              <span>📞 <a href="tel:+911244182575">+91 124 418 2575</a></span>
+              <br />
+              <span>📞 <a href="tel:+919717544669">+91 97175 44669</a></span>
+              <br />
+              <span>📞 <a href="tel:+918750888875">+91 87508 88875</a></span>
+              <br />
+              <span>📞 <a href="tel:+917303010446">+91 73030 10446</a></span>
+              <br />
+              <span>📞 <a href="tel:+66946934392">+66 9469 34392</a></span>
+            </div>
           </div>
-          <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul class="footer-links">
-              <li><a href="../../index.html">Home</a></li>
-              <li><a href="../../destinations.html">Destinations</a></li>
-              <li><a href="../../visa/index.html">Visa Assistance</a></li>
-              <li><a href="../../services.html">Services</a></li>
-              <li><a href="../../contact.html">Contact Us</a></li>
-            </ul>
+          <div>
+            <h3>Quick Links</h3>
+            <div class="line-height-2">
+              <a href="../../index.html">Home</a><br />
+              <a href="../../destinations.html">Destinations by Country</a><br />
+              <a href="../../destinations-themes.html">Destinations by Theme</a><br />
+              <a href="../../destinations-travelers.html">Destinations by Traveler</a><br />
+              <a href="../../visa/index.html">Visa</a><br />
+              <a href="../../services.html">Services</a><br />
+              <a href="../../contact.html">Contact</a><br />
+              <a href="../../terms-and-conditions.html">Terms &amp; Conditions</a><br />
+              <a href="../../privacy-policy.html">Privacy Policy</a><br />
+              <a href="../../refund-policy.html">Refund Policy</a>
+            </div>
           </div>
-          <div class="footer-col">
-            <h4>Singapore Visa</h4>
-            <ul class="footer-links">
-              <li><a href="index.html">Singapore Visa Hub</a></li>
-              <li><a href="tourist-visa.html">Tourist Visa</a></li>
-              <li><a href="business-visa.html">Business Visa</a></li>
-              <li><a href="terms-and-conditions.html">Terms &amp; Bank Details</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Contact Info</h4>
-            <p>Spaze IT Park, Sector 49, Gurgaon, Haryana 122018</p>
-            <p>Phone: +91-87508-88875</p>
-            <p>Email: query@trippovention.com</p>
+          <div>
+            <h3>Corporate Office</h3>
+            <p>
+              337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road, Gurgaon, Haryana,
+              India, 122018.
+            </p>
+            <div class="mt-20">
+              <h3>Thailand Office</h3>
+              <p>
+                23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District, Chonburi Province-20150
+              </p>
+            </div>
+            <div class="mt-20">
+              <h3 class="muted font-weight-600">Follow Us</h3>
+              <div class="social-icons">
+                <a href="https://facebook.com/trippovention" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" title="Facebook">
+                  <img src="../../assets/images/social/facebook.svg" alt="Facebook" width="24" height="24" class="social-icon-white" loading="lazy" />
+                </a>
+                <a href="https://instagram.com/trippovention" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" title="Instagram">
+                  <img src="../../assets/images/social/instagram.svg" alt="Instagram" width="24" height="24" class="social-icon-white" loading="lazy" />
+                </a>
+                <a href="https://www.linkedin.com/company/trippovention/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" title="LinkedIn">
+                  <img src="../../assets/images/social/linkedin.svg" alt="LinkedIn" width="24" height="24" class="social-icon-white" loading="lazy" />
+                </a>
+                <a href="https://youtube.com/@trippovention?si=cvr_Sf36pb1Oh6lY" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" title="YouTube">
+                  <img src="../../assets/images/social/youtube.svg" alt="YouTube" width="24" height="24" class="social-icon-white" loading="lazy" />
+                </a>
+                <a href="https://wa.me/+918750888875" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="WhatsApp">
+                  <img src="../../assets/images/social/whatsapp.svg" alt="WhatsApp" width="24" height="24" class="social-icon-white" loading="lazy" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 Trippovention. All Rights Reserved.</p>
+        <div class="text-center section-border-top mt-40 pt-30">
+          <p>© 2026 Trippovention. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
+
+    <a href="../../contact.html?service=singapore-visa" class="sticky-cta">💬 Singapore Visa Query</a>
 
     <script src="../../assets/skip-link.js" defer=""></script>
     <script src="../../assets/cookie-consent.js" defer=""></script>
     <script src="../../assets/app.js" defer=""></script>
     <script src="../../assets/analytics.js" defer=""></script>
+    <script src="../../assets/webmcp-agent.js" defer=""></script>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLPKQZJS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
   </body>
 </html>

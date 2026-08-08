@@ -520,6 +520,50 @@ main {
   background-image: url("images/banner_visa.webp");
 }
 
+.hero-singapore-visa {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("images/visa/singapore/hero_singapore_evisa.webp") center/cover no-repeat;
+}
+
+.visa-fee-card {
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.visa-fee-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  font-size: 0.95rem;
+}
+
+.visa-fee-row:last-of-type {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding-top: 16px;
+}
+
+.visa-doc-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.doc-group {
+  border-left: 4px solid var(--primary, #667eea);
+  padding-left: 16px;
+  margin-bottom: 25px;
+}
+
 .hero-services {
   background-image: url("images/banner_cab.webp");
 }
