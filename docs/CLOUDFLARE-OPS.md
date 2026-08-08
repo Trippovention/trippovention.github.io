@@ -27,6 +27,21 @@ Each should return **200** with `text/html`, not **403**, **503**, or a Cloudfla
 
 Document any rule IDs you add here for future maintainers.
 
+## Last verification (local curl)
+
+Date: 2026-08-09. All returned **HTTP/1.1 200 OK** for homepage requests:
+
+| User-Agent | Result |
+|------------|--------|
+| GPTBot/1.0 | 200 OK |
+| ClaudeBot/1.0 | 200 OK |
+| PerplexityBot/1.0 | 200 OK |
+| Google-Extended | 200 OK |
+| Anthropic-AI/1.0 | 200 OK |
+| Bingbot/2.0 | 200 OK |
+
+If Goodie still reports blocked crawlers, adjust Cloudflare Bot Fight Mode / WAF for **scan egress IPs**, not just desktop curl.
+
 ## HTTP Link headers (RFC 8288)
 
 The repo [`_headers`](../_headers) file sets `Link:` discovery headers, but **GitHub Pages does not apply `_headers`**.
@@ -36,7 +51,7 @@ To satisfy scanners that require response `Link` headers on `/`:
 1. **Rules → Transform Rules → Modify Response Header**
 2. For URI Path equals `/` (and optionally `/index.html`), set header:
 
-   `Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/mcp/server-card.json>; rel="mcp-server-card", </auth.md>; rel="help", </llms.txt>; rel="service-doc"`
+   `Link: </.well-known/api-catalog.json>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/mcp/server-card.json>; rel="mcp-server-card", </auth.md>; rel="help", </llms.txt>; rel="service-doc"`
 
 3. Verify: `curl.exe -sI https://trippovention.com/` includes a `Link:` line.
 

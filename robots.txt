@@ -122,6 +122,27 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
 
 # Host directive (for clarity)
 Host: https://trippovention.com

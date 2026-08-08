@@ -51,14 +51,6 @@
     <meta property="og:image" content="https://trippovention.com/assets/images/logo.webp" />
     <meta property="og:site_name" content="Trippovention" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Trippovention - Your Trusted Travel Partner" />
-    <meta
-      name="twitter:description"
-      content="Explore incredible destinations with expert travel packages. India tours, worldwide experiences, and hassle-free visa assistance services."
-    />
-    <meta name="twitter:image" content="https://trippovention.com/assets/images/logo.webp" />
-
     <link rel="canonical" href="https://trippovention.com/" />
 
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
@@ -67,7 +59,7 @@
     <meta name="theme-color" content="#667eea" />
 
     <!-- AI / crawler discovery (static site — see auth.md and llms.txt) -->
-    <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
+    <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog.json" />
     <link rel="agent-skills" type="application/json" href="/.well-known/agent-skills/index.json" />
     <link rel="mcp-server-card" type="application/json" href="/.well-known/mcp/server-card.json" />
     <link rel="alternate" type="text/markdown" href="/auth.md" title="AI agents and crawlers" />
@@ -95,11 +87,23 @@
       gtag("config", "AW-11395302765");
     </script>
 
+    <!-- Organization Schema (Goodie / schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Trippovention",
+        "description": "Your trusted travel partner for India and worldwide tours, visa assistance, and custom holiday packages.",
+        "url": "https://trippovention.com/",
+        "logo": "https://trippovention.com/assets/images/logo.webp"
+      }
+    </script>
+
     <!-- TravelAgency Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": ["TravelAgency", "Organization"],
+        "@type": "TravelAgency",
         "name": "Trippovention",
         "description": "Your trusted travel partner for India & worldwide tours, visa assistance services, and custom packages.",
         "url": "https://trippovention.com",

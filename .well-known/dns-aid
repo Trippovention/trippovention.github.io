@@ -2,7 +2,7 @@
   "version": "dnsaid1",
   "domain": "trippovention.com",
   "entrypoints": {
-    "index": "https://trippovention.com/.well-known/api-catalog",
+    "index": "https://trippovention.com/.well-known/api-catalog.json",
     "skills": "https://trippovention.com/.well-known/agent-skills/index.json",
     "mcp": "https://trippovention.com/.well-known/mcp/server-card.json",
     "auth": "https://trippovention.com/auth.md"

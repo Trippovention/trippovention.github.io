@@ -4,7 +4,7 @@
     "name": "trippovention-webmcp",
     "title": "Trippovention WebMCP (static site)",
     "description": "Optional browser WebMCP tools on the homepage only. Full travel catalog is in llms.txt, llms-full.txt, and HTML pages. No MCP SSE or REST API.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "transports": [
     {
@@ -20,19 +20,66 @@
   "tools": [
     {
       "name": "search_travel_packages",
-      "description": "Sample package search; for complete listings use llms.txt and site HTML"
+      "description": "Search Trippovention international and domestic travel packages by destination or keyword",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Destination name, activity, or keyword (e.g., \"Dubai\", \"Bali honeymoon\", \"Europe tour\", \"Rishikesh yoga\")"
+          },
+          "category": {
+            "type": "string",
+            "enum": ["international", "india", "theme", "visa"],
+            "description": "Optional package category filter"
+          }
+        },
+        "required": ["query"]
+      }
     },
     {
       "name": "get_package_details",
-      "description": "Points to package HTML pages and llms.txt for full itineraries"
+      "description": "Retrieve full itinerary details, inclusions, and overview for a specific Trippovention travel package",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packageName": {
+            "type": "string",
+            "description": "Name of the travel package or destination (e.g. \"Dubai\", \"Bali\", \"Rishikesh\")"
+          }
+        },
+        "required": ["packageName"]
+      }
     },
     {
       "name": "get_visa_requirements",
-      "description": "Visa overview; see /visa/ HTML pages for destination-specific details"
+      "description": "Retrieve visa application requirements, processing timeline, and required documents for travel destinations",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "Destination country name (e.g., \"Dubai\", \"Schengen\", \"Singapore\", \"Thailand\", \"Vietnam\", \"UK\", \"USA\")"
+          }
+        },
+        "required": ["country"]
+      }
     },
     {
       "name": "submit_travel_inquiry",
-      "description": "Prepare contact form fields; human submission via contact.html or phone"
+      "description": "Submit a custom travel inquiry or request expert callback for tailored holiday package planning",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Traveler full name" },
+          "email": { "type": "string", "description": "Contact email address" },
+          "phone": { "type": "string", "description": "Contact phone / WhatsApp number" },
+          "destination": { "type": "string", "description": "Target destination or holiday preference" },
+          "travelers": { "type": "number", "description": "Number of travelers" },
+          "message": { "type": "string", "description": "Special requirements or travel dates" }
+        },
+        "required": ["name", "phone", "destination"]
+      }
     }
   ],
   "documentation": "https://trippovention.com/auth.md"

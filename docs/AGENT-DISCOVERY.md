@@ -9,7 +9,7 @@ Add an empty [`.nojekyll`](../.nojekyll) at the repository root so Jekyll does *
 After changing `.well-known` or adding `.nojekyll`, wait for GitHub Pages to finish deploying, then verify:
 
 ```bash
-curl -I https://trippovention.com/.well-known/api-catalog
+curl -I https://trippovention.com/.well-known/api-catalog.json
 curl -I https://trippovention.com/.well-known/agent-skills/index.json
 curl -I https://trippovention.com/.well-known/mcp/server-card.json
 ```
@@ -28,7 +28,7 @@ All three should return `HTTP/1.1 200` (or `200 OK`).
 
 ## Files for discovery standards
 
-- `/.well-known/api-catalog` — RFC 9727 linkset pointing at documentation only (not REST APIs)
+- `/.well-known/api-catalog.json` — RFC 9727 linkset pointing at documentation only (not REST APIs)
 - `/.well-known/agent-skills/index.json` — index of real static URLs with SHA-256 digests
 - `/.well-known/mcp/server-card.json` — WebMCP on homepage only (no SSE server)
 - `index.html` — `<link rel="...">` discovery hints on the homepage
@@ -40,4 +40,4 @@ See [DNS-AID-SETUP.md](./DNS-AID-SETUP.md) if you publish DNS-AID records at you
 
 ## After deploy
 
-Re-run [isitagentready.com](https://isitagentready.com) and Goodie agent audits. OAuth/API checks may remain “missing” by design (static site). See [AGENT-DISCOVERY-BACKLOG.md](./AGENT-DISCOVERY-BACKLOG.md) for optional improvements.
+Re-run [isitagentready.com](https://isitagentready.com) and Goodie agent audits. See [AGENT-READINESS-RESCAN.md](./AGENT-READINESS-RESCAN.md). OAuth/API checks may remain “missing” by design (static site). See [AGENT-DISCOVERY-BACKLOG.md](./AGENT-DISCOVERY-BACKLOG.md) for optional improvements.

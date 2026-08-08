@@ -22,7 +22,7 @@ _a2a._agents.trippovention.com.   300 IN HTTPS 0 trippovention.com. alpn="h2,h3"
 
 ```dns
 ; DNS-AID Metadata Directives pointing to RFC endpoints
-_agents.trippovention.com. 300 IN TXT "v=dnsaid1; catalog=https://trippovention.com/.well-known/api-catalog; skills=https://trippovention.com/.well-known/agent-skills/index.json; mcp=https://trippovention.com/.well-known/mcp/server-card.json"
+_agents.trippovention.com. 300 IN TXT "v=dnsaid1; catalog=https://trippovention.com/.well-known/api-catalog.json; skills=https://trippovention.com/.well-known/agent-skills/index.json; mcp=https://trippovention.com/.well-known/mcp/server-card.json"
 ```
 
 ---
