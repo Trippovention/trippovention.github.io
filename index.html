@@ -57,11 +57,11 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#667eea" />
 
-    <!-- AI Agent Readiness & Discovery Links (RFC 8288 / RFC 9727 / SEP-1649) -->
+    <!-- AI / crawler discovery (static site — see auth.md and llms.txt) -->
     <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
     <link rel="agent-skills" type="application/json" href="/.well-known/agent-skills/index.json" />
     <link rel="mcp-server-card" type="application/json" href="/.well-known/mcp/server-card.json" />
-    <link rel="authorizing-realm" href="/auth.md" />
+    <link rel="alternate" type="text/markdown" href="/auth.md" title="AI agents and crawlers" />
     <link rel="service-doc" href="/llms.txt" />
 
     <meta name="referrer" content="strict-origin-when-cross-origin" />

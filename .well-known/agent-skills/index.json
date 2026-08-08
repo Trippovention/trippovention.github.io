@@ -2,25 +2,32 @@
   "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
   "skills": [
     {
-      "name": "search-packages",
-      "type": "webmcp",
-      "description": "Search Trippovention international and domestic travel packages, itineraries, and pricing",
+      "name": "site-overview",
+      "type": "documentation",
+      "description": "Curated overview of Trippovention services, destinations, and key URLs for LLM crawlers",
       "url": "https://trippovention.com/llms.txt",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "dcb96fe24c525558298db0309fd3c0bd5951701cae250a00f2bf75e1c0c3517b"
     },
     {
-      "name": "get-visa-info",
-      "type": "webmcp",
-      "description": "Retrieve visa requirement details, processing time, and documents needed for global destinations",
-      "url": "https://trippovention.com/visa/",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "name": "full-site-map",
+      "type": "documentation",
+      "description": "Expanded package and page listings for Trippovention",
+      "url": "https://trippovention.com/llms-full.txt",
+      "sha256": "7ab720f5f8f00f1af7155a1270bbdab93d7ecc2e63bda7d187a622d9ff9af5d3"
     },
     {
-      "name": "request-custom-quote",
-      "type": "webmcp",
-      "description": "Submit a custom trip inquiry or request callback for personalized holiday itineraries",
+      "name": "visa-assistance",
+      "type": "documentation",
+      "description": "Visa assistance landing page and destination visa information",
+      "url": "https://trippovention.com/visa/index.html",
+      "sha256": "a12cc00eb57d3df7b8d4e5b62af8dc6fa5b8b948ce19e5afbae6c85acf4eb521"
+    },
+    {
+      "name": "contact-and-inquiries",
+      "type": "documentation",
+      "description": "Contact form and inquiry channel for custom travel quotes",
       "url": "https://trippovention.com/contact.html",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "9c810b7fe1ae076ad60eafa9752f35b9fb42ef23adb46152e1d10977dcbea501"
     }
   ]
 }

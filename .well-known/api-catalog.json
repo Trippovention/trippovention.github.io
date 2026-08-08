@@ -1,7 +1,7 @@
 {
   "linkset": [
     {
-      "anchor": "https://trippovention.com/api/v1/packages",
+      "anchor": "https://trippovention.com/",
       "service-doc": [
         {
           "href": "https://trippovention.com/llms.txt",
@@ -10,6 +10,10 @@
         {
           "href": "https://trippovention.com/llms-full.txt",
           "type": "text/plain"
+        },
+        {
+          "href": "https://trippovention.com/auth.md",
+          "type": "text/markdown"
         }
       ],
       "service-desc": [
@@ -17,22 +21,10 @@
           "href": "https://trippovention.com/.well-known/agent-skills/index.json",
           "type": "application/json"
         }
-      ],
-      "status": [
-        {
-          "href": "https://trippovention.com/site.webmanifest",
-          "type": "application/manifest+json"
-        }
       ]
     },
     {
       "anchor": "https://trippovention.com/",
-      "rel": "authorizing-realm",
-      "href": "https://trippovention.com/auth.md",
-      "type": "text/markdown"
-    },
-    {
-      "anchor": "https://trippovention.com/mcp",
       "rel": "mcp-server-card",
       "href": "https://trippovention.com/.well-known/mcp/server-card.json",
       "type": "application/json"

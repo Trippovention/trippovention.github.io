@@ -1,42 +1,39 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
   "serverInfo": {
-    "name": "trippovention-mcp",
-    "title": "Trippovention Travel Agent MCP Server",
-    "description": "MCP server card enabling AI agents to query international travel packages, customized tour itineraries, visa assistance services, and holiday booking inquiries.",
-    "version": "1.0.0"
+    "name": "trippovention-webmcp",
+    "title": "Trippovention WebMCP (static site)",
+    "description": "Optional browser WebMCP tools on the homepage only. Full travel catalog is in llms.txt, llms-full.txt, and HTML pages. No MCP SSE or REST API.",
+    "version": "1.1.0"
   },
   "transports": [
     {
       "type": "webmcp",
       "endpoint": "https://trippovention.com/"
-    },
-    {
-      "type": "sse",
-      "endpoint": "https://trippovention.com/api/mcp/sse"
     }
   ],
   "capabilities": {
     "tools": true,
-    "resources": true,
-    "prompts": true
+    "resources": false,
+    "prompts": false
   },
   "tools": [
     {
       "name": "search_travel_packages",
-      "description": "Search Trippovention international and domestic holiday packages by destination or theme"
+      "description": "Sample package search; for complete listings use llms.txt and site HTML"
     },
     {
       "name": "get_package_details",
-      "description": "Retrieve comprehensive day-wise itinerary, inclusions, exclusions, and pricing for a travel package"
+      "description": "Points to package HTML pages and llms.txt for full itineraries"
     },
     {
       "name": "get_visa_requirements",
-      "description": "Fetch visa application requirements, processing timeline, and required documents for travel destinations"
+      "description": "Visa overview; see /visa/ HTML pages for destination-specific details"
     },
     {
       "name": "submit_travel_inquiry",
-      "description": "Send a custom trip inquiry or request expert callback for tailored travel planning"
+      "description": "Prepare contact form fields; human submission via contact.html or phone"
     }
-  ]
+  ],
+  "documentation": "https://trippovention.com/auth.md"
 }

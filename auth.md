@@ -1,52 +1,34 @@
-# Trippovention AI Agent Authentication & Registration Policy
+# Trippovention — AI agents and crawlers
 
-Welcome to **Trippovention** AI Agent Integration portal. This document specifies authentication mechanisms, registration protocols, rate limits, and supported interaction interfaces for autonomous AI agents and language models.
+Trippovention ([trippovention.com](https://trippovention.com)) is a **public static website**. There is **no user login**, **no OAuth**, and **no programmatic API** for packages or bookings.
 
----
+## How to use this site
 
-## 1. Overview & Capability Model
+1. **[llms.txt](https://trippovention.com/llms.txt)** — curated overview, key URLs, and services (start here).
+2. **[llms-full.txt](https://trippovention.com/llms-full.txt)** — expanded site map and package listings.
+3. **[sitemap.xml](https://trippovention.com/sitemap.xml)** — all indexable HTML pages.
+4. **Individual HTML pages** — full itineraries, visa pages, and contact forms.
 
-Trippovention offers public read-access and interactive browser APIs (WebMCP) for travel itinerary exploration, destination package search, visa requirement lookup, and custom holiday inquiry submission.
+## Crawling policy
 
-### Supported Operations
-- **Public Read Access**: All travel package listings, itineraries, destination summaries, and visa application specifications are freely queryable without authentication.
-- **WebMCP Browser Execution**: AI agents operating in browser environments can use `window.webMCP` / `navigator.modelContext` tools registered on-page.
-- **Inquiry & Quote Submission**: AI agents may submit callback requests and customized holiday requirements on behalf of human users.
+See [robots.txt](https://trippovention.com/robots.txt) for allow/disallow rules and Content Signals (`ai-train`, `search`, `ai-input`).
 
----
+Please identify automated clients with a descriptive `User-Agent` and avoid aggressive request rates.
 
-## 2. Authentication & Authorization Discovery
+## WebMCP (optional, homepage only)
 
-Trippovention implements standard RFC discovery metadata endpoints:
+When supported by the client browser, the homepage may expose limited [WebMCP](https://webmachinelearning.github.io/webmcp/) tools via `assets/webmcp-agent.js` (package search hints, links to llms.txt). This does **not** replace llms.txt or HTML for full catalog coverage.
 
-- **OAuth 2.0 Authorization Server**: [/.well-known/oauth-authorization-server](https://trippovention.com/.well-known/oauth-authorization-server)
-- **OpenID Connect Discovery**: [/.well-known/openid-configuration](https://trippovention.com/.well-known/openid-configuration)
-- **OAuth Protected Resource Metadata**: [/.well-known/oauth-protected-resource](https://trippovention.com/.well-known/oauth-protected-resource)
-- **API Catalog (RFC 9727)**: [/.well-known/api-catalog](https://trippovention.com/.well-known/api-catalog)
-- **MCP Server Card (SEP-1649)**: [/.well-known/mcp/server-card.json](https://trippovention.com/.well-known/mcp/server-card.json)
-- **Agent Skills Discovery Index**: [/.well-known/agent-skills/index.json](https://trippovention.com/.well-known/agent-skills/index.json)
+## Human contact (quotes and bookings)
 
----
+- **Email:** query@trippovention.com  
+- **Phone (India):** +91-87508-88875  
+- **Contact form:** [contact.html](https://trippovention.com/contact.html)
 
-## 3. Agent Identity & User-Agent Guidelines
+For integration or high-volume automated access, email us with your use case before scaling crawls.
 
-Autonomous agents accessing Trippovention endpoints are expected to:
-1. Identify themselves via descriptive `User-Agent` headers (e.g., `User-Agent: MyAgentName/1.0 (+https://example.com/bot)`).
-2. Respect `robots.txt` directives and Content Signals (`Content-Signal: ai-train=no, search=yes, ai-input=yes`).
-3. Limit request frequency to a reasonable rate (< 60 requests per minute per IP).
+## Discovery metadata
 
----
-
-## 4. Agent Registration & API Token Issuance
-
-For high-volume agents or integration partners requiring dedicated API rate limits or direct Webhook/CRM integration:
-- Submit registration inquiries to: `query@trippovention.com`
-- Include: Agent Name, Developer/Organization Name, Intended Scope, and Endpoint URLs.
-
----
-
-## 5. Contact & Support
-
-- **Email**: `query@trippovention.com`
-- **Phone**: `+91-87508-88875`
-- **Address**: 337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Gurgaon, Haryana 122018, India
+- API catalog (documentation only): [/.well-known/api-catalog](https://trippovention.com/.well-known/api-catalog)
+- Agent skills index: [/.well-known/agent-skills/index.json](https://trippovention.com/.well-known/agent-skills/index.json)
+- MCP server card (WebMCP on homepage): [/.well-known/mcp/server-card.json](https://trippovention.com/.well-known/mcp/server-card.json)
