@@ -4747,13 +4747,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://trippovention.com/visa/singapore/terms-and-conditions.html</loc>
-    <image:image>
-      <image:loc>https://trippovention.com/assets/images/logo.webp</image:loc>
-      <image:title>logo</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://trippovention.com/visa/singapore/tourist-visa.html</loc>
     <image:image>
       <image:loc>https://trippovention.com/assets/images/logo.webp</image:loc>
@@ -4762,6 +4755,13 @@
     <image:image>
       <image:loc>https://trippovention.com/assets/images/visa/singapore/hero_singapore_evisa.webp</image:loc>
       <image:title>hero singapore evisa</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/terms-and-conditions.html</loc>
+    <image:image>
+      <image:loc>https://trippovention.com/assets/images/logo.webp</image:loc>
+      <image:title>logo</image:title>
     </image:image>
   </url>
 </urlset>
