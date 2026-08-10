@@ -520,6 +520,181 @@ main {
   background-image: url("images/banner_visa.webp");
 }
 
+.hero-singapore-visa {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("images/visa/singapore/hero_singapore_evisa.webp") center/cover no-repeat;
+}
+
+.visa-fee-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-medium);
+}
+
+.visa-fee-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.visa-fee-row strong,
+.visa-fee-row:last-of-type,
+.visa-fee-row:last-of-type span {
+  color: var(--text-primary);
+}
+
+.visa-fee-row:last-of-type {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding-top: 16px;
+}
+
+.visa-doc-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.visa-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.visa-step-grid .card .body {
+  padding: 20px;
+}
+
+.visa-service-notice {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.visa-page-intro {
+  padding-top: 28px;
+  padding-bottom: 32px;
+}
+
+.visa-page-intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.visa-page-intro .visa-service-notice {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.visa-page-intro + .section .section-title,
+.visa-page-intro + .section.alt .section-title {
+  margin-bottom: 36px;
+}
+
+.visa-page-intro > .container > .section-title {
+  margin-top: 28px;
+  margin-bottom: 36px;
+}
+
+.visa-page-intro > .container > .visa-service-notice.max-width-650 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.visa-terms-intro > .container > .visa-service-notice.max-width-650 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .visa-page-intro .visa-service-notice.max-width-650 {
+    max-width: 720px;
+  }
+}
+
+.visa-terms-intro {
+  padding-top: 24px;
+  padding-bottom: 28px;
+}
+
+.visa-terms-intro .visa-service-notice {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.visa-terms-page .terms-section {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: var(--shadow-medium);
+}
+
+.visa-terms-page .terms-item {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.visa-terms-page .terms-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.visa-terms-page .terms-item h3 {
+  color: var(--blue);
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+
+.visa-terms-page .bank-highlight-box {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.visa-terms-page .bank-highlight-box strong {
+  color: #38bdf8;
+}
+
+.visa-terms-page .terms-item p,
+.visa-terms-page .terms-item ul {
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.info-highlight a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.doc-group {
+  border-left: 4px solid var(--blue);
+  padding-left: 16px;
+  margin-bottom: 25px;
+}
+
 .hero-services {
   background-image: url("images/banner_cab.webp");
 }

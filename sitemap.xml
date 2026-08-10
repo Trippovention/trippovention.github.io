@@ -427,6 +427,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://trippovention.com/visa/singapore/index.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://trippovention.com/packages/argentina/argentina_adventure_with_friends_and_mates.html</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -2137,14 +2143,44 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://trippovention.com/visa/singapore/business-visa.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/singapore/invitee-visa.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/singapore/terms-and-conditions.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/singapore/tourist-visa.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/terms-and-conditions.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://trippovention.com/llms-full.txt</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://trippovention.com/llms.txt</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -2162,7 +2198,7 @@
   </url>
   <url>
     <loc>https://trippovention.com/terms-and-conditions.html</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
