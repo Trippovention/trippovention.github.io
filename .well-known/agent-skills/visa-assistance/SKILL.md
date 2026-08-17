@@ -17,7 +17,7 @@ description: Visa assistance landing page, destination hubs, product pages, and 
 - L3 products:
   - [tourist-visa.html](https://trippovention.com/visa/singapore/tourist-visa.html)
   - [business-visa.html](https://trippovention.com/visa/singapore/business-visa.html)
-  - [invitee-visa.html](https://trippovention.com/visa/singapore/invitee-visa.html)
+  - [visitor-visa.html](https://trippovention.com/visa/singapore/visitor-visa.html)
 
 ## Usage
 
