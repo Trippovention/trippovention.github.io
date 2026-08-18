@@ -432,7 +432,7 @@ function prefillDestinationFromURL() {
     }, 600);
   }
 
-  // PRIORITY 1: Handle Visa Service Queries (?service=xxx-visa)
+  // PRIORITY 1: Handle Visa Assistance Queries (?service=xxx-visa)
   if (service && visaCountryField && inquiryTypeField) {
     // Extract country name from service (e.g., "singapore-visa" → "Singapore")
     const countryName = service.replace(/-visa$/i, "");
