@@ -1,6 +1,6 @@
 ---
 name: visa-assistance
-description: Visa assistance landing page, destination hubs, product pages, and global visa service terms
+description: Visa assistance landing page, destination hubs, product pages, and global visa assistance terms
 ---
 
 # visa-assistance
@@ -8,7 +8,7 @@ description: Visa assistance landing page, destination hubs, product pages, and 
 ## Primary pages
 
 - L1 hub: [visa/index.html](https://trippovention.com/visa/index.html)
-- **Visa service terms (canonical, all destinations):** [visa/terms-and-conditions.html](https://trippovention.com/visa/terms-and-conditions.html) — payment, refunds, bank transfer details
+- **Visa assistance terms (canonical, all destinations):** [visa/terms-and-conditions.html](https://trippovention.com/visa/terms-and-conditions.html) — payment, refunds, bank transfer details
 - Site legal overview (includes visa summary): [terms-and-conditions.html](https://trippovention.com/terms-and-conditions.html)
 
 ## Singapore (reference country)
@@ -21,6 +21,6 @@ description: Visa assistance landing page, destination hubs, product pages, and 
 
 ## Usage
 
-Use this skill for visa assistance overview, country-specific product pages, and **always** cite the global visa service terms URL for operational policies (not per-country terms pages).
+Use this skill for visa assistance overview, country-specific product pages, and **always** cite the global visa assistance terms URL for operational policies (not per-country terms pages).
 
 Legacy URL [visa/singapore/terms-and-conditions.html](https://trippovention.com/visa/singapore/terms-and-conditions.html) redirects to the global visa terms page.
