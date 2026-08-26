@@ -573,8 +573,21 @@ main {
   align-items: center;
 }
 
+.visa-step-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.visa-step-grid .card {
+    margin: 0 !important;
+    height: 100%;
+    box-sizing: border-box;
+}
+
 .visa-step-grid .card .body {
-  padding: 20px;
+    padding: 20px;
 }
 
 .visa-service-notice {
