@@ -1,10 +1,11 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: August 9, 2026
+# Last Updated: August 27, 2026
 
 # LLMs.txt & Content Signals for AI Crawlers and Agents
 # https://trippovention.com/llms.txt
 # https://trippovention.com/llms-full.txt
+# https://trippovention.com/.well-known/llms.txt
 # Content Signals (https://contentsignals.org/):
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
@@ -19,6 +20,7 @@ Sitemap: https://trippovention.com/image-sitemap.xml
 # Disallow error and utility pages from indexing
 Disallow: /404.html
 Disallow: /offline.html
+Disallow: /thank-you.html
 Disallow: /*?error=*
 
 # Disallow validation and development folders
@@ -41,7 +43,7 @@ Allow: /assets/*.woff
 # Allow all image directories for image search
 Allow: /assets/images/
 
-# Specific bot instructions
+# Specific search engine bot instructions
 User-agent: Googlebot
 Allow: /
 
@@ -50,6 +52,12 @@ Allow: /assets/images/
 Allow: /assets/*.webp
 Allow: /assets/*.png
 Allow: /assets/*.jpg
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
 
 User-agent: Bingbot
 Allow: /
@@ -63,6 +71,12 @@ User-agent: Yandex
 Allow: /
 Crawl-delay: 1
 
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 # Social media bots (for previews)
 User-agent: facebookexternalhit
 Allow: /
@@ -73,11 +87,20 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-# Block bad bots and scrapers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# SEO Audit bots (controlled crawl rate)
 User-agent: AhrefsBot
 Crawl-delay: 10
 
 User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: PetalBot
 Crawl-delay: 10
 
 User-agent: MJ12bot
@@ -85,9 +108,6 @@ Disallow: /
 
 User-agent: dotbot
 Disallow: /
-
-User-agent: PetalBot
-Crawl-delay: 10
 
 # Google Ads crawlers — Explicitly ALLOWED for ad verification
 User-agent: AdsBot-Google
@@ -99,20 +119,35 @@ Allow: /
 User-agent: AdsBot-Google-Mobile-Apps
 Allow: /
 
-# AI/LLM Crawlers — Explicit policy (same access as User-agent: *); listed for scanner clarity
+# AI/LLM Crawlers & Answer Engine Bots — Explicitly ALLOWED for Search & Synthesis
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
 User-agent: Google-Extended
+Allow: /
+
+User-agent: DeepSeekBot
 Allow: /
 
 User-agent: Bytespider
@@ -124,18 +159,6 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
 User-agent: Meta-ExternalAgent
 Allow: /
 
@@ -145,7 +168,17 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
+User-agent: DuckAssistBot
+Allow: /
 
-# Host directive (for clarity)
+User-agent: Amazonbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: CopilotBot
+Allow: /
+
+# Host directive
 Host: https://trippovention.com
-
