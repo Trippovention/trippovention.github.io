@@ -433,9 +433,10 @@ USA (Indian passport holders):
 
 UAE / Dubai (Indian passport holders):
 - [UAE visa hub](https://trippovention.com/visa/uae/index.html)
-- [Tourist visa (30 & 60 days)](https://trippovention.com/visa/uae/tourist-visa.html)
-- [Business visa](https://trippovention.com/visa/uae/business-visa.html)
-- [Visitor visa](https://trippovention.com/visa/uae/visitor-visa.html)
+- [30-day single entry visa](https://trippovention.com/visa/uae/30-days-single-entry-visa.html)
+- [30-day multiple entry visa](https://trippovention.com/visa/uae/30-days-multi-entry-visa.html)
+- [60-day single entry visa](https://trippovention.com/visa/uae/60-days-single-entry-visa.html)
+- [60-day multiple entry visa](https://trippovention.com/visa/uae/60-days-multi-entry-visa.html)
 
 Japan (Indian passport holders):
 - [Japan visa hub](https://trippovention.com/visa/japan/index.html)
@@ -466,6 +467,8 @@ Vietnam (Indian passport holders):
 - [Tourist e-Visa](https://trippovention.com/visa/vietnam/tourist-visa.html)
 - [Business e-Visa](https://trippovention.com/visa/vietnam/business-visa.html)
 - [Visitor e-Visa](https://trippovention.com/visa/vietnam/visitor-visa.html)
+- [Single-entry e-Visa](https://trippovention.com/visa/vietnam/single-entry-visa.html)
+- [Multiple-entry e-Visa](https://trippovention.com/visa/vietnam/multi-entry-visa.html)
 
 United Kingdom (Indian passport holders):
 - [UK visa hub](https://trippovention.com/visa/uk/index.html)
