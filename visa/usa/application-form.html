@@ -2284,43 +2284,24 @@
 
           const worker = html2pdf().set(opt).from(container);
           const pdfBlob = typeof worker.outputPdf === 'function' ? await worker.outputPdf('blob') : await worker.output('blob');
-          const pdfFile = new File([pdfBlob], fileName, { type: 'application/pdf' });
+          
+          // 1. Instantly trigger PDF download to the user's device
+          const downloadUrl = URL.createObjectURL(pdfBlob);
+          const a = document.createElement('a');
+          a.href = downloadUrl;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(downloadUrl), 10000);
 
-          // If device supports Web Share API file sharing (e.g. mobile Chrome/Safari sharing directly to WhatsApp)
-          if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
-            try {
-              await navigator.share({
-                files: [pdfFile],
-                title: 'USA Visa Application Form - Trippovention',
-                text: `USA Visa Application File for ${rawName} (${getVal('passportNo')}) - Trippovention`
-              });
-              return;
-            } catch (sErr) {
-              if (sErr.name === 'AbortError') return;
-              console.log('Native share bypassed, falling back to modal:', sErr);
-            }
-          } else {
-            // Desktop/browser fallback:
-            // 1. Trigger instant download of the PDF
-            const downloadUrl = URL.createObjectURL(pdfBlob);
-            const a = document.createElement('a');
-            a.href = downloadUrl;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            setTimeout(() => URL.revokeObjectURL(downloadUrl), 3000);
-
-            // 2. Show guidance modal with direct WhatsApp chat link
-            showWhatsAppModal(fileName, rawName, getVal('passportNo'));
-          }
+          // 2. Open WhatsApp sharing modal with pre-filled message and direct chat link
+          showWhatsAppModal(fileName, rawName, getVal('passportNo'));
         } catch (err) {
-          if (err.name !== 'AbortError') {
-            console.error('Error generating/sharing PDF:', err);
-            // Fallback: direct WhatsApp chat
-            const msg = `Hi Trippovention, I have completed the online USA Visa application form for ${rawName} (${getVal('passportNo')}). Please guide me to share my application PDF.`;
-            window.open(`https://wa.me/+918750888875?text=${encodeURIComponent(msg)}`, '_blank');
-          }
+          console.error('Error generating/sharing PDF:', err);
+          // Fallback: direct WhatsApp chat
+          const msg = `Hi Trippovention, I have completed the online USA Visa application form for ${rawName} (${getVal('passportNo')}). Please guide me to share my application PDF.`;
+          window.open(`https://wa.me/+918750888875?text=${encodeURIComponent(msg)}`, '_blank');
         } finally {
           btn.disabled = false;
           btn.innerHTML = origText;
