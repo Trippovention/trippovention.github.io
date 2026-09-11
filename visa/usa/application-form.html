@@ -394,6 +394,17 @@
         text-align: center;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
       }
+      .whatsapp-modal-card .btn.ghost {
+        color: #1e293b !important;
+        background: #f8fafc !important;
+        border: 1.5px solid #cbd5e1 !important;
+        font-weight: 600 !important;
+      }
+      .whatsapp-modal-card .btn.ghost:hover {
+        background: #e2e8f0 !important;
+        color: #0f172a !important;
+        border-color: #94a3b8 !important;
+      }
 
       /* Print Stylesheet */
       .print-only-header,
@@ -2311,8 +2322,8 @@
               <a href="https://wa.me/+918750888875?text=${encodeURIComponent(text)}" target="_blank" rel="noopener noreferrer" class="btn btn-lg" onclick="closeWhatsAppModal()" style="background: #25d366; color: #fff; font-weight: 700; width: 100%; text-decoration: none; padding: 12px; display: inline-block;">
                 💬 Open WhatsApp &amp; Attach PDF →
               </a>
-              <button type="button" class="btn ghost" onclick="closeWhatsAppModal()" style="width: 100%; padding: 8px;">
-                Close
+              <button type="button" class="btn ghost" onclick="closeWhatsAppModal()" style="width: 100%; padding: 10px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #1e293b !important; font-weight: 600; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
+                ✕ Close
               </button>
             </div>
           </div>
@@ -2565,11 +2576,11 @@
                 </a>
 
                 <div style="display: flex; gap: 10px;">
-                  <button type="button" class="btn ghost" onclick="generateAndDownloadApplicationPDF(false)" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
-                    📥 Download PDF Copy
+                  <button type="button" class="btn ghost" onclick="generateAndDownloadApplicationPDF(false)" style="flex: 1; padding: 11px 12px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #1e293b !important; font-weight: 600; font-size: 0.88rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                    🖨️ Print / Save PDF
                   </button>
-                  <button type="button" class="btn ghost" onclick="closeSuccessModal()" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
-                    Close
+                  <button type="button" class="btn ghost" onclick="closeSuccessModal()" style="flex: 1; padding: 11px 12px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #1e293b !important; font-weight: 600; font-size: 0.88rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                    ✕ Close
                   </button>
                 </div>
               </div>
@@ -2578,6 +2589,7 @@
           modal.classList.add('active');
         }
 
+        window.showSuccessModal = showSuccessModal;
         window.closeSuccessModal = function() {
           const modal = document.getElementById('submissionSuccessModal');
           if (modal) modal.classList.remove('active');
