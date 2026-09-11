@@ -1298,50 +1298,52 @@
             <!-- STEP 9: Review & Submit -->
             <div class="card form-step-panel" id="stepPanel9" role="tabpanel" aria-labelledby="step9">
               <div class="body">
-                <!-- Dedicated Print Header (Only visible on Print / PDF) -->
-                <div class="print-only-header">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #d6804e; padding-bottom: 12px; margin-bottom: 18px;">
+                <div id="printableApplicationContent">
+                  <!-- Dedicated Print Header (Only visible on Print / PDF) -->
+                  <div class="print-only-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #d6804e; padding-bottom: 12px; margin-bottom: 18px;">
+                      <div>
+                        <div style="font-size: 22px; font-weight: 800; color: #d6804e; letter-spacing: -0.5px; font-family: Montserrat, sans-serif;">Trippovention</div>
+                        <p style="margin: 4px 0 0; font-size: 0.85rem; color: #555;">Trippovention Visa Desk | visa@trippovention.com | +91 87508 88875</p>
+                      </div>
+                      <div style="text-align: right;">
+                        <h3 style="margin: 0; color: #d6804e; font-size: 1.25rem;">USA Visa Application Summary</h3>
+                        <p style="margin: 3px 0 0; font-size: 0.82rem; color: #666;" id="printDateRef">Official DS-160 Preparation File</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="screen-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                    <h3 style="margin: 0;">📋 Step 9: Review Your Details &amp; Submit</h3>
+                    <span class="muted" style="font-size: 0.85rem;">Step 9 of 9</span>
+                  </div>
+
+                  <p class="muted screen-only-header" style="margin-bottom: 20px;">
+                    Please verify that all information matches your official documents (Passport, PAN, ITR, Company records). You can click "Edit" on any section or use the previous button to make adjustments.
+                  </p>
+
+                  <!-- Review Content Dynamically Generated -->
+                  <div id="reviewSummaryContainer">
+                    <!-- Populated by JS -->
+                  </div>
+
+                  <div class="info-highlight info-highlight-orange" style="margin: 25px 0 20px; border-radius: 10px; padding: 16px;">
+                    <strong>🔒 Declaration &amp; Confidentiality</strong>
+                    <p style="margin: 6px 0 0; font-size: 0.88rem; line-height: 1.5;">
+                      I declare that the information provided is true, correct, and complete to the best of my knowledge. I understand that Trippovention will use this questionnaire strictly for filling my official US DS-160 application and scheduling my embassy appointment slots.
+                    </p>
+                  </div>
+
+                  <!-- Print Signature Box (Only visible on Print / PDF) -->
+                  <div class="print-signature-box">
                     <div>
-                      <img src="../../assets/images/logo.webp" alt="Trippovention" style="height: 38px; width: auto;" />
-                      <p style="margin: 4px 0 0; font-size: 0.85rem; color: #555;">Trippovention Visa Desk | visa@trippovention.com | +91 87508 88875</p>
+                      <p style="margin: 0 0 35px 0;"><strong>Applicant Signature:</strong></p>
+                      <p style="margin: 0; color: #666;">_______________________________</p>
                     </div>
                     <div style="text-align: right;">
-                      <h3 style="margin: 0; color: #d6804e; font-size: 1.25rem;">USA Visa Application Summary</h3>
-                      <p style="margin: 3px 0 0; font-size: 0.82rem; color: #666;" id="printDateRef">Official DS-160 Preparation File</p>
+                      <p style="margin: 0 0 35px 0;"><strong>Date:</strong></p>
+                      <p style="margin: 0; color: #666;">_______________________________</p>
                     </div>
-                  </div>
-                </div>
-
-                <div class="screen-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
-                  <h3 style="margin: 0;">📋 Step 9: Review Your Details &amp; Submit</h3>
-                  <span class="muted" style="font-size: 0.85rem;">Step 9 of 9</span>
-                </div>
-
-                <p class="muted screen-only-header" style="margin-bottom: 20px;">
-                  Please verify that all information matches your official documents (Passport, PAN, ITR, Company records). You can click "Edit" on any section or use the previous button to make adjustments.
-                </p>
-
-                <!-- Review Content Dynamically Generated -->
-                <div id="reviewSummaryContainer">
-                  <!-- Populated by JS -->
-                </div>
-
-                <div class="info-highlight info-highlight-orange" style="margin: 25px 0 20px; border-radius: 10px; padding: 16px;">
-                  <strong>🔒 Declaration &amp; Confidentiality</strong>
-                  <p style="margin: 6px 0 0; font-size: 0.88rem; line-height: 1.5;">
-                    I declare that the information provided is true, correct, and complete to the best of my knowledge. I understand that Trippovention will use this questionnaire strictly for filling my official US DS-160 application and scheduling my embassy appointment slots.
-                  </p>
-                </div>
-
-                <!-- Print Signature Box (Only visible on Print / PDF) -->
-                <div class="print-signature-box">
-                  <div>
-                    <p style="margin: 0 0 35px 0;"><strong>Applicant Signature:</strong></p>
-                    <p style="margin: 0; color: #666;">_______________________________</p>
-                  </div>
-                  <div style="text-align: right;">
-                    <p style="margin: 0 0 35px 0;"><strong>Date:</strong></p>
-                    <p style="margin: 0; color: #666;">_______________________________</p>
                   </div>
                 </div>
 
@@ -2192,9 +2194,7 @@
         container.innerHTML = html;
       }
 
-      async function shareToWhatsApp() {
-        const btn = document.getElementById('shareWhatsAppBtn');
-        const origText = btn.innerHTML;
+      async function generateAndDownloadApplicationPDF(openWhatsAppModal = false) {
         buildReviewSummary();
 
         const getVal = (id, fallback = '—') => {
@@ -2207,85 +2207,39 @@
         const passportNo = getVal('passportNo', 'FILE').replace(/[^a-zA-Z0-9]/g, '') || 'FILE';
         const fileName = `USA_Visa_Application_${applicantName}_${passportNo}.pdf`;
 
-        btn.disabled = true;
-        btn.innerHTML = '⏳ Preparing PDF...';
+        if (typeof html2pdf === 'undefined') {
+          alert('PDF generation library is loading, please try again in a few seconds.');
+          return null;
+        }
+
+        const printEl = document.getElementById('printableApplicationContent') || document.getElementById('reviewSummaryContainer');
+        if (!printEl) return null;
+
+        // Temporarily prepare styles on live DOM element for PDF rendering
+        const printHeader = printEl.querySelector('.print-only-header');
+        const screenHeaders = printEl.querySelectorAll('.screen-only-header');
+        const sigBox = printEl.querySelector('.print-signature-box');
+        const buttons = printEl.querySelectorAll('button');
+
+        if (printHeader) printHeader.style.display = 'block';
+        screenHeaders.forEach(s => s.style.display = 'none');
+        if (sigBox) sigBox.style.display = 'flex';
+        buttons.forEach(b => b.style.display = 'none');
+
+        const opt = {
+          margin: [10, 10, 12, 10],
+          filename: fileName,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+          pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        };
 
         try {
-          if (typeof html2pdf === 'undefined') {
-            throw new Error('html2pdf library not loaded');
-          }
-
-          // Construct dedicated printable container for html2pdf
-          const container = document.createElement('div');
-          container.style.padding = '20px 24px';
-          container.style.background = '#ffffff';
-          container.style.color = '#111827';
-          container.style.fontFamily = 'Inter, sans-serif';
-          container.style.fontSize = '12px';
-          container.style.lineHeight = '1.4';
-          container.style.maxWidth = '800px';
-
-          // Header
-          const header = document.querySelector('.print-only-header').cloneNode(true);
-          header.style.display = 'block';
-          header.style.marginBottom = '18px';
-
-          // Replace img tags with stylized text logo for 100% canvas rendering compatibility
-          header.querySelectorAll('img').forEach(img => {
-            const brandTitle = document.createElement('div');
-            brandTitle.style.fontSize = '22px';
-            brandTitle.style.fontWeight = '800';
-            brandTitle.style.color = '#d6804e';
-            brandTitle.style.letterSpacing = '-0.5px';
-            brandTitle.style.fontFamily = 'Montserrat, sans-serif';
-            brandTitle.textContent = 'Trippovention';
-            img.replaceWith(brandTitle);
-          });
-
-          const dateEl = header.querySelector('#printDateRef');
-          if (dateEl) {
-            const now = new Date();
-            dateEl.textContent = `Generated: ${now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`;
-          }
-
-          // Summary content
-          const reviewContent = document.getElementById('reviewSummaryContainer').cloneNode(true);
-          reviewContent.querySelectorAll('button').forEach(b => b.remove());
-          reviewContent.querySelectorAll('img').forEach(i => i.remove());
-
-          // Declaration & Signature
-          const declaration = document.querySelector('.info-highlight-orange').cloneNode(true);
-          declaration.style.margin = '16px 0';
-          declaration.style.padding = '12px 14px';
-          declaration.style.borderRadius = '6px';
-          declaration.style.background = '#f8fafc';
-          declaration.style.border = '1px solid #cbd5e1';
-
-          const sigBox = document.querySelector('.print-signature-box').cloneNode(true);
-          sigBox.style.display = 'flex';
-          sigBox.style.justifyContent = 'space-between';
-          sigBox.style.marginTop = '24px';
-          sigBox.style.paddingTop = '15px';
-          sigBox.style.borderTop = '1px dashed #9ca3af';
-
-          container.appendChild(header);
-          container.appendChild(reviewContent);
-          container.appendChild(declaration);
-          container.appendChild(sigBox);
-
-          const opt = {
-            margin: [10, 10, 12, 10],
-            filename: fileName,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-          };
-
-          const worker = html2pdf().set(opt).from(container);
+          const worker = html2pdf().set(opt).from(printEl);
           const pdfBlob = typeof worker.outputPdf === 'function' ? await worker.outputPdf('blob') : await worker.output('blob');
           
-          // 1. Instantly trigger PDF download to the user's device
+          // Instantly trigger PDF download to the user's device
           const downloadUrl = URL.createObjectURL(pdfBlob);
           const a = document.createElement('a');
           a.href = downloadUrl;
@@ -2295,11 +2249,36 @@
           document.body.removeChild(a);
           setTimeout(() => URL.revokeObjectURL(downloadUrl), 10000);
 
-          // 2. Open WhatsApp sharing modal with pre-filled message and direct chat link
-          showWhatsAppModal(fileName, rawName, getVal('passportNo'));
+          if (openWhatsAppModal) {
+            showWhatsAppModal(fileName, rawName, getVal('passportNo'));
+          }
+          return pdfBlob;
+        } catch (err) {
+          console.error('Error generating PDF:', err);
+          throw err;
+        } finally {
+          if (printHeader) printHeader.style.display = '';
+          screenHeaders.forEach(s => s.style.display = '');
+          if (sigBox) sigBox.style.display = '';
+          buttons.forEach(b => b.style.display = '');
+        }
+      }
+
+      async function shareToWhatsApp() {
+        const btn = document.getElementById('shareWhatsAppBtn');
+        const origText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Preparing PDF...';
+
+        try {
+          await generateAndDownloadApplicationPDF(true);
         } catch (err) {
           console.error('Error generating/sharing PDF:', err);
-          // Fallback: direct WhatsApp chat
+          const getVal = (id, fallback = '—') => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() ? el.value.trim() : fallback;
+          };
+          const rawName = getVal('applicantName', 'Applicant');
           const msg = `Hi Trippovention, I have completed the online USA Visa application form for ${rawName} (${getVal('passportNo')}). Please guide me to share my application PDF.`;
           window.open(`https://wa.me/+918750888875?text=${encodeURIComponent(msg)}`, '_blank');
         } finally {
@@ -2581,13 +2560,13 @@
               </p>
 
               <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="https://wa.me/+918750888875?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background: #25d366; color: #fff; font-weight: 700; width: 100%; text-decoration: none; padding: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                <a href="https://wa.me/+918750888875?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener noreferrer" class="btn btn-lg" onclick="generateAndDownloadApplicationPDF(false)" style="background: #25d366; color: #fff; font-weight: 700; width: 100%; text-decoration: none; padding: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
                   <span>💬 Notify Visa Team on WhatsApp</span>
                 </a>
 
                 <div style="display: flex; gap: 10px;">
-                  <button type="button" class="btn ghost" onclick="printApplicationSummary()" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
-                    🖨️ Print / Save PDF
+                  <button type="button" class="btn ghost" onclick="generateAndDownloadApplicationPDF(false)" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
+                    📥 Download PDF Copy
                   </button>
                   <button type="button" class="btn ghost" onclick="closeSuccessModal()" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
                     Close
