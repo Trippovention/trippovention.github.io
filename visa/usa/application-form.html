@@ -640,9 +640,9 @@
           </div>
 
           <!-- Main Form -->
-          <form id="usaVisaForm" action="https://formsubmit.co/visa@trippovention.com" method="POST" enctype="multipart/form-data">
+          <form id="usaVisaForm" action="https://formsubmit.co/visa@trippovention.com" method="POST" enctype="multipart/form-data" novalidate>
             <input type="hidden" name="_subject" id="_subject" value="New USA Visa Application Form Submission - Trippovention" />
-            <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_replyto" id="_replyto" value="" />
             <input type="hidden" name="_cc" value="query@trippovention.com" />
@@ -1236,21 +1236,39 @@
                 </p>
 
                 <div class="field-group">
-                  <label for="passportDoc">Passport Bio Page (Front &amp; Back Pages)</label>
-                  <input type="file" id="passportDoc" name="Passport Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label for="passportDoc" style="margin-bottom: 0;">Passport Bio Page (Front &amp; Back Pages)</label>
+                    <button type="button" id="remove_passportDoc" class="btn ghost" style="display: none; color: #ef4444; padding: 2px 8px; font-size: 0.8rem; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; cursor: pointer;" onclick="removeAttachment('passportDoc')">
+                      ✕ Remove Attachment
+                    </button>
+                  </div>
+                  <input type="file" id="passportDoc" name="Passport Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" onchange="updateFileStatusBadge('passportDoc')" />
+                  <div id="badge_passportDoc" style="display: none; margin-top: 6px; font-size: 0.85rem; color: #065f46; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 6px;"></div>
                   <span class="hint">Clear copy of first (photo) page and last (address) page</span>
                 </div>
 
                 <div class="form-grid-2">
                   <div class="field-group">
-                    <label for="itrDoc">Income Tax Return (ITR) Copy <span class="muted" style="font-weight: normal;">(Optional)</span></label>
-                    <input type="file" id="itrDoc" name="Income Tax Return (ITR) Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <label for="itrDoc" style="margin-bottom: 0;">Income Tax Return (ITR) Copy <span class="muted" style="font-weight: normal;">(Optional)</span></label>
+                      <button type="button" id="remove_itrDoc" class="btn ghost" style="display: none; color: #ef4444; padding: 2px 8px; font-size: 0.8rem; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; cursor: pointer;" onclick="removeAttachment('itrDoc')">
+                        ✕ Remove Attachment
+                      </button>
+                    </div>
+                    <input type="file" id="itrDoc" name="Income Tax Return (ITR) Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" onchange="updateFileStatusBadge('itrDoc')" />
+                    <div id="badge_itrDoc" style="display: none; margin-top: 6px; font-size: 0.85rem; color: #065f46; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 6px;"></div>
                     <span class="hint">Latest 1 to 3 assessment years acknowledgment or computation copy</span>
                   </div>
 
                   <div class="field-group">
-                    <label for="bankDoc">Bank Statement <span class="muted" style="font-weight: normal;">(Optional)</span></label>
-                    <input type="file" id="bankDoc" name="Bank Statement" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <label for="bankDoc" style="margin-bottom: 0;">Bank Statement <span class="muted" style="font-weight: normal;">(Optional)</span></label>
+                      <button type="button" id="remove_bankDoc" class="btn ghost" style="display: none; color: #ef4444; padding: 2px 8px; font-size: 0.8rem; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; cursor: pointer;" onclick="removeAttachment('bankDoc')">
+                        ✕ Remove Attachment
+                      </button>
+                    </div>
+                    <input type="file" id="bankDoc" name="Bank Statement" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" onchange="updateFileStatusBadge('bankDoc')" />
+                    <div id="badge_bankDoc" style="display: none; margin-top: 6px; font-size: 0.85rem; color: #065f46; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 6px;"></div>
                     <span class="hint">Last 3 to 6 months bank account statement with seal/stamp</span>
                   </div>
                 </div>
@@ -1571,6 +1589,10 @@
         const currentPanel = document.getElementById(`stepPanel${currentStep}`);
         const inputs = currentPanel.querySelectorAll('input[required], select[required], textarea[required]');
         for (let input of inputs) {
+          const hiddenGroup = input.closest('#sponsorFields, #sponsorAddressGroup, #pastUSTravelFields, #spouseFields, #prevEmpFields, #countriesVisitedGroup, .edu-qual-other-group');
+          if (hiddenGroup && (hiddenGroup.style.display === 'none' || window.getComputedStyle(hiddenGroup).display === 'none')) {
+            continue;
+          }
           if (!input.checkValidity()) {
             input.reportValidity();
             input.focus();
@@ -1796,6 +1818,14 @@
         const dataObj = {};
         formData.forEach((value, key) => {
           if (!key.startsWith('_')) {
+            // Never attempt to store File objects or fake paths in localStorage
+            if (typeof value === 'object' && value instanceof File) {
+              return;
+            }
+            const el = form.elements[key];
+            if (el && el.type === 'file') {
+              return;
+            }
             dataObj[key] = value;
           }
         });
@@ -1853,6 +1883,8 @@
           Object.keys(dataObj).forEach(key => {
             const el = form.elements[key];
             if (el) {
+              // Strictly avoid setting value on file inputs which throws InvalidStateError
+              if (el.type === 'file') return;
               el.value = dataObj[key];
             }
           });
@@ -1944,6 +1976,12 @@
             prevEmpItems[i].remove();
           }
           updatePrevEmpEntryNumbers();
+          // Reset file attachments & badges
+          ['passportDoc', 'itrDoc', 'bankDoc'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+            updateFileStatusBadge(id);
+          });
           toggleSponsorFields();
           toggleSponsorAddressField();
           togglePastUSFields();
@@ -1952,6 +1990,74 @@
           toggleTravelHistoryFields();
           updateStepView(1);
         }
+      }
+
+      // Attachment Management & Status
+      function updateFileStatusBadge(id) {
+        const el = document.getElementById(id);
+        const btn = document.getElementById('remove_' + id);
+        const badge = document.getElementById('badge_' + id);
+        if (!el) return;
+
+        if (el.files && el.files[0]) {
+          const file = el.files[0];
+          const sizeKB = Math.round(file.size / 1024);
+          const sizeStr = sizeKB > 1024 ? `${(sizeKB / 1024).toFixed(1)} MB` : `${sizeKB} KB`;
+          if (btn) btn.style.display = 'inline-block';
+          if (badge) {
+            badge.style.display = 'block';
+            badge.innerHTML = `✓ Attached: <strong>${file.name}</strong> (${sizeStr})`;
+          }
+        } else {
+          if (btn) btn.style.display = 'none';
+          if (badge) {
+            badge.style.display = 'none';
+            badge.innerHTML = '';
+          }
+        }
+      }
+
+      window.removeAttachment = function(id) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.value = '';
+          updateFileStatusBadge(id);
+          buildReviewSummary();
+          saveDraft();
+        }
+      };
+
+      function renderDocReviewRow(id, label) {
+        const el = document.getElementById(id);
+        const file = el && el.files && el.files[0];
+        if (file) {
+          const sizeKB = Math.round(file.size / 1024);
+          const sizeStr = sizeKB > 1024 ? `${(sizeKB / 1024).toFixed(1)} MB` : `${sizeKB} KB`;
+          return `
+            <div class="review-row" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0;">
+              <span class="review-label">${label}:</span>
+              <span class="review-val" style="display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; text-align: right;">
+                <span style="background: rgba(16, 185, 129, 0.1); color: #065f46; padding: 3px 8px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
+                  📄 ${file.name} (${sizeStr})
+                </span>
+                <button type="button" class="btn ghost" style="color: #ef4444; padding: 2px 8px; font-size: 0.8rem; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; cursor: pointer;" onclick="removeAttachment('${id}')" title="Remove attached file">
+                  ✕ Remove
+                </button>
+              </span>
+            </div>
+          `;
+        }
+        return `
+          <div class="review-row" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0;">
+            <span class="review-label">${label}:</span>
+            <span class="review-val muted" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>None selected (Optional — can be shared via WhatsApp)</span>
+              <button type="button" class="btn ghost" style="padding: 2px 8px; font-size: 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer;" onclick="updateStepView(8)" title="Upload document">
+                + Attach
+              </button>
+            </span>
+          </div>
+        `;
       }
 
       // Build Review Summary HTML
@@ -2078,9 +2184,9 @@
 
           <div class="review-section-box">
             <h4>8. Uploaded Supporting Documents <button type="button" class="btn ghost" style="padding: 2px 8px; font-size: 0.8rem;" onclick="updateStepView(8)">Edit</button></h4>
-            <div class="review-row"><span class="review-label">Passport Copy:</span><span class="review-val">${getFileNames('passportDoc')}</span></div>
-            <div class="review-row"><span class="review-label">Income Tax Return (ITR):</span><span class="review-val">${getFileNames('itrDoc')}</span></div>
-            <div class="review-row"><span class="review-label">Bank Statement:</span><span class="review-val">${getFileNames('bankDoc')}</span></div>
+            ${renderDocReviewRow('passportDoc', 'Passport Copy')}
+            ${renderDocReviewRow('itrDoc', 'Income Tax Return (ITR)')}
+            ${renderDocReviewRow('bankDoc', 'Bank Statement')}
           </div>
         `;
         container.innerHTML = html;
@@ -2336,6 +2442,186 @@
 
         // WhatsApp Share
         document.getElementById('shareWhatsAppBtn').addEventListener('click', shareToWhatsApp);
+
+        // Multi-Step Full Validation
+        function validateAllSteps() {
+          for (let step = 1; step <= 8; step++) {
+            const panel = document.getElementById(`stepPanel${step}`);
+            if (!panel) continue;
+
+            const inputs = panel.querySelectorAll('input, select, textarea');
+            for (let input of inputs) {
+              // If inside a hidden conditional group, skip
+              const hiddenGroup = input.closest('#sponsorFields, #sponsorAddressGroup, #pastUSTravelFields, #spouseFields, #prevEmpFields, #countriesVisitedGroup, .edu-qual-other-group');
+              if (hiddenGroup && (hiddenGroup.style.display === 'none' || window.getComputedStyle(hiddenGroup).display === 'none')) {
+                continue;
+              }
+              if (input.type === 'button' || input.type === 'submit') continue;
+
+              if (input.hasAttribute('required') && !input.checkValidity()) {
+                updateStepView(step);
+                setTimeout(() => {
+                  input.focus();
+                  if (typeof input.reportValidity === 'function') {
+                    input.reportValidity();
+                  }
+                }, 250);
+
+                const label = input.closest('.field-group')?.querySelector('label')?.textContent || input.name || 'field';
+                alert(`Please complete the required field in Step ${step}:\n"${label.replace('*', '').trim()}"`);
+                return false;
+              }
+            }
+          }
+          return true;
+        }
+
+        // Form Submit Handler
+        const formEl = document.getElementById('usaVisaForm');
+        formEl.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          if (!validateAllSteps()) {
+            return;
+          }
+
+          const submitBtn = document.getElementById('submitFormBtn');
+          const origText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '⏳ Submitting Application to Trippovention...';
+
+          const refId = 'USA-' + Date.now().toString().slice(-6);
+
+          const getVal = (id, fallback = '—') => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() ? el.value.trim() : fallback;
+          };
+
+          const applicantName = getVal('applicantName', 'Applicant');
+          const passportNo = getVal('passportNo', 'FILE');
+          const email = getVal('emailId', '');
+
+          const replyToEl = document.getElementById('_replyto');
+          if (replyToEl) replyToEl.value = email;
+
+          const subjectEl = document.getElementById('_subject');
+          if (subjectEl) subjectEl.value = `USA Visa Application: ${applicantName} (${passportNo}) - Ref: ${refId}`;
+
+          const formData = new FormData(formEl);
+          formData.append('Application Reference ID', refId);
+
+          // If running locally via file:// protocol
+          if (window.location.protocol === 'file:') {
+            showSuccessModal(refId, true);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+            return;
+          }
+
+          try {
+            const response = await fetch('https://formsubmit.co/ajax/visa@trippovention.com', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json'
+              },
+              body: formData
+            });
+
+            const result = await response.json();
+            if (response.ok && (result.success === 'true' || result.success === true)) {
+              showSuccessModal(refId, false);
+              try { localStorage.removeItem(STORAGE_KEY); } catch (err) {}
+            } else {
+              console.warn('FormSubmit AJAX fallback:', result);
+              formEl.submit();
+            }
+          } catch (fetchErr) {
+            console.warn('FormSubmit AJAX fetch failed, submitting standard form:', fetchErr);
+            formEl.submit();
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+          }
+        });
+
+        // Submission Success Modal
+        function showSuccessModal(refId, isLocalPreview = false) {
+          const getVal = (id, fallback = '—') => {
+            const el = document.getElementById(id);
+            return el && el.value.trim() ? el.value.trim() : fallback;
+          };
+
+          const applicantName = getVal('applicantName', 'Applicant');
+          const passportNo = getVal('passportNo', '—');
+          const contactNo = getVal('contactNo', '—');
+          const email = getVal('emailId', '—');
+
+          let modal = document.getElementById('submissionSuccessModal');
+          if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'submissionSuccessModal';
+            modal.className = 'whatsapp-modal-overlay';
+            document.body.appendChild(modal);
+          }
+
+          const waText = `Hi Trippovention, I have submitted my USA Visa application questionnaire online!\n\n📋 *Application Ref:* ${refId}\n👤 *Applicant:* ${applicantName}\n🛂 *Passport No:* ${passportNo}\n📞 *Contact:* ${contactNo}\n✉️ *Email:* ${email}\n\nPlease audit my details and let me know the next steps for DS-160 file preparation.`;
+
+          modal.innerHTML = `
+            <div class="whatsapp-modal-card" style="max-width: 480px; text-align: left;">
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 3rem; margin-bottom: 8px;">🎉</div>
+                <h3 style="margin: 0; color: #065f46; font-size: 1.35rem;">Application Submitted Successfully!</h3>
+                <p class="muted" style="margin: 6px 0 0; font-size: 0.88rem;">Thank you, ${applicantName}! Your questionnaire has been received.</p>
+              </div>
+
+              <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 10px; padding: 14px; margin-bottom: 18px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.88rem;">
+                  <span class="muted">Reference ID:</span>
+                  <strong style="color: var(--primary); font-family: monospace; font-size: 1rem;">${refId}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.88rem;">
+                  <span class="muted">Applicant:</span>
+                  <strong>${applicantName}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+                  <span class="muted">Sent To:</span>
+                  <span>visa@trippovention.com</span>
+                </div>
+              </div>
+
+              ${isLocalPreview ? `
+                <div class="info-highlight info-highlight-orange" style="margin-bottom: 16px; font-size: 0.84rem; padding: 10px 14px; border-radius: 8px;">
+                  <strong>ℹ️ Preview Validation Passed:</strong> All required fields across all 8 steps have been verified! On the live domain, this directly transmits your form data and document attachments to Trippovention's visa team.
+                </div>
+              ` : ''}
+
+              <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px; color: var(--text-secondary);">
+                Our US visa specialists will review your questionnaire and contact you within <strong>2 to 4 business hours</strong> to finalize your DS-160 filing and schedule appointment slots.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="https://wa.me/+918750888875?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background: #25d366; color: #fff; font-weight: 700; width: 100%; text-decoration: none; padding: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                  <span>💬 Notify Visa Team on WhatsApp</span>
+                </a>
+
+                <div style="display: flex; gap: 10px;">
+                  <button type="button" class="btn ghost" onclick="printApplicationSummary()" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
+                    🖨️ Print / Save PDF
+                  </button>
+                  <button type="button" class="btn ghost" onclick="closeSuccessModal()" style="flex: 1; padding: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          modal.classList.add('active');
+        }
+
+        window.closeSuccessModal = function() {
+          const modal = document.getElementById('submissionSuccessModal');
+          if (modal) modal.classList.remove('active');
+        };
       });
     </script>
   </body>
