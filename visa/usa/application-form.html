@@ -121,42 +121,58 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How do I apply for a USA visa online through Trippovention?",
+          "name": "What if I don't have confirmed flight tickets or hotel bookings yet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Complete the 9-step online questionnaire on mobile, tablet, or desktop, upload your passport copy and documents, and submit. Our visa specialists receive your application at visa@trippovention.com and draft your official DS-160 within 24-48 hours."
+            "text": "You do not need confirmed flight tickets or hotel reservations to fill out this form. Enter your intended travel dates and the tentative hotel name or city you plan to visit. The US Embassy advises against purchasing non-refundable tickets prior to visa approval."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I save my progress and complete the USA visa form later?",
+          "name": "What should I provide for 'US Contact Person or Hotel' if I don't know anyone in the US?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The form features automatic draft saving to your device storage as you type. You can close your browser and resume your application at any time."
+            "text": "If you are visiting for tourism (B2) and have no personal contacts in the United States, provide the name, address, and phone number of the hotel where you plan to stay. For B1 business visitors, mention your inviting business partner, company contact, or conference organizer."
           }
         },
         {
           "@type": "Question",
-          "name": "What documents can I upload with this application form?",
+          "name": "Are my parents' dates of birth mandatory to fill?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can upload your Passport bio-pages, 2x2 inch visa photo, US host invitation letter or hotel confirmation, 6 months stamped bank statements, and salary slips or company registration in PDF, JPG, PNG, or DOCX formats up to 10MB each."
+            "text": "No. Father's Date of Birth and Mother's Date of Birth are optional on this form. If you do not know the exact dates, you can leave those fields blank and our visa team will guide you on how this is recorded in your DS-160 application."
           }
         },
         {
           "@type": "Question",
-          "name": "Who receives my submitted USA visa application details?",
+          "name": "How do I enter multiple educational qualifications?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Your application is securely transmitted directly to the Trippovention visa processing desk at visa@trippovention.com and query@trippovention.com for expedited review and consular filing."
+            "text": "Click the '+ Add More Education' button in Step 7 to add any number of educational entries. You can select Bachelor's, Master's, Diploma, GAD, M.Phil., PhD, Professional Qualifications (like CA, CS, CFA), or choose 'Other' to enter your exact degree or certification."
           }
         },
         {
           "@type": "Question",
-          "name": "What happens after submitting the online USA visa form?",
+          "name": "Which documents are mandatory to upload, and can I share them later via WhatsApp?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A dedicated Trippovention visa advisor reviews your information, confirms appointment slot availability across Indian consulates (Delhi, Mumbai, Chennai, Hyderabad, Kolkata), generates your MRV fee payment, and coordinates your interview preparation."
+            "text": "You only need to upload your Passport bio-pages (front & back). Income Tax Returns (ITR) and Bank Statements are optional. You can also skip uploading on the web form and share all your documents directly with our visa team via WhatsApp at +91 87508 88875."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I select under 'Who will pay for your trip'?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Select 'Self-Funded' if you are paying from your own savings or income. If your employer, company, family member, or a US host is sponsoring your trip, select the relevant option and provide their name and contact details in the sponsor box that appears."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my application draft automatically saved if I close my browser?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All entered information is automatically saved to your browser's local storage in real time. You can safely close your tab and reopen this form on the same device and browser to continue right where you left off."
           }
         }
       ]
@@ -349,20 +365,177 @@
         word-break: break-word;
       }
 
+      /* WhatsApp PDF Share Modal */
+      .whatsapp-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        backdrop-filter: blur(4px);
+      }
+      .whatsapp-modal-overlay.active {
+        display: flex;
+        animation: fadeInStep 0.25s ease;
+      }
+      .whatsapp-modal-card {
+        background: var(--bg-card, #ffffff);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        max-width: 460px;
+        width: 100%;
+        padding: 28px 24px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      /* Print Stylesheet */
+      .print-only-header,
+      .print-signature-box {
+        display: none;
+      }
+
       @media print {
-        .nav, .footer, .form-stepper, .form-nav-bar, .sticky-cta, #skip-link, .autosave-badge, .btn-print, .breadcrumb {
+        @page {
+          size: A4 portrait;
+          margin: 12mm 12mm 15mm 12mm;
+        }
+
+        /* Hide all UI navigation, banners, non-summary steps 1-8, FAQs, footers and action buttons */
+        .nav,
+        .footer,
+        .breadcrumb,
+        .hero,
+        .form-stepper,
+        .form-nav-bar,
+        .sticky-cta,
+        #skip-link,
+        .autosave-badge,
+        .btn-print,
+        #submitFormBtn,
+        #shareWhatsAppBtn,
+        .section.cta,
+        #faqSection,
+        .screen-only-header,
+        #stepPanel1,
+        #stepPanel2,
+        #stepPanel3,
+        #stepPanel4,
+        #stepPanel5,
+        #stepPanel6,
+        #stepPanel7,
+        #stepPanel8,
+        .review-section-box button {
           display: none !important;
         }
-        .form-step-panel {
+
+        /* Show only the completed Review Summary Panel */
+        #stepPanel9 {
           display: block !important;
+          animation: none !important;
+          opacity: 1 !important;
+          transform: none !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          background: #ffffff !important;
         }
+
+        #stepPanel9 .body {
+          padding: 0 !important;
+        }
+
+        /* Header and Signature for Print Document */
+        .print-only-header {
+          display: block !important;
+          margin-bottom: 20px !important;
+        }
+
+        .print-signature-box {
+          display: flex !important;
+          justify-content: space-between !important;
+          margin-top: 30px !important;
+          padding-top: 15px !important;
+          border-top: 1px dashed #9ca3af !important;
+          font-size: 9.5pt !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
         body {
           background: #ffffff !important;
-          color: #000000 !important;
+          color: #111827 !important;
+          font-size: 10pt !important;
+          line-height: 1.4 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
         }
-        .card {
-          box-shadow: none !important;
-          border: 1px solid #ddd !important;
+
+        main, .section, .container {
+          padding: 0 !important;
+          margin: 0 !important;
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+
+        /* Clean printable cards for review items */
+        .review-section-box {
+          background: #ffffff !important;
+          border: 1px solid #d1d5db !important;
+          border-radius: 6px !important;
+          padding: 10px 14px !important;
+          margin-bottom: 12px !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        .review-section-box h4 {
+          font-size: 11pt !important;
+          color: #d6804e !important;
+          margin-top: 0 !important;
+          margin-bottom: 8px !important;
+          padding-bottom: 4px !important;
+          border-bottom: 1px solid #e5e7eb !important;
+        }
+
+        .review-row {
+          display: flex !important;
+          justify-content: space-between !important;
+          padding: 4px 0 !important;
+          font-size: 9.5pt !important;
+          border-bottom: 1px solid #f3f4f6 !important;
+        }
+
+        .review-label {
+          color: #4b5563 !important;
+          font-weight: 600 !important;
+          flex: 0 0 38% !important;
+        }
+
+        .review-val {
+          color: #111827 !important;
+          font-weight: 600 !important;
+          flex: 0 0 62% !important;
+          text-align: right !important;
+        }
+
+        .info-highlight {
+          border: 1px solid #cbd5e1 !important;
+          background: #f8fafc !important;
+          color: #1e293b !important;
+          padding: 10px 14px !important;
+          margin: 16px 0 !important;
+          border-radius: 6px !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
         }
       }
     </style>
@@ -724,8 +897,8 @@
                   </div>
 
                   <div class="field-group">
-                    <label for="fatherDob">Father's Date of Birth *</label>
-                    <input type="date" id="fatherDob" name="Father Date of Birth" required />
+                    <label for="fatherDob">Father's Date of Birth <span class="muted" style="font-weight: normal;">(Optional)</span></label>
+                    <input type="date" id="fatherDob" name="Father Date of Birth" />
                   </div>
                 </div>
 
@@ -736,8 +909,8 @@
                   </div>
 
                   <div class="field-group">
-                    <label for="motherDob">Mother's Date of Birth *</label>
-                    <input type="date" id="motherDob" name="Mother Date of Birth" required />
+                    <label for="motherDob">Mother's Date of Birth <span class="muted" style="font-weight: normal;">(Optional)</span></label>
+                    <input type="date" id="motherDob" name="Mother Date of Birth" />
                   </div>
                 </div>
 
@@ -852,73 +1025,93 @@
                   </select>
                 </div>
 
-                <div id="prevEmpFields" style="display: none; background: rgba(0,0,0,0.02); border: 1px dashed var(--border-color); padding: 18px; border-radius: 10px;">
-                  <div class="form-grid-2">
-                    <div class="field-group">
-                      <label for="prevEmpType">Service or Business</label>
-                      <input type="text" id="prevEmpType" name="Previous Service or Business" placeholder="Service / Salaried" />
-                    </div>
+                <div id="prevEmpFields" style="display: none; margin-top: 15px;">
+                  <div id="prevEmpEntriesContainer">
+                    <div class="prev-emp-entry-item card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 18px; position: relative;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">
+                        <h4 style="margin: 0; color: var(--primary); font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+                          <span>💼</span> <span class="prev-emp-entry-title">Previous Employer #1</span>
+                        </h4>
+                        <button type="button" class="btn ghost btn-remove-prev-emp" style="display: none; color: #ef4444; padding: 4px 10px; font-size: 0.85rem;" onclick="removePrevEmpEntry(this)">
+                          ✕ Remove
+                        </button>
+                      </div>
 
-                    <div class="field-group">
-                      <label for="prevDesignation">Previous Designation</label>
-                      <input type="text" id="prevDesignation" name="Previous Designation" placeholder="e.g. Assistant Manager" />
+                      <div class="form-grid-2">
+                        <div class="field-group">
+                          <label>Service or Business</label>
+                          <input type="text" class="prev-type-val" name="Previous Employer 1 - Service or Business" placeholder="Service / Salaried" />
+                        </div>
+
+                        <div class="field-group">
+                          <label>Previous Designation</label>
+                          <input type="text" class="prev-desig-val" name="Previous Employer 1 - Designation" placeholder="e.g. Assistant Manager" />
+                        </div>
+                      </div>
+
+                      <div class="field-group">
+                        <label>Previous Company Name</label>
+                        <input type="text" class="prev-comp-val" name="Previous Employer 1 - Company Name" placeholder="Previous Company Ltd." />
+                      </div>
+
+                      <div class="field-group">
+                        <label>Previous Company Full Address</label>
+                        <textarea class="prev-addr-val" name="Previous Employer 1 - Full Address" placeholder="Address of previous company"></textarea>
+                      </div>
+
+                      <div class="form-grid-2">
+                        <div class="field-group">
+                          <label>Start Date</label>
+                          <input type="date" class="prev-start-val" name="Previous Employer 1 - Start Date" />
+                        </div>
+
+                        <div class="field-group">
+                          <label>End Date</label>
+                          <input type="date" class="prev-end-val" name="Previous Employer 1 - End Date" />
+                        </div>
+                      </div>
+
+                      <div class="form-grid-2">
+                        <div class="field-group">
+                          <label>Company Supervisor Name</label>
+                          <input type="text" class="prev-sup-name-val" name="Previous Employer 1 - Supervisor Name" placeholder="Supervisor Name" />
+                        </div>
+
+                        <div class="field-group">
+                          <label>Supervisor Contact No.</label>
+                          <input type="tel" class="prev-sup-phone-val" name="Previous Employer 1 - Supervisor Contact" placeholder="+91..." />
+                        </div>
+                      </div>
+
+                      <div class="form-grid-2">
+                        <div class="field-group">
+                          <label>Company Phone No.</label>
+                          <input type="tel" class="prev-phone-val" name="Previous Employer 1 - Company Phone" placeholder="+91..." />
+                        </div>
+
+                        <div class="field-group">
+                          <label>Company Mail ID</label>
+                          <input type="email" class="prev-mail-val" name="Previous Employer 1 - Company Mail" placeholder="hr@prevcompany.com" />
+                        </div>
+                      </div>
+
+                      <div class="field-group">
+                        <label>Job (Monthly Salary in INR)</label>
+                        <input type="text" class="prev-sal-val" name="Previous Employer 1 - Monthly Salary" placeholder="e.g. ₹ 95,000 / month" />
+                      </div>
+
+                      <div class="field-group">
+                        <label>Briefly Describe Your Duties</label>
+                        <textarea class="prev-duties-val" name="Previous Employer 1 - Duties" placeholder="Summary of previous role responsibilities"></textarea>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="field-group">
-                    <label for="prevCompanyName">Previous Company Name</label>
-                    <input type="text" id="prevCompanyName" name="Previous Company Name" placeholder="Previous Company Ltd." />
-                  </div>
-
-                  <div class="field-group">
-                    <label for="prevCompanyAddress">Previous Company Full Address</label>
-                    <textarea id="prevCompanyAddress" name="Previous Company Full Address" placeholder="Address of previous company"></textarea>
-                  </div>
-
-                  <div class="form-grid-2">
-                    <div class="field-group">
-                      <label for="prevStartDate">Start Date</label>
-                      <input type="date" id="prevStartDate" name="Previous Job Start Date" />
-                    </div>
-
-                    <div class="field-group">
-                      <label for="prevEndDate">End Date</label>
-                      <input type="date" id="prevEndDate" name="Previous Job End Date" />
-                    </div>
-                  </div>
-
-                  <div class="form-grid-2">
-                    <div class="field-group">
-                      <label for="prevSupervisorName">Company Supervisor Name</label>
-                      <input type="text" id="prevSupervisorName" name="Previous Supervisor Name" placeholder="Supervisor Name" />
-                    </div>
-
-                    <div class="field-group">
-                      <label for="prevSupervisorPhone">Supervisor Contact No.</label>
-                      <input type="tel" id="prevSupervisorPhone" name="Previous Supervisor Contact" placeholder="+91..." />
-                    </div>
-                  </div>
-
-                  <div class="form-grid-2">
-                    <div class="field-group">
-                      <label for="prevCompanyPhone">Company Phone No.</label>
-                      <input type="tel" id="prevCompanyPhone" name="Previous Company Phone" placeholder="+91..." />
-                    </div>
-
-                    <div class="field-group">
-                      <label for="prevCompanyMail">Company Mail ID</label>
-                      <input type="email" id="prevCompanyMail" name="Previous Company Mail" placeholder="hr@prevcompany.com" />
-                    </div>
-                  </div>
-
-                  <div class="field-group">
-                    <label for="prevSalary">Job (Monthly Salary in INR)</label>
-                    <input type="text" id="prevSalary" name="Previous Monthly Salary" placeholder="e.g. ₹ 95,000 / month" />
-                  </div>
-
-                  <div class="field-group">
-                    <label for="prevDuties">Briefly Describe Your Duties</label>
-                    <textarea id="prevDuties" name="Previous Job Duties" placeholder="Summary of previous role responsibilities"></textarea>
+                  <!-- Add More Previous Employment Button -->
+                  <div style="margin-bottom: 20px;">
+                    <button type="button" id="addPrevEmpBtn" class="btn" style="background: rgba(214, 128, 78, 0.1); color: var(--primary); border: 1.5px dashed var(--primary); font-weight: 600; padding: 12px 18px; border-radius: 8px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;">
+                      <span style="font-size: 1.1rem; font-weight: bold;">+</span> Add More Details (Previous Employer)
+                    </button>
                   </div>
                 </div>
               </div>
@@ -932,62 +1125,82 @@
                   <span class="muted" style="font-size: 0.85rem;">Step 7 of 9</span>
                 </div>
 
-                <h4 style="margin-top: 0; margin-bottom: 15px; color: var(--primary);">Higher Education (Graduation / Post-Graduation)</h4>
-                
-                <div class="field-group">
-                  <label for="higherCollegeName">College / University Name *</label>
-                  <input type="text" id="higherCollegeName" name="Higher Education College Name" placeholder="e.g. Delhi University / IIT Delhi / Mumbai University" required />
+                <div style="margin-bottom: 18px;">
+                  <h4 style="margin: 0 0 6px; color: var(--primary);">Educational Qualifications</h4>
+                  <p class="muted" style="margin: 0; font-size: 0.88rem;">Add your qualifications (Degree, Diploma, Schooling, or Professional Certifications). Click "+ Add More Education" to add multiple qualifications.</p>
                 </div>
 
-                <div class="field-group">
-                  <label for="higherCollegeAddress">Full Address of College *</label>
-                  <textarea id="higherCollegeAddress" name="Higher Education College Address" placeholder="Campus, City, State, PIN" required></textarea>
-                </div>
+                <!-- Container for dynamic education entries -->
+                <div id="educationEntriesContainer">
+                  <div class="education-entry-item card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 18px; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">
+                      <h4 style="margin: 0; color: var(--primary); font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+                        <span>🎓</span> <span class="edu-entry-title">Education Entry #1</span>
+                      </h4>
+                      <button type="button" class="btn ghost btn-remove-edu" style="display: none; color: #ef4444; padding: 4px 10px; font-size: 0.85rem;" onclick="removeEducationEntry(this)">
+                        ✕ Remove
+                      </button>
+                    </div>
 
-                <div class="field-group">
-                  <label for="higherCourse">Course of Study / Degree *</label>
-                  <input type="text" id="higherCourse" name="Higher Education Course of Study" placeholder="e.g. B.Tech Computer Science / B.Com / MBA" required />
-                </div>
+                    <div class="form-grid-2">
+                      <div class="field-group">
+                        <label>Qualification / Degree Type *</label>
+                        <select class="edu-qual-val" name="Education 1 - Qualification" required onchange="handleQualChange(this)">
+                          <option value="" disabled selected>Select Qualification / Degree Type *</option>
+                          <option value="Bachelor's">Bachelor's</option>
+                          <option value="Master's">Master's</option>
+                          <option value="Diploma">Diploma</option>
+                          <option value="GAD">GAD</option>
+                          <option value="Professional Qualification">Professional Qualification</option>
+                          <option value="M.Phil.">M.Phil.</option>
+                          <option value="PhD">PhD</option>
+                          <option value="High School / Secondary">High School / Secondary</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <div class="edu-qual-other-box" style="display: none; margin-top: 8px;">
+                          <input type="text" class="edu-qual-other" name="Education 1 - Other Qualification" placeholder="Please specify Qualification / Degree Type" />
+                        </div>
+                      </div>
 
-                <div class="form-grid-2">
-                  <div class="field-group">
-                    <label for="higherStartDate">Course Start Date *</label>
-                    <input type="date" id="higherStartDate" name="Higher Education Start Date" required />
+                      <div class="field-group">
+                        <label>Course / Specialization *</label>
+                        <input type="text" class="edu-course-val" name="Education 1 - Course / Specialization" placeholder="e.g. Computer Science, Finance, Mechanical" required />
+                      </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                      <div class="field-group">
+                        <label>Institution / University *</label>
+                        <input type="text" class="edu-inst-val" name="Education 1 - Institution / University" placeholder="e.g. Delhi University / IIT Bombay" required />
+                      </div>
+
+                      <div class="field-group">
+                        <label>Country *</label>
+                        <input type="text" class="edu-country-val" name="Education 1 - Country" placeholder="e.g. India, United States, United Kingdom" required />
+                      </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                      <div class="field-group">
+                        <label>Start Date *</label>
+                        <input type="text" class="edu-start-val" name="Education 1 - Start Date" placeholder="e.g. August 2018 or 01/08/2018" required />
+                        <span class="hint">Month &amp; Year or exact start date</span>
+                      </div>
+
+                      <div class="field-group">
+                        <label>End Date / Year of Completion *</label>
+                        <input type="text" class="edu-end-val" name="Education 1 - End Date / Year of Completion" placeholder="e.g. May 2022 or 2022" required />
+                        <span class="hint">Month &amp; Year or Year of completion</span>
+                      </div>
+                    </div>
                   </div>
-
-                  <div class="field-group">
-                    <label for="higherEndDate">Course End Date *</label>
-                    <input type="date" id="higherEndDate" name="Higher Education End Date" required />
-                  </div>
                 </div>
 
-                <h4 style="margin-top: 25px; margin-bottom: 15px; color: var(--primary);">Previous Education (12th / Diploma / Secondary)</h4>
-                
-                <div class="field-group">
-                  <label for="prevCollegeName">School / College Name</label>
-                  <input type="text" id="prevCollegeName" name="Previous Education School Name" placeholder="e.g. DPS R.K. Puram / St. Xavier's" />
-                </div>
-
-                <div class="field-group">
-                  <label for="prevCollegeAddress">Full Address</label>
-                  <textarea id="prevCollegeAddress" name="Previous Education Address" placeholder="City, State"></textarea>
-                </div>
-
-                <div class="field-group">
-                  <label for="prevCourse">Course of Study</label>
-                  <input type="text" id="prevCourse" name="Previous Education Course" placeholder="e.g. High School / Senior Secondary CBSE" />
-                </div>
-
-                <div class="form-grid-2">
-                  <div class="field-group">
-                    <label for="prevEduStartDate">Course Start Date</label>
-                    <input type="date" id="prevEduStartDate" name="Previous Education Start Date" />
-                  </div>
-
-                  <div class="field-group">
-                    <label for="prevEduEndDate">Course End Date</label>
-                    <input type="date" id="prevEduEndDate" name="Previous Education End Date" />
-                  </div>
+                <!-- Add More Education Button -->
+                <div style="margin-bottom: 25px;">
+                  <button type="button" id="addEducationBtn" class="btn" style="background: rgba(214, 128, 78, 0.1); color: var(--primary); border: 1.5px dashed var(--primary); font-weight: 600; padding: 12px 18px; border-radius: 8px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;">
+                    <span style="font-size: 1.1rem; font-weight: bold;">+</span> Add More Education
+                  </button>
                 </div>
 
                 <h4 style="margin-top: 30px; margin-bottom: 15px; color: var(--primary);">International Travel History</h4>
@@ -1022,38 +1235,24 @@
                   Upload your documents below so our visa specialists can audit your profile and prepare your DS-160 application accurately. You can upload clear smartphone photos or PDF files (Max 10MB each).
                 </p>
 
-                <div class="form-grid-2">
-                  <div class="field-group">
-                    <label for="passportDoc">Passport Bio Page (Front &amp; Back Pages)</label>
-                    <input type="file" id="passportDoc" name="Passport Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
-                    <span class="hint">Clear copy of first (photo) page and last (address) page</span>
-                  </div>
-
-                  <div class="field-group">
-                    <label for="photoDoc">Recent 2x2 inch Photograph (White Background)</label>
-                    <input type="file" id="photoDoc" name="Photograph" accept=".jpg,.jpeg,.png" style="padding: 8px 12px;" />
-                    <span class="hint">US visa specification photo without eyeglasses</span>
-                  </div>
-                </div>
-
-                <div class="form-grid-2">
-                  <div class="field-group">
-                    <label for="invitationDoc">US Host Invitation Letter / Hotel Booking</label>
-                    <input type="file" id="invitationDoc" name="Invitation or Accommodation Proof" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="padding: 8px 12px;" />
-                    <span class="hint">Business invitation on company letterhead or hotel stay booking</span>
-                  </div>
-
-                  <div class="field-group">
-                    <label for="bankDoc">Bank Statement (Last 6 Months) / ITR</label>
-                    <input type="file" id="bankDoc" name="Bank Statement or ITR" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
-                    <span class="hint">6 months bank statement with bank stamp/signature or 3 years ITR</span>
-                  </div>
-                </div>
-
                 <div class="field-group">
-                  <label for="additionalDoc">Additional Supporting Documents (Optional)</label>
-                  <input type="file" id="additionalDoc" name="Additional Supporting Documents" accept=".pdf,.jpg,.jpeg,.png,.zip" multiple style="padding: 8px 12px;" />
-                  <span class="hint">Salary slips, employer NOC, company registration (GST), previous visas, etc.</span>
+                  <label for="passportDoc">Passport Bio Page (Front &amp; Back Pages)</label>
+                  <input type="file" id="passportDoc" name="Passport Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
+                  <span class="hint">Clear copy of first (photo) page and last (address) page</span>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="field-group">
+                    <label for="itrDoc">Income Tax Return (ITR) Copy <span class="muted" style="font-weight: normal;">(Optional)</span></label>
+                    <input type="file" id="itrDoc" name="Income Tax Return (ITR) Copy" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
+                    <span class="hint">Latest 1 to 3 assessment years acknowledgment or computation copy</span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="bankDoc">Bank Statement <span class="muted" style="font-weight: normal;">(Optional)</span></label>
+                    <input type="file" id="bankDoc" name="Bank Statement" accept=".pdf,.jpg,.jpeg,.png" style="padding: 8px 12px;" />
+                    <span class="hint">Last 3 to 6 months bank account statement with seal/stamp</span>
+                  </div>
                 </div>
 
                 <!-- Instant WhatsApp Document Upload Alternative -->
@@ -1081,12 +1280,26 @@
             <!-- STEP 9: Review & Submit -->
             <div class="card form-step-panel" id="stepPanel9" role="tabpanel" aria-labelledby="step9">
               <div class="body">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <!-- Dedicated Print Header (Only visible on Print / PDF) -->
+                <div class="print-only-header">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #d6804e; padding-bottom: 12px; margin-bottom: 18px;">
+                    <div>
+                      <img src="../../assets/images/logo.webp" alt="Trippovention" style="height: 38px; width: auto;" />
+                      <p style="margin: 4px 0 0; font-size: 0.85rem; color: #555;">Trippovention Visa Desk | visa@trippovention.com | +91 87508 88875</p>
+                    </div>
+                    <div style="text-align: right;">
+                      <h3 style="margin: 0; color: #d6804e; font-size: 1.25rem;">USA Visa Application Summary</h3>
+                      <p style="margin: 3px 0 0; font-size: 0.82rem; color: #666;" id="printDateRef">Official DS-160 Preparation File</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="screen-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
                   <h3 style="margin: 0;">📋 Step 9: Review Your Details &amp; Submit</h3>
                   <span class="muted" style="font-size: 0.85rem;">Step 9 of 9</span>
                 </div>
 
-                <p class="muted" style="margin-bottom: 20px;">
+                <p class="muted screen-only-header" style="margin-bottom: 20px;">
                   Please verify that all information matches your official documents (Passport, PAN, ITR, Company records). You can click "Edit" on any section or use the previous button to make adjustments.
                 </p>
 
@@ -1102,17 +1315,29 @@
                   </p>
                 </div>
 
+                <!-- Print Signature Box (Only visible on Print / PDF) -->
+                <div class="print-signature-box">
+                  <div>
+                    <p style="margin: 0 0 35px 0;"><strong>Applicant Signature:</strong></p>
+                    <p style="margin: 0; color: #666;">_______________________________</p>
+                  </div>
+                  <div style="text-align: right;">
+                    <p style="margin: 0 0 35px 0;"><strong>Date:</strong></p>
+                    <p style="margin: 0; color: #666;">_______________________________</p>
+                  </div>
+                </div>
+
                 <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 25px;">
                   <button type="submit" id="submitFormBtn" class="btn btn-lg" style="width: 100%; font-size: 1.1rem; padding: 15px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; font-weight: 700;">
                     🚀 Submit Application Form to Trippovention
                   </button>
 
                   <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button type="button" class="btn btn-lg btn-print" onclick="window.print()" style="flex: 1 1 200px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">
+                    <button type="button" class="btn btn-lg btn-print" onclick="printApplicationSummary()" style="flex: 1 1 200px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">
                       🖨️ Print / Save as PDF
                     </button>
                     <button type="button" id="shareWhatsAppBtn" class="btn btn-lg" style="flex: 1 1 200px; background: #25d366; color: #fff; font-weight: 600;">
-                      💬 Send Summary to WhatsApp
+                      💬 Share PDF on WhatsApp
                     </button>
                   </div>
                 </div>
@@ -1142,49 +1367,62 @@
         </div>
       </section>
 
-      <!-- Frequently Asked Questions (AEO & User Assistance) -->
-      <section class="section" style="padding-top: 20px;">
+      <!-- Frequently Asked Questions (Form Filling Guidance) -->
+      <section class="section" id="faqSection" style="padding-top: 20px;">
         <div class="container" style="max-width: 800px;">
           <div class="section-title text-center" style="margin-bottom: 30px;">
             <h2>Frequently Asked Questions</h2>
-            <p class="subtitle">Quick answers about our online USA Visa questionnaire &amp; document submission</p>
+            <p class="subtitle">Helpful answers about the questions and details required in this form</p>
           </div>
           <div class="faq-list">
             <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;" open>
-              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">How does the online USA visa questionnaire work?</summary>
-              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Complete the 9-step online questionnaire on mobile, tablet, or desktop, upload your passport copy and documents, and submit. Our visa specialists receive your application at visa@trippovention.com and draft your official DS-160 within 24-48 hours.</p>
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">What if I don't have confirmed flight tickets or hotel bookings yet?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">You do not need confirmed flight tickets or hotel reservations to fill out this form. Enter your intended travel dates and the tentative hotel name or city you plan to visit. The US Embassy advises against purchasing non-refundable tickets prior to visa approval.</p>
             </details>
             <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;">
-              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">Can I save my progress and complete the USA visa form later?</summary>
-              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Yes. The form features automatic draft saving to your device storage as you type. You can close your browser and resume your application at any time on the same browser.</p>
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">What should I provide for 'US Contact Person or Hotel' if I don't know anyone in the US?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">If you are visiting for tourism (B2) and have no personal contacts in the United States, provide the name, address, and phone number of the hotel where you plan to stay. For B1 business visitors, mention your inviting business partner, company contact, or conference organizer.</p>
             </details>
             <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;">
-              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">What documents can I upload with this application form?</summary>
-              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">You can upload your Passport bio-pages, 2x2 inch visa photo, US host invitation letter or hotel confirmation, 6 months stamped bank statements, and salary slips or company registration in PDF, JPG, PNG, or DOCX formats up to 10MB each.</p>
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">Are my parents' dates of birth mandatory to fill?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">No. Father's Date of Birth and Mother's Date of Birth are optional on this form. If you do not know the exact dates, you can leave those fields blank and our visa team will guide you on how this is recorded in your DS-160 application.</p>
             </details>
             <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;">
-              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">Who receives my submitted USA visa application details?</summary>
-              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Your application is securely transmitted directly to the Trippovention visa processing desk at visa@trippovention.com and query@trippovention.com for expedited review and consular filing.</p>
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">How do I enter multiple educational qualifications?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Click the "+ Add More Education" button in Step 7 to add any number of educational entries. You can select Bachelor's, Master's, Diploma, GAD, M.Phil., PhD, Professional Qualifications (like CA, CS, CFA), or choose 'Other' to enter your exact degree or certification.</p>
             </details>
             <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;">
-              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">What happens after submitting the online USA visa form?</summary>
-              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">A dedicated Trippovention visa advisor reviews your information, confirms appointment slot availability across Indian consulates (Delhi, Mumbai, Chennai, Hyderabad, Kolkata), generates your MRV fee payment, and coordinates your interview preparation.</p>
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">Which documents are mandatory to upload, and can I share them later via WhatsApp?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">You only need to upload your Passport bio-pages (front &amp; back). Income Tax Returns (ITR) and Bank Statements are optional. You can also skip uploading on the web form and share all your documents directly with our visa team via WhatsApp at +91 87508 88875.</p>
+            </details>
+            <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;">
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">What should I select under 'Who will pay for your trip'?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Select 'Self-Funded' if you are paying from your own savings or income. If your employer, company, family member, or a US host is sponsoring your trip, select the relevant option and provide their name and contact details in the sponsor box that appears.</p>
+            </details>
+            <details class="faq-item" style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; padding: 14px 18px;">
+              <summary style="font-weight: 600; cursor: pointer; color: var(--text-color);">Is my application draft automatically saved if I close my browser?</summary>
+              <p class="muted" style="margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Yes. All entered information is automatically saved to your browser's local storage in real time. You can safely close your tab and reopen this form on the same device and browser to continue right where you left off.</p>
             </details>
           </div>
         </div>
       </section>
 
-      <!-- Assistance Callout Section -->
-      <section class="section alt">
-        <div class="container text-center" style="max-width: 700px;">
-          <h3>Need Help Filling This Form?</h3>
-          <p class="muted" style="margin-bottom: 20px;">
-            Our US Visa specialists are available to guide you through any question or verify your documents over the phone or WhatsApp.
-          </p>
-          <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            <a href="tel:+918750888875" class="btn">📞 Call +91 87508 88875</a>
-            <a href="https://wa.me/+918750888875?text=Hi%20Trippovention,%20I%20need%20help%20with%20USA%20Visa%20Application%20Form" class="btn" target="_blank" rel="noopener noreferrer">💬 Chat on WhatsApp</a>
-            <a href="business-visa.html" class="btn ghost">← Return to USA Business Visa</a>
+      <!-- Assistance Callout Section (Orange CTA Section) -->
+      <section class="section cta">
+        <div class="container">
+          <div class="section-title">
+            <h2 class="text-white">Need Help Filling This Form?</h2>
+            <p class="subtitle text-white-90">Our US Visa specialists are available to guide you through any question or verify your details over the phone or WhatsApp.</p>
+          </div>
+          <div class="text-center" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <a href="tel:+918750888875" class="btn btn-lg">📞 Call +91 87508 88875</a>
+            <a
+              href="https://wa.me/+918750888875?text=Hi%20Trippovention,%20I%20need%20help%20with%20USA%20Visa%20Application%20Form"
+              class="btn btn-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              >💬 Chat on WhatsApp</a
+            >
           </div>
         </div>
       </section>
@@ -1275,7 +1513,12 @@
     <script src="../../assets/cookie-consent.js" defer=""></script>
     <script src="../../assets/app.js" defer=""></script>
     <script src="../../assets/analytics.js" defer=""></script>
-    <script src="../../assets/webmcp-agent.js" defer=""></script>
+    <script src="../../assets/html2pdf.bundle.js"></script>
+    <script>
+      if (typeof html2pdf === 'undefined') {
+        document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script>');
+      }
+    </script>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLPKQZJS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
 
     <script>
@@ -1374,6 +1617,178 @@
         box.style.display = (val === 'Yes') ? 'block' : 'none';
       }
 
+      // Dynamic Previous Employment Handling
+      function updatePrevEmpEntryNumbers() {
+        const entries = document.querySelectorAll('.prev-emp-entry-item');
+        entries.forEach((entry, index) => {
+          const num = index + 1;
+          const title = entry.querySelector('.prev-emp-entry-title');
+          if (title) title.textContent = `Previous Employer #${num}`;
+
+          const typeInput = entry.querySelector('.prev-type-val');
+          if (typeInput) typeInput.name = `Previous Employer ${num} - Service or Business`;
+
+          const desigInput = entry.querySelector('.prev-desig-val');
+          if (desigInput) desigInput.name = `Previous Employer ${num} - Designation`;
+
+          const compInput = entry.querySelector('.prev-comp-val');
+          if (compInput) compInput.name = `Previous Employer ${num} - Company Name`;
+
+          const addrInput = entry.querySelector('.prev-addr-val');
+          if (addrInput) addrInput.name = `Previous Employer ${num} - Full Address`;
+
+          const startInput = entry.querySelector('.prev-start-val');
+          if (startInput) startInput.name = `Previous Employer ${num} - Start Date`;
+
+          const endInput = entry.querySelector('.prev-end-val');
+          if (endInput) endInput.name = `Previous Employer ${num} - End Date`;
+
+          const supName = entry.querySelector('.prev-sup-name-val');
+          if (supName) supName.name = `Previous Employer ${num} - Supervisor Name`;
+
+          const supPhone = entry.querySelector('.prev-sup-phone-val');
+          if (supPhone) supPhone.name = `Previous Employer ${num} - Supervisor Contact`;
+
+          const phoneInput = entry.querySelector('.prev-phone-val');
+          if (phoneInput) phoneInput.name = `Previous Employer ${num} - Company Phone`;
+
+          const mailInput = entry.querySelector('.prev-mail-val');
+          if (mailInput) mailInput.name = `Previous Employer ${num} - Company Mail`;
+
+          const salInput = entry.querySelector('.prev-sal-val');
+          if (salInput) salInput.name = `Previous Employer ${num} - Monthly Salary`;
+
+          const dutiesInput = entry.querySelector('.prev-duties-val');
+          if (dutiesInput) dutiesInput.name = `Previous Employer ${num} - Duties`;
+
+          const removeBtn = entry.querySelector('.btn-remove-prev-emp');
+          if (removeBtn) {
+            removeBtn.style.display = entries.length > 1 ? 'inline-block' : 'none';
+          }
+        });
+      }
+
+      function addPrevEmpEntry(focusOnNew = true) {
+        const container = document.getElementById('prevEmpEntriesContainer');
+        const firstEntry = container.querySelector('.prev-emp-entry-item');
+        if (!firstEntry) return;
+
+        const clone = firstEntry.cloneNode(true);
+        clone.querySelectorAll('input').forEach(input => input.value = '');
+        clone.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
+
+        container.appendChild(clone);
+        updatePrevEmpEntryNumbers();
+
+        if (focusOnNew) {
+          const firstInp = clone.querySelector('input');
+          if (firstInp) {
+            firstInp.focus();
+            firstInp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+
+      function removePrevEmpEntry(btn) {
+        const entry = btn.closest('.prev-emp-entry-item');
+        if (entry) {
+          entry.remove();
+          updatePrevEmpEntryNumbers();
+          saveDraft();
+        }
+      }
+
+      // Dynamic Education Qualifications Handling
+      function handleQualChange(selectEl) {
+        const container = selectEl.closest('.field-group');
+        const otherBox = container.querySelector('.edu-qual-other-box');
+        const otherInput = container.querySelector('.edu-qual-other');
+        if (selectEl.value === 'Other') {
+          otherBox.style.display = 'block';
+          otherInput.required = true;
+          otherInput.focus();
+        } else {
+          otherBox.style.display = 'none';
+          otherInput.required = false;
+          otherInput.value = '';
+        }
+      }
+
+      function updateEducationEntryNumbers() {
+        const entries = document.querySelectorAll('.education-entry-item');
+        entries.forEach((entry, index) => {
+          const num = index + 1;
+          const title = entry.querySelector('.edu-entry-title');
+          if (title) title.textContent = `Education Entry #${num}`;
+          
+          const qualSelect = entry.querySelector('.edu-qual-val');
+          if (qualSelect) qualSelect.name = `Education ${num} - Qualification`;
+
+          const qualOther = entry.querySelector('.edu-qual-other');
+          if (qualOther) qualOther.name = `Education ${num} - Other Qualification`;
+
+          const courseInput = entry.querySelector('.edu-course-val');
+          if (courseInput) courseInput.name = `Education ${num} - Course / Specialization`;
+
+          const instInput = entry.querySelector('.edu-inst-val');
+          if (instInput) instInput.name = `Education ${num} - Institution / University`;
+
+          const countryInput = entry.querySelector('.edu-country-val');
+          if (countryInput) countryInput.name = `Education ${num} - Country`;
+
+          const startInput = entry.querySelector('.edu-start-val');
+          if (startInput) startInput.name = `Education ${num} - Start Date`;
+
+          const endInput = entry.querySelector('.edu-end-val');
+          if (endInput) endInput.name = `Education ${num} - End Date / Year of Completion`;
+
+          const removeBtn = entry.querySelector('.btn-remove-edu');
+          if (removeBtn) {
+            removeBtn.style.display = entries.length > 1 ? 'inline-block' : 'none';
+          }
+        });
+      }
+
+      function addEducationEntry(focusOnNew = true) {
+        const container = document.getElementById('educationEntriesContainer');
+        const firstEntry = container.querySelector('.education-entry-item');
+        if (!firstEntry) return;
+
+        const clone = firstEntry.cloneNode(true);
+
+        clone.querySelectorAll('input').forEach(input => {
+          input.value = '';
+          if (input.classList.contains('edu-qual-other')) {
+            input.required = false;
+          }
+        });
+        clone.querySelectorAll('select').forEach(select => {
+          select.selectedIndex = 0;
+        });
+        const otherBox = clone.querySelector('.edu-qual-other-box');
+        if (otherBox) otherBox.style.display = 'none';
+
+        container.appendChild(clone);
+        updateEducationEntryNumbers();
+
+        if (focusOnNew) {
+          const qualSelect = clone.querySelector('.edu-qual-val');
+          if (qualSelect) {
+            qualSelect.focus();
+            qualSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+
+      function removeEducationEntry(btn) {
+        const entry = btn.closest('.education-entry-item');
+        if (entry) {
+          entry.remove();
+          updateEducationEntryNumbers();
+          saveDraft();
+        }
+      }
+
       // Auto-save to LocalStorage
       function saveDraft() {
         const form = document.getElementById('usaVisaForm');
@@ -1384,6 +1799,42 @@
             dataObj[key] = value;
           }
         });
+
+        // Save dynamic education entries
+        const educationData = [];
+        document.querySelectorAll('.education-entry-item').forEach(entry => {
+          educationData.push({
+            qual: entry.querySelector('.edu-qual-val')?.value || '',
+            qualOther: entry.querySelector('.edu-qual-other')?.value || '',
+            course: entry.querySelector('.edu-course-val')?.value || '',
+            inst: entry.querySelector('.edu-inst-val')?.value || '',
+            country: entry.querySelector('.edu-country-val')?.value || '',
+            start: entry.querySelector('.edu-start-val')?.value || '',
+            end: entry.querySelector('.edu-end-val')?.value || ''
+          });
+        });
+        dataObj['_educationEntries'] = educationData;
+
+        // Save dynamic previous employment entries
+        const prevEmpData = [];
+        document.querySelectorAll('.prev-emp-entry-item').forEach(entry => {
+          prevEmpData.push({
+            type: entry.querySelector('.prev-type-val')?.value || '',
+            desig: entry.querySelector('.prev-desig-val')?.value || '',
+            comp: entry.querySelector('.prev-comp-val')?.value || '',
+            addr: entry.querySelector('.prev-addr-val')?.value || '',
+            start: entry.querySelector('.prev-start-val')?.value || '',
+            end: entry.querySelector('.prev-end-val')?.value || '',
+            supName: entry.querySelector('.prev-sup-name-val')?.value || '',
+            supPhone: entry.querySelector('.prev-sup-phone-val')?.value || '',
+            phone: entry.querySelector('.prev-phone-val')?.value || '',
+            mail: entry.querySelector('.prev-mail-val')?.value || '',
+            sal: entry.querySelector('.prev-sal-val')?.value || '',
+            duties: entry.querySelector('.prev-duties-val')?.value || ''
+          });
+        });
+        dataObj['_prevEmpEntries'] = prevEmpData;
+
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObj));
           const notice = document.getElementById('autosaveText');
@@ -1405,6 +1856,68 @@
               el.value = dataObj[key];
             }
           });
+
+          // Restore dynamic previous employment entries
+          if (dataObj['_prevEmpEntries'] && Array.isArray(dataObj['_prevEmpEntries']) && dataObj['_prevEmpEntries'].length > 0) {
+            const empEntries = dataObj['_prevEmpEntries'];
+            while (document.querySelectorAll('.prev-emp-entry-item').length < empEntries.length) {
+              addPrevEmpEntry(false);
+            }
+            const domEmpEntries = document.querySelectorAll('.prev-emp-entry-item');
+            empEntries.forEach((data, i) => {
+              if (domEmpEntries[i]) {
+                const setVal = (cls, val) => {
+                  const el = domEmpEntries[i].querySelector(cls);
+                  if (el && val) el.value = val;
+                };
+                setVal('.prev-type-val', data.type);
+                setVal('.prev-desig-val', data.desig);
+                setVal('.prev-comp-val', data.comp);
+                setVal('.prev-addr-val', data.addr);
+                setVal('.prev-start-val', data.start);
+                setVal('.prev-end-val', data.end);
+                setVal('.prev-sup-name-val', data.supName);
+                setVal('.prev-sup-phone-val', data.supPhone);
+                setVal('.prev-phone-val', data.phone);
+                setVal('.prev-mail-val', data.mail);
+                setVal('.prev-sal-val', data.sal);
+                setVal('.prev-duties-val', data.duties);
+              }
+            });
+            updatePrevEmpEntryNumbers();
+          }
+
+          // Restore dynamic education entries
+          if (dataObj['_educationEntries'] && Array.isArray(dataObj['_educationEntries']) && dataObj['_educationEntries'].length > 0) {
+            const entries = dataObj['_educationEntries'];
+            while (document.querySelectorAll('.education-entry-item').length < entries.length) {
+              addEducationEntry(false);
+            }
+            const domEntries = document.querySelectorAll('.education-entry-item');
+            entries.forEach((data, i) => {
+              if (domEntries[i]) {
+                const qualSelect = domEntries[i].querySelector('.edu-qual-val');
+                if (qualSelect && data.qual) {
+                  qualSelect.value = data.qual;
+                  handleQualChange(qualSelect);
+                }
+                const otherInput = domEntries[i].querySelector('.edu-qual-other');
+                if (otherInput && data.qualOther) otherInput.value = data.qualOther;
+                const courseInput = domEntries[i].querySelector('.edu-course-val');
+                if (courseInput && data.course) courseInput.value = data.course;
+                const instInput = domEntries[i].querySelector('.edu-inst-val');
+                if (instInput && data.inst) instInput.value = data.inst;
+                const countryInput = domEntries[i].querySelector('.edu-country-val');
+                if (countryInput && data.country) countryInput.value = data.country;
+                const startInput = domEntries[i].querySelector('.edu-start-val');
+                if (startInput && data.start) startInput.value = data.start;
+                const endInput = domEntries[i].querySelector('.edu-end-val');
+                if (endInput && data.end) endInput.value = data.end;
+              }
+            });
+            updateEducationEntryNumbers();
+          }
+
           // Re-evaluate conditional toggles
           toggleSponsorFields();
           toggleSponsorAddressField();
@@ -1421,6 +1934,16 @@
         if (confirm('Are you sure you want to clear this draft and start a fresh form?')) {
           localStorage.removeItem(STORAGE_KEY);
           document.getElementById('usaVisaForm').reset();
+          const eduEntries = document.querySelectorAll('.education-entry-item');
+          for (let i = 1; i < eduEntries.length; i++) {
+            eduEntries[i].remove();
+          }
+          updateEducationEntryNumbers();
+          const prevEmpItems = document.querySelectorAll('.prev-emp-entry-item');
+          for (let i = 1; i < prevEmpItems.length; i++) {
+            prevEmpItems[i].remove();
+          }
+          updatePrevEmpEntryNumbers();
           toggleSponsorFields();
           toggleSponsorAddressField();
           togglePastUSFields();
@@ -1489,8 +2012,8 @@
 
           <div class="review-section-box">
             <h4>5. Family Information <button type="button" class="btn ghost" style="padding: 2px 8px; font-size: 0.8rem;" onclick="updateStepView(5)">Edit</button></h4>
-            <div class="review-row"><span class="review-label">Father's Name &amp; DOB:</span><span class="review-val">${getVal('fatherName')} (${getVal('fatherDob')})</span></div>
-            <div class="review-row"><span class="review-label">Mother's Name &amp; DOB:</span><span class="review-val">${getVal('motherName')} (${getVal('motherDob')})</span></div>
+            <div class="review-row"><span class="review-label">Father's Name &amp; DOB:</span><span class="review-val">${getVal('fatherName')}${getVal('fatherDob', '') !== '' && getVal('fatherDob') !== '—' ? ` (${getVal('fatherDob')})` : ''}</span></div>
+            <div class="review-row"><span class="review-label">Mother's Name &amp; DOB:</span><span class="review-val">${getVal('motherName')}${getVal('motherDob', '') !== '' && getVal('motherDob') !== '—' ? ` (${getVal('motherDob')})` : ''}</span></div>
             <div class="review-row"><span class="review-label">Marital Status:</span><span class="review-val">${getVal('maritalStatus')}</span></div>
             ${getVal('maritalStatus') === 'Married' ? `
               <div class="review-row"><span class="review-label">Spouse:</span><span class="review-val">${getVal('spouseName')} (${getVal('spouseDob')}, Born: ${getVal('spousePob')})</span></div>
@@ -1503,12 +2026,51 @@
             <div class="review-row"><span class="review-label">Company:</span><span class="review-val">${getVal('companyName')}</span></div>
             <div class="review-row"><span class="review-label">Salary:</span><span class="review-val">${getVal('monthlySalary')}</span></div>
             <div class="review-row"><span class="review-label">Duties:</span><span class="review-val">${getVal('dutiesDesc')}</span></div>
+            <div class="review-row" style="border-top: 1px dashed var(--border-color); padding-top: 6px; margin-top: 6px;"><span class="review-label">Previously Employed:</span><span class="review-val">${getVal('previouslyEmployed')}</span></div>
+            ${getVal('previouslyEmployed') === 'Yes' ? (() => {
+              const empItems = document.querySelectorAll('.prev-emp-entry-item');
+              let rows = '';
+              empItems.forEach((item, idx) => {
+                const desig = item.querySelector('.prev-desig-val')?.value || '—';
+                const comp = item.querySelector('.prev-comp-val')?.value || '—';
+                const start = item.querySelector('.prev-start-val')?.value || '—';
+                const end = item.querySelector('.prev-end-val')?.value || '—';
+                rows += `
+                  <div class="review-row" style="border-top: 1px dashed var(--border-color); padding-top: 6px; margin-top: 6px;">
+                    <span class="review-label">Prev Employer #${idx + 1}:</span>
+                    <span class="review-val">${desig} at ${comp} (${start} – ${end})</span>
+                  </div>
+                `;
+              });
+              return rows;
+            })() : ''}
           </div>
 
           <div class="review-section-box">
             <h4>7. Education &amp; International Trips <button type="button" class="btn ghost" style="padding: 2px 8px; font-size: 0.8rem;" onclick="updateStepView(7)">Edit</button></h4>
-            <div class="review-row"><span class="review-label">Higher Education:</span><span class="review-val">${getVal('higherCourse')} at ${getVal('higherCollegeName')}</span></div>
-            <div class="review-row"><span class="review-label">Traveled Abroad in 5 Yrs:</span><span class="review-val">${getVal('travelledFiveYears')}</span></div>
+            ${(() => {
+              const eduItems = document.querySelectorAll('.education-entry-item');
+              let htmlRows = '';
+              eduItems.forEach((item, idx) => {
+                const qual = item.querySelector('.edu-qual-val')?.value || '—';
+                const qualOther = item.querySelector('.edu-qual-other')?.value;
+                const displayQual = (qual === 'Other' && qualOther) ? qualOther : qual;
+                const course = item.querySelector('.edu-course-val')?.value || '—';
+                const inst = item.querySelector('.edu-inst-val')?.value || '—';
+                const country = item.querySelector('.edu-country-val')?.value || '—';
+                const start = item.querySelector('.edu-start-val')?.value || '—';
+                const end = item.querySelector('.edu-end-val')?.value || '—';
+                
+                htmlRows += `
+                  <div class="review-row" style="${idx > 0 ? 'border-top: 1px dashed var(--border-color); padding-top: 8px; margin-top: 6px;' : ''}">
+                    <span class="review-label">Education #${idx + 1} (${displayQual}):</span>
+                    <span class="review-val">${course} at ${inst}, ${country} (${start} – ${end})</span>
+                  </div>
+                `;
+              });
+              return htmlRows || `<div class="review-row"><span class="review-label">Education:</span><span class="review-val">—</span></div>`;
+            })()}
+            <div class="review-row" style="border-top: 1px dashed var(--border-color); padding-top: 8px; margin-top: 6px;"><span class="review-label">Traveled Abroad in 5 Yrs:</span><span class="review-val">${getVal('travelledFiveYears')}</span></div>
             ${getVal('travelledFiveYears') === 'Yes' ? `
               <div class="review-row"><span class="review-label">Countries Visited:</span><span class="review-val">${getVal('countriesVisited')}</span></div>
             ` : ''}
@@ -1517,31 +2079,184 @@
           <div class="review-section-box">
             <h4>8. Uploaded Supporting Documents <button type="button" class="btn ghost" style="padding: 2px 8px; font-size: 0.8rem;" onclick="updateStepView(8)">Edit</button></h4>
             <div class="review-row"><span class="review-label">Passport Copy:</span><span class="review-val">${getFileNames('passportDoc')}</span></div>
-            <div class="review-row"><span class="review-label">Photograph:</span><span class="review-val">${getFileNames('photoDoc')}</span></div>
-            <div class="review-row"><span class="review-label">Invitation / Hotel:</span><span class="review-val">${getFileNames('invitationDoc')}</span></div>
-            <div class="review-row"><span class="review-label">Bank / ITR:</span><span class="review-val">${getFileNames('bankDoc')}</span></div>
-            <div class="review-row"><span class="review-label">Additional Docs:</span><span class="review-val">${getFileNames('additionalDoc')}</span></div>
+            <div class="review-row"><span class="review-label">Income Tax Return (ITR):</span><span class="review-val">${getFileNames('itrDoc')}</span></div>
+            <div class="review-row"><span class="review-label">Bank Statement:</span><span class="review-val">${getFileNames('bankDoc')}</span></div>
           </div>
         `;
         container.innerHTML = html;
       }
 
-      function shareToWhatsApp() {
-        const getVal = (id, fallback = '') => {
+      async function shareToWhatsApp() {
+        const btn = document.getElementById('shareWhatsAppBtn');
+        const origText = btn.innerHTML;
+        buildReviewSummary();
+
+        const getVal = (id, fallback = '—') => {
           const el = document.getElementById(id);
           return el && el.value.trim() ? el.value.trim() : fallback;
         };
-        const text = `*USA Visa Application Details (Trippovention)*%0A` +
-          `*Applicant:* ${encodeURIComponent(getVal('applicantName'))}%0A` +
-          `*Passport No:* ${encodeURIComponent(getVal('passportNo'))}%0A` +
-          `*Contact:* ${encodeURIComponent(getVal('contactNo'))}%0A` +
-          `*Email:* ${encodeURIComponent(getVal('emailId'))}%0A` +
-          `*Visa Category:* ${encodeURIComponent(getVal('visaCategory'))}%0A` +
-          `*Travel Date:* ${encodeURIComponent(getVal('specificTravelDate'))}%0A` +
-          `*Occupation:* ${encodeURIComponent(getVal('designation'))} at ${encodeURIComponent(getVal('companyName'))}%0A` +
-          `*Current City/Locations:* ${encodeURIComponent(getVal('plannedLocations'))}%0A` +
-          `*I have completed the online form on your website. Please assist with my DS-160 & appointment.*`;
-        window.open(`https://wa.me/+918750888875?text=${text}`, '_blank');
+
+        const rawName = getVal('applicantName', 'Applicant');
+        const applicantName = rawName.replace(/[^a-zA-Z0-9 ]/g, '').trim().replace(/\s+/g, '_') || 'Applicant';
+        const passportNo = getVal('passportNo', 'FILE').replace(/[^a-zA-Z0-9]/g, '') || 'FILE';
+        const fileName = `USA_Visa_Application_${applicantName}_${passportNo}.pdf`;
+
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Preparing PDF...';
+
+        try {
+          if (typeof html2pdf === 'undefined') {
+            throw new Error('html2pdf library not loaded');
+          }
+
+          // Construct dedicated printable container for html2pdf
+          const container = document.createElement('div');
+          container.style.padding = '20px 24px';
+          container.style.background = '#ffffff';
+          container.style.color = '#111827';
+          container.style.fontFamily = 'Inter, sans-serif';
+          container.style.fontSize = '12px';
+          container.style.lineHeight = '1.4';
+          container.style.maxWidth = '800px';
+
+          // Header
+          const header = document.querySelector('.print-only-header').cloneNode(true);
+          header.style.display = 'block';
+          header.style.marginBottom = '18px';
+
+          // Replace img tags with stylized text logo for 100% canvas rendering compatibility
+          header.querySelectorAll('img').forEach(img => {
+            const brandTitle = document.createElement('div');
+            brandTitle.style.fontSize = '22px';
+            brandTitle.style.fontWeight = '800';
+            brandTitle.style.color = '#d6804e';
+            brandTitle.style.letterSpacing = '-0.5px';
+            brandTitle.style.fontFamily = 'Montserrat, sans-serif';
+            brandTitle.textContent = 'Trippovention';
+            img.replaceWith(brandTitle);
+          });
+
+          const dateEl = header.querySelector('#printDateRef');
+          if (dateEl) {
+            const now = new Date();
+            dateEl.textContent = `Generated: ${now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`;
+          }
+
+          // Summary content
+          const reviewContent = document.getElementById('reviewSummaryContainer').cloneNode(true);
+          reviewContent.querySelectorAll('button').forEach(b => b.remove());
+          reviewContent.querySelectorAll('img').forEach(i => i.remove());
+
+          // Declaration & Signature
+          const declaration = document.querySelector('.info-highlight-orange').cloneNode(true);
+          declaration.style.margin = '16px 0';
+          declaration.style.padding = '12px 14px';
+          declaration.style.borderRadius = '6px';
+          declaration.style.background = '#f8fafc';
+          declaration.style.border = '1px solid #cbd5e1';
+
+          const sigBox = document.querySelector('.print-signature-box').cloneNode(true);
+          sigBox.style.display = 'flex';
+          sigBox.style.justifyContent = 'space-between';
+          sigBox.style.marginTop = '24px';
+          sigBox.style.paddingTop = '15px';
+          sigBox.style.borderTop = '1px dashed #9ca3af';
+
+          container.appendChild(header);
+          container.appendChild(reviewContent);
+          container.appendChild(declaration);
+          container.appendChild(sigBox);
+
+          const opt = {
+            margin: [10, 10, 12, 10],
+            filename: fileName,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+          };
+
+          const worker = html2pdf().set(opt).from(container);
+          const pdfBlob = typeof worker.outputPdf === 'function' ? await worker.outputPdf('blob') : await worker.output('blob');
+          const pdfFile = new File([pdfBlob], fileName, { type: 'application/pdf' });
+
+          // If device supports Web Share API file sharing (e.g. mobile Chrome/Safari sharing directly to WhatsApp)
+          if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+            try {
+              await navigator.share({
+                files: [pdfFile],
+                title: 'USA Visa Application Form - Trippovention',
+                text: `USA Visa Application File for ${rawName} (${getVal('passportNo')}) - Trippovention`
+              });
+              return;
+            } catch (sErr) {
+              if (sErr.name === 'AbortError') return;
+              console.log('Native share bypassed, falling back to modal:', sErr);
+            }
+          } else {
+            // Desktop/browser fallback:
+            // 1. Trigger instant download of the PDF
+            const downloadUrl = URL.createObjectURL(pdfBlob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(downloadUrl), 3000);
+
+            // 2. Show guidance modal with direct WhatsApp chat link
+            showWhatsAppModal(fileName, rawName, getVal('passportNo'));
+          }
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            console.error('Error generating/sharing PDF:', err);
+            // Fallback: direct WhatsApp chat
+            const msg = `Hi Trippovention, I have completed the online USA Visa application form for ${rawName} (${getVal('passportNo')}). Please guide me to share my application PDF.`;
+            window.open(`https://wa.me/+918750888875?text=${encodeURIComponent(msg)}`, '_blank');
+          }
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+
+      function showWhatsAppModal(fileName, applicantName, passportNo) {
+        let modal = document.getElementById('whatsappPdfModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'whatsappPdfModal';
+          modal.className = 'whatsapp-modal-overlay';
+          document.body.appendChild(modal);
+        }
+        const text = `Hi Trippovention, I have filled the USA Visa Application Form for ${applicantName} (${passportNo}) and saved my application PDF (${fileName}). I am attaching it here.`;
+        modal.innerHTML = `
+          <div class="whatsapp-modal-card">
+            <div style="font-size: 2.5rem; margin-bottom: 8px;">📄 ✅</div>
+            <h3 style="margin: 0 0 10px; color: var(--text-primary); font-size: 1.25rem;">Application PDF Generated!</h3>
+            <p style="margin: 0 0 14px; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+              Your completed file has been saved to your downloads as:<br />
+              <strong style="color: var(--primary);">${fileName}</strong>
+            </p>
+            <p style="margin: 0 0 20px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+              Click below to open WhatsApp chat with Trippovention (+91 87508 88875). Simply attach your saved PDF to the chat to proceed with your DS-160 processing.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="https://wa.me/+918750888875?text=${encodeURIComponent(text)}" target="_blank" rel="noopener noreferrer" class="btn btn-lg" onclick="closeWhatsAppModal()" style="background: #25d366; color: #fff; font-weight: 700; width: 100%; text-decoration: none; padding: 12px; display: inline-block;">
+                💬 Open WhatsApp &amp; Attach PDF →
+              </a>
+              <button type="button" class="btn ghost" onclick="closeWhatsAppModal()" style="width: 100%; padding: 8px;">
+                Close
+              </button>
+            </div>
+          </div>
+        `;
+        modal.classList.add('active');
+      }
+
+      function closeWhatsAppModal() {
+        const modal = document.getElementById('whatsappPdfModal');
+        if (modal) modal.classList.remove('active');
       }
 
       // Event Listeners
@@ -1580,6 +2295,44 @@
 
         // Clear Draft
         document.getElementById('clearDraftBtn').addEventListener('click', clearDraft);
+
+        // Add More Education
+        const addEduBtn = document.getElementById('addEducationBtn');
+        if (addEduBtn) {
+          addEduBtn.addEventListener('click', () => {
+            addEducationEntry(true);
+            saveDraft();
+          });
+        }
+
+        // Add More Previous Employment
+        const addPrevEmpBtn = document.getElementById('addPrevEmpBtn');
+        if (addPrevEmpBtn) {
+          addPrevEmpBtn.addEventListener('click', () => {
+            addPrevEmpEntry(true);
+            saveDraft();
+          });
+        }
+
+        // Print Action
+        window.printApplicationSummary = function() {
+          buildReviewSummary();
+          const dateEl = document.getElementById('printDateRef');
+          if (dateEl) {
+            const now = new Date();
+            dateEl.textContent = `Generated: ${now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`;
+          }
+          window.print();
+        };
+
+        window.addEventListener('beforeprint', () => {
+          buildReviewSummary();
+          const dateEl = document.getElementById('printDateRef');
+          if (dateEl) {
+            const now = new Date();
+            dateEl.textContent = `Generated: ${now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`;
+          }
+        });
 
         // WhatsApp Share
         document.getElementById('shareWhatsAppBtn').addEventListener('click', shareToWhatsApp);
