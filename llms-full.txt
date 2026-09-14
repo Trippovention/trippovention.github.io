@@ -412,12 +412,16 @@ Starting from ₹49,999 per person. Highlights: Phu Quoc, Da Nang, Ho Chi Minh C
 
 ## Visa Assistance Services
 
-Countries supported for visa assistance:
-Singapore, UAE, USA, UK, Canada, Australia, France, Switzerland, Netherlands, Germany, Vietnam, Turkey
+Countries supported for visa assistance across 6 continents:
+Asia, Europe, Africa, North America, South America, and Oceania.
 
-Visa categories: Tourist, Business, Transit, Student, and others.
-
-Full visa details: [Visa Assistance Services Page](https://trippovention.com/visa/index.html)
+Full visa details: [Visa Assistance Services Main Hub](https://trippovention.com/visa/index.html)
+- [Asia Visas Hub](https://trippovention.com/visa/asia.html)
+- [Europe Visas Hub](https://trippovention.com/visa/europe.html)
+- [Africa Visas Hub](https://trippovention.com/visa/africa.html)
+- [North America Visas Hub](https://trippovention.com/visa/north-america.html)
+- [South America Visas Hub](https://trippovention.com/visa/south-america.html)
+- [Oceania Visas Hub](https://trippovention.com/visa/oceania.html)
 
 Singapore (Indian passport holders):
 - [Singapore visa hub](https://trippovention.com/visa/singapore/index.html)
@@ -464,9 +468,6 @@ France (Indian passport holders — Schengen Area):
 
 Vietnam (Indian passport holders):
 - [Vietnam visa hub](https://trippovention.com/visa/vietnam/index.html)
-- [Tourist e-Visa](https://trippovention.com/visa/vietnam/tourist-visa.html)
-- [Business e-Visa](https://trippovention.com/visa/vietnam/business-visa.html)
-- [Visitor e-Visa](https://trippovention.com/visa/vietnam/visitor-visa.html)
 - [Single-entry e-Visa](https://trippovention.com/visa/vietnam/single-entry-visa.html)
 - [Multiple-entry e-Visa](https://trippovention.com/visa/vietnam/multi-entry-visa.html)
 
@@ -495,8 +496,7 @@ Austria (Indian passport holders — Schengen Area):
 - [Visitor visa](https://trippovention.com/visa/austria/visitor-visa.html)
 
 Schengen & European Destinations (Czech Republic, Greece, Netherlands, Norway, Spain, Sweden, Turkey, Belgium, Bulgaria, Croatia, Hungary, Iceland, Italy, Latvia, Luxembourg, Malta, Poland, Portugal, Slovakia, Slovenia, Switzerland):
-- [Schengen & European Visa Hub](https://trippovention.com/visa/index.html)
-- [High Value & European Visas Connecting Directory](https://trippovention.com/visa/high-value-visas.html)
+- [Schengen & European Visa Hub](https://trippovention.com/visa/europe.html)
 
 Operational terms (all countries): [Visa assistance terms](https://trippovention.com/visa/terms-and-conditions.html)
 

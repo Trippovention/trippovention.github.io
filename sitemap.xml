@@ -422,7 +422,43 @@
   </url>
   <url>
     <loc>https://trippovention.com/visa/index.html</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/asia.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/europe.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/africa.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/north-america.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/south-america.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://trippovention.com/visa/oceania.html</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -2869,12 +2905,6 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://trippovention.com/visa/vietnam/business-visa.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://trippovention.com/visa/vietnam/index.html</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -2894,18 +2924,6 @@
   </url>
   <url>
     <loc>https://trippovention.com/visa/vietnam/terms-and-conditions.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://trippovention.com/visa/vietnam/tourist-visa.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://trippovention.com/visa/vietnam/visitor-visa.html</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
@@ -3207,12 +3225,6 @@
   <url>
     <loc>https://trippovention.com/visa/uk/visitor-visa.html</loc>
     <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://trippovention.com/visa/high-value-visas.html</loc>
-    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
