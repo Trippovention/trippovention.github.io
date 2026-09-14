@@ -1067,6 +1067,45 @@ main {
   border-color: rgba(255, 255, 255, 0.6);
 }
 
+/* Continent Jump Navigation Pills - Vibrant Orange */
+.continent-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gradient-primary, linear-gradient(135deg, #d6804e 0%, #e67e22 100%));
+  color: #ffffff !important;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid #d6804e;
+  box-shadow: 0 4px 12px rgba(214, 128, 78, 0.28);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.continent-pill:hover {
+  background: #c06f43;
+  border-color: #c06f43;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(214, 128, 78, 0.45);
+}
+
+[data-theme="dark"] .continent-pill {
+  background: rgba(214, 128, 78, 0.25);
+  color: #fb923c !important;
+  border: 1.5px solid #fb923c;
+  box-shadow: 0 4px 14px rgba(251, 146, 60, 0.2);
+}
+
+[data-theme="dark"] .continent-pill:hover {
+  background: var(--gradient-primary, linear-gradient(135deg, #d6804e 0%, #e67e22 100%));
+  color: #ffffff !important;
+  border-color: #d6804e;
+}
+
 /* WhatsApp Icon Variants - Remove ALL inline styles */
 .whatsapp-icon-nav {
   width: 20px;
