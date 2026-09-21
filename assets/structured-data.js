@@ -19,7 +19,7 @@ const StructuredData = (() => {
     address: {
       "@type": "PostalAddress",
       streetAddress: "337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
-      addressLocality: "Gurgaon",
+      addressLocality: "Gurugram",
       addressRegion: "Haryana",
       postalCode: "122018",
       addressCountry: "IN"
