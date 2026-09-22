@@ -20,6 +20,7 @@ Sitemap: https://trippovention.com/image-sitemap.xml
 # Disallow error and utility pages from indexing
 Disallow: /404.html
 Disallow: /offline.html
+Disallow: /thank-you.html
 Disallow: /*?error=*
 
 # Disallow validation and development folders
@@ -144,6 +145,12 @@ User-agent: Meta-ExternalFetcher
 Allow: /
 
 User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 
