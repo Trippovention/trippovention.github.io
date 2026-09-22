@@ -3481,14 +3481,15 @@ a.continent-card .body {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   flex: 1;
-  text-align: left;
   background: var(--bg-primary);
 }
 
 a.continent-card .body .badge {
   display: inline-block;
-  align-self: flex-start;
+  align-self: center;
   margin-bottom: 12px;
 }
 
@@ -3496,6 +3497,7 @@ a.continent-card .body h3 {
   margin: 0 0 8px 0;
   font-size: 1.35rem;
   font-weight: 700;
+  text-align: center;
   color: var(--text-primary);
   transition: color 0.2s ease;
 }
@@ -3507,12 +3509,16 @@ a.continent-card:hover .body h3 {
 a.continent-card .body .muted {
   margin: 0 0 20px 0;
   font-size: 0.95rem;
+  text-align: center;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
 a.continent-card .cta-wrap {
   margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 a.continent-card .btn {
