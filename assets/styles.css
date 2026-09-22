@@ -3425,3 +3425,125 @@ th,
     padding: 3px 6px;
   }
 }
+
+/* ===== CONTINENT VISA SERVICES SECTION ===== */
+.continent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+a.continent-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+a.continent-card:hover,
+a.continent-card:focus-visible {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-large);
+  border-color: var(--orange);
+  outline: none;
+}
+
+a.continent-card .img-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  aspect-ratio: 16 / 10;
+}
+
+a.continent-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+a.continent-card:hover .img-wrap img {
+  transform: scale(1.06);
+}
+
+a.continent-card .body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+  background: var(--bg-primary);
+}
+
+a.continent-card .body .badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+
+a.continent-card .body h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+a.continent-card:hover .body h3 {
+  color: var(--orange);
+}
+
+a.continent-card .body .muted {
+  margin: 0 0 20px 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+a.continent-card .cta-wrap {
+  margin-top: auto;
+}
+
+a.continent-card .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  margin: 0;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+a.continent-card:hover .btn {
+  background: linear-gradient(135deg, #d6804e 0%, #2b8bd8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 128, 78, 0.4);
+}
+
+/* Responsive: 3x2 on desktop, 2x3 on tablet, 1 column on mobile */
+@media (max-width: 992px) {
+  .continent-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 580px) {
+  .continent-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
