@@ -27,7 +27,7 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Preload Critical Assets for Faster Loading -->
-    <link rel="preload" href="assets/styles.css" as="style" />
+    <link rel="preload" href="assets/styles.css?v=1.1" as="style" />
     <link rel="preload" href="assets/app.js" as="script" />
     <link rel="preload" href="assets/images/logo.webp" as="image" type="image/webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -80,7 +80,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/styles.css?v=1.1" />
 
     <!-- Google tag (gtag.js) -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-11395302765"></script>
@@ -553,70 +553,149 @@
         </div>
       </section>
 
-      <!-- <section class="section">
+      <!-- Visa Services Around the World Section -->
+      <section class="section" id="visa-services-world">
         <div class="container">
           <div class="section-title">
-            <h2>Seamless Visa assistance for Global Travel</h2>
+            <h2>Visa Services Around the World</h2>
             <p class="subtitle">
-              Expert support for Visa Documentation assistance across our most requested global
-              destinations.
+              Explore visa assistance for destinations across six continents. Choose a continent to discover available visa options and requirements.
             </p>
           </div>
-          <div class="visa-grid">
-            <a href="visa/singapore/index.html" class="visa-item">
-              <div class="flag">🇸🇬</div>
-              <h3>Singapore</h3>
+
+          <div class="continent-grid">
+            <!-- 1. Asia -->
+            <a href="visa/asia.html" class="card continent-card" aria-label="Explore Visa Options for Asia">
+              <div class="img-wrap">
+                <img
+                  src="assets/images/visa/japan/hero_japan_tourist_visa.webp"
+                  alt="Asia Visa Services - Mount Fuji and Chureito Pagoda Japan"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                />
+              </div>
+              <div class="body">
+                <div class="badge">🌏 Asia</div>
+                <h3>Asia</h3>
+                <p class="muted">Thailand • Japan • Singapore • Vietnam</p>
+                <div class="cta-wrap">
+                  <span class="btn">Explore Visas →</span>
+                </div>
+              </div>
             </a>
-            <a href="contact.html?service=uae-visa" class="visa-item">
-              <div class="flag">🇦🇪</div>
-              <h4>UAE</h4>
+
+            <!-- 2. Europe -->
+            <a href="visa/europe.html" class="card continent-card" aria-label="Explore Visa Options for Europe">
+              <div class="img-wrap">
+                <img
+                  src="assets/images/visa/france/hero_france_high_value_visa.webp"
+                  alt="Europe Visa Services - Eiffel Tower Paris"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                />
+              </div>
+              <div class="body">
+                <div class="badge">🌍 Europe</div>
+                <h3>Europe</h3>
+                <p class="muted">France • Switzerland • Italy • Spain</p>
+                <div class="cta-wrap">
+                  <span class="btn">Explore Visas →</span>
+                </div>
+              </div>
             </a>
-            <a href="contact.html?service=usa-visa" class="visa-item">
-              <div class="flag">🇺🇸</div>
-              <h4>USA</h4>
+
+            <!-- 3. North America -->
+            <a href="visa/north-america.html" class="card continent-card" aria-label="Explore Visa Options for North America">
+              <div class="img-wrap">
+                <img
+                  src="assets/images/visa/usa/hero_usa_high_value_visa.webp"
+                  alt="North America Visa Services - New York City"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                />
+              </div>
+              <div class="body">
+                <div class="badge">🌎 North America</div>
+                <h3>North America</h3>
+                <p class="muted">USA • Canada • Mexico • Cuba</p>
+                <div class="cta-wrap">
+                  <span class="btn">Explore Visas →</span>
+                </div>
+              </div>
             </a>
-            <a href="contact.html?service=uk-visa" class="visa-item">
-              <div class="flag">🇬🇧</div>
-              <h4>UK</h4>
+
+            <!-- 4. South America -->
+            <a href="visa/south-america.html" class="card continent-card" aria-label="Explore Visa Options for South America">
+              <div class="img-wrap">
+                <img
+                  src="assets/images/packages/southamerica/brazil/hero_brazil.webp"
+                  alt="South America Visa Services - Rio de Janeiro Brazil"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                />
+              </div>
+              <div class="body">
+                <div class="badge">🌎 South America</div>
+                <h3>South America</h3>
+                <p class="muted">Brazil • Argentina • Peru • Chile</p>
+                <div class="cta-wrap">
+                  <span class="btn">Explore Visas →</span>
+                </div>
+              </div>
             </a>
-            <a href="contact.html?service=canada-visa" class="visa-item">
-              <div class="flag">🇨🇦</div>
-              <h4>Canada</h4>
+
+            <!-- 5. Africa -->
+            <a href="visa/africa.html" class="card continent-card" aria-label="Explore Visa Options for Africa">
+              <div class="img-wrap">
+                <img
+                  src="assets/images/packages/africa/egypt/hero_egypt.webp"
+                  alt="Africa Visa Services - Pyramids of Giza Egypt"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                />
+              </div>
+              <div class="body">
+                <div class="badge">🌍 Africa</div>
+                <h3>Africa</h3>
+                <p class="muted">Egypt • South Africa • Morocco • Kenya</p>
+                <div class="cta-wrap">
+                  <span class="btn">Explore Visas →</span>
+                </div>
+              </div>
             </a>
-            <a href="contact.html?service=australia-visa" class="visa-item">
-              <div class="flag">🇦🇺</div>
-              <h4>Australia</h4>
-            </a>
-            <a href="contact.html?service=france-visa" class="visa-item">
-              <div class="flag">🇫🇷</div>
-              <h4>France</h4>
-            </a>
-            <a href="contact.html?service=switzerland-visa" class="visa-item">
-              <div class="flag">🇨🇭</div>
-              <h4>Switzerland</h4>
-            </a>
-            <a href="contact.html?service=netherlands-visa" class="visa-item">
-              <div class="flag">🇳🇱</div>
-              <h4>Netherlands</h4>
-            </a>
-            <a href="contact.html?service=germany-visa" class="visa-item">
-              <div class="flag">🇩🇪</div>
-              <h4>Germany</h4>
-            </a>
-            <a href="contact.html?service=vietnam-visa" class="visa-item">
-              <div class="flag">🇻🇳</div>
-              <h4>Vietnam</h4>
-            </a>
-            <a href="contact.html?service=turkey-visa" class="visa-item">
-              <div class="flag">🇹🇷</div>
-              <h4>Turkey</h4>
+
+            <!-- 6. Australia & Oceania -->
+            <a href="visa/oceania.html" class="card continent-card" aria-label="Explore Visa Options for Australia and Oceania">
+              <div class="img-wrap">
+                <img
+                  src="assets/images/visa/australia/hero_australia_evisa.webp"
+                  alt="Australia and Oceania Visa Services - Sydney Opera House"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                />
+              </div>
+              <div class="body">
+                <div class="badge">🌏 Australia &amp; Oceania</div>
+                <h3>Australia &amp; Oceania</h3>
+                <p class="muted">Australia • New Zealand • Fiji • Vanuatu</p>
+                <div class="cta-wrap">
+                  <span class="btn">Explore Visas →</span>
+                </div>
+              </div>
             </a>
           </div>
+
           <div class="text-center mt-40">
-            <a class="btn btn-lg" href="visa/index.html">View All visa assistance services</a>
+            <a class="btn btn-lg ghost" href="visa/index.html">View All Visa Destinations &amp; Requirements →</a>
           </div>
         </div>
-      </section> -->
+      </section>
 
       <section class="section features">
         <div class="container">
