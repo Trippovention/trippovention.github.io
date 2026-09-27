@@ -1,6 +1,6 @@
 # Trippovention — Complete Site Information for AI
 
-> Trippovention is a travel service provider headquartered in India and Thailand, specializing in ground operations, customized tour packages, visa assistance, and travel management for both individual and corporate travellers. Established in 2021 with a team boasting 10+ years of combined experience, the company has served 50,000+ happy travelers across 40+ worldwide destinations.
+> Trippovention is a travel service provider headquartered in India and Thailand, specializing in ground operations, customized tour packages, visa assistance, and travel management for both individual and corporate travellers. Established in 2021 with a team boasting 15+ years of combined travel industry & ground operations expertise, the company has served 50,000+ happy travelers across 40+ worldwide destinations.
 
 ## Agent and crawler discovery
 
