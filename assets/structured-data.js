@@ -2,15 +2,16 @@
  * Trippovention - Centralized Structured Data Manager
  *
  * This module generates and injects schema.org structured data dynamically
- * to reduce code duplication and improve maintainability.
+ * adhering strictly to Google Search and Schema.org guidelines.
  *
  * Usage: Call StructuredData.init(config) with page-specific parameters
  */
 
 const StructuredData = (() => {
-  // Master configuration - single source of truth
+  // Master configuration - single source of truth for Trippovention business entity
   const COMPANY_INFO = {
     name: "Trippovention",
+    legalName: "Trippovention",
     url: "https://trippovention.com",
     logo: "https://trippovention.com/assets/images/logo.webp",
     image: "https://trippovention.com/assets/images/logo.webp",
@@ -29,7 +30,7 @@ const StructuredData = (() => {
       latitude: "28.4089",
       longitude: "77.0342"
     },
-    openingHours: "Mo-Sa 10:00-19:00",
+    openingHours: "Mo-Sa 09:30-18:30",
     priceRange: "₹₹-₹₹₹",
     socialMedia: [
       "https://facebook.com/trippovention",
@@ -37,104 +38,84 @@ const StructuredData = (() => {
       "https://youtube.com/@trippovention?si=cvr_Sf36pb1Oh6lY",
       "https://www.linkedin.com/company/trippovention/"
     ],
-    // 74+ countries - global coverage
+    // Locations for India HQ and Thailand Ground Operations
+    locations: [
+      {
+        "@type": "Place",
+        name: "Trippovention India Head Office",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "337 A, 3rd Floor, Spaze IT Park, Tower A, Sector 49, Sohna Road",
+          addressLocality: "Gurugram",
+          addressRegion: "Haryana",
+          postalCode: "122018",
+          addressCountry: "IN"
+        },
+        telephone: "+91-87508-88875"
+      },
+      {
+        "@type": "Place",
+        name: "Trippovention Thailand Inbound Ground Operations",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "23/13 M, 12 Nong Pure Subdistrict, Bang Lamung District",
+          addressLocality: "Pattaya",
+          addressRegion: "Chonburi",
+          postalCode: "20150",
+          addressCountry: "TH"
+        },
+        telephone: "+66-90-917-7601"
+      }
+    ],
+    // Global coverage
     areaServed: [
-      "IN",
-      "SG",
-      "TH",
-      "MY",
-      "AE",
-      "VN",
-      "LK",
-      "ID",
-      "MV",
-      "PH",
-      "KH",
-      "MM",
-      "LA",
-      "BN",
-      "NP",
-      "BT",
-      "BD",
-      "PK",
-      "JP",
-      "KR",
-      "CN",
-      "HK",
-      "TW",
-      "MO",
-      "AU",
-      "NZ",
-      "FJ",
-      "GB",
-      "FR",
-      "ES",
-      "IT",
-      "CH",
-      "AT",
-      "NL",
-      "GR",
-      "TR",
-      "DE",
-      "BE",
-      "SE",
-      "NO",
-      "FI",
-      "DK",
-      "IS",
-      "PT",
-      "IE",
-      "PL",
-      "CZ",
-      "HU",
-      "RO",
-      "HR",
-      "SI",
-      "MT",
-      "CY",
-      "US",
-      "CA",
-      "MX",
-      "BR",
-      "AR",
-      "CL",
-      "PE",
-      "CO",
-      "SA",
-      "QA",
-      "KW",
-      "OM",
-      "BH",
-      "JO",
-      "IL",
-      "MU",
-      "ZA",
-      "KE",
-      "EG",
-      "TN",
-      "MA"
+      "IN", "SG", "TH", "MY", "AE", "VN", "LK", "ID", "MV", "PH",
+      "KH", "MM", "LA", "BN", "NP", "BT", "BD", "PK", "JP", "KR",
+      "CN", "HK", "TW", "MO", "AU", "NZ", "FJ", "GB", "FR", "ES",
+      "IT", "CH", "AT", "NL", "GR", "TR", "DE", "BE", "SE", "NO",
+      "FI", "DK", "IS", "PT", "IE", "PL", "CZ", "HU", "RO", "HR",
+      "SI", "MT", "CY", "US", "CA", "MX", "BR", "AR", "CL", "PE",
+      "CO", "SA", "QA", "KW", "OM", "BH", "JO", "IL", "MU", "ZA",
+      "KE", "EG", "TN", "MA"
     ]
   };
 
-  // Contact point template (reusable)
-  const getContactPoint = (areaServed = COMPANY_INFO.areaServed) => ({
-    "@type": "ContactPoint",
-    telephone: COMPANY_INFO.telephone,
-    contactType: "Customer Service",
-    areaServed: areaServed,
-    availableLanguage: ["English", "Hindi"],
-    hoursAvailable: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "10:00",
-      closes: "19:00"
+  // Contact points template (reusable)
+  const getContactPoints = () => [
+    {
+      "@type": "ContactPoint",
+      telephone: COMPANY_INFO.telephone,
+      contactType: "Customer Service",
+      areaServed: ["IN", "Worldwide"],
+      availableLanguage: ["English", "Hindi"],
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:30",
+        closes: "18:30"
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91-73030-10446",
+      contactType: "Sales & Customized Holidays",
+      areaServed: ["IN", "SG", "TH", "MY", "AE"],
+      availableLanguage: ["English", "Hindi"]
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+66-90-917-7601",
+      contactType: "Thailand Inbound Operations",
+      areaServed: "TH",
+      availableLanguage: ["English", "Thai"]
     }
-  });
+  ];
 
-  // Full TravelServiceProvider provider template
-  const getTravelServiceProviderProvider = () => ({
-    "@type": "TravelServiceProvider",
+  // Full TravelAgency provider template
+  const getTravelAgencyProvider = () => ({
+    "@type": "TravelAgency",
     name: COMPANY_INFO.name,
+    legalName: COMPANY_INFO.legalName,
     url: COMPANY_INFO.url,
     logo: COMPANY_INFO.logo,
     image: COMPANY_INFO.image,
@@ -142,60 +123,52 @@ const StructuredData = (() => {
     email: COMPANY_INFO.email,
     address: COMPANY_INFO.address,
     geo: COMPANY_INFO.geo,
+    location: COMPANY_INFO.locations,
     openingHours: COMPANY_INFO.openingHours,
     sameAs: COMPANY_INFO.socialMedia,
-    contactPoint: getContactPoint()
+    contactPoint: getContactPoints()
   });
 
   // Schema generators
   const schemas = {
-    // 1. TravelServiceProvider Schema (Homepage, Worldwide)
-    travelServiceProvider: config => ({
+    // 1. TravelAgency Schema (Homepage, Worldwide)
+    travelAgency: config => ({
       "@context": "https://schema.org",
-      "@type": "TravelServiceProvider",
+      "@type": "TravelAgency",
       name: COMPANY_INFO.name,
-      description: config.description,
-      url: config.url,
+      legalName: COMPANY_INFO.legalName,
+      description:
+        config.description ||
+        "Licensed destination management company (DMC) and travel agency specializing in international tour packages, Thailand ground operations, India tourism, Buddha tourism pilgrimage circuits, and global visa assistance.",
+      url: config.url || COMPANY_INFO.url,
       logo: COMPANY_INFO.logo,
       image: COMPANY_INFO.image,
       telephone: COMPANY_INFO.telephone,
       email: COMPANY_INFO.email,
       address: COMPANY_INFO.address,
       geo: COMPANY_INFO.geo,
+      location: COMPANY_INFO.locations,
       openingHours: COMPANY_INFO.openingHours,
       priceRange: COMPANY_INFO.priceRange,
       sameAs: COMPANY_INFO.socialMedia,
-      ...(config.aggregateRating && {
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: config.aggregateRating.value,
-          reviewCount: config.aggregateRating.count,
-          bestRating: "5",
-          worstRating: "1"
-        }
-      }),
-      contactPoint: getContactPoint()
+      contactPoint: getContactPoints()
     }),
 
     // 2. Organization Schema (Knowledge Graph)
     organization: () => ({
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "TravelAgency",
       name: COMPANY_INFO.name,
-      alternateName: "Trippovention Travel Service Provider",
+      legalName: COMPANY_INFO.legalName,
       url: COMPANY_INFO.url,
       logo: COMPANY_INFO.logo,
       description:
-        "Leading Travel Service Provider specializing in India and worldwide tours with 15+ years of experience",
+        "Licensed destination management company (DMC) and travel agency specializing in international tour packages, Thailand ground operations, India tourism, Buddha tourism pilgrimage circuits, and global visa assistance.",
       foundingDate: "2010",
       slogan: "Your Trusted Travel Partner",
       address: COMPANY_INFO.address,
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: COMPANY_INFO.telephone,
-        contactType: "Customer Service",
-        email: COMPANY_INFO.email
-      },
+      location: COMPANY_INFO.locations,
+      contactPoint: getContactPoints(),
       sameAs: COMPANY_INFO.socialMedia
     }),
 
@@ -207,7 +180,7 @@ const StructuredData = (() => {
       url: COMPANY_INFO.url,
       potentialAction: {
         "@type": "SearchAction",
-        target: `${COMPANY_INFO.url}/${config.searchPath || "search.html"}?q={search_term_string}`,
+        target: `${COMPANY_INFO.url}/${config.searchPath || "destinations.html"}?search={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     }),
@@ -223,16 +196,8 @@ const StructuredData = (() => {
       ...(config.description && {
         description: config.description
       }),
-      provider: getTravelServiceProviderProvider(),
+      provider: getTravelAgencyProvider(),
       areaServed: COMPANY_INFO.areaServed,
-      ...(config.aggregateRating && {
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: config.aggregateRating.value,
-          reviewCount: config.aggregateRating.count,
-          bestRating: "5"
-        }
-      }),
       ...(config.offers && {
         offers: config.offers
       }),
@@ -251,15 +216,10 @@ const StructuredData = (() => {
       name: config.name,
       description: config.description,
       url: config.url,
-      provider: getTravelServiceProviderProvider(),
-      ...(config.aggregateRating && {
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: config.aggregateRating.value,
-          reviewCount: config.aggregateRating.count,
-          bestRating: "5"
-        }
+      ...(config.image && {
+        image: config.image
       }),
+      provider: getTravelAgencyProvider(),
       ...(config.duration && {
         duration: config.duration
       }),
@@ -277,7 +237,7 @@ const StructuredData = (() => {
       "@context": "https://schema.org",
       "@type": "ContactPage",
       mainEntity: {
-        "@type": "TravelServiceProvider",
+        "@type": "TravelAgency",
         name: COMPANY_INFO.name,
         url: COMPANY_INFO.url,
         logo: COMPANY_INFO.logo,
@@ -285,35 +245,14 @@ const StructuredData = (() => {
         email: COMPANY_INFO.email,
         address: COMPANY_INFO.address,
         geo: COMPANY_INFO.geo,
+        location: COMPANY_INFO.locations,
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          opens: "10:00",
-          closes: "19:00"
+          opens: "09:30",
+          closes: "18:30"
         },
-        contactPoint: config.contactPoints || [
-          {
-            "@type": "ContactPoint",
-            telephone: COMPANY_INFO.telephone,
-            contactType: "Customer Service",
-            areaServed: COMPANY_INFO.areaServed,
-            availableLanguage: ["English", "Hindi"]
-          },
-          {
-            "@type": "ContactPoint",
-            telephone: "+91-73030-10446",
-            contactType: "Sales",
-            areaServed: ["IN", "SG", "TH", "MY", "AE"],
-            availableLanguage: ["English", "Hindi"]
-          },
-          {
-            "@type": "ContactPoint",
-            telephone: "+66-90-917-7601",
-            contactType: "International Support",
-            areaServed: "TH",
-            availableLanguage: "English"
-          }
-        ],
+        contactPoint: config.contactPoints || getContactPoints(),
         sameAs: COMPANY_INFO.socialMedia
       }
     }),
@@ -357,17 +296,13 @@ const StructuredData = (() => {
     switch (config.pageType) {
       case "homepage":
         injectSchema(
-          schemas.travelServiceProvider({
+          schemas.travelAgency({
             description:
               config.description ||
-              "Your trusted travel partner for unforgettable journeys across India and the world",
-            url: COMPANY_INFO.url,
-            aggregateRating: {
-              value: "4.8",
-              count: "500"
-            }
+              "Your trusted travel partner for international tour packages, Thailand ground operations, India tourism, Buddha tourism pilgrimage circuits, and visa assistance.",
+            url: COMPANY_INFO.url
           }),
-          "Structured Data: TravelServiceProvider (Primary Business Entity)"
+          "Structured Data: TravelAgency (Primary Business Entity)"
         );
 
         injectSchema(schemas.organization(), "Structured Data: Organization (Knowledge Graph)");
@@ -376,24 +311,20 @@ const StructuredData = (() => {
 
       case "worldwide":
         injectSchema(
-          schemas.travelServiceProvider({
+          schemas.travelAgency({
             description:
               config.description ||
               "International travel packages for Singapore, Thailand, Malaysia, UAE, Vietnam, Europe and more",
             url: config.url
           }),
-          "Structured Data: TravelServiceProvider"
+          "Structured Data: TravelAgency"
         );
         break;
 
       case "services":
         injectSchema(
           schemas.service({
-            serviceType: "Travel Services",
-            aggregateRating: {
-              value: "4.8",
-              count: "500"
-            },
+            serviceType: "Travel Services & Ground Operations",
             hasOfferCatalog: config.offerCatalog
           }),
           "Structured Data: Service with OfferCatalog"
@@ -430,7 +361,6 @@ const StructuredData = (() => {
             name: config.name,
             description: config.description,
             url: config.url,
-            aggregateRating: config.aggregateRating,
             duration: config.duration,
             touristType: config.touristType,
             itinerary: config.itinerary,
@@ -441,7 +371,6 @@ const StructuredData = (() => {
         break;
 
       default:
-        // Only warn in development
         if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
           console.warn("StructuredData: Unknown page type:", config.pageType);
         }
@@ -451,8 +380,8 @@ const StructuredData = (() => {
   // Public API
   return {
     init,
-    COMPANY_INFO, // Export for reference
-    schemas // Export for advanced usage
+    COMPANY_INFO,
+    schemas
   };
 })();
 

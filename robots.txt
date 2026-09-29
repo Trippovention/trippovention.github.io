@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: September 6, 2026
+# Last Updated: September 27, 2026
 
 # LLMs.txt & Content Signals for AI Crawlers and Agents
 # https://trippovention.com/llms.txt
@@ -13,13 +13,18 @@ Content-Signal: ai-train=no, search=yes, ai-input=yes
 User-agent: *
 Allow: /
 
-# Sitemaps (Primary + Images)
+# XML Sitemaps (Sitemap Index + Modular Child Sitemaps + Image Sitemap)
 Sitemap: https://trippovention.com/sitemap.xml
+Sitemap: https://trippovention.com/sitemap-pages.xml
+Sitemap: https://trippovention.com/sitemap-destinations.xml
+Sitemap: https://trippovention.com/sitemap-packages.xml
+Sitemap: https://trippovention.com/sitemap-visa.xml
 Sitemap: https://trippovention.com/image-sitemap.xml
 
 # Disallow error and utility pages from indexing
 Disallow: /404.html
 Disallow: /offline.html
+Disallow: /thank-you.html
 Disallow: /*?error=*
 
 # Disallow validation and development folders
@@ -42,7 +47,7 @@ Allow: /assets/*.woff
 # Allow all image directories for image search
 Allow: /assets/images/
 
-# Specific bot instructions
+# Specific search engine instructions
 User-agent: Googlebot
 Allow: /
 
@@ -64,7 +69,7 @@ User-agent: Yandex
 Allow: /
 Crawl-delay: 1
 
-# Social media bots (for previews)
+# Social media bots (for rich link previews)
 User-agent: facebookexternalhit
 Allow: /
 
@@ -74,7 +79,7 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-# Block bad bots and scrapers
+# Scrapers and SEO audit bots with crawl delay
 User-agent: AhrefsBot
 Crawl-delay: 10
 
@@ -90,7 +95,7 @@ Disallow: /
 User-agent: PetalBot
 Crawl-delay: 10
 
-# Google Ads crawlers — Explicitly ALLOWED for ad verification
+# Google Ads crawlers — Explicitly allowed for ad verification
 User-agent: AdsBot-Google
 Allow: /
 
@@ -100,7 +105,7 @@ Allow: /
 User-agent: AdsBot-Google-Mobile-Apps
 Allow: /
 
-# AI/LLM Crawlers — Explicit policy (same access as User-agent: *); listed for scanner clarity
+# AI/LLM Search & Answer Engine Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -146,7 +151,11 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
+User-agent: Applebot
+Allow: /
 
-# Host directive (for clarity)
-Host: https://trippovention.com
+User-agent: Applebot-Extended
+Allow: /
 
+# Host directive
+Host: trippovention.com
