@@ -5,7 +5,7 @@
  * Version: 3.7 - post-merge cleanup; versioned runtime cache + full cache purge
  */
 
-const CACHE_VERSION = "3.7";
+const CACHE_VERSION = "3.8";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = `trippovention-runtime-v${CACHE_VERSION}`;
 
@@ -15,9 +15,13 @@ const LEGACY_RUNTIME_CACHE = "trippovention-runtime";
 const PRECACHE_URLS = [
   "/",
   "/index.html",
+  "/search.html",
   "/offline.html",
   "/assets/styles.css",
+  "/assets/search.css",
   "/assets/app.js",
+  "/assets/search.js",
+  "/assets/search-data.js",
   "/assets/analytics.js",
   "/assets/cookie-consent.js",
   "/assets/structured-data.js",

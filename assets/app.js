@@ -500,3 +500,27 @@ function showUpdateNotification() {
     }
   }, 30000);
 }
+
+// Global Search System Loader
+(function loadSearchScript() {
+  const scriptTag = document.querySelector('script[src*="app.js"]');
+  const basePath = scriptTag ? scriptTag.getAttribute('src').replace(/app\.js.*$/, '') : 'assets/';
+
+  // 1. Ensure search-data.js is loaded (essential for file:// protocol and instant zero-latency search)
+  if (!document.getElementById('trippovention-search-data-js') && !window.__TRIPPOVENTION_SEARCH_DATA__) {
+    const sData = document.createElement('script');
+    sData.id = 'trippovention-search-data-js';
+    sData.src = basePath + 'search-data.js';
+    sData.defer = true;
+    (document.head || document.body).appendChild(sData);
+  }
+
+  // 2. Ensure search.js is loaded
+  if (!document.getElementById('trippovention-search-js')) {
+    const s = document.createElement('script');
+    s.id = 'trippovention-search-js';
+    s.src = basePath + 'search.js';
+    s.defer = true;
+    (document.head || document.body).appendChild(s);
+  }
+})();
