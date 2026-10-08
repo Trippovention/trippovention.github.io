@@ -5,7 +5,7 @@
  * Version: 3.7 - post-merge cleanup; versioned runtime cache + full cache purge
  */
 
-const CACHE_VERSION = "3.8";
+const CACHE_VERSION = "4.0";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = `trippovention-runtime-v${CACHE_VERSION}`;
 

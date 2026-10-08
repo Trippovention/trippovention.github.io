@@ -24,18 +24,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Search Results | Trippovention Worldwide Tours &amp; Visas</title>
+  <title>Search Holiday Packages, Visa Services &amp; Destinations | Trippovention</title>
   <meta name="description"
     content="Search destinations, holiday packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention." />
   <meta name="author" content="Trippovention" />
+  <meta name="robots" content="index, follow" id="metaRobots" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://trippovention.com/search.html" />
-  <meta property="og:title" content="Search Results | Trippovention Worldwide Tours &amp; Visas" />
+  <meta property="og:title" content="Search Holiday Packages, Visa Services &amp; Destinations | Trippovention" />
   <meta property="og:description"
     content="Explore worldwide tours, holiday packages, sightseeing activities, airport transfers, and visa assistance services on Trippovention." />
   <meta property="og:image" content="https://trippovention.com/assets/images/logo.webp" />
   <meta property="og:site_name" content="Trippovention" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Search Holiday Packages, Visa Services &amp; Destinations | Trippovention" />
+  <meta name="twitter:description"
+    content="Explore worldwide tours, holiday packages, sightseeing activities, airport transfers, and visa assistance services on Trippovention." />
+  <meta name="twitter:image" content="https://trippovention.com/assets/images/logo.webp" />
 
   <link rel="canonical" href="https://trippovention.com/search.html" />
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
@@ -62,25 +69,43 @@
     gtag("config", "AW-11395302765");
   </script>
 
-  <!-- BreadcrumbList Schema -->
+  <!-- SearchResultsPage & Breadcrumb Schema -->
   <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://trippovention.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Search Results",
-            "item": "https://trippovention.com/search.html"
-          }
-        ]
+        "@type": "SearchResultsPage",
+        "@id": "https://trippovention.com/search.html#searchpage",
+        "name": "Search Holiday Packages, Visa Services & Destinations | Trippovention",
+        "url": "https://trippovention.com/search.html",
+        "description": "Search destinations, tour packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://trippovention.com/#website",
+          "name": "Trippovention",
+          "url": "https://trippovention.com/"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://trippovention.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Search",
+              "item": "https://trippovention.com/search.html"
+            }
+          ]
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://trippovention.com/search.html?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       }
     </script>
 </head>
@@ -142,44 +167,23 @@
     </nav>
 
     <div class="search-page-container">
-      <!-- Search Banner & Input -->
-      <section class="search-page-header">
-        <h1 id="searchPageHeading">Search Trippovention</h1>
-        <p class="search-page-subtitle">Find destinations, holiday packages, sightseeing activities, transfers & visa services</p>
+      <!-- Search Page Title Header (All searches are executed via the Global Header Search) -->
+      <header class="search-page-heading-wrap">
+        <h1 id="searchPageHeading">Search Results</h1>
+        <p class="search-page-subtitle" id="searchPageSubtitle">Browse verified destinations, holiday packages, sightseeing activities, transfers & visa services</p>
 
-        <form id="searchPageForm" class="search-page-input-box" role="search" onsubmit="return false;">
-          <div class="search-page-input-wrapper">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--blue); margin-right: 4px;">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              type="search"
-              id="searchPageInput"
-              name="q"
-              placeholder="Search destinations, activities, packages, visas & more..."
-              autocomplete="off"
-              spellcheck="false"
-              aria-label="Search destinations, activities, packages, visas"
-            />
-            <button type="submit" class="search-btn" id="searchPageSubmitBtn">
-              Search
-            </button>
-          </div>
-
-          <!-- Filters -->
-          <div class="search-page-filters" id="searchPageFilters" role="tablist" aria-label="Category Filters">
-            <button type="button" class="search-filter-pill is-active" data-filter="All" role="tab" aria-selected="true">All</button>
-            <button type="button" class="search-filter-pill" data-filter="Destinations" role="tab" aria-selected="false">Destinations</button>
-            <button type="button" class="search-filter-pill" data-filter="Packages" role="tab" aria-selected="false">Packages</button>
-            <button type="button" class="search-filter-pill" data-filter="Activities" role="tab" aria-selected="false">Activities</button>
-            <button type="button" class="search-filter-pill" data-filter="Transfers" role="tab" aria-selected="false">Transfers</button>
-            <button type="button" class="search-filter-pill" data-filter="Visa" role="tab" aria-selected="false">Visa</button>
-            <button type="button" class="search-filter-pill" data-filter="Hotels" role="tab" aria-selected="false">Hotels</button>
-            <button type="button" class="search-filter-pill" data-filter="Services" role="tab" aria-selected="false">Services</button>
-          </div>
-        </form>
-      </section>
+        <!-- Category Filter Pills Bar for Results Grid -->
+        <div class="search-page-filters" id="searchPageFilters" role="tablist" aria-label="Category Filters">
+          <button type="button" class="search-filter-pill is-active" data-filter="All" role="tab" aria-selected="true">All</button>
+          <button type="button" class="search-filter-pill" data-filter="Destinations" role="tab" aria-selected="false">Destinations</button>
+          <button type="button" class="search-filter-pill" data-filter="Packages" role="tab" aria-selected="false">Packages</button>
+          <button type="button" class="search-filter-pill" data-filter="Activities" role="tab" aria-selected="false">Activities</button>
+          <button type="button" class="search-filter-pill" data-filter="Transfers" role="tab" aria-selected="false">Transfers</button>
+          <button type="button" class="search-filter-pill" data-filter="Visa" role="tab" aria-selected="false">Visa</button>
+          <button type="button" class="search-filter-pill" data-filter="Hotels" role="tab" aria-selected="false">Hotels</button>
+          <button type="button" class="search-filter-pill" data-filter="Services" role="tab" aria-selected="false">Services</button>
+        </div>
+      </header>
 
       <!-- Stats / Summary Bar -->
       <div class="search-page-stats" id="searchPageStats" style="display: none;">
@@ -319,9 +323,8 @@
   <!-- Dedicated Search Page Controller -->
   <script>
     document.addEventListener("DOMContentLoaded", async function () {
-      const searchInput = document.getElementById("searchPageInput");
-      const searchForm = document.getElementById("searchPageForm");
       const searchHeading = document.getElementById("searchPageHeading");
+      const searchSubtitle = document.getElementById("searchPageSubtitle");
       const resultsGrid = document.getElementById("searchPageResultsGrid");
       const statsBar = document.getElementById("searchPageStats");
       const statsCount = document.getElementById("searchPageStatsCount");
@@ -331,17 +334,14 @@
       const filterPills = document.querySelectorAll("#searchPageFilters .search-filter-pill");
       const quickTags = document.querySelectorAll(".search-quick-tag");
 
-      let currentFilter = "All";
-
       // Read URL parameters
       const urlParams = new URLSearchParams(window.location.search);
-      const initialQuery = urlParams.get("q") || "";
-      const initialCat = urlParams.get("category") || "All";
+      let currentQuery = urlParams.get("q") || urlParams.get("search") || "";
+      let currentFilter = urlParams.get("category") || "All";
 
-      if (initialCat) {
-        currentFilter = initialCat;
+      if (currentFilter) {
         filterPills.forEach(p => {
-          if (p.getAttribute("data-filter") === initialCat) {
+          if (p.getAttribute("data-filter") === currentFilter) {
             p.classList.add("is-active");
             p.setAttribute("aria-selected", "true");
           } else {
@@ -351,13 +351,50 @@
         });
       }
 
-      if (initialQuery) {
-        searchInput.value = initialQuery;
-      }
-
       // Load search index
       if (window.TrippoventionSearch) {
         await window.TrippoventionSearch.loadIndex();
+      }
+
+      function getFeaturedItems(filter) {
+        const allData = window.__TRIPPOVENTION_SEARCH_DATA__ || window.TrippoventionSearchData || [];
+        if (!allData || allData.length === 0) return [];
+
+        if (filter && filter !== "All") {
+          return allData.filter(item => item.filters && item.filters.includes(filter)).slice(0, 30);
+        }
+
+        // Curated featured mix across destinations, popular packages, and visa hubs
+        const topDests = ["thailand", "vietnam", "uae", "dubai", "singapore", "japan", "switzerland", "indonesia", "kerala", "rajasthan", "europe"];
+        const featured = [];
+        const seenUrls = new Set();
+
+        for (const dest of topDests) {
+          for (const item of allData) {
+            if (item.filters && item.filters.includes("Packages") && (item.url || "").toLowerCase().includes(dest)) {
+              if (!seenUrls.has(item.url)) {
+                seenUrls.add(item.url);
+                featured.push(item);
+                break;
+              }
+            }
+          }
+        }
+
+        const visaTargets = ["vietnam", "singapore", "japan", "uae", "europe"];
+        for (const v of visaTargets) {
+          for (const item of allData) {
+            if ((item.url || "").startsWith("visa/" + v) && (item.url || "").endsWith("index.html")) {
+              if (!seenUrls.has(item.url)) {
+                seenUrls.add(item.url);
+                featured.push(item);
+                break;
+              }
+            }
+          }
+        }
+
+        return featured.length > 0 ? featured : allData.slice(0, 15);
       }
 
       function updateURL(q, cat) {
@@ -368,36 +405,69 @@
         window.history.replaceState({}, "", newUrl);
       }
 
-      function runSearch() {
-        const query = searchInput.value.trim();
+      function renderResults() {
+        const query = currentQuery.trim();
         updateURL(query, currentFilter);
 
-        if (!query) {
-          searchHeading.textContent = "Search Trippovention";
-          resultsGrid.innerHTML = "";
-          statsBar.style.display = "none";
-          noResultsBox.style.display = "none";
-          return;
+        // SEO Crawl Budget Control: noindex dynamic query searches, keep clean landing page indexed
+        const metaRobots = document.getElementById("metaRobots") || document.querySelector('meta[name="robots"]');
+        if (metaRobots) {
+          metaRobots.setAttribute("content", query ? "noindex, follow" : "index, follow");
         }
 
-        searchHeading.textContent = `Search results for "${query}"`;
+        let itemsToDisplay = [];
 
-        if (!window.TrippoventionSearch) return;
-        const results = window.TrippoventionSearch.search(query, currentFilter, 60);
+        if (!query) {
+          if (currentFilter === "All") {
+            searchHeading.textContent = "Explore Trippovention";
+            if (searchSubtitle) searchSubtitle.textContent = "Browse verified destinations, holiday packages, sightseeing activities, transfers & visa services";
+          } else {
+            searchHeading.textContent = `Explore ${currentFilter}`;
+            if (searchSubtitle) searchSubtitle.textContent = `Browse verified Trippovention ${currentFilter.toLowerCase()}`;
+          }
 
-        if (results.length > 0) {
-          noResultsBox.style.display = "none";
-          statsBar.style.display = "flex";
-          statsCount.textContent = `Showing ${results.length} results for "${query}"`;
-          statsCat.textContent = `Filter: ${currentFilter}`;
+          itemsToDisplay = getFeaturedItems(currentFilter);
 
-          resultsGrid.innerHTML = results.map(item => {
+          if (itemsToDisplay.length > 0) {
+            noResultsBox.style.display = "none";
+            statsBar.style.display = "flex";
+            statsCount.textContent = currentFilter === "All"
+              ? "Featured Destinations, Packages & Visa Services"
+              : `Showing top ${itemsToDisplay.length} in ${currentFilter}`;
+            statsCat.textContent = `Filter: ${currentFilter}`;
+          } else {
+            statsBar.style.display = "none";
+            noResultsBox.style.display = "block";
+            if (noResultsTitle) noResultsTitle.textContent = "No items in this category";
+          }
+        } else {
+          searchHeading.textContent = `Search results for "${query}"`;
+          if (searchSubtitle) searchSubtitle.textContent = `Showing verified Trippovention results matching "${query}"`;
+
+          if (window.TrippoventionSearch) {
+            itemsToDisplay = window.TrippoventionSearch.search(query, currentFilter, 60);
+          }
+
+          if (itemsToDisplay.length > 0) {
+            noResultsBox.style.display = "none";
+            statsBar.style.display = "flex";
+            statsCount.textContent = `Showing ${itemsToDisplay.length} results for "${query}"`;
+            statsCat.textContent = `Filter: ${currentFilter}`;
+          } else {
+            statsBar.style.display = "none";
+            if (noResultsTitle) noResultsTitle.textContent = `No results found for "${query}"`;
+            noResultsBox.style.display = "block";
+          }
+        }
+
+        if (itemsToDisplay.length > 0) {
+          resultsGrid.innerHTML = itemsToDisplay.map(item => {
             const dest = item.destination || (item.cities && item.cities[0]) || "";
             const activities = (item.activities && item.activities.length > 0)
               ? `<div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px;">
-                   ${item.activities.slice(0, 3).map(a => `<span style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-size: 11px;">${a}</span>`).join('')}
+                   ${item.activities.slice(0, 3).map(a => `<span style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-size: 11px;">${a}</span>`).join("")}
                  </div>`
-              : '';
+              : "";
 
             return `
               <div class="search-grid-card">
@@ -408,7 +478,7 @@
                   </span>
                 </div>
                 <div class="search-grid-body">
-                  ${dest ? `<div style="font-size: 12px; font-weight: 600; color: var(--orange); margin-bottom: 4px;">📍 ${dest}</div>` : ''}
+                  ${dest ? `<div style="font-size: 12px; font-weight: 600; color: var(--orange); margin-bottom: 4px;">📍 ${dest}</div>` : ""}
                   <h3 class="search-grid-title">${item.title}</h3>
                   <p class="search-grid-desc">${item.description}</p>
                   ${activities}
@@ -424,27 +494,27 @@
           }).join("");
         } else {
           resultsGrid.innerHTML = "";
-          statsBar.style.display = "none";
-          noResultsTitle.textContent = `No results found for "${query}"`;
-          noResultsBox.style.display = "block";
         }
       }
 
-      // Initial search if query in URL
-      if (initialQuery) {
-        runSearch();
-      }
+      // Initial render
+      renderResults();
 
-      // Search input typing & form submit
-      searchForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        runSearch();
-      });
-
-      let debounceTimer = null;
-      searchInput.addEventListener("input", function () {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(runSearch, 150);
+      // Handle browser back/forward buttons
+      window.addEventListener("popstate", function () {
+        const p = new URLSearchParams(window.location.search);
+        currentQuery = p.get("q") || p.get("search") || "";
+        currentFilter = p.get("category") || "All";
+        filterPills.forEach(pill => {
+          if (pill.getAttribute("data-filter") === currentFilter) {
+            pill.classList.add("is-active");
+            pill.setAttribute("aria-selected", "true");
+          } else {
+            pill.classList.remove("is-active");
+            pill.setAttribute("aria-selected", "false");
+          }
+        });
+        renderResults();
       });
 
       // Filter pills click
@@ -457,7 +527,7 @@
           pill.classList.add("is-active");
           pill.setAttribute("aria-selected", "true");
           currentFilter = pill.getAttribute("data-filter") || "All";
-          runSearch();
+          renderResults();
         });
       });
 
@@ -466,8 +536,11 @@
         tag.addEventListener("click", function () {
           const q = tag.getAttribute("data-query");
           if (q) {
-            searchInput.value = q;
-            runSearch();
+            currentQuery = q;
+            renderResults();
+            if (window.TrippoventionSearch) {
+              window.TrippoventionSearch.open(q);
+            }
           }
         });
       });

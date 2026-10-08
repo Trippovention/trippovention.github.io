@@ -77,13 +77,18 @@ Curated sightseeing tours and seamless airport transfers. Explore destinations w
 Best deals on flights with our extensive network of partners. Compare prices and find the perfect flights for your travel schedule. Features: Best prices, flexible options.
 
 ### M.I.C.E. (Meetings, Incentives, Conferences & Exhibitions)
-Professional event management for corporate meetings, incentive tours, conferences, and exhibitions. End-to-end planning, logistics, and seamless execution. Features: Corporate events, full service management.
+### Thailand Inbound Ground Operations
+Licensed DMC in Pattaya with local operations, recognized by Tourism Authority of Thailand (TAT) and Thai Travel Agents Association (TTAA). Providing private airport transfers, island speedboat charters, attraction ticketing, hotel contracting, and 24/7 on-ground guest assistance.
+
+### Site-Wide Search & Discovery Portal
+Instant client-side travel search engine covering 500+ holiday packages, 140+ visa destinations, sightseeing activities, and private airport transfers. Supports category filtering, keyboard navigation, and fuzzy matching.
 
 ---
 
 ## Core Pages
 
 - [Home](https://trippovention.com/index.html): Main landing page with featured destinations and packages
+- [Search Portal](https://trippovention.com/search.html): Instant site-wide search and category filtering across 500+ holiday packages, 140+ visa destinations, and transfers
 - [Destinations by Country](https://trippovention.com/destinations.html): Browse all tour packages organized by country
 - [Destinations by Theme](https://trippovention.com/destinations-themes.html): Adventure, honeymoon, spiritual, luxury, beach, and more
 - [Destinations by Traveler](https://trippovention.com/destinations-travelers.html): Families, couples, kids, seniors, friends & groups

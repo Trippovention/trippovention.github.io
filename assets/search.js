@@ -1,6 +1,7 @@
 /**
- * Trippovention Global Search System
- * Modern, accessible, typo-tolerant, instant search engine and UI
+ * Trippovention Native Header Search System
+ * Positioned natively inside the global header/navigation bar
+ * Opens an attached search dropdown/overlay directly below the header
  */
 
 (function () {
@@ -13,7 +14,7 @@
   // Configuration & Constants
   const SEARCH_INDEX_URL = 'assets/search-index.json';
   const DEBOUNCE_DELAY = 120;
-  const MAX_LIVE_RESULTS = 15;
+  const MAX_LIVE_RESULTS = 12;
   const RECENT_SEARCHES_KEY = 'trippovention_recent_searches';
   const MAX_RECENT_SEARCHES = 6;
 
@@ -52,6 +53,7 @@
   let selectedResultIndex = -1;
   let debounceTimer = null;
   let rootPrefix = null;
+  let isOpen = false;
 
   /**
    * Determine relative path prefix to site root
@@ -59,7 +61,6 @@
   function getRootPrefix() {
     if (rootPrefix !== null) return rootPrefix;
 
-    // Check script or stylesheet tags
     const script = document.querySelector('script[src*="app.js"], script[src*="search.js"]');
     if (script) {
       const src = script.getAttribute('src') || '';
@@ -214,9 +215,9 @@
           matrix[i][j] = matrix[i - 1][j - 1];
         } else {
           matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1, // substitution
-            matrix[i][j - 1] + 1,     // insertion
-            matrix[i - 1][j] + 1      // deletion
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
           );
         }
       }
@@ -229,7 +230,6 @@
    */
   function normalizeQuery(rawQuery) {
     let clean = rawQuery.toLowerCase().trim();
-    // Replace known typos
     for (const [typo, fixed] of Object.entries(TYPO_MAP)) {
       if (clean === typo || clean.includes(typo)) {
         clean = clean.replace(new RegExp('\\b' + typo + '\\b', 'g'), fixed);
@@ -279,7 +279,6 @@
       // 2. Exact destination match
       if (destLower === normalizedQ) {
         score += 1500;
-        // Massive boost for destination hub pages (e.g. packages/thailand/index.html when searching "thailand")
         if (item.url.endsWith('index.html') || item.url.includes('destinations')) {
           score += 1800;
         }
@@ -305,7 +304,6 @@
         const token = tokens[t];
         let tokenMatched = false;
 
-        // Stem variations (singular/plural)
         const stems = [token];
         if (token.endsWith('s') && token.length > 3) stems.push(token.slice(0, -1));
         if (token.endsWith('es') && token.length > 4) stems.push(token.slice(0, -2));
@@ -314,31 +312,22 @@
         for (let s = 0; s < stems.length; s++) {
           const stem = stems[s];
 
-          // Title match
           if (titleLower.includes(stem)) {
             score += 400;
             tokenMatched = true;
           }
-
-          // Destination match
           if (destLower.includes(stem)) {
             score += 350;
             tokenMatched = true;
           }
-
-          // Cities match
           if (cities.some(c => c.includes(stem))) {
             score += 300;
             tokenMatched = true;
           }
-
-          // Activities match
           if (activities.some(a => a.includes(stem))) {
             score += 280;
             tokenMatched = true;
           }
-
-          // Keywords match
           if (keywords.includes(stem)) {
             score += 220;
             tokenMatched = true;
@@ -346,22 +335,18 @@
             score += 140;
             tokenMatched = true;
           }
-
-          // Description match
           if (descLower.includes(stem)) {
             score += 80;
             tokenMatched = true;
           }
         }
 
-        // Fuzzy match for tokens >= 4 chars if no exact match
+        // Fuzzy match for tokens >= 4 chars
         if (!tokenMatched && token.length >= 4) {
-          // Check destination
           if (destLower && levenshtein(token, destLower) <= 1) {
             score += 450;
             tokenMatched = true;
           }
-          // Check cities
           for (let j = 0; j < cities.length; j++) {
             if (levenshtein(token, cities[j]) <= 1) {
               score += 380;
@@ -374,12 +359,12 @@
         if (tokenMatched) matchedTokens++;
       }
 
-      // Multi-word combination bonus (all tokens matched)
+      // Multi-word combination bonus
       if (tokens.length > 1 && matchedTokens === tokens.length) {
         score += 850;
       }
 
-      // Travel domain query boosts
+      // Domain query boosts
       if (tokens.includes('show') && (activities.some(a => a.includes('show') || a.includes('alcazar')) || titleLower.includes('show'))) {
         score += 650;
       }
@@ -423,7 +408,6 @@
 
     const topDestinations = ['Pattaya', 'Thailand', 'Bangkok', 'Phuket', 'Singapore', 'Vietnam', 'Japan', 'Bali', 'Dubai', 'India', 'Europe', 'Switzerland', 'Malaysia'];
 
-    // Find destination prefix match
     const matchingDest = topDestinations.find(d => d.toLowerCase().startsWith(norm) || d.toLowerCase().includes(norm));
 
     if (matchingDest) {
@@ -461,9 +445,6 @@
     return suggestions.slice(0, 5);
   }
 
-  /**
-   * Escape HTML to prevent injection
-   */
   function escapeHtml(str) {
     if (!str) return '';
     return str
@@ -474,16 +455,12 @@
       .replace(/'/g, '&#39;');
   }
 
-  /**
-   * Highlight matching terms in search results
-   */
   function highlightMatches(text, query) {
     if (!text || !query) return escapeHtml(text);
     const tokens = normalizeQuery(query).split(/\s+/).filter(t => t.length > 1);
     if (tokens.length === 0) return escapeHtml(text);
 
     let escaped = escapeHtml(text);
-    // Sort tokens by length descending
     tokens.sort((a, b) => b.length - a.length);
 
     tokens.forEach(tok => {
@@ -494,13 +471,9 @@
     return escaped;
   }
 
-  /**
-   * Analytics integration
-   */
   function trackSearch(term, category) {
     if (!term) return;
 
-    // Google Tag Manager / GA4
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'search', {
         search_term: term,
@@ -514,7 +487,6 @@
       });
     }
 
-    // Save recent searches locally
     try {
       let recent = JSON.parse(localStorage.getItem(RECENT_SEARCHES_KEY) || '[]');
       recent = recent.filter(r => r.toLowerCase() !== term.toLowerCase());
@@ -559,273 +531,447 @@
   }
 
   /**
-   * Build & Inject the Accessible Search Modal UI
+   * Mount Search Component Natively inside the Global Header
+   * Conceptually: [LOGO] [NAVIGATION LINKS] [SEARCH ICON / FIELD] [EXISTING HEADER ITEMS]
    */
-  function createSearchModalDOM() {
-    if (document.getElementById('siteSearchModalBackdrop')) return;
+  function mountHeaderSearch() {
+    const navRight = document.querySelector('.nav-right');
+    const navActions = document.querySelector('.nav-right .actions, .nav .actions');
+    if (!navRight || !navActions) return;
 
-    const modalHTML = `
-      <div class="search-modal-backdrop" id="siteSearchModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="siteSearchInput" aria-hidden="true">
-        <div class="search-modal-dialog" id="siteSearchModalDialog">
-          <!-- Header -->
-          <div class="search-modal-header">
-            <div class="search-input-wrapper">
-              <div class="search-input-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
+    if (document.getElementById('headerSearchWrap')) return;
+
+    // Create .header-search-wrap
+    const wrap = document.createElement('div');
+    wrap.className = 'header-search-wrap';
+    wrap.id = 'headerSearchWrap';
+
+    wrap.innerHTML = `
+      <!-- Resting: Compact search icon button in header -->
+      <button class="header-search-toggle" id="headerSearchToggle" type="button" aria-label="Search destinations, packages, visas" title="Search Trippovention (Press / or Ctrl+K)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- Desktop expanded in-header search field -->
+      <div class="header-search-bar" id="headerSearchBar" aria-hidden="false">
+        <div class="header-search-input-box">
+          <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            class="header-search-input"
+            id="headerSearchInput"
+            placeholder="Search destinations, activities, packages, visas & more..."
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search destinations, activities, packages, visas"
+          />
+        </div>
+        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Clear or close search">✕</button>
+      </div>
+    `;
+
+    // Insert into navRight immediately BEFORE .actions
+    // Resulting order: [BRAND LOGO] [MENU] [HEADER SEARCH] [ACTIONS: 📞, 💬, 🌙] [HAMBURGER: ☰]
+    navRight.insertBefore(wrap, navActions);
+
+    // Create the Dropdown Overlay anchored directly beneath the header
+    createDropdownOverlayDOM();
+
+    // Attach Header Toggle Events (for mobile)
+    const toggleBtn = document.getElementById('headerSearchToggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('mouseenter', () => loadSearchIndex());
+      toggleBtn.addEventListener('focus', () => loadSearchIndex());
+      toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isOpen) {
+          closeSearch();
+        } else {
+          openSearch();
+        }
+      });
+    }
+
+    const input = document.getElementById('headerSearchInput');
+
+    // Desktop Close/Clear Button
+    const closeBtn = document.getElementById('headerSearchClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (input && input.value) {
+          input.value = '';
+          syncSearchQuery('');
+        }
+        closeSearch();
+      });
+    }
+
+    // Mutual exclusion with hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        if (isOpen) closeSearch();
+      });
+    }
+
+    // Add mobile drawer actions (Call, WhatsApp, Theme) inside mobileMenu drawer
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu && !mobileMenu.querySelector('.mobile-drawer-actions')) {
+      const drawerActions = document.createElement('div');
+      drawerActions.className = 'mobile-drawer-actions';
+      drawerActions.innerHTML = `
+        <a href="tel:+918750888875" class="mobile-drawer-action-btn" title="Call Us">
+          📞 <span>Call Us</span>
+        </a>
+        <a href="https://wa.me/+918750888875" class="mobile-drawer-action-btn" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+          💬 <span>WhatsApp</span>
+        </a>
+        <button type="button" class="mobile-drawer-action-btn" id="mobileDrawerThemeToggle" title="Toggle Theme">
+          🌙 <span>Theme</span>
+        </button>
+      `;
+      mobileMenu.appendChild(drawerActions);
+
+      const drawerThemeBtn = drawerActions.querySelector('#mobileDrawerThemeToggle');
+      const mainThemeBtn = document.getElementById('themeToggle');
+      if (drawerThemeBtn && mainThemeBtn) {
+        drawerThemeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          mainThemeBtn.click();
+        });
+      }
+    }
+
+    if (input) {
+      input.addEventListener('focus', () => {
+        loadSearchIndex();
+        if (!isOpen) {
+          openSearch(input.value);
+        }
+      });
+
+      input.addEventListener('click', () => {
+        loadSearchIndex();
+        if (!isOpen) {
+          openSearch(input.value);
+        }
+      });
+
+      input.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          syncSearchQuery(e.target.value);
+        }, DEBOUNCE_DELAY);
+      });
+
+      input.addEventListener('keydown', handleKeyNavigation);
+    }
+
+    // Document click to close search dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!isOpen) return;
+      const overlay = document.getElementById('headerSearchDropdown');
+      const wrap = document.getElementById('headerSearchWrap');
+      if (overlay && !overlay.contains(e.target) && wrap && !wrap.contains(e.target)) {
+        closeSearch();
+      }
+    });
+  }
+
+  /**
+   * Create the Dropdown Overlay anchored directly below the navbar (at top: 64px)
+   */
+  function createDropdownOverlayDOM() {
+    if (document.getElementById('headerSearchDropdownOverlay')) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'header-search-dropdown-overlay';
+    overlay.id = 'headerSearchDropdownOverlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    overlay.innerHTML = `
+      <div class="header-search-backdrop" id="headerSearchBackdrop"></div>
+      <div class="header-search-dropdown" id="headerSearchDropdown" role="dialog" aria-modal="true" aria-label="Search Trippovention">
+        <!-- Mobile Search Field (only shown on mobile screens) -->
+        <div class="header-search-mobile-bar" id="headerSearchMobileBar">
+          <div class="header-search-input-box">
+            <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="search"
+              class="header-search-input"
+              id="headerSearchMobileInput"
+              placeholder="Search destinations, activities, packages & more..."
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Search destinations, activities, packages, visas"
+            />
+            <button type="button" class="header-search-clear" id="headerSearchMobileClear" aria-label="Clear search">✕</button>
+          </div>
+          <button type="button" class="header-search-mobile-close" id="headerSearchMobileClose" aria-label="Close search">✕</button>
+        </div>
+
+        <!-- Category Filter Pills Bar -->
+        <div class="header-search-filters" id="headerSearchFilters" role="tablist" aria-label="Category Filters">
+          <button type="button" class="search-filter-pill is-active" data-filter="All" role="tab" aria-selected="true">All</button>
+          <button type="button" class="search-filter-pill" data-filter="Destinations" role="tab" aria-selected="false">Destinations</button>
+          <button type="button" class="search-filter-pill" data-filter="Packages" role="tab" aria-selected="false">Packages</button>
+          <button type="button" class="search-filter-pill" data-filter="Activities" role="tab" aria-selected="false">Activities</button>
+          <button type="button" class="search-filter-pill" data-filter="Transfers" role="tab" aria-selected="false">Transfers</button>
+          <button type="button" class="search-filter-pill" data-filter="Visa" role="tab" aria-selected="false">Visa</button>
+          <button type="button" class="search-filter-pill" data-filter="Hotels" role="tab" aria-selected="false">Hotels</button>
+          <button type="button" class="search-filter-pill" data-filter="Services" role="tab" aria-selected="false">Services</button>
+        </div>
+
+        <!-- Autocomplete Suggestions Bar -->
+        <div class="header-search-chips" id="headerSearchChips" style="display: none;"></div>
+
+        <!-- Dropdown Body -->
+        <div class="header-search-body" id="headerSearchBody">
+          <!-- Empty State (Popular Destinations & Searches) -->
+          <div class="header-search-empty" id="headerSearchEmpty">
+            <div class="search-suggestions-section" id="headerSearchRecentSection" style="display: none;">
+              <div class="search-suggestions-title">
+                <span>🕒 Recent Searches</span>
               </div>
-              <input
-                type="search"
-                class="search-input-field"
-                id="siteSearchInput"
-                placeholder="Search destinations, activities, packages, visas & more..."
-                autocomplete="off"
-                spellcheck="false"
-                aria-autocomplete="list"
-                aria-controls="searchResultsList"
-                aria-expanded="false"
-              />
-              <button type="button" class="search-input-clear-btn" id="siteSearchClearBtn" aria-label="Clear search input">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-              <button type="button" class="search-modal-close-btn" id="siteSearchCloseBtn" aria-label="Close search (Esc)">
-                ESC
-              </button>
+              <div class="search-tags-grid" id="headerSearchRecentGrid"></div>
+            </div>
+
+            <div class="search-suggestions-section">
+              <div class="search-suggestions-title">
+                <span>🌍 Popular Destinations</span>
+              </div>
+              <div class="search-tags-grid">
+                <button type="button" class="search-quick-tag" data-query="Thailand">🇹🇭 Thailand</button>
+                <button type="button" class="search-quick-tag" data-query="India">🇮🇳 India</button>
+                <button type="button" class="search-quick-tag" data-query="Vietnam">🇻🇳 Vietnam</button>
+                <button type="button" class="search-quick-tag" data-query="Singapore">🇸🇬 Singapore</button>
+                <button type="button" class="search-quick-tag" data-query="Malaysia">🇲🇾 Malaysia</button>
+                <button type="button" class="search-quick-tag" data-query="Bali">🇮🇩 Bali</button>
+                <button type="button" class="search-quick-tag" data-query="Japan">🇯🇵 Japan</button>
+                <button type="button" class="search-quick-tag" data-query="Dubai">🇦🇪 Dubai</button>
+                <button type="button" class="search-quick-tag" data-query="Europe">🇪🇺 Europe</button>
+              </div>
+            </div>
+
+            <div class="search-suggestions-section">
+              <div class="search-suggestions-title">
+                <span>🔥 Popular Searches</span>
+              </div>
+              <div class="search-tags-grid">
+                <button type="button" class="search-quick-tag" data-query="Holiday Packages">✈️ Holiday Packages</button>
+                <button type="button" class="search-quick-tag" data-query="Thailand Activities">🌴 Thailand Activities</button>
+                <button type="button" class="search-quick-tag" data-query="Visa Services">🛂 Visa Services</button>
+                <button type="button" class="search-quick-tag" data-query="Airport Transfers">🚐 Airport Transfers</button>
+                <button type="button" class="search-quick-tag" data-query="Cruises">🚢 Cruises</button>
+                <button type="button" class="search-quick-tag" data-query="Pattaya Sightseeing">🏖️ Pattaya Sightseeing</button>
+                <button type="button" class="search-quick-tag" data-query="Schengen Visa">🇪🇺 Schengen Visa</button>
+              </div>
             </div>
           </div>
 
-          <!-- Category Filters Bar -->
-          <div class="search-filters-bar" role="tablist" aria-label="Search category filters">
-            <button type="button" class="search-filter-pill is-active" data-filter="All" role="tab" aria-selected="true">All</button>
-            <button type="button" class="search-filter-pill" data-filter="Destinations" role="tab" aria-selected="false">Destinations</button>
-            <button type="button" class="search-filter-pill" data-filter="Packages" role="tab" aria-selected="false">Packages</button>
-            <button type="button" class="search-filter-pill" data-filter="Activities" role="tab" aria-selected="false">Activities</button>
-            <button type="button" class="search-filter-pill" data-filter="Transfers" role="tab" aria-selected="false">Transfers</button>
-            <button type="button" class="search-filter-pill" data-filter="Visa" role="tab" aria-selected="false">Visa</button>
-            <button type="button" class="search-filter-pill" data-filter="Hotels" role="tab" aria-selected="false">Hotels</button>
-            <button type="button" class="search-filter-pill" data-filter="Services" role="tab" aria-selected="false">Services</button>
-          </div>
+          <!-- Live Results List -->
+          <div class="header-search-results" id="headerSearchResults" role="listbox" style="display: none;"></div>
 
-          <!-- Dynamic Autocomplete Suggestions Bar -->
-          <div class="search-suggestions-chips" id="searchSuggestionChips" style="display: none;"></div>
-
-          <!-- Modal Body -->
-          <div class="search-modal-body" id="siteSearchModalBody">
-            <!-- Default / Empty State -->
-            <div class="search-empty-state" id="searchEmptyState">
-              <!-- Recent Searches Section (dynamic) -->
-              <div class="search-suggestions-section" id="searchRecentSection" style="display: none;">
-                <div class="search-suggestions-title">
-                  <span>🕒 Recent Searches</span>
-                </div>
-                <div class="search-tags-grid" id="searchRecentGrid"></div>
-              </div>
-
-              <!-- Popular Destinations -->
-              <div class="search-suggestions-section">
-                <div class="search-suggestions-title">
-                  <span>🌍 Popular Destinations</span>
-                </div>
-                <div class="search-tags-grid">
-                  <button type="button" class="search-quick-tag" data-query="Thailand">🇹🇭 Thailand</button>
-                  <button type="button" class="search-quick-tag" data-query="India">🇮🇳 India</button>
-                  <button type="button" class="search-quick-tag" data-query="Vietnam">🇻🇳 Vietnam</button>
-                  <button type="button" class="search-quick-tag" data-query="Singapore">🇸🇬 Singapore</button>
-                  <button type="button" class="search-quick-tag" data-query="Malaysia">🇲🇾 Malaysia</button>
-                  <button type="button" class="search-quick-tag" data-query="Bali">🇮🇩 Bali</button>
-                  <button type="button" class="search-quick-tag" data-query="Japan">🇯🇵 Japan</button>
-                  <button type="button" class="search-quick-tag" data-query="Dubai">🇦🇪 Dubai</button>
-                  <button type="button" class="search-quick-tag" data-query="Europe">🇪🇺 Europe</button>
-                </div>
-              </div>
-
-              <!-- Popular Searches -->
-              <div class="search-suggestions-section">
-                <div class="search-suggestions-title">
-                  <span>🔥 Popular Searches</span>
-                </div>
-                <div class="search-tags-grid">
-                  <button type="button" class="search-quick-tag" data-query="Holiday Packages">✈️ Holiday Packages</button>
-                  <button type="button" class="search-quick-tag" data-query="Thailand Activities">🌴 Thailand Activities</button>
-                  <button type="button" class="search-quick-tag" data-query="Visa Services">🛂 Visa Services</button>
-                  <button type="button" class="search-quick-tag" data-query="Airport Transfers">🚐 Airport Transfers</button>
-                  <button type="button" class="search-quick-tag" data-query="Cruises">🚢 Cruises</button>
-                  <button type="button" class="search-quick-tag" data-query="Pattaya Sightseeing">🏖️ Pattaya Sightseeing</button>
-                  <button type="button" class="search-quick-tag" data-query="Schengen Visa">🇪🇺 Schengen Visa</button>
-                </div>
-              </div>
+          <!-- No Results State -->
+          <div class="header-search-no-results" id="headerSearchNoResults" style="display: none;">
+            <div class="search-no-results-icon">🔍</div>
+            <div class="search-no-results-title" id="headerSearchNoResultsTitle">No results found</div>
+            <div class="search-no-results-sub">
+              Try searching for destinations, activities, packages, or visa services.
             </div>
-
-            <!-- Live Results Container -->
-            <div class="search-results-list" id="searchResultsList" role="listbox" style="display: none;"></div>
-
-            <!-- No Results Container -->
-            <div class="search-no-results" id="searchNoResultsState" style="display: none;">
-              <div class="search-no-results-icon">🔍</div>
-              <div class="search-no-results-title" id="searchNoResultsTitle">No results found</div>
-              <div class="search-no-results-sub">
-                Try searching for destinations, activities, packages, or visa services.
+            <div class="search-suggestions-section">
+              <div class="search-suggestions-title" style="justify-content: center;">
+                <span>Explore Existing Destinations:</span>
               </div>
-              <div class="search-suggestions-section">
-                <div class="search-suggestions-title">
-                  <span>Explore Existing Destinations:</span>
-                </div>
-                <div class="search-tags-grid" style="justify-content: center;">
-                  <button type="button" class="search-quick-tag" data-query="Thailand">Thailand</button>
-                  <button type="button" class="search-quick-tag" data-query="Singapore">Singapore</button>
-                  <button type="button" class="search-quick-tag" data-query="Vietnam">Vietnam</button>
-                  <button type="button" class="search-quick-tag" data-query="Japan">Japan</button>
-                  <button type="button" class="search-quick-tag" data-query="India">India</button>
-                  <button type="button" class="search-quick-tag" data-query="Europe">Europe</button>
-                  <button type="button" class="search-quick-tag" data-query="Visa">Visa Services</button>
-                </div>
+              <div class="search-tags-grid" style="justify-content: center;">
+                <button type="button" class="search-quick-tag" data-query="Thailand">Thailand</button>
+                <button type="button" class="search-quick-tag" data-query="Singapore">Singapore</button>
+                <button type="button" class="search-quick-tag" data-query="Vietnam">Vietnam</button>
+                <button type="button" class="search-quick-tag" data-query="Japan">Japan</button>
+                <button type="button" class="search-quick-tag" data-query="India">India</button>
+                <button type="button" class="search-quick-tag" data-query="Visa">Visa Services</button>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Footer -->
-          <div class="search-modal-footer">
-            <div class="search-footer-shortcuts">
-              <span class="search-footer-shortcut-item">
-                <kbd class="search-footer-kbd">↑</kbd> <kbd class="search-footer-kbd">↓</kbd> navigate
-              </span>
-              <span class="search-footer-shortcut-item">
-                <kbd class="search-footer-kbd">↵</kbd> select or full results
-              </span>
-              <span class="search-footer-shortcut-item">
-                <kbd class="search-footer-kbd">esc</kbd> close
-              </span>
-            </div>
-            <a href="#" class="search-view-all-link" id="searchViewAllLink" style="display: none;">
-              View all results on search page →
-            </a>
+        <!-- Dropdown Footer -->
+        <div class="header-search-footer">
+          <div class="search-footer-shortcuts">
+            <span><kbd class="search-footer-kbd">↑</kbd> <kbd class="search-footer-kbd">↓</kbd> navigate</span>
+            <span><kbd class="search-footer-kbd">↵</kbd> select or full results</span>
+            <span><kbd class="search-footer-kbd">esc</kbd> close</span>
           </div>
+          <a href="#" class="search-view-all-link" id="headerSearchViewAllLink" style="display: none;">
+            View all results on search page →
+          </a>
         </div>
       </div>
     `;
 
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    attachModalEvents();
-  }
+    document.body.appendChild(overlay);
 
-  /**
-   * Inject Header Search Trigger Button into existing nav
-   */
-  function injectNavTriggers() {
-    const navActions = document.querySelector('.nav-right .actions, .nav .actions');
-    if (!navActions) return;
+    // Attach Dropdown Events
+    const backdrop = document.getElementById('headerSearchBackdrop');
+    backdrop.addEventListener('click', closeSearch);
 
-    // Check if trigger button already exists
-    if (!document.getElementById('siteSearchTrigger')) {
-      const triggerBtn = document.createElement('button');
-      triggerBtn.className = 'icon search-trigger-btn';
-      triggerBtn.id = 'siteSearchTrigger';
-      triggerBtn.type = 'button';
-      triggerBtn.setAttribute('aria-label', 'Search Trippovention');
-      triggerBtn.setAttribute('title', 'Search destinations, packages, visas (Ctrl+K)');
-      triggerBtn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      `;
+    const mobileClose = document.getElementById('headerSearchMobileClose');
+    if (mobileClose) {
+      mobileClose.addEventListener('click', closeSearch);
+    }
 
-      // Insert as first action icon in header
-      navActions.insertBefore(triggerBtn, navActions.firstChild);
+    const mobileInput = document.getElementById('headerSearchMobileInput');
+    const mobileClear = document.getElementById('headerSearchMobileClear');
 
-      // Pre-fetch search index on hover/focus
-      triggerBtn.addEventListener('mouseenter', () => loadSearchIndex());
-      triggerBtn.addEventListener('focus', () => loadSearchIndex());
-      triggerBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openSearchModal();
+    if (mobileClear && mobileInput) {
+      mobileClear.addEventListener('click', () => {
+        mobileInput.value = '';
+        mobileInput.focus();
+        syncSearchQuery('');
       });
     }
 
-    // Desktop Search Pill Trigger
-    const navRight = document.querySelector('.nav-right');
-    if (navRight && !document.getElementById('navSearchPill')) {
-      const pillBtn = document.createElement('button');
-      pillBtn.className = 'nav-search-pill';
-      pillBtn.id = 'navSearchPill';
-      pillBtn.type = 'button';
-      pillBtn.setAttribute('aria-label', 'Search Trippovention');
-      pillBtn.setAttribute('title', 'Quick Search (Press Ctrl+K)');
-      pillBtn.innerHTML = `
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <span class="nav-search-pill-text">Search destinations, activities, packages, visas...</span>
-        <kbd class="nav-search-kbd">⌘K</kbd>
-      `;
-
-      // Place before .actions in navRight
-      navRight.insertBefore(pillBtn, navActions);
-
-      pillBtn.addEventListener('mouseenter', () => loadSearchIndex());
-      pillBtn.addEventListener('focus', () => loadSearchIndex());
-      pillBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openSearchModal();
+    if (mobileInput) {
+      mobileInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          syncSearchQuery(e.target.value);
+        }, DEBOUNCE_DELAY);
       });
+      mobileInput.addEventListener('keydown', handleKeyNavigation);
     }
+
+    // Filter pills
+    const filterPills = overlay.querySelectorAll('.search-filter-pill');
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('is-active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('is-active');
+        pill.setAttribute('aria-selected', 'true');
+        activeFilter = pill.getAttribute('data-filter') || 'All';
+
+        const activeInput = getActiveSearchInput();
+        if (activeInput && activeInput.value.trim()) {
+          syncSearchQuery(activeInput.value);
+        }
+      });
+    });
+
+    // Quick tag buttons
+    const quickTags = overlay.querySelectorAll('.search-quick-tag');
+    quickTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const query = tag.getAttribute('data-query');
+        if (query) {
+          const activeInput = getActiveSearchInput();
+          if (activeInput) activeInput.value = query;
+          syncSearchQuery(query);
+        }
+      });
+    });
+  }
+
+  function getActiveSearchInput() {
+    const desktopInput = document.getElementById('headerSearchInput');
+    const mobileInput = document.getElementById('headerSearchMobileInput');
+    if (window.innerWidth >= 901 && desktopInput) {
+      return desktopInput;
+    }
+    return mobileInput || desktopInput;
   }
 
   /**
-   * Modal Open / Close Logic
+   * Open Search
    */
-  function openSearchModal(initialQuery = '') {
-    const backdrop = document.getElementById('siteSearchModalBackdrop');
-    if (!backdrop) return;
+  async function openSearch(initialQuery = '') {
+    isOpen = true;
+
+    // Close mobile menu if currently open
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+      mobileMenu.classList.remove('active');
+      if (hamburger) hamburger.classList.remove('active');
+    }
+
+    const wrap = document.getElementById('headerSearchWrap');
+    const overlay = document.getElementById('headerSearchDropdownOverlay');
+
+    if (wrap) wrap.classList.add('is-expanded');
+    if (overlay) {
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
 
     // Load search index immediately
     loadSearchIndex();
 
-    backdrop.classList.add('is-open');
-    backdrop.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    // Render recent searches if available
     renderRecentSearches();
 
-    const input = document.getElementById('siteSearchInput');
-    if (input) {
-      if (initialQuery) {
-        input.value = initialQuery;
-        triggerSearch(initialQuery);
-      }
-      setTimeout(() => {
-        input.focus();
-        input.select();
-      }, 50);
+    const desktopInput = document.getElementById('headerSearchInput');
+    const mobileInput = document.getElementById('headerSearchMobileInput');
+
+    if (initialQuery) {
+      if (desktopInput) desktopInput.value = initialQuery;
+      if (mobileInput) mobileInput.value = initialQuery;
+      syncSearchQuery(initialQuery);
+    } else {
+      const activeInput = getActiveSearchInput();
+      syncSearchQuery(activeInput ? activeInput.value : '');
     }
+
+    setTimeout(() => {
+      const activeInput = getActiveSearchInput();
+      if (activeInput && document.activeElement !== activeInput) {
+        activeInput.focus();
+        if (initialQuery) activeInput.select();
+      }
+    }, 50);
   }
 
-  function closeSearchModal() {
-    const backdrop = document.getElementById('siteSearchModalBackdrop');
-    if (!backdrop) return;
+  /**
+   * Close Search
+   */
+  function closeSearch() {
+    isOpen = false;
+    const wrap = document.getElementById('headerSearchWrap');
+    const overlay = document.getElementById('headerSearchDropdownOverlay');
 
-    backdrop.classList.remove('is-open');
-    backdrop.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    if (wrap) wrap.classList.remove('is-expanded');
+    if (overlay) {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
 
-    // Restore focus to trigger
-    const trigger = document.getElementById('siteSearchTrigger') || document.getElementById('navSearchPill');
-    if (trigger) trigger.focus();
+    const desktopInput = document.getElementById('headerSearchInput');
+    if (desktopInput && window.innerWidth >= 901) {
+      desktopInput.blur();
+    } else {
+      const toggleBtn = document.getElementById('headerSearchToggle');
+      if (toggleBtn) toggleBtn.focus();
+    }
   }
 
   /**
    * Render Recent Searches
    */
   function renderRecentSearches() {
-    const recentSec = document.getElementById('searchRecentSection');
-    const recentGrid = document.getElementById('searchRecentGrid');
+    const recentSec = document.getElementById('headerSearchRecentSection');
+    const recentGrid = document.getElementById('headerSearchRecentGrid');
     if (!recentSec || !recentGrid) return;
 
     try {
@@ -839,9 +985,9 @@
         recentGrid.querySelectorAll('.search-quick-tag').forEach(tag => {
           tag.addEventListener('click', () => {
             const query = tag.getAttribute('data-query');
-            const input = document.getElementById('siteSearchInput');
-            if (input) input.value = query;
-            triggerSearch(query);
+            const activeInput = getActiveSearchInput();
+            if (activeInput) activeInput.value = query;
+            syncSearchQuery(query);
           });
         });
       } else {
@@ -853,97 +999,101 @@
   }
 
   /**
-   * Trigger Search Execution
+   * Sync and execute search from either desktop or mobile input
    */
-  async function triggerSearch(query) {
-    const clearBtn = document.getElementById('siteSearchClearBtn');
-    const emptyState = document.getElementById('searchEmptyState');
-    const resultsList = document.getElementById('searchResultsList');
-    const noResultsState = document.getElementById('searchNoResultsState');
-    const suggestionsChips = document.getElementById('searchSuggestionChips');
-    const viewAllLink = document.getElementById('searchViewAllLink');
-    const input = document.getElementById('siteSearchInput');
+  async function syncSearchQuery(query) {
+    const desktopInput = document.getElementById('headerSearchInput');
+    const mobileInput = document.getElementById('headerSearchMobileInput');
+    const desktopClear = document.getElementById('headerSearchClear');
+    const mobileClear = document.getElementById('headerSearchMobileClear');
+
+    const emptyState = document.getElementById('headerSearchEmpty');
+    const resultsList = document.getElementById('headerSearchResults');
+    const noResults = document.getElementById('headerSearchNoResults');
+    const chipsBar = document.getElementById('headerSearchChips');
+    const viewAllLink = document.getElementById('headerSearchViewAllLink');
+
+    // Sync input values
+    if (desktopInput && desktopInput.value !== query) desktopInput.value = query;
+    if (mobileInput && mobileInput.value !== query) mobileInput.value = query;
 
     const trimmed = (query || '').trim();
 
-    if (clearBtn) {
-      trimmed.length > 0 ? clearBtn.classList.add('is-visible') : clearBtn.classList.remove('is-visible');
+    // Toggle clear buttons
+    if (desktopClear) {
+      trimmed.length > 0 ? desktopClear.classList.add('is-visible') : desktopClear.classList.remove('is-visible');
+    }
+    if (mobileClear) {
+      trimmed.length > 0 ? mobileClear.classList.add('is-visible') : mobileClear.classList.remove('is-visible');
     }
 
     if (!trimmed) {
       if (emptyState) emptyState.style.display = 'block';
       if (resultsList) resultsList.style.display = 'none';
-      if (noResultsState) noResultsState.style.display = 'none';
-      if (suggestionsChips) suggestionsChips.style.display = 'none';
+      if (noResults) noResults.style.display = 'none';
+      if (chipsBar) chipsBar.style.display = 'none';
       if (viewAllLink) viewAllLink.style.display = 'none';
-      if (input) input.setAttribute('aria-expanded', 'false');
       currentResults = [];
       selectedResultIndex = -1;
       return;
     }
 
-    // Ensure search index loaded
     await loadSearchIndex();
 
-    // Generate autocomplete chips
-    const autocompletes = generateAutocompleteSuggestions(trimmed);
-    if (suggestionsChips) {
-      if (autocompletes.length > 0) {
-        suggestionsChips.innerHTML = `
+    // Autocomplete chips
+    const suggestions = generateAutocompleteSuggestions(trimmed);
+    if (chipsBar) {
+      if (suggestions.length > 0) {
+        chipsBar.innerHTML = `
           <span class="search-chip-label">Suggestions:</span>
-          ${autocompletes.map(item => `<button type="button" class="search-suggestion-chip" data-query="${escapeHtml(item)}">${escapeHtml(item)}</button>`).join('')}
+          ${suggestions.map(s => `<button type="button" class="search-suggestion-chip" data-query="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}
         `;
-        suggestionsChips.style.display = 'flex';
+        chipsBar.style.display = 'flex';
 
-        suggestionsChips.querySelectorAll('.search-suggestion-chip').forEach(chip => {
+        chipsBar.querySelectorAll('.search-suggestion-chip').forEach(chip => {
           chip.addEventListener('click', () => {
             const chipQuery = chip.getAttribute('data-query');
-            if (input) input.value = chipQuery;
-            triggerSearch(chipQuery);
+            const activeInput = getActiveSearchInput();
+            if (activeInput) activeInput.value = chipQuery;
+            syncSearchQuery(chipQuery);
           });
         });
       } else {
-        suggestionsChips.style.display = 'none';
+        chipsBar.style.display = 'none';
       }
     }
 
-    // Perform Search
     currentResults = executeSearch(trimmed, activeFilter, MAX_LIVE_RESULTS);
     selectedResultIndex = -1;
 
-    // Update View All link to search page
+    // View all link
     if (viewAllLink) {
-      const searchPageUrl = resolveUrl(`search.html?q=${encodeURIComponent(trimmed)}&category=${encodeURIComponent(activeFilter)}`);
-      viewAllLink.href = searchPageUrl;
+      const pageUrl = resolveUrl(`search.html?q=${encodeURIComponent(trimmed)}&category=${encodeURIComponent(activeFilter)}`);
+      viewAllLink.href = pageUrl;
       viewAllLink.style.display = 'inline-flex';
     }
 
     if (currentResults.length > 0) {
       if (emptyState) emptyState.style.display = 'none';
-      if (noResultsState) noResultsState.style.display = 'none';
+      if (noResults) noResults.style.display = 'none';
       if (resultsList) {
         resultsList.innerHTML = renderResultCards(currentResults, trimmed);
         resultsList.style.display = 'flex';
         attachResultCardEvents(resultsList);
       }
-      if (input) input.setAttribute('aria-expanded', 'true');
       trackSearch(trimmed, activeFilter);
     } else {
       if (emptyState) emptyState.style.display = 'none';
       if (resultsList) resultsList.style.display = 'none';
-      if (noResultsState) {
-        const titleEl = document.getElementById('searchNoResultsTitle');
+      if (noResults) {
+        const titleEl = document.getElementById('headerSearchNoResultsTitle');
         if (titleEl) titleEl.textContent = `No results found for "${trimmed}"`;
-        noResultsState.style.display = 'block';
+        noResults.style.display = 'block';
       }
-      if (input) input.setAttribute('aria-expanded', 'false');
       trackNoResults(trimmed);
     }
   }
 
-  /**
-   * Render Result Cards HTML
-   */
   function renderResultCards(results, query) {
     return results.map((item, index) => {
       const itemUrl = resolveUrl(item.url);
@@ -981,9 +1131,6 @@
     }).join('');
   }
 
-  /**
-   * Attach Events to Result Cards
-   */
   function attachResultCardEvents(container) {
     const cards = container.querySelectorAll('.search-result-card');
     cards.forEach(card => {
@@ -1002,121 +1149,23 @@
     });
   }
 
-  /**
-   * Attach Events to Search Modal Components
-   */
-  function attachModalEvents() {
-    const backdrop = document.getElementById('siteSearchModalBackdrop');
-    const dialog = document.getElementById('siteSearchModalDialog');
-    const input = document.getElementById('siteSearchInput');
-    const clearBtn = document.getElementById('siteSearchClearBtn');
-    const closeBtn = document.getElementById('siteSearchCloseBtn');
-    const filterPills = document.querySelectorAll('.search-filter-pill');
-    const quickTags = document.querySelectorAll('.search-quick-tag');
-
-    // Close on backdrop click (outside dialog)
-    if (backdrop) {
-      backdrop.addEventListener('click', (e) => {
-        if (!dialog.contains(e.target)) {
-          closeSearchModal();
-        }
-      });
+  function handleKeyNavigation(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeSearch();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      navigateResults(1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      navigateResults(-1);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const activeInput = getActiveSearchInput();
+      handleEnterPress(activeInput ? activeInput.value : '');
     }
-
-    // Close on close button
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeSearchModal);
-    }
-
-    // Clear input
-    if (clearBtn && input) {
-      clearBtn.addEventListener('click', () => {
-        input.value = '';
-        input.focus();
-        triggerSearch('');
-      });
-    }
-
-    // Filter pills
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        filterPills.forEach(p => {
-          p.classList.remove('is-active');
-          p.setAttribute('aria-selected', 'false');
-        });
-        pill.classList.add('is-active');
-        pill.setAttribute('aria-selected', 'true');
-        activeFilter = pill.getAttribute('data-filter') || 'All';
-
-        if (input && input.value.trim()) {
-          triggerSearch(input.value);
-        }
-      });
-    });
-
-    // Quick tags (destinations / popular searches)
-    quickTags.forEach(tag => {
-      tag.addEventListener('click', () => {
-        const query = tag.getAttribute('data-query');
-        if (input && query) {
-          input.value = query;
-          triggerSearch(query);
-        }
-      });
-    });
-
-    // Input live typing (debounced)
-    if (input) {
-      input.addEventListener('input', (e) => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          triggerSearch(e.target.value);
-        }, DEBOUNCE_DELAY);
-      });
-
-      // Keyboard navigation
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          e.preventDefault();
-          closeSearchModal();
-        } else if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          navigateResults(1);
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          navigateResults(-1);
-        } else if (e.key === 'Enter') {
-          e.preventDefault();
-          handleEnterPress(input.value);
-        }
-      });
-    }
-
-    // Global keyboard shortcut (Ctrl+K, Cmd+K, '/')
-    document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        const bd = document.getElementById('siteSearchModalBackdrop');
-        if (bd && bd.classList.contains('is-open')) {
-          closeSearchModal();
-        } else {
-          openSearchModal();
-        }
-      } else if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        openSearchModal();
-      } else if (e.key === 'Escape') {
-        const bd = document.getElementById('siteSearchModalBackdrop');
-        if (bd && bd.classList.contains('is-open')) {
-          closeSearchModal();
-        }
-      }
-    });
   }
 
-  /**
-   * Handle Arrow Up/Down Navigation
-   */
   function navigateResults(direction) {
     const cards = document.querySelectorAll('.search-result-card');
     if (cards.length === 0) return;
@@ -1137,13 +1186,7 @@
     });
   }
 
-  /**
-   * Handle Enter Key
-   */
   function handleEnterPress(query) {
-    const cards = document.querySelectorAll('.search-result-card');
-
-    // If an item is selected via arrows, open that item
     if (selectedResultIndex >= 0 && selectedResultIndex < currentResults.length) {
       const selectedItem = currentResults[selectedResultIndex];
       trackResultClick(selectedItem);
@@ -1151,7 +1194,6 @@
       return;
     }
 
-    // Otherwise, navigate to the dedicated search results page!
     if (query && query.trim()) {
       trackSearch(query.trim(), activeFilter);
       const searchUrl = resolveUrl(`search.html?q=${encodeURIComponent(query.trim())}&category=${encodeURIComponent(activeFilter)}`);
@@ -1159,21 +1201,38 @@
     }
   }
 
-  /**
-   * Public API
-   */
+  // Global Keyboard Shortcuts (Ctrl+K, Cmd+K, '/')
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      isOpen ? closeSearch() : openSearch();
+    } else if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      openSearch();
+    } else if (e.key === 'Escape' && isOpen) {
+      closeSearch();
+    }
+  });
+
+  // Public API
   window.TrippoventionSearch = {
-    open: openSearchModal,
-    close: closeSearchModal,
+    open: openSearch,
+    close: closeSearch,
     search: executeSearch,
     loadIndex: loadSearchIndex,
     resolveUrl: resolveUrl
   };
 
-  // Initialize on DOMContentLoaded or immediately if DOM is ready
   function init() {
-    createSearchModalDOM();
-    injectNavTriggers();
+    mountHeaderSearch();
+
+    // Auto-open search if URL has ?search= on a non-search.html page
+    if (!window.location.pathname.endsWith('search.html')) {
+      const searchParam = new URLSearchParams(window.location.search).get('search');
+      if (searchParam !== null) {
+        setTimeout(() => openSearch(searchParam), 150);
+      }
+    }
   }
 
   if (document.readyState === 'loading') {
