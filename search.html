@@ -142,44 +142,23 @@
     </nav>
 
     <div class="search-page-container">
-      <!-- Search Banner & Input -->
-      <section class="search-page-header">
-        <h1 id="searchPageHeading">Search Trippovention</h1>
-        <p class="search-page-subtitle">Find destinations, holiday packages, sightseeing activities, transfers & visa services</p>
+      <!-- Search Page Title Header (All searches are executed via the Global Header Search) -->
+      <header class="search-page-heading-wrap">
+        <h1 id="searchPageHeading">Search Results</h1>
+        <p class="search-page-subtitle" id="searchPageSubtitle">Browse verified destinations, holiday packages, sightseeing activities, transfers & visa services</p>
 
-        <form id="searchPageForm" class="search-page-input-box" role="search" onsubmit="return false;">
-          <div class="search-page-input-wrapper">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--blue); margin-right: 4px;">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              type="search"
-              id="searchPageInput"
-              name="q"
-              placeholder="Search destinations, activities, packages, visas & more..."
-              autocomplete="off"
-              spellcheck="false"
-              aria-label="Search destinations, activities, packages, visas"
-            />
-            <button type="submit" class="search-btn" id="searchPageSubmitBtn">
-              Search
-            </button>
-          </div>
-
-          <!-- Filters -->
-          <div class="search-page-filters" id="searchPageFilters" role="tablist" aria-label="Category Filters">
-            <button type="button" class="search-filter-pill is-active" data-filter="All" role="tab" aria-selected="true">All</button>
-            <button type="button" class="search-filter-pill" data-filter="Destinations" role="tab" aria-selected="false">Destinations</button>
-            <button type="button" class="search-filter-pill" data-filter="Packages" role="tab" aria-selected="false">Packages</button>
-            <button type="button" class="search-filter-pill" data-filter="Activities" role="tab" aria-selected="false">Activities</button>
-            <button type="button" class="search-filter-pill" data-filter="Transfers" role="tab" aria-selected="false">Transfers</button>
-            <button type="button" class="search-filter-pill" data-filter="Visa" role="tab" aria-selected="false">Visa</button>
-            <button type="button" class="search-filter-pill" data-filter="Hotels" role="tab" aria-selected="false">Hotels</button>
-            <button type="button" class="search-filter-pill" data-filter="Services" role="tab" aria-selected="false">Services</button>
-          </div>
-        </form>
-      </section>
+        <!-- Category Filter Pills Bar for Results Grid -->
+        <div class="search-page-filters" id="searchPageFilters" role="tablist" aria-label="Category Filters">
+          <button type="button" class="search-filter-pill is-active" data-filter="All" role="tab" aria-selected="true">All</button>
+          <button type="button" class="search-filter-pill" data-filter="Destinations" role="tab" aria-selected="false">Destinations</button>
+          <button type="button" class="search-filter-pill" data-filter="Packages" role="tab" aria-selected="false">Packages</button>
+          <button type="button" class="search-filter-pill" data-filter="Activities" role="tab" aria-selected="false">Activities</button>
+          <button type="button" class="search-filter-pill" data-filter="Transfers" role="tab" aria-selected="false">Transfers</button>
+          <button type="button" class="search-filter-pill" data-filter="Visa" role="tab" aria-selected="false">Visa</button>
+          <button type="button" class="search-filter-pill" data-filter="Hotels" role="tab" aria-selected="false">Hotels</button>
+          <button type="button" class="search-filter-pill" data-filter="Services" role="tab" aria-selected="false">Services</button>
+        </div>
+      </header>
 
       <!-- Stats / Summary Bar -->
       <div class="search-page-stats" id="searchPageStats" style="display: none;">
@@ -319,9 +298,8 @@
   <!-- Dedicated Search Page Controller -->
   <script>
     document.addEventListener("DOMContentLoaded", async function () {
-      const searchInput = document.getElementById("searchPageInput");
-      const searchForm = document.getElementById("searchPageForm");
       const searchHeading = document.getElementById("searchPageHeading");
+      const searchSubtitle = document.getElementById("searchPageSubtitle");
       const resultsGrid = document.getElementById("searchPageResultsGrid");
       const statsBar = document.getElementById("searchPageStats");
       const statsCount = document.getElementById("searchPageStatsCount");
@@ -331,17 +309,14 @@
       const filterPills = document.querySelectorAll("#searchPageFilters .search-filter-pill");
       const quickTags = document.querySelectorAll(".search-quick-tag");
 
-      let currentFilter = "All";
-
       // Read URL parameters
       const urlParams = new URLSearchParams(window.location.search);
-      const initialQuery = urlParams.get("q") || "";
-      const initialCat = urlParams.get("category") || "All";
+      let currentQuery = urlParams.get("q") || urlParams.get("search") || "";
+      let currentFilter = urlParams.get("category") || "All";
 
-      if (initialCat) {
-        currentFilter = initialCat;
+      if (currentFilter) {
         filterPills.forEach(p => {
-          if (p.getAttribute("data-filter") === initialCat) {
+          if (p.getAttribute("data-filter") === currentFilter) {
             p.classList.add("is-active");
             p.setAttribute("aria-selected", "true");
           } else {
@@ -349,10 +324,6 @@
             p.setAttribute("aria-selected", "false");
           }
         });
-      }
-
-      if (initialQuery) {
-        searchInput.value = initialQuery;
       }
 
       // Load search index
@@ -368,19 +339,22 @@
         window.history.replaceState({}, "", newUrl);
       }
 
-      function runSearch() {
-        const query = searchInput.value.trim();
+      function renderResults() {
+        const query = currentQuery.trim();
         updateURL(query, currentFilter);
 
         if (!query) {
-          searchHeading.textContent = "Search Trippovention";
+          searchHeading.textContent = "Explore Trippovention";
+          if (searchSubtitle) searchSubtitle.textContent = "Click the search icon in the header above to search destinations, packages, activities, or visas.";
           resultsGrid.innerHTML = "";
           statsBar.style.display = "none";
-          noResultsBox.style.display = "none";
+          noResultsBox.style.display = "block";
+          if (noResultsTitle) noResultsTitle.textContent = "Search from the Header Navigation";
           return;
         }
 
         searchHeading.textContent = `Search results for "${query}"`;
+        if (searchSubtitle) searchSubtitle.textContent = `Showing verified Trippovention results matching "${query}"`;
 
         if (!window.TrippoventionSearch) return;
         const results = window.TrippoventionSearch.search(query, currentFilter, 60);
@@ -425,27 +399,17 @@
         } else {
           resultsGrid.innerHTML = "";
           statsBar.style.display = "none";
-          noResultsTitle.textContent = `No results found for "${query}"`;
+          if (noResultsTitle) noResultsTitle.textContent = `No results found for "${query}"`;
           noResultsBox.style.display = "block";
         }
       }
 
-      // Initial search if query in URL
-      if (initialQuery) {
-        runSearch();
+      // Initial render if query in URL
+      if (currentQuery) {
+        renderResults();
+      } else {
+        renderResults();
       }
-
-      // Search input typing & form submit
-      searchForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        runSearch();
-      });
-
-      let debounceTimer = null;
-      searchInput.addEventListener("input", function () {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(runSearch, 150);
-      });
 
       // Filter pills click
       filterPills.forEach(pill => {
@@ -457,7 +421,7 @@
           pill.classList.add("is-active");
           pill.setAttribute("aria-selected", "true");
           currentFilter = pill.getAttribute("data-filter") || "All";
-          runSearch();
+          renderResults();
         });
       });
 
@@ -466,8 +430,11 @@
         tag.addEventListener("click", function () {
           const q = tag.getAttribute("data-query");
           if (q) {
-            searchInput.value = q;
-            runSearch();
+            currentQuery = q;
+            renderResults();
+            if (window.TrippoventionSearch) {
+              window.TrippoventionSearch.open(q);
+            }
           }
         });
       });
