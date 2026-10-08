@@ -556,7 +556,7 @@
       </button>
 
       <!-- Desktop expanded in-header search field -->
-      <div class="header-search-bar" id="headerSearchBar" aria-hidden="true">
+      <div class="header-search-bar" id="headerSearchBar" aria-hidden="false">
         <div class="header-search-input-box">
           <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -571,9 +571,8 @@
             spellcheck="false"
             aria-label="Search destinations, activities, packages, visas"
           />
-          <button type="button" class="header-search-clear" id="headerSearchClear" aria-label="Clear search">✕</button>
         </div>
-        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Close search">✕</button>
+        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Clear or close search">✕</button>
       </div>
     `;
 
@@ -584,22 +583,35 @@
     // Create the Dropdown Overlay anchored directly beneath the header
     createDropdownOverlayDOM();
 
-    // Attach Header Toggle Events
+    // Attach Header Toggle Events (for mobile)
     const toggleBtn = document.getElementById('headerSearchToggle');
-    toggleBtn.addEventListener('mouseenter', () => loadSearchIndex());
-    toggleBtn.addEventListener('focus', () => loadSearchIndex());
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (isOpen) {
-        closeSearch();
-      } else {
-        openSearch();
-      }
-    });
+    if (toggleBtn) {
+      toggleBtn.addEventListener('mouseenter', () => loadSearchIndex());
+      toggleBtn.addEventListener('focus', () => loadSearchIndex());
+      toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isOpen) {
+          closeSearch();
+        } else {
+          openSearch();
+        }
+      });
+    }
 
+    const input = document.getElementById('headerSearchInput');
+
+    // Desktop Close/Clear Button
     const closeBtn = document.getElementById('headerSearchClose');
     if (closeBtn) {
-      closeBtn.addEventListener('click', closeSearch);
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (input && input.value) {
+          input.value = '';
+          syncSearchQuery('');
+        }
+        closeSearch();
+      });
     }
 
     // Mutual exclusion with hamburger menu
@@ -638,17 +650,21 @@
       }
     }
 
-    const clearBtn = document.getElementById('headerSearchClear');
-    const input = document.getElementById('headerSearchInput');
-    if (clearBtn && input) {
-      clearBtn.addEventListener('click', () => {
-        input.value = '';
-        input.focus();
-        syncSearchQuery('');
-      });
-    }
-
     if (input) {
+      input.addEventListener('focus', () => {
+        loadSearchIndex();
+        if (!isOpen) {
+          openSearch(input.value);
+        }
+      });
+
+      input.addEventListener('click', () => {
+        loadSearchIndex();
+        if (!isOpen) {
+          openSearch(input.value);
+        }
+      });
+
       input.addEventListener('input', (e) => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
@@ -658,6 +674,16 @@
 
       input.addEventListener('keydown', handleKeyNavigation);
     }
+
+    // Document click to close search dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!isOpen) return;
+      const overlay = document.getElementById('headerSearchDropdown');
+      const wrap = document.getElementById('headerSearchWrap');
+      if (overlay && !overlay.contains(e.target) && wrap && !wrap.contains(e.target)) {
+        closeSearch();
+      }
+    });
   }
 
   /**
@@ -862,7 +888,7 @@
   function getActiveSearchInput() {
     const desktopInput = document.getElementById('headerSearchInput');
     const mobileInput = document.getElementById('headerSearchMobileInput');
-    if (window.innerWidth >= 992 && desktopInput) {
+    if (window.innerWidth >= 901 && desktopInput) {
       return desktopInput;
     }
     return mobileInput || desktopInput;
@@ -903,13 +929,16 @@
       if (desktopInput) desktopInput.value = initialQuery;
       if (mobileInput) mobileInput.value = initialQuery;
       syncSearchQuery(initialQuery);
+    } else {
+      const activeInput = getActiveSearchInput();
+      syncSearchQuery(activeInput ? activeInput.value : '');
     }
 
     setTimeout(() => {
       const activeInput = getActiveSearchInput();
-      if (activeInput) {
+      if (activeInput && document.activeElement !== activeInput) {
         activeInput.focus();
-        activeInput.select();
+        if (initialQuery) activeInput.select();
       }
     }, 50);
   }
@@ -928,8 +957,13 @@
       overlay.setAttribute('aria-hidden', 'true');
     }
 
-    const toggleBtn = document.getElementById('headerSearchToggle');
-    if (toggleBtn) toggleBtn.focus();
+    const desktopInput = document.getElementById('headerSearchInput');
+    if (desktopInput && window.innerWidth >= 901) {
+      desktopInput.blur();
+    } else {
+      const toggleBtn = document.getElementById('headerSearchToggle');
+      if (toggleBtn) toggleBtn.focus();
+    }
   }
 
   /**
@@ -1195,7 +1229,7 @@
     // Auto-open search if URL has ?search= on a non-search.html page
     if (!window.location.pathname.endsWith('search.html')) {
       const searchParam = new URLSearchParams(window.location.search).get('search');
-      if (searchParam) {
+      if (searchParam !== null) {
         setTimeout(() => openSearch(searchParam), 150);
       }
     }

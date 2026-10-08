@@ -50,39 +50,59 @@
   transform: scale(1.1);
 }
 
-/* Desktop Expandable Header Search Bar */
+/* Header Search Bar (Permanently visible pill on desktop, matching index.html screenshot) */
 .header-search-bar {
   display: none;
   align-items: center;
   gap: 8px;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   border: 1.5px solid var(--border-color);
   border-radius: 9999px;
-  padding: 3px 10px 3px 12px;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  width: 0;
-  opacity: 0;
-  overflow: hidden;
+  padding: 3px 8px 3px 14px;
+  height: 38px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, width 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-@media (min-width: 992px) {
-  .header-search-wrap.is-expanded .header-search-toggle {
-    display: none;
+@media (min-width: 901px) {
+  .header-search-toggle {
+    display: none !important;
   }
 
-  .header-search-wrap.is-expanded .header-search-bar {
-    display: inline-flex;
-    width: 330px;
+  .header-search-bar {
+    display: inline-flex !important;
+    width: 270px;
     opacity: 1;
+    overflow: visible;
+  }
+
+  .header-search-bar:hover {
+    border-color: var(--blue);
+  }
+
+  .header-search-bar:focus-within,
+  .header-search-wrap.is-expanded .header-search-bar {
     border-color: var(--blue);
     background: var(--bg-primary);
-    box-shadow: 0 0 0 3px rgba(43, 139, 216, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 0 3px rgba(43, 139, 216, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 }
 
-@media (min-width: 1200px) {
-  .header-search-wrap.is-expanded .header-search-bar {
-    width: 400px;
+@media (min-width: 1100px) {
+  .header-search-bar {
+    width: 320px;
+  }
+}
+
+@media (min-width: 1250px) {
+  .header-search-bar {
+    width: 380px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .header-search-bar {
+    width: 420px;
   }
 }
 
@@ -104,11 +124,21 @@
   border: none;
   background: transparent;
   padding: 6px 0;
-  font-size: 14px;
+  font-size: 13.5px;
   font-family: inherit;
   color: var(--text-primary);
   outline: none;
   min-width: 0;
+  text-overflow: ellipsis;
+}
+
+.header-search-input::-webkit-search-cancel-button,
+.header-search-input::-webkit-search-decoration,
+.header-search-input::-webkit-search-results-button,
+.header-search-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
 }
 
 .header-search-input::placeholder {
@@ -215,9 +245,9 @@
   width: 100%;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 901px) {
   .header-search-dropdown {
-    max-width: 820px;
+    max-width: 840px;
     border-radius: 0 0 18px 18px;
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
@@ -237,9 +267,9 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-@media (min-width: 992px) {
+@media (min-width: 901px) {
   .header-search-mobile-bar {
-    display: none; /* Desktop uses the in-header expanded search field */
+    display: none !important; /* Desktop uses the in-header visible search field */
   }
 }
 
@@ -640,23 +670,106 @@
    Mobile Header & Dropdown Adjustments
    -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
-  /* On mobile: [Logo] [Search 🔍] [Menu ☰] */
+@media (min-width: 901px) {
+  /* On desktop: [Logo] [Menu] [Header Search Pill] [Actions: 📞, WhatsApp, Theme] */
+  .nav .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    height: 64px !important;
+  }
+
+  .nav .menu {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    margin: 0 !important;
+  }
+
+  .nav .menu a {
+    padding: 8px 10px !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+
   .nav-right {
-    gap: 10px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-right .actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-drawer-actions {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  /* On mobile: [Logo] [Search 🔍] [Menu ☰] */
+  .nav {
+    height: 56px !important;
+  }
+
+  .nav .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 56px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .brand {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand img {
+    height: 28px !important;
+    width: auto !important;
+  }
+
+  .nav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
   }
 
   .nav-right .actions {
     display: none !important;
   }
 
-  .header-search-toggle {
-    width: 38px;
-    height: 38px;
+  .header-search-bar {
+    display: none !important;
   }
-}
 
-@media (max-width: 900px) {
+  .header-search-toggle {
+    display: inline-flex !important;
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+    flex-shrink: 0 !important;
+  }
+
   .header-search-dropdown-overlay {
     top: 56px; /* Exactly below the 56px fixed mobile header */
   }
@@ -736,16 +849,22 @@
   }
 }
 
-/* Mobile Drawer Actions (Call, WhatsApp, Theme inside opened hamburger menu) */
+/* Mobile Drawer Actions (Call, WhatsApp, Theme inside opened hamburger menu drawer ONLY) */
 .mobile-drawer-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 14px 16px;
-  margin-top: 12px;
-  border-top: 1px solid var(--border-color);
-  background: var(--bg-secondary);
-  gap: 8px;
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .menu.active .mobile-drawer-actions {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-around;
+    padding: 14px 16px;
+    margin-top: 12px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    gap: 8px;
+  }
 }
 
 .mobile-drawer-action-btn {
