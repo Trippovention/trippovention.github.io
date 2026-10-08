@@ -1,6 +1,6 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: September 27, 2026
+# Last Updated: October 09, 2026
 
 # LLMs.txt & Content Signals for AI Crawlers and Agents
 # https://trippovention.com/llms.txt
@@ -12,6 +12,9 @@ Content-Signal: ai-train=no, search=yes, ai-input=yes
 # Global rules for all bots (includes every AI/LLM crawler unless a specific block below overrides)
 User-agent: *
 Allow: /
+Allow: /search.html
+Disallow: /*?q=*
+Disallow: /*?search=*
 
 # XML Sitemaps (Sitemap Index + Modular Child Sitemaps + Image Sitemap)
 Sitemap: https://trippovention.com/sitemap.xml
@@ -155,6 +158,12 @@ User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
 Allow: /
 
 # Host directive

@@ -15,14 +15,17 @@
 
 - **Custom Tour Planning**: Tailor-made itineraries based on dates, budget, and interests
 - **Visa Assistance**: End-to-end visa documentation and processing for all major destinations
+- **Thailand Ground Operations**: Registered DMC in Pattaya offering private airport transfers, curated sightseeing, hotel contracting, and 24/7 on-ground support
 - **Luxury Hotel Bookings**: Handpicked stays for comfort and style
 - **Sightseeing & Transfers**: Curated sightseeing tours and seamless airport transfers
 - **Flight Bookings**: Best deals on domestic and international flights
 - **M.I.C.E.**: Meetings, Incentives, Conferences, and Exhibitions — full corporate event management
+- **Website Travel Search**: Site-wide instant search across 500+ tour packages, 140+ visa destinations, and sightseeing activities
 
 ## Core Pages
 
 - [Home](https://trippovention.com/): Main landing page with featured destinations, visa assistance by continent, and international packages
+- [Search Portal](https://trippovention.com/search.html): Instant site-wide search and category filtering across 500+ holiday packages, 140+ visa destinations, and transfers
 - [Destinations by Country](https://trippovention.com/destinations.html): Browse all tour packages organized by country
 - [Destinations by Theme](https://trippovention.com/destinations-themes.html): Adventure, honeymoon, spiritual, luxury, beach, and more
 - [Destinations by Traveler](https://trippovention.com/destinations-travelers.html): Families, couples, kids, seniors, friends & groups
