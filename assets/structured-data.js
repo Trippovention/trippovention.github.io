@@ -15,7 +15,7 @@ const StructuredData = (() => {
     url: "https://trippovention.com",
     logo: "https://trippovention.com/assets/images/logo.webp",
     image: "https://trippovention.com/assets/images/logo.webp",
-    telephone: "+91-87508-88875",
+    telephone: "+91-99711-10433",
     email: "query@trippovention.com",
     address: {
       "@type": "PostalAddress",
@@ -51,7 +51,7 @@ const StructuredData = (() => {
           postalCode: "122018",
           addressCountry: "IN"
         },
-        telephone: "+91-87508-88875"
+        telephone: "+91-99711-10433"
       },
       {
         "@type": "Place",

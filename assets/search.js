@@ -628,10 +628,10 @@
       const drawerActions = document.createElement('div');
       drawerActions.className = 'mobile-drawer-actions';
       drawerActions.innerHTML = `
-        <a href="tel:+918750888875" class="mobile-drawer-action-btn" title="Call Us">
+        <a href="tel:+919971110433" class="mobile-drawer-action-btn" title="Call Us">
           📞 <span>Call Us</span>
         </a>
-        <a href="https://wa.me/+918750888875" class="mobile-drawer-action-btn" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+        <a href="https://wa.me/+919971110433" class="mobile-drawer-action-btn" target="_blank" rel="noopener noreferrer" title="WhatsApp">
           💬 <span>WhatsApp</span>
         </a>
         <button type="button" class="mobile-drawer-action-btn" id="mobileDrawerThemeToggle" title="Toggle Theme">
