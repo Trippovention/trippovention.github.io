@@ -1,42 +1,16 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: October 09, 2026
+# Last Updated: November 06, 2026
 
 # LLMs.txt & Content Signals for AI Crawlers and Agents
 # https://trippovention.com/llms.txt
 # https://trippovention.com/.well-known/llms.txt
 # https://trippovention.com/llms-full.txt
-# Content Signals (https://contentsignals.org/):
-Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 # Global rules for all bots (includes every AI/LLM crawler unless a specific block below overrides)
 User-agent: *
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 Allow: /
-Allow: /search.html
-Disallow: /*?q=*
-Disallow: /*?search=*
-
-# XML Sitemaps (Sitemap Index + Modular Child Sitemaps + Image Sitemap)
-Sitemap: https://trippovention.com/sitemap.xml
-Sitemap: https://trippovention.com/sitemap-pages.xml
-Sitemap: https://trippovention.com/sitemap-destinations.xml
-Sitemap: https://trippovention.com/sitemap-packages.xml
-Sitemap: https://trippovention.com/sitemap-visa.xml
-Sitemap: https://trippovention.com/image-sitemap.xml
-
-# Disallow error and utility pages from indexing
-Disallow: /404.html
-Disallow: /offline.html
-Disallow: /thank-you.html
-Disallow: /*?error=*
-
-# Disallow validation and development folders
-Disallow: /_validation/
-Disallow: /node_modules/
-Disallow: /docs/
-Disallow: /scripts/
-
-# Explicitly allow crawling of assets for better rendering (Mobile-First Indexing)
 Allow: /assets/*.css
 Allow: /assets/*.js
 Allow: /assets/*.webp
@@ -46,9 +20,17 @@ Allow: /assets/*.jpeg
 Allow: /assets/*.svg
 Allow: /assets/*.woff2
 Allow: /assets/*.woff
-
-# Allow all image directories for image search
 Allow: /assets/images/
+Disallow: /404.html
+Disallow: /offline.html
+Disallow: /thank-you.html
+Disallow: /*?q=*
+Disallow: /*?search=*
+Disallow: /*?error=*
+Disallow: /_validation/
+Disallow: /node_modules/
+Disallow: /docs/
+Disallow: /scripts/
 
 # Specific search engine instructions
 User-agent: Googlebot
@@ -168,3 +150,11 @@ Allow: /
 
 # Host directive
 Host: trippovention.com
+
+# XML Sitemaps (Sitemap Index + Modular Child Sitemaps + Image Sitemap)
+Sitemap: https://trippovention.com/sitemap.xml
+Sitemap: https://trippovention.com/sitemap-pages.xml
+Sitemap: https://trippovention.com/sitemap-destinations.xml
+Sitemap: https://trippovention.com/sitemap-packages.xml
+Sitemap: https://trippovention.com/sitemap-visa.xml
+Sitemap: https://trippovention.com/image-sitemap.xml

@@ -24,24 +24,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Search Holiday Packages, Visa Services &amp; Destinations | Trippovention</title>
-  <meta name="description"
-    content="Search destinations, holiday packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention." />
+  <title>Search Holiday Packages, Tours &amp; Visas | Trippovention</title>
+  <meta name="description" content="Search destinations, holiday packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention." />
   <meta name="author" content="Trippovention" />
-  <meta name="robots" content="index, follow" id="metaRobots" />
+  <meta name="robots" content="noindex, follow" id="metaRobots" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://trippovention.com/search.html" />
-  <meta property="og:title" content="Search Holiday Packages, Visa Services &amp; Destinations | Trippovention" />
-  <meta property="og:description"
-    content="Explore worldwide tours, holiday packages, sightseeing activities, airport transfers, and visa assistance services on Trippovention." />
+  <meta property="og:title" content="Search Holiday Packages, Tours &amp; Visas | Trippovention" />
+  <meta property="og:description" content="Search destinations, holiday packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention." />
   <meta property="og:image" content="https://trippovention.com/assets/images/logo.webp" />
   <meta property="og:site_name" content="Trippovention" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Search Holiday Packages, Visa Services &amp; Destinations | Trippovention" />
-  <meta name="twitter:description"
-    content="Explore worldwide tours, holiday packages, sightseeing activities, airport transfers, and visa assistance services on Trippovention." />
+  <meta name="twitter:title" content="Search Holiday Packages, Tours &amp; Visas | Trippovention" />
+  <meta name="twitter:description" content="Search destinations, holiday packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention." />
   <meta name="twitter:image" content="https://trippovention.com/assets/images/logo.webp" />
 
   <link rel="canonical" href="https://trippovention.com/search.html" />
@@ -71,42 +68,42 @@
 
   <!-- SearchResultsPage & Breadcrumb Schema -->
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SearchResultsPage",
+  "@id": "https://trippovention.com/search.html#searchpage",
+  "name": "Search Holiday Packages, Visa Services & Destinations | Trippovention",
+  "url": "https://trippovention.com/search.html",
+  "description": "Search destinations, tour packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://trippovention.com/#website",
+    "name": "Trippovention",
+    "url": "https://trippovention.com/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "SearchResultsPage",
-        "@id": "https://trippovention.com/search.html#searchpage",
-        "name": "Search Holiday Packages, Visa Services & Destinations | Trippovention",
-        "url": "https://trippovention.com/search.html",
-        "description": "Search destinations, tour packages, sightseeing activities, airport transfers, and visa assistance services across 51+ countries on Trippovention.",
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": "https://trippovention.com/#website",
-          "name": "Trippovention",
-          "url": "https://trippovention.com/"
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://trippovention.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Search",
-              "item": "https://trippovention.com/search.html"
-            }
-          ]
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://trippovention.com/search.html?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://trippovention.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Search",
+        "item": "https://trippovention.com/search.html"
       }
+    ]
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://trippovention.com/search.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
     </script>
 </head>
 
@@ -409,10 +406,10 @@
         const query = currentQuery.trim();
         updateURL(query, currentFilter);
 
-        // SEO Crawl Budget Control: noindex dynamic query searches, keep clean landing page indexed
+        // SEO Crawl Budget Control: noindex internal search utility page while following links
         const metaRobots = document.getElementById("metaRobots") || document.querySelector('meta[name="robots"]');
         if (metaRobots) {
-          metaRobots.setAttribute("content", query ? "noindex, follow" : "index, follow");
+          metaRobots.setAttribute("content", "noindex, follow");
         }
 
         let itemsToDisplay = [];
