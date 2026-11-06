@@ -139,7 +139,7 @@ const StructuredData = (() => {
       legalName: COMPANY_INFO.legalName,
       description:
         config.description ||
-        "Licensed destination management company (DMC) and travel agency specializing in international tour packages, Thailand ground operations, India tourism, Buddha tourism pilgrimage circuits, and global visa assistance.",
+        "Travel and ground operations company with business presence in India and Thailand, specializing in international tour packages, Thailand ground operations, India tourism, corporate MICE travel, and global visa assistance.",
       url: config.url || COMPANY_INFO.url,
       logo: COMPANY_INFO.logo,
       image: COMPANY_INFO.image,
@@ -157,14 +157,14 @@ const StructuredData = (() => {
     // 2. Organization Schema (Knowledge Graph)
     organization: () => ({
       "@context": "https://schema.org",
-      "@type": "TravelAgency",
+      "@type": "Organization",
       name: COMPANY_INFO.name,
       legalName: COMPANY_INFO.legalName,
       url: COMPANY_INFO.url,
       logo: COMPANY_INFO.logo,
       description:
-        "Licensed destination management company (DMC) and travel agency specializing in international tour packages, Thailand ground operations, India tourism, Buddha tourism pilgrimage circuits, and global visa assistance.",
-      foundingDate: "2010",
+        "Travel and ground operations company with business presence in India and Thailand, specializing in international tour packages, Thailand ground operations, India tourism, corporate MICE travel, and global visa assistance.",
+      foundingDate: "2021",
       slogan: "Your Trusted Travel Partner",
       address: COMPANY_INFO.address,
       location: COMPANY_INFO.locations,
@@ -180,7 +180,7 @@ const StructuredData = (() => {
       url: COMPANY_INFO.url,
       potentialAction: {
         "@type": "SearchAction",
-        target: `${COMPANY_INFO.url}/${config.searchPath || "destinations.html"}?search={search_term_string}`,
+        target: `${COMPANY_INFO.url}/${config.searchPath || "search.html"}?q={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     }),
@@ -198,7 +198,7 @@ const StructuredData = (() => {
       }),
       provider: getTravelAgencyProvider(),
       areaServed: COMPANY_INFO.areaServed,
-      ...(config.offers && {
+      ...(config.offers && config.offers.price && String(config.offers.price) !== "0" && {
         offers: config.offers
       }),
       ...(config.serviceOutput && {
@@ -210,27 +210,37 @@ const StructuredData = (() => {
     }),
 
     // 5. TouristTrip Schema (Package pages)
-    touristTrip: config => ({
-      "@context": "https://schema.org",
-      "@type": config.schemaType || "TouristTrip",
-      name: config.name,
-      description: config.description,
-      url: config.url,
-      ...(config.image && {
-        image: config.image
-      }),
-      provider: getTravelAgencyProvider(),
-      ...(config.duration && {
-        duration: config.duration
-      }),
-      touristType: config.touristType || ["Family", "Couples", "Solo Travelers", "Groups"],
-      ...(config.itinerary && {
-        itinerary: config.itinerary
-      }),
-      ...(config.offers && {
-        offers: config.offers
-      })
-    }),
+    touristTrip: config => {
+      const validType =
+        config.schemaType && config.schemaType !== "TourPackage"
+          ? config.schemaType
+          : "TouristTrip";
+      const hasValidOffer =
+        config.offers &&
+        config.offers.price &&
+        String(config.offers.price) !== "0";
+      return {
+        "@context": "https://schema.org",
+        "@type": validType,
+        name: config.name,
+        description: config.description,
+        url: config.url,
+        ...(config.image && {
+          image: config.image
+        }),
+        provider: getTravelAgencyProvider(),
+        ...(config.duration && {
+          duration: config.duration
+        }),
+        touristType: config.touristType || ["Family", "Couples", "Solo Travelers", "Groups"],
+        ...(config.itinerary && {
+          itinerary: config.itinerary
+        }),
+        ...(hasValidOffer && {
+          offers: config.offers
+        })
+      };
+    },
 
     // 6. ContactPage Schema
     contactPage: config => ({
@@ -270,8 +280,21 @@ const StructuredData = (() => {
     })
   };
 
-  // Inject schema into page
+  // Inject schema into page (skipping if same @type already exists in static JSON-LD)
   const injectSchema = (schema, comment = null) => {
+    if (schema && schema["@type"]) {
+      const existing = document.querySelectorAll('script[type="application/ld+json"]');
+      for (const el of existing) {
+        try {
+          const parsed = JSON.parse(el.textContent);
+          if (parsed && parsed["@type"] === schema["@type"]) {
+            return;
+          }
+        } catch (_) {
+          // Ignore malformed JSON
+        }
+      }
+    }
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(schema);
