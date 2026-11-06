@@ -97,13 +97,6 @@ const StructuredData = (() => {
     },
     {
       "@type": "ContactPoint",
-      telephone: "+91-73030-10446",
-      contactType: "Sales & Customized Holidays",
-      areaServed: ["IN", "SG", "TH", "MY", "AE"],
-      availableLanguage: ["English", "Hindi"]
-    },
-    {
-      "@type": "ContactPoint",
       telephone: "+66-90-917-7601",
       contactType: "Thailand Inbound Operations",
       areaServed: "TH",
