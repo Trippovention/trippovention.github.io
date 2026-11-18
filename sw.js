@@ -5,7 +5,7 @@
  * Version: 3.7 - post-merge cleanup; versioned runtime cache + full cache purge
  */
 
-const CACHE_VERSION = "4.0";
+const CACHE_VERSION = "4.1";
 const CACHE_NAME = `trippovention-v${CACHE_VERSION}`;
 const RUNTIME_CACHE = `trippovention-runtime-v${CACHE_VERSION}`;
 
@@ -126,6 +126,6 @@ self.addEventListener("fetch", event => {
           });
         });
       })
-      .catch(() => caches.match("/index.html"))
+      .catch(() => Response.error())
   );
 });

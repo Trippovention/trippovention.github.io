@@ -1,16 +1,56 @@
 # Robots.txt for Trippovention Website
 # https://trippovention.com/
-# Last Updated: November 06, 2026
+# Last Updated: November 18, 2026
 
-# LLMs.txt & Content Signals for AI Crawlers and Agents
-# https://trippovention.com/llms.txt
-# https://trippovention.com/.well-known/llms.txt
-# https://trippovention.com/llms-full.txt
-
-# Global rules for all bots (includes every AI/LLM crawler unless a specific block below overrides)
-User-agent: *
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+# Google Ads & AdSense crawlers — Explicitly allowed at top for landing page verification
+User-agent: AdsBot-Google
 Allow: /
+Allow: /services.html
+Allow: /assets/
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Allow: /services.html
+Allow: /assets/
+
+User-agent: AdsBot-Google-Mobile-Apps
+Allow: /
+Allow: /services.html
+Allow: /assets/
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Adwords-Instant
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Specific search engine instructions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/images/
+Allow: /assets/*.webp
+Allow: /assets/*.png
+Allow: /assets/*.jpg
+
+# Global rules for all bots
+User-agent: *
+Allow: /
+Allow: /services.html
 Allow: /assets/*.css
 Allow: /assets/*.js
 Allow: /assets/*.webp
@@ -31,16 +71,6 @@ Disallow: /_validation/
 Disallow: /node_modules/
 Disallow: /docs/
 Disallow: /scripts/
-
-# Specific search engine instructions
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /assets/images/
-Allow: /assets/*.webp
-Allow: /assets/*.png
-Allow: /assets/*.jpg
 
 User-agent: Bingbot
 Allow: /
@@ -66,9 +96,11 @@ Allow: /
 
 # Scrapers and SEO audit bots with crawl delay
 User-agent: AhrefsBot
+Allow: /
 Crawl-delay: 10
 
 User-agent: SemrushBot
+Allow: /
 Crawl-delay: 10
 
 User-agent: MJ12bot
@@ -78,17 +110,8 @@ User-agent: dotbot
 Disallow: /
 
 User-agent: PetalBot
+Allow: /
 Crawl-delay: 10
-
-# Google Ads crawlers — Explicitly allowed for ad verification
-User-agent: AdsBot-Google
-Allow: /
-
-User-agent: AdsBot-Google-Mobile
-Allow: /
-
-User-agent: AdsBot-Google-Mobile-Apps
-Allow: /
 
 # AI/LLM Search & Answer Engine Crawlers
 User-agent: GPTBot
@@ -147,9 +170,6 @@ Allow: /
 
 User-agent: DuckAssistBot
 Allow: /
-
-# Host directive
-Host: trippovention.com
 
 # XML Sitemaps (Sitemap Index + Modular Child Sitemaps + Image Sitemap)
 Sitemap: https://trippovention.com/sitemap.xml
