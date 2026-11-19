@@ -64,7 +64,7 @@ const StructuredData = (() => {
           postalCode: "20150",
           addressCountry: "TH"
         },
-        telephone: "+66-90-917-7601"
+        telephone: "+66 61 194 1106"
       }
     ],
     // Global coverage
@@ -97,7 +97,7 @@ const StructuredData = (() => {
     },
     {
       "@type": "ContactPoint",
-      telephone: "+66-90-917-7601",
+      telephone: "+66 61 194 1106",
       contactType: "Thailand Inbound Operations",
       areaServed: "TH",
       availableLanguage: ["English", "Thai"]
