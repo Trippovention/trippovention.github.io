@@ -233,9 +233,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Intersection observer for animations with memory leak fix
+  // Skip initial opacity:0 hiding for Google Ads / search engine crawlers so headless renderers see all content immediately
+  const isSearchOrAdsCrawler =
+    typeof navigator !== "undefined" &&
+    /AdsBot-Google|Googlebot|Mediapartners-Google|Google-InspectionTool|Storebot-Google|GoogleOther|Bingbot|AdIdxBot/i.test(
+      navigator.userAgent || ""
+    );
   const animateElements = document.querySelectorAll(".card, .feature-icon, .stats");
 
-  if ("IntersectionObserver" in window && animateElements.length > 0) {
+  if (!isSearchOrAdsCrawler && "IntersectionObserver" in window && animateElements.length > 0) {
     const animationObserver = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -319,9 +325,16 @@ window.ThemeManager = {
 };
 
 // Service Worker Registration for PWA with Update Notification
+// Skip Service Worker registration for automated ad/search crawlers (AdsBot-Google, Googlebot)
+// to prevent background precache burst requests during landing page verification
 const SW_RELOAD_FLAG = "trippovention-sw-reload-pending";
+const IS_CRAWLER_AGENT =
+  typeof navigator !== "undefined" &&
+  /AdsBot-Google|Googlebot|Mediapartners-Google|Google-InspectionTool|Storebot-Google|GoogleOther|Bingbot|AdIdxBot/i.test(
+    navigator.userAgent || ""
+  );
 
-if ("serviceWorker" in navigator) {
+if ("serviceWorker" in navigator && !IS_CRAWLER_AGENT) {
   navigator.serviceWorker.addEventListener("controllerchange", () => {
     if (sessionStorage.getItem(SW_RELOAD_FLAG) === "1") {
       sessionStorage.removeItem(SW_RELOAD_FLAG);
@@ -506,8 +519,8 @@ function showUpdateNotification() {
   const scriptTag = document.querySelector('script[src*="app.js"]');
   const basePath = scriptTag ? scriptTag.getAttribute('src').replace(/app\.js.*$/, '') : 'assets/';
 
-  // 1. Ensure search-data.js is loaded (essential for file:// protocol and instant zero-latency search)
-  if (!document.getElementById('trippovention-search-data-js') && !window.__TRIPPOVENTION_SEARCH_DATA__) {
+  // 1. Ensure search-data.js is loaded (skip 343 KB index payload for automated ad/search crawlers)
+  if (!IS_CRAWLER_AGENT && !document.getElementById('trippovention-search-data-js') && !window.__TRIPPOVENTION_SEARCH_DATA__) {
     const sData = document.createElement('script');
     sData.id = 'trippovention-search-data-js';
     sData.src = basePath + 'search-data.js';
